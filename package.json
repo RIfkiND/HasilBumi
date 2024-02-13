@@ -17,6 +17,8 @@
         "@inertiajs/vue3": "^1.0.14",
         "@vitejs/plugin-vue": "^5.0.4",
         "daisyui": "^4.6.2",
+        "laravel-echo": "^1.15.3",
+        "pusher-js": "^8.4.0-rc2",
         "vue": "^3.4.18"
     }
 }

@@ -10,7 +10,11 @@
         "inertiajs/inertia-laravel": "^0.6.11",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
+        "laravel/socialite": "^5.11",
         "laravel/tinker": "^2.8",
+        "munafio/chatify": "^1.6",
+        "pusher/pusher-php-server": "^7.2",
+        "socialiteproviders/google": "^4.1",
         "tightenco/ziggy": "^1.8"
     },
     "require-dev": {

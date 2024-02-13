@@ -163,6 +163,8 @@ return [
         /*
          * Application Service Providers...
          */
+        \Chatify\ChatifyServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -183,6 +185,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Chatify' => Chatify\Facades\ChatifyMessenger::class,
+
     ])->toArray(),
 
 ];
