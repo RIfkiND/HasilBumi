@@ -12,4 +12,14 @@ use Inertia\Inertia;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function(){
+    return Inertia::render('login-regis');
+});
 
+Route::get('home', function(){
+    return Inertia::render('Home');
+})->name('home');
+
+Route::get('head', function(){
+    return Inertia::render('heading');
+})->name('head');
