@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
       <h1>Register</h1>
       <button @click="redirectToGoogle">Register with Google</button>
@@ -17,4 +17,10 @@
       console.error('Failed to redirect to Google:', error)
     }
   }
-  </script>
+  </script> -->
+
+<script></script>
+
+<template>
+    <div></div>
+</template>
