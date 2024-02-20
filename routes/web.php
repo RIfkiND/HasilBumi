@@ -23,3 +23,7 @@ Route::get('home', function(){
 Route::get('head', function(){
     return Inertia::render('heading');
 })->name('head');
+
+Route::get('dasboard', function(){
+    return Inertia::render('User/Dashboard');
+});
