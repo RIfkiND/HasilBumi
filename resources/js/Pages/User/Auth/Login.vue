@@ -161,7 +161,7 @@
       colorDominan:""
     }),
     mounted() {
-      this.imageUrl = "../img/logo-gg.png",
+      this.imageUrl = "/assets/img/logo-gg.png",
       this.colorDominan = "#3CB72B"
     },
     props: {

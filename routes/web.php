@@ -27,3 +27,7 @@ Route::get('head', function(){
 Route::get('dasboard', function(){
     return Inertia::render('User/Dashboard');
 });
+
+Route::get('login', function(){
+    return Inertia::render('User/Auth/Login');
+});
