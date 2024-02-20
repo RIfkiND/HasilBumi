@@ -42,5 +42,24 @@
         "@vue/cli-service": "~4.5.0",
         "babel-eslint": "^10.1.0",
         "vuetify-loader": "^1.7.0"
-    }
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+          "node": true
+        },
+        "extends": [
+          "plugin:vue/essential",
+          "eslint:recommended"
+        ],
+        "parserOptions": {
+          "parser": "babel-eslint"
+        },
+        "rules": {}
+      },
+      "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
 }
