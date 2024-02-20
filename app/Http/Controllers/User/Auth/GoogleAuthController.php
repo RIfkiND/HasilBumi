@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\User\Auth;
 
 use App\Models\User;
@@ -19,13 +18,13 @@ class GoogleAuthController extends Controller
     public function handleGoogleCallback()
     {
         $googleUser = Socialite::driver('google')->user();
-        $user = User::where('email',$googleUser->email->first());
-        if(!$user){
-        $user = User::firstOrCreate(
-            ['email' => $googleUser->getEmail()],
-            ['name' => $googleUser->getName()],
-            ['password'=>Hash::make(rand(100000,99999999))]
-        );
+        $user = User::where('email', $googleUser->email)->first();
+
+        if (!$user) {
+            $user = User::firstOrCreate(
+                ['email' => $googleUser->getEmail()],
+                ['name' => $googleUser->getName()]
+            );
         }
 
         Auth::login($user);

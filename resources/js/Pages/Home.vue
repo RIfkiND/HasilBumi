@@ -7,7 +7,7 @@ import Section1 from "./Component/Body/section1.vue"
 
 <template>
     <Nav />
-    
+
     <Section1 />
 </template>
 

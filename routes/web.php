@@ -20,3 +20,6 @@ Route::get('/Test',function(){
 });
 
 require __DIR__.'/Pages/Page.php';
+
+require __DIR__.'/Auth/callback.php';
+Route::view('/','welcome');
