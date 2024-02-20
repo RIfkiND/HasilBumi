@@ -163,7 +163,8 @@ return [
         /*
          * Application Service Providers...
          */
-        \Chatify\ChatifyServiceProvider::class,
+
+         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,

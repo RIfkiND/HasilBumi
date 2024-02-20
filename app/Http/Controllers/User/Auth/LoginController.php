@@ -11,7 +11,7 @@ use Inertia\Inertia;
 class LoginController extends Controller
 {
     public function loginview(){
-
+        return Inertia::render('User/Auth/Login');
     }
 
     public function Login(Request $request){

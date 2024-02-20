@@ -13,6 +13,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home');
+
+
+Route::get('/Test',function(){
+    return Inertia::render('User/Auth/Login');
 });
+
+require __DIR__.'/Pages/Page.php';
