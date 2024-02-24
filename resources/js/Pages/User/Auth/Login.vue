@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container id="app">
     <v-row align="center" justify="center">
       <v-col cols="12" sm="10">
         <v-card class="elevation-6 mt-10">
@@ -85,7 +85,7 @@
                       </p>
                     </v-card-text>
                     <div class="text-center">
-                      <v-btn tile outlined dark @click="step++">Login</v-btn>
+                      <v-btn tile outlined dark @click="step--">Login</v-btn>
                     </div>
                   </div>
                 </v-col>

@@ -28,6 +28,14 @@ Route::get('dasboard', function(){
     return Inertia::render('User/Dashboard');
 });
 
+Route::get('//', function(){
+    return Inertia::render('Admin/Dashboard');
+});
+
 Route::get('login', function(){
     return Inertia::render('User/Auth/Login');
+});
+
+Route::get('navbar', function(){
+    return Inertia::render('Component/Navbar/Nav');
 });
