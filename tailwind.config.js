@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+{import('tailwindcss').Config}
 export default {
     content: [
         "./resources/**/*.blade.php",
@@ -11,7 +11,10 @@ export default {
             'primaryColor': '#3CB72B',
             'textColor': '#292C2B',
             'colorBorder': '#4a514e',
-            'white': '#fff'
+            'white': '#ffffff',
+            'teal':'#3CB72B',
+            'teal-dark':'#38E54D',
+            'dark':'#000000'
         }
     },
     plugins: [require('daisyui')],

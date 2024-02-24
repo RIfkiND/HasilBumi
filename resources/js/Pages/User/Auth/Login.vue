@@ -1,200 +1,77 @@
 <template>
-  <v-container id="app">
-    <v-row align="center" justify="center">
-      <v-col cols="12" sm="10">
-        <v-card class="elevation-6 mt-10">
-          <v-window v-model="step">
-          <!-- Slide 1 -->
-            <v-window-item :value="1">
-              <v-row>
-                <v-col cols="12" md="6">
-                  <v-card-text class="mt-12 mb-12">
-                    <h2 class="text-center">Masuk ke Akun Anda</h2>
-                    <p class="text-center grey--text mt-3 mb-0">
-                      Masuk ke akun Anda sehingga Anda dapat terus membangun <br />dan
-                      mengedit alur orientasi Anda
-                    </p>
-                    <v-row align="center" justify="center">
-                      <v-col cols="12" sm="8">
-                        <v-text-field
-                          label="Email"
-                          outlined
-                          dense
-                          :color="colorDominan"
-                          autocomplete="false"
-                          class="mt-16"
-                        />
-                        <v-text-field
-                          label="Password"
-                          outlined
-                          dense
-                          :color="colorDominan"
-                          autocomplete="false"
-                          type="password"
-                        />
-                        <v-row>
-                          <v-col cols="6" sm="7">
-                            <v-checkbox label="Ingatkan saya" class="mt-n1" :color="colorDominan"></v-checkbox>
-                          </v-col>
-                          <v-col cols="12" sm="5">
-                            <span class="caption blue--text"><a href="#" class="forget blue--text">Lupa password</a></span>
-                          </v-col>
-                        </v-row>
-                        <v-btn :color="colorDominan" dark block tile>Login</v-btn>
-                        <h5 class="text-center grey--text mt-4 mb-3">Atau masuk menggunakan</h5>
-                        <div
-                          class="d-flex justify-content-center align-center mb-16 text-center"
-                        >
-                          <v-btn depressed block outlined color="grey">
-                            <img :src="imageUrl" alt="Logo google" width="20" height="20" class="rounded-circle"> <a href="https://accounts.google.com/" color="grey" class="forget">
-                              Login with Google
-                            </a>
-                          </v-btn>
-                        </div>
-                      </v-col>
-                    </v-row>
-                  </v-card-text>
-                </v-col>
-                <v-col cols="12" md="6" class="color-bg rounded-bl-xl elevation-6">
-                  <div style="text-align: center; padding: 180px 25px">
-                    <v-card-text class="white--text">
-                      <h2 class="text-center">Belum Punya Akun?</h2>
-                      <p class="text-center mt-3">
-                        Mari persiapkan semuanya sehingga Anda dapat mulai membuat milik Anda sendiri
-                        pertama <br/> pengalaman orientasi
-                      </p>
-                    </v-card-text>
-                    <div class="text-center">
-                      <v-btn tile outlined dark @click="step++">Sign Up</v-btn>
-                    </div>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-window-item>
-
-            <!-- Slide 2 -->
-            <v-window-item :value="2">
-              <v-row>
-                <v-col cols="12" md="6" class=" color-bg rounded-br-xl elevation-6">
-                  <div style="text-align: center; padding: 180px 0px">
-                    <v-card-text class="white--text">
-                      <h2 class="text-center">Sudah Mendaftar Akun?</h2>
-                      <p class="text-center mt-3">
-                        Masuk ke akun Anda sehingga Anda dapat terus membangun <br/> dan
-                        mengedit alur orientasi Anda
-                      </p>
-                    </v-card-text>
-                    <div class="text-center">
-                      <v-btn tile outlined dark @click="step--">Login</v-btn>
-                    </div>
-                  </div>
-                </v-col>
-
-                <v-col cols="12" md="6">
-                  <v-card-text class="mt-12">
-                    <h2 class="text-center">Mendaftar untuk sebuah Akun</h2>
-                    <p class="text-center grey--text mt-3">
-                      Mari kita persiapkan semuanya sehingga Anda dapat  <br/> mulai membuat Anda
-                      pengalaman <br/> orientasi pertama
-                    </p>
-                    <v-row align="center" justify="center">
-                      <v-col cols="12" sm="8">
-                        <v-text-field
-                          label="Username"
-                          outlined
-                          dense
-                          :color="colorDominan"
-                          autocomplete="false"
-                          class="mt-4"
-                        />
-                        <v-text-field
-                          label="Email"
-                          outlined
-                          dense
-                          :color="colorDominan"
-                          autocomplete="false"
-                        />
-                        <v-text-field
-                          label="Password"
-                          outlined
-                          dense
-                          :color="colorDominan"
-                          autocomplete="false"
-                          type="password"
-                        />
-                        <v-row>
-                          <v-col cols="12" sm="7">
-                            <v-checkbox label="I Accpet All" class="mt-n1" :color="colorDominan">
-                            </v-checkbox>
-                          </v-col>
-                          <v-col cols="12" sm="5">
-                            <span class="caption blue--text ml-n4 forget"
-                              >Syarat & Ketentuan</span
-                            >
-                          </v-col>
-                        </v-row>
-                        <v-btn :color="colorDominan" dark block tile>Sign up</v-btn>
-                        <h5 class="text-center grey--text mt-4 mb-3">Atau mendaftar dengan</h5>
-                        <v-btn depressed block outlined color="grey" class="mb-12">
-                          <img :src="imageUrl" alt="Logo google" width="20" height="20" class="rounded-circle"> <a href="https://accounts.google.com/" color="grey" class="forget">
-                            Login with Google
-                          </a>
-                        </v-btn>
-                      </v-col>
-                    </v-row>
-                  </v-card-text>
-                </v-col>
-              </v-row>
-            </v-window-item>
-          </v-window>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+    <div class="flex items-center justify-center min-h-screen bg-white">
+      <div
+        class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
+      >
+        <!-- left side -->
+        <div class="flex flex-col justify-center p-8 md:p-12">
+          <span class="mb-2 text-4xl font-bold text-textColor">Login</span>
+          <span class="font-light text-gray-400 mb-8">
+            Sign in now with us for the best experience!
+          </span>
+          <div class="py-2">
+            <label for="email" class="mb-2 text-md text-textColor">Email</label>
+            <input
+              type="email"
+              class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+              name="email"
+              id="email"
+              autocomplate="false"
+            />
+          </div>
+          <div class="py-2">
+            <label for="pass" class="mb-2 text-md text-textColor">Password</label>
+            <input
+              type="password"
+              name="pass"
+              id="pass"
+              autocomplate="false"
+              class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+            />
+          </div>
+          <div class="flex justify-between w-full py-4">
+            <div class="mr-24">
+              <input type="checkbox" name="ch" id="ch" class="mr-2 hover:cursor-pointer" style="accent-color:#3CB72B;"/>
+              <span class="text-md">Remember me</span>
+            </div>
+            <span class="text-md text-black hover:cursor-pointer hover:text-textColor hover:underline">Forget password</span>
+          </div>
+          <button
+            class="w-full bg-teal text-md p-2 rounded-lg mb-3 text-white hover:bg-teal-dark"
+          >
+            Sign up
+          </button>
+          <span class="text-center text-xs text-gray-300 mb-3">Or</span>
+          <button
+            class="w-full border border-gray-300 text-md p-2 rounded-lg mb-3 hover:bg-black hover:text-textColor hover:border-colorBorder"
+          >
+            <img :src="'Assets/img/google.svg'" alt="Icons-google" class="w-6 h-6 inline mr-2" />
+            <a :href="'https://accounts.google.com/'" class="text-md">Sign in with Google</a>
+          </button>
+          <div class="text-center text-gray-400">
+            Don't have an account?
+            <span class="text-black hover:cursor-pointer hover:text-textColor hover:underline"><a :href="route('register')">Sign up</a></span>
+          </div>
+        </div>
+        <!-- {/* right side */} -->
+        <div class="relative">
+          <img
+            :src="'Assets/img/bg-login.png'"
+            alt="Petani Memetik Buah"
+            class="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
+          />
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      step: 1,
-      imageUrl: "",
-      colorDominan:""
-    }),
-    mounted() {
-      this.imageUrl = "/assets/img/logo-gg.png",
-      this.colorDominan = "#3CB72B"
-    },
-    props: {
-      source: String,
-    },
-  };
+export default {
+  data: () => ({
+
+  })
+};
 </script>
 <style scoped>
-  .v-application .rounded-bl-xl {
-    border-bottom-left-radius: 300px !important;
-  }
-  .v-application .rounded-br-xl {
-    border-bottom-right-radius: 300px !important;
-  }
 
-  a {
-    color: grey;
-    text-transform: capitalize;
-    padding: 5px;
-    text-decoration: none;
-    letter-spacing: 0px;
-  }
-
-  .forget:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  .color-bg {
-    background-color: #3CB72B;
-  }
-
-  .color-text {
-    color:#3CB72B;
-  }
 </style>

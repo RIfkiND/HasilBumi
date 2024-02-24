@@ -18,13 +18,13 @@
                 class="bg-white p-2 border rounded-lg text-base w-24 font-semibold hover:bg-primaryColor"
                 style="border: solid 2px #3cb72b; color: #292c2b"
             >
-                Login
+                <a :href="route('login')">Sign in</a>
             </button>
             <button
-                class="p-2 rounded-lg text-base w-24 font-semibold hover:bg-white"
+                class="p-2 rounded-lg text-base w-24 font-semibold hover:bg-teal-dark hover:cursor-pointer"
                 style="background-color: #3cb72b; color: #fff"
             >
-                Join
+                <a :href="route('register')">Sign up</a>
             </button>
         </div>
     </header>

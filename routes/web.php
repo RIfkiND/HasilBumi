@@ -17,14 +17,18 @@ Route::get('/', function(){
     return Inertia::render('Admin/Dashboard');
 });
 
-Route::get('dasboard', function(){
+Route::get('/dasboard', function(){
     return Inertia::render('User/Dashboard');
 });
 
-Route::get('login', function(){
+Route::get('/login', function(){
     return Inertia::render('User/Auth/Login');
-});
+})->name('login');
 
-Route::get('navbar', function(){
+Route::get('/register', function(){
+    return Inertia::render('User/Auth/Register');
+})->name('register');
+
+Route::get('/navbar', function(){
     return Inertia::render('Component/Navbar/Nav');
 });
