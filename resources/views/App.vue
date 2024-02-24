@@ -12,7 +12,7 @@ export default {
   name: 'App',
 
   data: () => ({
-    //
+    pesan: "Hello"
   }),
 };
 </script>

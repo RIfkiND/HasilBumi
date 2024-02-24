@@ -12,24 +12,13 @@ use Inertia\Inertia;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function(){
-    return Inertia::render('login-regis');
+    return Inertia::render('Admin/Dashboard');
 });
-
-Route::get('home', function(){
-    return Inertia::render('Home');
-})->name('home');
-
-Route::get('head', function(){
-    return Inertia::render('heading');
-})->name('head');
 
 Route::get('dasboard', function(){
     return Inertia::render('User/Dashboard');
-});
-
-Route::get('//', function(){
-    return Inertia::render('Admin/Dashboard');
 });
 
 Route::get('login', function(){

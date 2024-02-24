@@ -6,5 +6,5 @@
 
 
 <template>
-    <h1>hello world</h1>
+    <h1>Ini halaman home</h1>
 </template>
