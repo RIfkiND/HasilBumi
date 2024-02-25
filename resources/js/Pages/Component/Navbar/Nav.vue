@@ -1,5 +1,7 @@
 <template>
-    <header class="flex items-center py-2 bg-white justify-between">
+    <header
+        class="flex items-center py-2 bg-white justify-between fixed w-full z-50"
+    >
         <div class="ml-14 text-2xl font-bold" style="color: #292c2b">
             Hasil <span style="color: #3cb72b">Bumi.</span>
         </div>
