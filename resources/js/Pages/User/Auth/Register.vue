@@ -75,10 +75,8 @@
     </div>
 </template>
 
-<script>
-export default {
-  // Isi definisi komponen di sini
-}
+<script setup>
+import {Link} from '@inertiajs/vue3';
 </script>
 
 <style>

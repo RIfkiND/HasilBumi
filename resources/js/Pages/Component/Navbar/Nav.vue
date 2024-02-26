@@ -18,14 +18,17 @@
                 class="bg-white p-2 border rounded-lg text-base w-24 font-semibold hover:bg-primaryColor"
                 style="border: solid 2px #3cb72b; color: #292c2b"
             >
-                <a :href="route('login')">Sign in</a>
+                <Link :href="route('login')">Sign in</Link>
             </button>
             <button
                 class="p-2 rounded-lg text-base w-24 font-semibold hover:bg-teal-dark hover:cursor-pointer"
                 style="background-color: #3cb72b; color: #fff"
             >
-                <a :href="route('register')">Sign up</a>
+                <Link :href="route('register')">Sign up</Link>
             </button>
         </div>
     </header>
 </template>
+<script setup>
+import { Link } from "@inertiajs/vue3";
+</script>

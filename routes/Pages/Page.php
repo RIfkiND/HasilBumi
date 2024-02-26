@@ -5,4 +5,4 @@ use App\Http\Controllers\Pages\HomeController;
 
 
 
-//Route::get('/',[HomeController::class,'Home'])->name('Home');
+Route::get('/',[HomeController::class,'Home'])->name('Home');

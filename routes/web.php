@@ -13,9 +13,9 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function(){
-    return Inertia::render('Admin/Dashboard');
-});
+// Route::get('/', function(){
+//     return Inertia::render('Admin/Dashboard');
+// });
 
 Route::get('/dasboard', function(){
     return Inertia::render('User/Dashboard');
@@ -36,4 +36,4 @@ Route::get('/navbar', function(){
 require __DIR__.'/Pages/Page.php';
 
 require __DIR__.'/Auth/callback.php';
-Route::view('/','welcome');
+;

@@ -39,18 +39,18 @@
           <button
             class="w-full bg-teal text-md p-2 rounded-lg mb-3 text-white hover:bg-teal-dark"
           >
-            Sign up
+            Sign In
           </button>
           <span class="text-center text-xs text-gray-300 mb-3">Or</span>
           <button
             class="w-full border border-gray-300 text-md p-2 rounded-lg mb-3 hover:bg-black hover:text-textColor hover:border-colorBorder"
           >
             <img :src="'Assets/img/google.svg'" alt="Icons-google" class="w-6 h-6 inline mr-2" />
-            <a :href="'https://accounts.google.com/'" class="text-md">Sign in with Google</a>
+            <a :href="route('google.login')" class="text-md">Sign in with Google</a>
           </button>
           <div class="text-center text-gray-400">
             Don't have an account?
-            <span class="text-black hover:cursor-pointer hover:text-textColor hover:underline"><a :href="route('register')">Sign up</a></span>
+            <span class="text-black hover:cursor-pointer hover:text-textColor hover:underline"><Link :href="route('register')">Sign up</Link></span>
           </div>
         </div>
         <!-- {/* right side */} -->
@@ -65,12 +65,8 @@
     </div>
 </template>
 
-<script>
-export default {
-  data: () => ({
-
-  })
-};
+<script setup>
+import {Link} from '@inertiajs/vue3';
 </script>
 <style scoped>
 
