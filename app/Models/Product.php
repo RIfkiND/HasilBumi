@@ -9,6 +9,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+
+    ];
 
     public function image(){
        return $this->hasMany(ImageProduct::class);
@@ -19,6 +22,6 @@ class Product extends Model
     }
 
     public function seller(){
-        //return $this->belongsTo();
+        return $this->belongsTo(Seller::class);
     }
 }

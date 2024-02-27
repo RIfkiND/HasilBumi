@@ -17,8 +17,8 @@ use Inertia\Inertia;
 //     return Inertia::render('Admin/Dashboard');
 // });
 
-Route::get('/dasboard', function(){
-    return Inertia::render('User/Dashboard');
+Route::get('/map', function(){
+    return Inertia::render('Component/Body/components/Map');
 });
 
 Route::get('/login', function(){
@@ -36,4 +36,5 @@ Route::get('/navbar', function(){
 require __DIR__.'/Pages/Page.php';
 
 require __DIR__.'/Auth/callback.php';
-;
+
+require __DIR__.'/Api/Chat.php';

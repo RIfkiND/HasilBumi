@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ChatsController;
-Route::get('/chat', [ChatsController::class, 'index']);
-Route::get('/messages', [ChatsController::class, 'fetchMessages']);
-Route::post('/messages', [ChatsController::class, 'sendMessage']);
+use App\Http\Controllers\Api\MessageController;
+
+Route::get('/chat', [MessageController::class, 'index']);
+Route::post('/broadcast', [MessageController::class, 'broadcast']);
+Route::post('/recive', [MessageController::class, 'receive']);
