@@ -17,8 +17,8 @@
         ></div>
         <div class="flex gap-5 mr-10">
             <button
-                class="bg-white p-2 border rounded-lg text-base w-24 font-semibold hover:bg-primaryColor"
-                style="border: solid 2px #3cb72b; color: #292c2b"
+                class="bg-white p-2 border rounded-lg text-base w-24 font-semibold text-textColor hover:bg-primaryColor hover:text-white"
+                style="border: solid 2px #3cb72b"
             >
                 Login
             </button>

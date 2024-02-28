@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-white">
+    <footer class="bg-white mt-8">
         <div
             class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8"
         >
@@ -17,7 +17,7 @@
                             href="#"
                             rel="noreferrer"
                             target="_blank"
-                            class="text-textColor transition hover:opacity-75"
+                            class="text-textColor transition hover:text-primaryColor"
                         >
                             <span class="sr-only">Facebook</span>
 
@@ -41,7 +41,7 @@
                             href="#"
                             rel="noreferrer"
                             target="_blank"
-                            class="text-textColor transition hover:opacity-75"
+                            class="text-textColor transition hover:text-primaryColor"
                         >
                             <span class="sr-only">Instagram</span>
 
@@ -65,7 +65,7 @@
                             href="#"
                             rel="noreferrer"
                             target="_blank"
-                            class="text-textColor transition hover:opacity-75"
+                            class="text-textColor transition hover:text-primaryColor"
                         >
                             <span class="sr-only">Twitter</span>
 
@@ -87,7 +87,7 @@
                             href="#"
                             rel="noreferrer"
                             target="_blank"
-                            class="text-textColor transition hover:opacity-75"
+                            class="text-textColor transition hover:text-primaryColor"
                         >
                             <span class="sr-only">GitHub</span>
 
@@ -110,7 +110,7 @@
             <!-- end medsos -->
 
             <div
-                class="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 lg:grid-cols-3 lg:pt-16"
+                class="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 sm:text-center lg:grid-cols-4 lg:pt-16 lg:text-center"
             >
                 <div>
                     <p class="font-medium text-textColor">Tautan Navigasi</p>
@@ -119,7 +119,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 Halaman Beranda
                             </a>
@@ -128,7 +128,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 Kategori Produk
                             </a>
@@ -137,7 +137,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 Tentang Kami
                             </a>
@@ -146,7 +146,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 Hubungi Kami
                             </a>
@@ -161,7 +161,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 About
                             </a>
@@ -170,7 +170,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 Meet the Team
                             </a>
@@ -179,7 +179,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 Accounts Review
                             </a>
@@ -194,7 +194,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 Kontak Kami
                             </a>
@@ -203,7 +203,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:opacity-75"
+                                class="text-textColor transition hover:text-primaryColor"
                             >
                                 FAQs
                             </a>
@@ -217,6 +217,29 @@
                                 Live Chat
                             </a>
                         </li> -->
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-medium text-textColor">Alamat Kantor</p>
+
+                    <ul class="mt-6 space-y-4 text-sm">
+                        <li>
+                            <a
+                                href="#"
+                                class="text-textColor transition hover:text-primaryColor"
+                            >
+                                Ciamis
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="#"
+                                class="text-textColor transition hover:text-primaryColor"
+                            >
+                                0821******
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

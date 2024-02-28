@@ -1,88 +1,40 @@
 <template>
-    <!-- <div class=" bg-white h-screen mt-0">
-        <div class="container mx-auto">
-            <div class="-mx-4 flex flex-wrap items-center">
-                <div class="w-full px-4 lg:w-5/12">
-                    <div class="hero-content">
-                        <h1
-                            class="mb-5 text-4xl font-bold !leading-[1.208] text-textColor"
-                        >
-                            Sumber
-                            <span class="text-primaryColor">Kekayaan</span
-                            >,<br />
-                            Ladang
-                            <span class="text-primaryColor">Berkah</span>, Hasil
-                            <br />
-                            <span class="text-primaryColor"> Bumi</span>, Negeri
-                            Sejahtera!
-                        </h1>
-                    </div>
-                </div>
-                <div class="w-full px-4 lg:w-6/12">
-                    <div class="lg:ml-auto lg:text-right">
-                        <div class="relative z-10 inline-block pt-11 lg:pt-0">
-                            <img
-                                :src="imageUrl"
-                                alt="hero"
-                                class="max-w-full lg:ml-auto"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- <main class="grid lg:grid-cols-2 place-items-center pb-8 md:pb-24 mt-0 h-96">
+        <div class="py-6 md:order-1 md:block">
+            <img :src="imageUrl" alt="Profile" />
         </div>
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-            class="absolute bottom-0 w-full"
-        >
-            <path
-                fill="#3CB72B"
-                fill-opacity="1"
-                d="M0,128L34.3,128C68.6,128,137,128,206,112C274.3,96,343,64,411,74.7C480,85,549,139,617,149.3C685.7,160,754,128,823,106.7C891.4,85,960,75,1029,64C1097.1,53,1166,43,1234,48C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"
-            ></path>
-        </svg>
-    </div> -->
-
-    <!-- <div class="bg-white h-screen mt-0">
-        <div class="container mx-auto px-4">
-            <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 items-center"
+        <div>
+            <h2
+                class="text-5xl lg:text-6xl xl:text-4xl font-bold lg:tracking-tight xl:tracking-tighter"
             >
-                <div class="py-6 lg:py-0">
-                    <h1
-                        class="text-5xl md:text-6xl lg:text-5xl font-bold mb-3 text-textColor"
-                    >
-                        Sumber
-                        <span class="text-primaryColor">Kekayaan</span>,<br />
-                        Ladang
-                        <span class="text-primaryColor">Berkah</span>, Hasil
-                        <br />
-                        <span class="text-primaryColor"> Bumi</span>, Negeri
-                        Sejahtera!
-                    </h1>
-                    <h2 class="typed-text-output"></h2>
-                </div>
-                <div>
-                    <img class="w-full" :src="imageUrl" alt="" />
-                </div>
-            </div>
+                Sumber <span class="text-primaryColor">Kekayaan</span>,<br />
+                Ladang <span class="text-primaryColor">Berkah</span>, Hasil
+                <br />
+                <span class="text-primaryColor">Bumi</span>, Negeri Sejahtera!
+            </h2>
         </div>
+
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 320"
-            class=""
+            class="md:row-span-2"
+            style="
+                grid-row: 2;
+                grid-column: 1 / -1;
+                align-self: end;
+                margin-bottom: 0;
+            "
         >
             <path
                 fill="#3CB72B"
                 fill-opacity="1"
-                d="M0,128L34.3,128C68.6,128,137,128,206,112C274.3,96,343,64,411,74.7C480,85,549,139,617,149.3C685.7,160,754,128,823,106.7C891.4,85,960,75,1029,64C1097.1,53,1166,43,1234,48C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"
+                d="M0,128L30,160C60,192,120,256,180,266.7C240,277,300,235,360,202.7C420,171,480,149,540,165.3C600,181,660,235,720,234.7C780,235,840,181,900,181.3C960,181,1020,235,1080,224C1140,213,1200,139,1260,122.7C1320,107,1380,149,1410,170.7L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
             ></path>
         </svg>
-    </div> -->
+    </main> -->
 
     <section
-        class="pt-20 lg:pt-39 pb-17.5 bg-white min-h-screen relative overflow-hidden"
+        class="pt-20 lg:pt-39 pb-17.5 bg-white min-h-screen relative overflow-hidden "
     >
         <div class="max-w-screen-xl mx-auto px-4 sm:px-8 xl:px-0">
             <div
