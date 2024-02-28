@@ -46,7 +46,7 @@ return [
         ],
         'seller'=>[
             'driver'=>'session',
-            'providers'=>'sellers',
+            'provider'=>'sellers',
         ],
     ],
 

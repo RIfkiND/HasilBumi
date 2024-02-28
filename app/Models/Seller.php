@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-class Seller extends Authenticatable
+
+class Seller extends Authenticatable 
 {
 
     use HasApiTokens, HasFactory, Notifiable;
 
 
-    protected $guard ='seller';
+    protected $guard = 'seller';
     /**
      * The attributes that are mass assignable.
      *
@@ -44,8 +46,17 @@ class Seller extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function product (){
+    public function product()
+    {
         return $this->hasMany(Product::class);
     }
-    
+    public function sentMessages()
+{
+    return $this->hasMany(Message::class, 'sender_id');
+}
+
+public function receivedMessages()
+{
+    return $this->hasMany(Message::class, 'receiver_id');
+}
 }

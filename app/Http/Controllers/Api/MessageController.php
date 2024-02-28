@@ -12,22 +12,23 @@ class MessageController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Component/Body/chat');
+        // Fetch messages from the database
+        $messages = Message::orderBy('created_at', 'asc')->get();
+        
+        return Inertia::render('Component/Body/chat', compact('messages'));
     }
 
     public function broadcast(Request $request)
     {
-
-       $message = Message::create([
-            'message'=> $request->input('message'),
-        ]);
-
-        broadcast(new ChatBoxEvents($request->get('message')))->toOthers();
-        return Inertia::render('Component/Body/chat', ['message' => $request->get('message')]);
-    }
-
-    public function receive(Request $request)
-    {
-        return Inertia::render('Component/Body/components/Receive', ['message' => $request->get('message')]);
+        $user = Auth::user(); // Assuming you're using authentication
+        
+        // Create a new message
+        $message = new Message();
+        $message->user_id = $user->id;
+        $message->message = $request->input('message');
+        $message->save();
+        
+        
+        broadcast(new ChatBoxEvents($message))->toOthers();
     }
 }
