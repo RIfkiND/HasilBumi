@@ -5,7 +5,7 @@
         Publish an event to channel <code>public</code>
         with event name <code>chat</code>; it will appear below:
       </p>
-      <div id="app">
+      <div id="">
         <ul>
           <li v-for="message in messages" :key="message.id">
             {{ message.text }}
@@ -27,16 +27,17 @@
   const messages = ref([]);
   const newMessage = ref('');
 
-  // Method to submit a new message
+
   async function submit() {
     const message = { id: Date.now(), text: newMessage.value };
     messages.value.push(message);
     newMessage.value = '';
+
     try {
-      
+
       await router.post('/broadcast', { message: message.text });
     } catch (error) {
-      // If there's an error, log it to the console
+
       console.error('Error broadcasting message:', error);
     }
   }
