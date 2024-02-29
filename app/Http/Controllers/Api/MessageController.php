@@ -18,9 +18,9 @@ class MessageController extends Controller
     public function broadcast(Request $request)
     {
 
-       $message = Message::create([
-            'message'=> $request->input('message'),
-        ]);
+    //    $message = Message::create([
+    //         'message'=> $request->input('message'),
+    //     ]);
 
         broadcast(new ChatBoxEvents($request->get('message')))->toOthers();
         return Inertia::render('Component/Body/chat', ['message' => $request->get('message')]);

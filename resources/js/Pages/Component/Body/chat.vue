@@ -30,11 +30,10 @@
   // Method to submit a new message
   async function submit() {
     const message = { id: Date.now(), text: newMessage.value };
-    messages.value.push(message); // Immediately add the message to the UI
-    newMessage.value = ''; // Clear the input field after submission
-
+    messages.value.push(message);
+    newMessage.value = '';
     try {
-      // Send the new message to the server for broadcasting asynchronously
+      
       await router.post('/broadcast', { message: message.text });
     } catch (error) {
       // If there's an error, log it to the console
