@@ -15,7 +15,7 @@
             class="w-96 h-10 rounded-3xl ml-16"
             style="border: 2px solid #edf1ed; color: #4a514e"
         ></div>
-
+        <!-- Edit ini  untuk rofile -->
         <div v-if="authenticated" >
             <h1>{{ user.name }}</h1>
 
