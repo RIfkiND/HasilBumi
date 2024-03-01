@@ -7,28 +7,20 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use App\Http\Requests\Auth\LoginRequest;
 
 class LoginController extends Controller
 {
     public function loginview(){
-
+        return Inertia::render('User/Auth/Login');
     }
 
-    public function Login(Request $request){
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+    public function Login(LoginRequest $request){
+            $request->authenticate();
 
-        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->back();
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            return redirect(RouteServiceProvider::HOME)->with('succes','You have Login Succes Fully');
     }
 
 }

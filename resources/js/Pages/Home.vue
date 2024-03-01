@@ -10,6 +10,7 @@ import Footer from "./Component/Footer/footer.vue";
     <body class="bg-white">
         <Nav />
 
+
         <Section1 />
 
         <Card />

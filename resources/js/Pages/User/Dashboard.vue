@@ -1,4 +1,9 @@
-<script></script>
+<script setup>
+  
+</script>
+
+
+
 <template>
-    <div></div>
+    <h1>Ini halaman home</h1>
 </template>

@@ -13,6 +13,28 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home');
+// Route::get('/', function(){
+//     return Inertia::render('Admin/Dashboard');
+// });
+
+Route::get('/map', function(){
+    return Inertia::render('Component/Body/components/Map');
 });
+
+Route::get('/login', function(){
+    return Inertia::render('User/Auth/Login');
+})->name('login');
+
+Route::get('/register', function(){
+    return Inertia::render('User/Auth/Register');
+})->name('register');
+
+Route::get('/navbar', function(){
+    return Inertia::render('Component/Navbar/Nav');
+});
+
+require __DIR__.'/Pages/Page.php';
+
+require __DIR__.'/Auth/callback.php';
+
+require __DIR__.'/Api/Chat.php';
