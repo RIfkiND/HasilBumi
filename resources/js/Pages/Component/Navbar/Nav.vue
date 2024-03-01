@@ -1,5 +1,7 @@
 <template>
-    <header class="flex items-center py-2 bg-white justify-between">
+    <header
+        class="flex items-center py-2 bg-white justify-between fixed w-full z-50"
+    >
         <div class="ml-14 text-2xl font-bold" style="color: #292c2b">
             Hasil <span style="color: #3cb72b">Bumi.</span>
         </div>
@@ -20,8 +22,8 @@
         </div>
         <div v-else class="flex gap-5 mr-10">
             <button
-                class="bg-white p-2 border rounded-lg text-base w-24 font-semibold hover:bg-primaryColor"
-                style="border: solid 2px #3cb72b; color: #292c2b"
+                class="bg-white p-2 border rounded-lg text-base w-24 font-semibold text-textColor hover:bg-primaryColor hover:text-white"
+                style="border: solid 2px #3cb72b"
             >
                 <Link :href="route('login')">Sign in</Link>
             </button>

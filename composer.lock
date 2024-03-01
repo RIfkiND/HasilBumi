@@ -5958,6 +5958,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/string/zipball/f5832521b998b0bec40bee688ad5de98d4cf111b",
                 "reference": "f5832521b998b0bec40bee688ad5de98d4cf111b",
+
                 "shasum": ""
             },
             "require": {
@@ -6030,7 +6031,11 @@
                     "type": "tidelift"
                 }
             ],
+
+            
+
             "time": "2024-02-01T13:17:36+00:00"
+
         },
         {
             "name": "symfony/translation",
