@@ -13,14 +13,6 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function(){
-    return Inertia::render('Admin/Dashboard');
-});
-
-Route::get('/dasboard', function(){
-    return Inertia::render('User/Dashboard');
-});
-
 Route::get('/login', function(){
     return Inertia::render('User/Auth/Login');
 })->name('login');
@@ -32,3 +24,17 @@ Route::get('/register', function(){
 Route::get('/navbar', function(){
     return Inertia::render('Component/Navbar/Nav');
 });
+
+Route::get('/forget-password', function(){
+    return Inertia::render('User/Auth/ForgetPassword');
+})->name('forget-password');
+
+Route::get('/reset-password', function(){
+    return Inertia::render('User/Auth/ResetPassword');
+});
+
+require __DIR__.'/Pages/Main.php';
+
+require __DIR__.'/Auth/callback.php';
+
+require __DIR__.'/Api/Chat.php';
