@@ -55,8 +55,8 @@
           <button
             class="w-full border border-gray-300 text-md p-2 rounded-lg mb-3 hover:bg-black hover:text-textColor hover:border-colorBorder"
           >
-            <img :src="'Assets/img/google.svg'" alt="Icons-google" class="w-6 h-6 inline mr-2" />
-            <a :href="'https://accounts.google.com/'" class="text-md">Sign up with Google</a>
+            <img :src="'./Assets/img/google.svg'" alt="Icons-google" class="w-6 h-6 inline mr-2" />
+            <a :href="route('google.login')" class="text-md">Sign up with Google</a>
           </button>
           <div class="text-center text-gray-400">
             Already have an account?
@@ -69,6 +69,7 @@
             :src="'Assets/img/bg-register.png'"
             alt="Petani Menanam Sayuran"
             class="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
+            loading="lazy"
           />
         </div>
       </div>
@@ -77,6 +78,7 @@
 
 <script setup>
 import {Link} from '@inertiajs/vue3';
+
 </script>
 
 <style>

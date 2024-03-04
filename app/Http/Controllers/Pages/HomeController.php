@@ -16,9 +16,6 @@ class HomeController extends Controller
             'user' => $authenticated ? Auth::user() : null
         ]);
     }
-    public function rendernav(){
-        
-    }
-
+    
 
 }

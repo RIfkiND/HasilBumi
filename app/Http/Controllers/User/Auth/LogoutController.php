@@ -22,6 +22,6 @@ public function logout(Request $request)
 
     $request->session()->regenerateToken();
 
-    return redirect()->back();
+    return to_route('Home')->with('succes' , 'You have Succesfully Logout');
 }
 }

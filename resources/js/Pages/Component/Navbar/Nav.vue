@@ -57,13 +57,13 @@
                     >
                         Edit Profile
                     </a>
-                    <a
+                    <Link
                         href="#"
                         class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                         @click="logout"
                     >
                         Logout
-                    </a>
+                </Link>
                 </div>
             </div>
         </div>
@@ -73,13 +73,13 @@
                 class="bg-white p-2 border rounded-lg text-base w-24 font-semibold text-textColor hover:bg-primaryColor hover:text-white"
                 style="border: solid 2px #3cb72b"
             >
-                <Link :href="route('login')">Sign in</Link>
+                <Link :href="route('view.login')">Sign in</Link>
             </button>
             <button
                 class="p-2 rounded-lg text-base w-24 font-semibold hover:bg-teal-dark hover:cursor-pointer"
                 style="background-color: #3cb72b; color: #fff"
             >
-                <Link :href="route('register')">Sign up</Link>
+                <Link :href="route('view.register')">Sign up</Link>
             </button>
         </div>
     </header>
@@ -87,7 +87,7 @@
 
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { usePage } from "@inertiajs/vue3";
+import { usePage , router } from "@inertiajs/vue3";
 import { ref } from "vue";
 
 const { authenticated, user } = usePage().props;
@@ -106,6 +106,8 @@ const editProfile = () => {
 };
 
 const logout = () => {
-    // Logika logout
+
+    router.post(route('auth.logout'))
+    location.reload();
 };
 </script>

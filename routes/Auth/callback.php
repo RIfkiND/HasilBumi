@@ -21,10 +21,12 @@ use App\Http\Controllers\User\Auth\LogoutController;
  * Without Google
  *
  */
-Route::prefix('Auth')->group(function(){
-    Route::get('/Login',[LoginController::class,'LoginController@loginview'])->name('view.login');
-    Route::post('/login/process',[LoginController::class,'LoginController@Login'])->name('auth.login');
-    Route::get('/Register',[RegisterController::class,'RegisterController@RegisterView'])->name('view.register');
-    Route::post('/Register/Process',[RegisterController::class,'RegisterController@Register'])->name('auth.register');
-    Route::post('/logout',[LogoutController::class,'LogoutController@logout'])->name('auth.logout');
-});
+    Route::get('/Login',[LoginController::class,'loginview'])->name('view.login');
+    Route::get('/Register',[RegisterController::class,'RegisterView'])->name('view.register');
+    
+    Route::prefix('auth')->group(function (){
+        Route::post('/login/process',[LoginController::class,'Login'])->name('auth.login');
+        Route::post('/Register/Process',[RegisterController::class,'Register'])->name('auth.register');
+        Route::post('/logout',[LogoutController::class,'logout'])->name('auth.logout');
+
+    });
