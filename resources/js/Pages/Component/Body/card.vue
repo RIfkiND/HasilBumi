@@ -1,7 +1,7 @@
 <template>
     <section class="container w-3/4 mx-auto">
         <div
-            class="grid grid-cols-2 md:grid-cols-5 gap-4 items-center mt-12 mb-16 w-3/4 mx-auto"
+            class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-12 mb-16 w-3/4 mx-auto"
         >
             <div class="card flex flex-col items-center justify-center">
                 <div
