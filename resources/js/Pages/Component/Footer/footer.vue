@@ -3,14 +3,14 @@
         <div
             class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8"
         >
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <div class="ml-14 text-2xl font-bold" style="color: #292c2b">
+            <div class="sm:flex sm:items-center sm:justify-between text-center">
+                <div class="text-2xl font-bold" style="color: #292c2b">
                     Hasil <span style="color: #3cb72b">Bumi.</span>
                 </div>
 
                 <!-- medsos start -->
                 <ul
-                    class="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end"
+                    class="mt-8 flex justify-center gap-6 sm:mt-0 sm:justify-end"
                 >
                     <li>
                         <a
@@ -110,7 +110,7 @@
             <!-- end medsos -->
 
             <div
-                class="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 sm:text-center lg:grid-cols-4 lg:pt-16 lg:text-center"
+                class="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:justify-items-center sm:grid-cols-2 lg:grid-cols-4 lg:pt-16 lg:justify-items-center md:justify-items-center"
             >
                 <div>
                     <p class="font-medium text-textColor">Tautan Navigasi</p>
@@ -250,3 +250,4 @@
         </div>
     </footer>
 </template>
+
