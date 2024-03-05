@@ -2,17 +2,14 @@
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-// Vuetify
-
+import VueSweetaler2 from 'vue-sweetalert2';
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-
 const vuetify = createVuetify({
   components,
   directives,
 })
-
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -23,7 +20,8 @@ createInertiaApp({
             .use(plugin)
             .mixin({methods: {route} })
             .use(vuetify)
-            .mount(el);
+            .use(VueSweetaler2)
+            .mount(el)
     },
     progress: false,
 });

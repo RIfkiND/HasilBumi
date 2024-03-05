@@ -67,7 +67,6 @@
                 </div>
             </div>
         </div>
-
         <div v-else class="flex gap-5 mr-10">
             <button
                 class="bg-white p-2 border rounded-lg text-base w-24 font-semibold text-textColor hover:bg-primaryColor hover:text-white"
@@ -88,7 +87,7 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
 import { usePage , router } from "@inertiajs/vue3";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const { authenticated, user } = usePage().props;
 const dropdownOpen = ref(false);
@@ -110,4 +109,13 @@ const logout = () => {
     router.post(route('auth.logout'))
     location.reload();
 };
+const search  = ref("");
+
+watch(search ,(value)=>{
+    router.get(route('Api.Search'), {search : value},{
+        preserveState: true,
+        replace :tue
+    });
+});
+
 </script>
