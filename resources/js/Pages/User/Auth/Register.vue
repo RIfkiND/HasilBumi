@@ -1,5 +1,15 @@
+<style>
+    .footer-top {
+        display: inline-block;
+        width: 100%;
+        height: 220px;
+        position: fixed;
+        top: 0;
+    }
+</style>
 <template>
-    <div class="flex items-center justify-center min-h-screen bg-white">
+    <div class="footer-top bg-teal-dark"></div>
+    <div class="flex items-center justify-center min-h-screen bg-white d-fixed">
       <div
         class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
       >
@@ -10,7 +20,7 @@
             Register now with us for the best experience!
           </span>
           <div class="py-2">
-            <label for="email" class="mb-2 text-md text-textColor">Username</label>
+            <label for="email" class="mb-2 text-md text-textColor">Username <span class="text-danger">*</span> </label>
             <input
               type="text"
               class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
@@ -20,7 +30,7 @@
             />
           </div>
           <div class="py-2">
-            <label for="email" class="mb-2 text-md text-textColor">Email</label>
+            <label for="email" class="mb-2 text-md text-textColor">Email <span class="text-danger">*</span> </label>
             <input
               type="email"
               class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
@@ -29,22 +39,37 @@
               autocomplate="false"
             />
           </div>
-          <div class="py-2">
-            <label for="pass" class="mb-2 text-md text-textColor">Password</label>
-            <input
-              type="password"
-              name="pass"
-              id="pass"
-              autocomplate="false"
-              class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
-            />
+          <div class="row">
+            <div class="col">
+                <div class="py-2">
+                    <label for="pass" class="mb-2 text-md text-textColor">Password <span class="text-danger">*</span> </label>
+                    <input
+                    type="password"
+                    name="pass"
+                    id="pass"
+                    autocomplate="false"
+                    class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                    />
+                </div>
+            </div>
+            <div class="col">
+                <div class="py-2">
+                    <label for="pass" class="mb-2 text-md text-textColor">Confirm Password <span class="text-danger">*</span> </label>
+                    <input
+                    type="password"
+                    name="pass"
+                    id="pass"
+                    autocomplate="false"
+                    class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                    />
+                </div>
+            </div>
           </div>
           <div class="flex justify-between w-full py-4">
             <div class="mr-24">
               <input type="checkbox" name="ch" id="ch" class="mr-2 hover:cursor-pointer" style="accent-color:#3CB72B;"/>
-              <span class="text-md">Remember me</span>
+              <span class="text-md">I agree to <Link href="/terms-and-conditions" target="_blank" class="text-textColor text-decoration-none hover:text-teal hover:cursor-pointer">Terms and Conditions</Link></span>
             </div>
-            <span class="text-md text-black hover:cursor-pointer hover:text-textColor hover:underline">Forget password</span>
           </div>
           <button
             class="w-full bg-teal text-md p-2 rounded-lg mb-3 text-white hover:bg-teal-dark"
@@ -60,7 +85,7 @@
           </button>
           <div class="text-center text-gray-400">
             Already have an account?
-            <span class="text-black hover:cursor-pointer hover:text-textColor hover:underline"><a :href="route('login')">Sign in</a></span>
+            <span><Link :href="route('login')" class="text-textColor text-decoration-none hover:text-teal hover:cursor-pointer">Sign in</Link></span>
           </div>
         </div>
         <!-- {/* right side */} -->
@@ -80,7 +105,3 @@
 import {Link} from '@inertiajs/vue3';
 
 </script>
-
-<style>
-/* Isi gaya CSS komponen di sini */
-</style>

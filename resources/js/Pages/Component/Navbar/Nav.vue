@@ -5,6 +5,13 @@
         <div class="ml-14 text-2xl font-bold" style="color: #292c2b">
             Hasil <span style="color: #3cb72b">Bumi.</span>
         </div>
+<<<<<<< HEAD
+        <nav class="text-base flex gap-8 font-medium" style="color: #292c2b">
+            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Home</Link>
+            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Store</Link>
+            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Landing</Link>
+            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Profile</Link>
+=======
         <nav
             class="text-base flex gap-8 font-medium items-center"
             style="color: #292c2b"
@@ -13,6 +20,7 @@
             <a href="#" class="hover:text-primaryColor">Store</a>
             <a href="#" class="hover:text-primaryColor">Landing</a>
             <a href="#" class="hover:text-primaryColor">Profile</a>
+>>>>>>> 547bba5f4f14300a594e645ec3a140be28346dd4
         </nav>
         <label
             for="search"
@@ -73,13 +81,21 @@
                 class="bg-white p-2 border rounded-lg text-base w-24 font-semibold text-textColor hover:bg-primaryColor hover:text-white"
                 style="border: solid 2px #3cb72b"
             >
+<<<<<<< HEAD
+                <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Sign in</Link>
+=======
                 <Link :href="route('view.login')">Sign in</Link>
+>>>>>>> 547bba5f4f14300a594e645ec3a140be28346dd4
             </button>
             <button
                 class="p-2 rounded-lg text-base w-24 font-semibold hover:bg-teal-dark hover:cursor-pointer"
                 style="background-color: #3cb72b; color: #fff"
             >
+<<<<<<< HEAD
+                <Link :href="route('register')" class="text-textColor hover:text-white text-decoration-none">Sign up</Link>
+=======
                 <Link :href="route('view.register')">Sign up</Link>
+>>>>>>> 547bba5f4f14300a594e645ec3a140be28346dd4
             </button>
         </div>
     </header>
