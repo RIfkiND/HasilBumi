@@ -70,6 +70,7 @@
             :src="'Assets/img/bg-login.png'"
             alt="Petani Memetik Buah"
             class="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
+            loading="lazy"
           />
         </div>
       </div>

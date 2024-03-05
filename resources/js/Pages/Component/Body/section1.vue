@@ -34,11 +34,11 @@
     </main> -->
 
     <section
-        class="pt-20 lg:pt-39 pb-17.5 bg-white min-h-screen relative overflow-hidden "
+        class="pt-20 lg:pt-39 pb-17.5 bg-white min-h-screen relative overflow-hidden"
     >
         <div class="max-w-screen-xl mx-auto px-4 sm:px-8 xl:px-0">
             <div
-                class="flex flex-col lg:flex-row items-center gap-7.5 xl:gap-14"
+                class="flex flex-col lg:flex-row items-center gap-7.5 xl:gap-14 mx-auto"
             >
                 <div
                     class="lg:max-w-md w-full md:text-center sm:text-center mx-12"
