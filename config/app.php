@@ -163,7 +163,7 @@ return [
         /*
          * Application Service Providers...
          */
-
+        Barryvdh\Debugbar\ServiceProvider::class,
          Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\AppServiceProvider::class,
