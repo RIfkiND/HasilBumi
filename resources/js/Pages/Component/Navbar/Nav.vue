@@ -6,10 +6,10 @@
             Hasil <span style="color: #3cb72b">Bumi.</span>
         </div>
         <nav class="text-base flex gap-8 font-medium" style="color: #292c2b">
-            <a href="#" class="hover:text-primaryColor">Home</a>
-            <a href="#" class="hover:text-primaryColor">Store</a>
-            <a href="#" class="hover:text-primaryColor">Landing</a>
-            <a href="#" class="hover:text-primaryColor">Profile</a>
+            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Home</Link>
+            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Store</Link>
+            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Landing</Link>
+            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Profile</Link>
         </nav>
         <div
             class="w-96 h-10 rounded-3xl ml-16"
@@ -25,13 +25,13 @@
                 class="bg-white p-2 border rounded-lg text-base w-24 font-semibold text-textColor hover:bg-primaryColor hover:text-white"
                 style="border: solid 2px #3cb72b"
             >
-                <Link :href="route('login')">Sign in</Link>
+                <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Sign in</Link>
             </button>
             <button
                 class="p-2 rounded-lg text-base w-24 font-semibold hover:bg-teal-dark hover:cursor-pointer"
                 style="background-color: #3cb72b; color: #fff"
             >
-                <Link :href="route('register')">Sign up</Link>
+                <Link :href="route('register')" class="text-textColor hover:text-white text-decoration-none">Sign up</Link>
             </button>
         </div>
     </header>
