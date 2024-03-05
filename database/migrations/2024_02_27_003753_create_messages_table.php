@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->text('massage');
-            $table->foreignId('sender_id')->constrained();
-            $table->foreignId('recive_id')->constrained();
+            $table->morphs('sender'); 
+            $table->morphs('receiver');
             $table->timestamps();
         });
     }

@@ -16,10 +16,15 @@ class Message extends Model
     ];
 
 
-
-    public function user(): BelongsTo
+    public function sender()
     {
-        return $this->belongsTo(User::class);
+        return $this->morphTo();
+    }
+
+    
+    public function receiver()
+    {
+        return $this->morphTo();
     }
 
     public function image(){

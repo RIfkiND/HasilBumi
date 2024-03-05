@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Seller extends Authenticatable 
+class Seller extends Authenticatable
 {
 
     use HasApiTokens, HasFactory, Notifiable;
@@ -52,11 +52,11 @@ class Seller extends Authenticatable
     }
     public function sentMessages()
 {
-    return $this->hasMany(Message::class, 'sender_id');
+    return $this->morphMany(Message::class, 'sender_id');
 }
 
 public function receivedMessages()
 {
-    return $this->hasMany(Message::class, 'receiver_id');
+    return $this->morphMany(Message::class, 'receiver_id');
 }
 }

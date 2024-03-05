@@ -13,23 +13,20 @@ use Inertia\Inertia;
 |
 */
 
-<<<<<<< HEAD
 Route::get('/login', function(){
     return Inertia::render('User/Auth/Login');
 })->name('login');
-=======
 // Route::get('/', function(){
 //     return Inertia::render('Admin/Dashboard');
 // });
 
-Route::get('/map', function(){
-    return Inertia::render('Component/Body/components/Map');
- });
+// Route::get('/map', function(){
+//     return Inertia::render('Component/Body/components/Map');
+//  });
 
 // Route::get('/login', function(){
 //     return Inertia::render('User/Auth/Login');
 // })->name('login');
->>>>>>> 547bba5f4f14300a594e645ec3a140be28346dd4
 
 // Route::get('/register', function(){
 //     return Inertia::render('User/Auth/Register');
