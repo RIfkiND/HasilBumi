@@ -13,6 +13,11 @@ use Inertia\Inertia;
 |
 */
 
+<<<<<<< HEAD
+Route::get('/login', function(){
+    return Inertia::render('User/Auth/Login');
+})->name('login');
+=======
 // Route::get('/', function(){
 //     return Inertia::render('Admin/Dashboard');
 // });
@@ -24,6 +29,7 @@ Route::get('/map', function(){
 // Route::get('/login', function(){
 //     return Inertia::render('User/Auth/Login');
 // })->name('login');
+>>>>>>> 547bba5f4f14300a594e645ec3a140be28346dd4
 
 // Route::get('/register', function(){
 //     return Inertia::render('User/Auth/Register');
@@ -33,7 +39,15 @@ Route::get('/map', function(){
 //     return Inertia::render('Component/Navbar/Nav');
 // });
 
-require __DIR__.'/Pages/Page.php';
+Route::get('/forget-password', function(){
+    return Inertia::render('User/Auth/ForgetPassword');
+})->name('forget-password');
+
+Route::get('/reset-password', function(){
+    return Inertia::render('User/Auth/ResetPassword');
+});
+
+require __DIR__.'/Pages/Main.php';
 
 require __DIR__.'/Auth/callback.php';
 
