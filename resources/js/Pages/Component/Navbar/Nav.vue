@@ -1,118 +1,440 @@
 <template>
-    <header
-        class="flex items-center py-2 bg-white justify-between fixed w-full z-50"
-    >
-        <div class="ml-14 text-2xl font-bold" style="color: #292c2b">
-            Hasil <span style="color: #3cb72b">Bumi.</span>
-        </div>
-        <nav class="text-base flex gap-8 font-medium" style="color: #292c2b">
-            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Home</Link>
-            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Store</Link>
-            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Landing</Link>
-            <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Profile</Link>
-        </nav>
-        <label
-            for="search"
-            class="flex border p-0.5 pl-5 rounded-3xl pr-2"
-            style="border: 1px solid #4a514e"
+    <!-- header atas -->
+    <header class="py-2 shadow-sm bg-white w-full">
+        <div
+            class="container flex items-center justify-evenly md:gap-4 sm:gap-6"
         >
-            <input type="text" class="focus:outline-none" /><a
+            <a
                 href="#"
-                class="px-3 py-1"
-                ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    x="0px"
-                    y="0px"
-                    width="20px"
-                    viewBox="0 0 50 50"
-                >
-                    <path
-                        d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"
-                    ></path></svg
-            ></a>
-        </label>
-
-        <div v-if="authenticated" class="flex items-center relative">
-            <!-- Profil bulat -->
-            <div
-                class="rounded-full border cursor-pointer shadow-white-lg flex items-center justify-center text-xl font-bold border-primaryColor text-textColor w-10 h-10 mr-6"
-                @click="toggleDropdown"
+                class="text-2xl font-bold text-textColor hover:text-textColor"
             >
-                {{ user.name.substring(0, 1).toUpperCase() }}
+                Hasil <span class="text-primaryColor">Bumi.</span>
+            </a>
 
-                <!-- Dropdown konten -->
-                <div
-                    class="absolute top-10 right-0 mt-2 w-48 text-base bg-white rounded-md shadow-lg z-10"
-                    v-if="dropdownOpen"
-                    @click.away="dropdownOpen = false"
+            <div class="w-full max-w-xl relative flex">
+                <span
+                    class="absolute left-4 top-1/2 Custransform-translate text-lg text-gray-400 hidden md:block"
                 >
-                    <span class="block px-4 py-2">{{ user.name }}</span>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input
+                    type="text"
+                    name="search"
+                    id="search"
+                    class="w-full border border-r-0 border-colorBorder pl-12 py-2 pr-3 rounded-l-md focus:outline-none hidden md:flex bg-white"
+                    placeholder="search"
+                />
+                <button
+                    class="bg-primaryColor border border-colorBorder text-white px-8 rounded-r-md transition md:flex items-center hidden hover:bg-hoverPrimary"
+                >
+                    Search
+                </button>
+            </div>
+
+            <div class="flex items-center space-x-4 gap-2">
+                <a
+                    href="#"
+                    class="text-center text-textColor transition relative"
+                >
+                    <div class="text-2xl">
+                        <i class="fa-regular fa-heart icon-style"></i>
+                    </div>
+                    <div class="text-xs leading-3">Wishlist</div>
+                    <div
+                        class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-hoverPrimary text-white text-xs"
+                    >
+                        8
+                    </div>
+                </a>
+                <a
+                    href="#"
+                    class="text-center text-textColor transition relative"
+                >
+                    <div class="text-2xl">
+                        <i class="fa-solid fa-bag-shopping icon-style"></i>
+                    </div>
+                    <div class="text-xs leading-3">Cart</div>
+                    <div
+                        class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-hoverPrimary text-white text-xs"
+                    >
+                        2
+                    </div>
+                </a>
+                <div class="flex gap-2" v-if="!authenticated">
+                    <Link
+                        :href="route('view.login')"
+                        class="text-primaryColor transition px-6 py-2 rounded-md border-2 border-b-hoverPrimary hover:text-white hover:bg-primaryColor"
+                        >Login</Link
+                    >
+                    <Link
+                        :href="route('view.register')"
+                        class="text-white bg-primaryColor px-6 py-2 rounded-md hover:bg-white hover:text-primaryColor hover:border-2 hover:border-primaryColor transition"
+                        >Register</Link
+                    >
+                </div>
+
+                <div v-if="authenticated" class="flex items-center relative">
+                    <!-- Profil bulat -->
+                    <div
+                        class="rounded-full border cursor-pointer shadow-white-lg flex items-center justify-center text-xl font-bold border-primaryColor text-textColor w-10 h-10 mr-6"
+                        @click="profileToggleDropdown()"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            class="w-8 h-8 rounded-full bg-white stroke-primaryColor"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                            />
+                        </svg>
+
+                        <!-- Dropdown konten -->
+                        <div
+                            class="absolute top-12 text-base bg-white rounded-md shadow-lg z-10"
+                            v-if="profileDropdown"
+                            @click.away="profileDropdown = false"
+                        >
+                            <div class="text-neutral-500 py-2 px-2">
+                                <!-- INi Hover
+                                hover:bg-primaryColor hover:text-white
+                            -->
+                                <!-- <span
+                                    class="block text-sm text-neutral-500 mb-2"
+                                    >{{ user.email }}</span
+                                > -->
+                                <span
+                                    class="block text-sm truncate dark:text-gray-400 mb-1"
+                                    >{{ user.name }}</span
+                                >
+                            </div>
+                            <ul class="px-0" aria-labelledby="user-menu-button">
+                                <li
+                                    class="card-hover card-hoverSecondary py-2 px-2"
+                                >
+                                    <Link
+                                        href="#"
+                                        class="block text-sm text-textColor truncate mb-1 text-left"
+                                        @click="editProfile"
+                                    >
+                                        Akun Saya
+                                    </Link>
+                                </li>
+
+                                <li class="card-hover py-2 px-2">
+                                    <Link
+                                        href="#"
+                                        class="block text-sm text-textColor mb-1 text-left"
+                                        @click="logout"
+                                    >
+                                        Logout
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <button
+                    @click="toggleMobileMenu"
+                    class="block md:hidden text-textColor transition"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- <a
+                    href="#"
+                    class="text-center text-gray-700 hover:text-primary transition relative"
+                >
+                    <div class="text-2xl">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <div class="text-xs leading-3">Account</div>
+                </a> -->
+            </div>
+        </div>
+    </header>
+    <!-- end header atas -->
+
+    <!-- navbar pc -->
+    <nav class="hidden md:block" style="background-color: #51cf66">
+        <div class="container flex">
+            <div
+                class="px-8 py-4 md:flex items-center cursor-pointer relative group bg-primaryColor hover:bg-hoverPrimary"
+                @mouseover="toggleDropdown(true)"
+                @mouseleave="toggleDropdown(false)"
+            >
+                <span class="text-white">
+                    <i class="fa-solid fa-bars stroke-primaryColor"></i>
+                </span>
+
+                <!-- dropdown -->
+
+                <div
+                    v-if="dropdownOpen"
+                    class="absolute flex top-full left-0 bg-white shadow-md py-2 z-50 font-bold"
+                >
                     <a
                         href="#"
-                        class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                        @click="editProfile"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
                     >
-                        Edit Profile
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Meat</span
+                        >
                     </a>
-                    <Link
+                    <a
                         href="#"
-                        class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                        @click="logout"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
                     >
-                        Logout
-                </Link>
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Vegetable</span
+                        >
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                    >
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Fruits</span
+                        >
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                    >
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Forest</span
+                        >
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                    >
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Grain</span
+                        >
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                    >
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Industri</span
+                        >
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                    >
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Ship</span
+                        >
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                    >
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Processed</span
+                        >
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                    >
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Spice</span
+                        >
+                    </a>
+                    <a
+                        href="#"
+                        class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                    >
+                        <span
+                            class="ml-6 text-sm text-textColor hover:text-primaryColor"
+                            >Textile</span
+                        >
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="flex items-center justify-between flex-grow md:pl-12 py-2"
+            >
+                <div class="flex items-center space-x-6 capitalize font-bold">
+                    <a
+                        href="index.html"
+                        class="text-neutral-700 hover:text-white transition"
+                        >Home</a
+                    >
+                    <a
+                        href="pages/shop.html"
+                        class="text-textColor hover:text-white transition"
+                        >Shop</a
+                    >
+                    <a
+                        href="#"
+                        class="text-textColor hover:text-white transition"
+                        >About us</a
+                    >
+                    <a
+                        href="#"
+                        class="text-textColor hover:text-white transition"
+                        >Contact us</a
+                    >
                 </div>
             </div>
         </div>
-        <div v-else class="flex gap-5 mr-10">
-            <button
-                class="bg-white p-2 border rounded-lg text-base w-24 font-semibold text-textColor hover:bg-primaryColor hover:text-white"
-                style="border: solid 2px #3cb72b"
-            >
-                <Link :href="route('view.login')" class="text-textColor hover:text-primaryColor text-decoration-none">Sign in</Link>
-            </button>
-            <button
-                class="p-2 rounded-lg text-base w-24 font-semibold hover:bg-teal-dark hover:cursor-pointer"
-                style="background-color: #3cb72b; color: #fff"
-            >
-                <Link :href="route('view.register')">Sign up</Link>
-            </button>
+    </nav>
+    <!-- end navbar pc -->
+
+    <!-- Mobile -->
+    <nav
+        v-if="mobileMenuOpen"
+        class="bg-primaryColor md:hidden py-3"
+        style="background-color: #51cf66"
+    >
+        <div class="container">
+            <!-- Isi menu mobile -->
+            <div class="w-full max-w-xl relative flex">
+                <span
+                    class="absolute left-4 top-1/2 Custransform-translate text-lg text-gray-400 md:block"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input
+                    type="text"
+                    name="search"
+                    id="search"
+                    class="w-full border border-r-0 border-colorBorder pl-12 py-2 pr-3 rounded-l-md focus:outline-none md:flex bg-white"
+                    placeholder="search"
+                />
+                <button
+                    class="bg-primaryColor border border-colorBorder text-white px-8 rounded-r-md transition md:flex items-center hover:bg-hoverPrimary"
+                >
+                    Search
+                </button>
+            </div>
+
+            <div class="py-4">
+                <a
+                    href="index.html"
+                    class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"
+                >
+                    Home
+                </a>
+                <a
+                    href="pages/shop.html"
+                    class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"
+                >
+                    Shop
+                </a>
+                <a
+                    href="#"
+                    class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"
+                >
+                    About us
+                </a>
+                <a
+                    href="#"
+                    class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"
+                >
+                    Contact us
+                </a>
+            </div>
         </div>
-    </header>
+    </nav>
+
+    <!-- Mobile end -->
 </template>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+body {
+    font-family: "Roboto", sans-serif;
+}
+a {
+    text-decoration: none;
+}
+
+.icon-style {
+    color: #3cb72b;
+}
+
+.Custransform-translate {
+    transform: translate(0, -50%);
+}
+
+.card-hover:hover {
+    background-color: #3cb72b;
+}
+
+.card-hover:hover .card-hoverSecondary {
+    color: #fff;
+}
+</style>
 
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { usePage , router } from "@inertiajs/vue3";
+import { usePage, router } from "@inertiajs/vue3";
 import { ref, watch } from "vue";
 
-const { authenticated, user } = usePage().props;
+const mobileMenuOpen = ref(false);
+const toggleMobileMenu = () => {
+    mobileMenuOpen.value = !mobileMenuOpen.value;
+};
+
 const dropdownOpen = ref(false);
-
-const toggleDropdown = () => {
-    dropdownOpen.value = !dropdownOpen.value;
+const toggleDropdown = (isOpen) => {
+    dropdownOpen.value = isOpen;
 };
 
-const closeDropdown = () => {
-    dropdownOpen.value = false;
+// const profileDropdown = ref(false);
+// const profileToggleDropdown = (isOpen) => {
+//     profileDropdown.value = isOpen;
+// };
+
+const { authenticated, user } = usePage().props;
+const profileDropdown = ref(false);
+const profileToggleDropdown = () => {
+    profileDropdown.value = !profileDropdown.value;
 };
+
+// const closeDropdown = () => {
+//     profileDropdownClose.value = false;
+// };
 
 const editProfile = () => {
     // Navigasi ke halaman edit profil
 };
 
 const logout = () => {
-
-    router.post(route('auth.logout'))
+    router.post(route("auth.logout"));
     location.reload();
 };
-const search  = ref("");
+const search = ref("");
 
-watch(search ,(value)=>{
-    router.get(route('Api.Search'), {search : value},{
-        preserveState: true,
-        replace :tue
-    });
+watch(search, (value) => {
+    router.get(
+        route("Api.Search"),
+        { search: value },
+        {
+            preserveState: true,
+            replace: true, // Perbaikan typo disini, seharusnya true bukan 'tue'
+        }
+    );
 });
-
 </script>
