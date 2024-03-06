@@ -24,9 +24,14 @@ class Seller extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'location',
+        'logo',
+        'description',
         'password',
     ];
 
+
+ 
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -19,6 +19,7 @@ class LoginSellerController extends Controller
     $request->session()->regenerate();
 
     return redirect(RouteServiceProvider::Seller_Dashboard)->with('succes','You have Login Succes Fully');
-   }
+   }  
+
 
 }

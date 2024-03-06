@@ -1,15 +1,19 @@
+import '@formkit/addons/css/multistep';
 
+
+import { plugin as FormKitPlugin , defaultConfig } from '@formkit/vue';
+import { createMultiStepPlugin } from '@formkit/addons'; // Import createMultiStepPlugin
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import VueSweetaler2 from 'vue-sweetalert2';
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import VueSweetalert2 from 'vue-sweetalert2';
+import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 const vuetify = createVuetify({
   components,
   directives,
-})
+});
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -20,7 +24,9 @@ createInertiaApp({
             .use(plugin)
             .mixin({methods: {route} })
             .use(vuetify)
-            .use(VueSweetaler2)
+            .use(FormKitPlugin, defaultConfig({
+              plugins: [createMultiStepPlugin()],
+          }))
             .mount(el)
     },
     progress: false,
