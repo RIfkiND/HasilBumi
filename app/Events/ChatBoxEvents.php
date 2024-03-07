@@ -16,23 +16,28 @@ class ChatBoxEvents implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
 
-    use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public string $message;
-
-    public function __construct(string $message)
+    public int $userId;
+    public int $sellerId;
+    public function __construct(string $message, int $userId, int $sellerId)
     {
         $this->message = $message;
+        $this->userId = $userId;
+        $this->sellerId = $sellerId;
     }
 
-    public function broadcastOn(): array
+    public function broadcastOn()
     {
-        return ['public'];
+        return new PrivateChannel('chat.' . $this->userId . '.' . $this->sellerId);
     }
-
-    public function broadcastAs(): string
+    public function broadcastWith()
     {
-        return 'chat';
+        return [
+            'message' => $this->message,
+            'userId' => $this->userId,
+            'sellerId' => $this->sellerId,
+        ];
     }
-
+   
 }

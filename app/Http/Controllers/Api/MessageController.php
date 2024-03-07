@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Events\ChatBoxEvents;
 use Inertia\Inertia;
+
 use App\Models\Message;
+
 class MessageController extends Controller
 {
     public function index()
     {
-        // Fetch messages from the database
+
         $messages = Message::orderBy('created_at', 'asc')->get();
 
         return Inertia::render('Component/Body/chat', compact('messages'));
@@ -20,15 +22,30 @@ class MessageController extends Controller
 
     public function broadcast(Request $request)
     {
-        $user = Auth::user(); 
+        $validatedData = $request->validate([
+            'message' => 'required|string',
+            'sender_type' => 'required|in:user,seller',
+            'sender_id' => 'required|integer',
+            'receiver_type' => 'required|in:user,seller',
+            'receiver_id' => 'required|integer',
+        ]);
 
+        $messageContent = $validatedData['message'];
+        $senderType = $validatedData['sender_type'];
+        $senderId = $validatedData['sender_id'];
+        $receiverType = $validatedData['receiver_type'];
+        $receiverId = $validatedData['receiver_id'];
 
-        $message = new Message();
-        $message->user_id = $user->id;
-        $message->message = $request->input('message');
-        $message->save();
+        
+        $message = Message::create([
+            'massage' => $messageContent,
+            'sender_id' => $senderId,
+            'sender_type' => $senderType,
+            'receiver_id' => $receiverId,
+            'receiver_type' => $receiverType,
+        ]);
 
-
-        broadcast(new ChatBoxEvents($message))->toOthers();
+      
+        broadcast(new ChatBoxEvents($messageContent, $senderId, $receiverId));
     }
 }

@@ -6,7 +6,7 @@
         >
             <a
                 href="#"
-                class="text-2xl font-bold text-textColor hover:text-textColor"
+                class="text-2xl font-bold text-textColor hover:text-textColor responsive"
             >
                 Hasil <span class="text-primaryColor">Bumi.</span>
             </a>
@@ -63,7 +63,7 @@
                 <div class="flex gap-2" v-if="!authenticated">
                     <Link
                         :href="route('view.login')"
-                        class="text-primaryColor transition px-6 py-2 rounded-md border-2 border-b-hoverPrimary hover:text-white hover:bg-primaryColor"
+                        class="text-primaryColor transition px-6 py-2 rounded-md border-2 button-border hover:text-white hover:bg-primaryColor"
                         >Login</Link
                     >
                     <Link
@@ -304,7 +304,7 @@
     <!-- Mobile -->
     <nav
         v-if="mobileMenuOpen"
-        class="bg-primaryColor md:hidden py-3"
+        class="bg-primaryColor md:hidden py-3 absolute w-full"
         style="background-color: #51cf66"
     >
         <div class="container">
@@ -368,6 +368,10 @@ body {
 }
 a {
     text-decoration: none;
+}
+
+.button-border {
+    border: 2px solid #3cb72b;
 }
 
 .icon-style {

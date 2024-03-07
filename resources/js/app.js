@@ -25,6 +25,7 @@ createInertiaApp({
         app.use(vuetify);
         app.use(VueSweetaler2);
         return app.mount(el);
+
     },
     progress: false,
 });

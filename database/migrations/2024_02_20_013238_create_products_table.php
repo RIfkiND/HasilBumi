@@ -14,8 +14,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->integer('Harga');
+            $table->string('name');
+            $table->integer('Harga')->nullable();
+            $table->integer('stock')->nullable();
             $table->text('deskripsi')->nullable();
             $table->foreignIdFor(Category::class);
             $table->timestamps();
