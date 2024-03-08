@@ -19,13 +19,15 @@
           <span class="font-light text-gray-400 mb-8">
             Register now with us for the best experience!
           </span>
+          <form @submit.prevent="form.post(route('auth.register'))" method="POST">
           <div class="py-2">
-            <label for="email" class="mb-2 text-md text-textColor">Username <span class="text-danger">*</span> </label>
+            <label for="username" class="mb-2 text-md text-textColor">Username <span class="text-danger">*</span> </label>
             <input
               type="text"
               class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
-              name="email"
-              id="email"
+              name="username"
+              id="username"
+              v-model="form.name"
               autocomplate="false"
             />
           </div>
@@ -36,6 +38,7 @@
               class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
               name="email"
               id="email"
+              v-model="form.email"
               autocomplate="false"
             />
           </div>
@@ -47,6 +50,7 @@
                     type="password"
                     name="pass"
                     id="pass"
+                    v-model="form.password"
                     autocomplate="false"
                     class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
                     />
@@ -72,10 +76,13 @@
             </div>
           </div>
           <button
+            type="submit"
+            :disabled="form.processing"
             class="w-full bg-teal text-md p-2 rounded-lg mb-3 text-white hover:bg-teal-dark"
           >
             Sign up
           </button>
+        </form>
           <span class="text-center text-xs text-gray-300 mb-3">Or</span>
           <button
             class="w-full border border-gray-300 text-md p-2 rounded-lg mb-3 hover:bg-black hover:text-textColor hover:border-colorBorder"
@@ -85,7 +92,7 @@
           </button>
           <div class="text-center text-gray-400">
             Already have an account?
-            <span><Link :href="route('login')" class="text-textColor text-decoration-none hover:text-teal hover:cursor-pointer">Sign in</Link></span>
+            <span><Link :href="route('view.login')" class="text-textColor text-decoration-none hover:text-teal hover:cursor-pointer">Sign in</Link></span>
           </div>
         </div>
         <!-- {/* right side */} -->
@@ -102,6 +109,15 @@
 </template>
 
 <script setup>
-import {Link} from '@inertiajs/vue3';
+import { Link, useForm } from "@inertiajs/vue3";
+import { reactive } from "vue";
+
+defineProps({ errors: Object });
+
+const form = useForm({
+  name:null,
+  email: null,
+  password: null,
+})
 
 </script>
