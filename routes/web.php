@@ -14,6 +14,10 @@ use Inertia\Inertia;
 */
 
 
+Route::get('/percobaan', function () {
+    return Inertia::render('Coba/login');
+});
+
 Route::get('/', function(){
     return Inertia::render('Admin/Dashboard');
 });
@@ -43,3 +47,4 @@ require __DIR__.'/Pages/Main.php';
 require __DIR__.'/Auth/callback.php';
 
 require __DIR__.'/Api/Chat.php';
+

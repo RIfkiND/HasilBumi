@@ -9,6 +9,7 @@ export default {
         extend: {},
         colors: {
             'primaryColor': '#3CB72B',
+            'hoverPrimary': '#40c057',
             'textColor': '#292C2B',
             'colorBorder': '#4a514e',
             'white': '#ffffff',

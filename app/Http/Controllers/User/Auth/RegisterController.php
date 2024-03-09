@@ -12,16 +12,19 @@ use Inertia\Inertia;
 
 class RegisterController extends Controller
 {
-    public function RegisterView(){
+    public function RegisterView()
+    {
         return Inertia::render('User/Auth/Register');
     }
 
-    public function Register(Request $request){
+    public function Register(Request $request)
+    {
 
-        $this->validate($request,[
+        
+        $this->validate($request, [
             'name' => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8'
         ]);
 
 
@@ -36,6 +39,6 @@ class RegisterController extends Controller
         Auth::attempt($credentials);
         $request->session()->regenerate();
         return redirect(RouteServiceProvider::HOME)
-        ->withSuccess('You have successfully registered & logged in!');
+            ->withSuccess('You have successfully registered & logged in!');
     }
 }

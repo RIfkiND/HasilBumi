@@ -15,13 +15,17 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@formkit/addons": "^1.5.9",
+        "@formkit/vue": "^1.5.9",
+        "@inertiajs/inertia": "^0.11.1",
+        "@fortawesome/free-regular-svg-icons": "^6.5.1",
         "@inertiajs/vue3": "^1.0.14",
         "@vitejs/plugin-vue": "^5.0.4",
         "daisyui": "^4.6.2",
         "laravel-echo": "^1.15.3",
         "pusher-js": "^8.4.0-rc2",
         "vue": "^3.4.18",
-        "vue3-click-away": "^1.2.4",
+        "vue-sweetalert2": "^5.0.5",
         "vuetify": "^3.5.4",
         "vuex": "^4.0.2"
     }
