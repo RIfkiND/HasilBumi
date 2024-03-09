@@ -25,7 +25,10 @@ const form = useForm({
                 v-model="form.email"
                 autocomplete="false"
             />
-            <div v-if="form.errors.email" class="text-red-500">{{ form.errors.email }}</div> <!-- Display error message -->
+            <div v-if="form.errors.email">
+                <span class="text-red-500"> {{ form.errors.email }} </span>
+            </div>
+            <!-- Display error message -->
         </div>
 
         <!-- Password input -->

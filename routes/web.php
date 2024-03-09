@@ -18,7 +18,7 @@ Route::get('/percobaan', function () {
     return Inertia::render('Coba/login');
 });
 
-Route::get('/', function(){
+Route::get('/admin', function(){
     return Inertia::render('Admin/Dashboard');
 });
 

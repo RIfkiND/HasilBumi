@@ -71,14 +71,12 @@
                 style="border: solid 2px #3cb72b"
             >
                 <Link :href="route('login')" class="text-textColor hover:text-primaryColor text-decoration-none">Sign in</Link>
-                <Link :href="route('view.login')">Sign in</Link>
             </button>
             <button
                 class="p-2 rounded-lg text-base w-24 font-semibold hover:bg-teal-dark hover:cursor-pointer"
                 style="background-color: #3cb72b; color: #fff"
             >
                 <Link :href="route('register')" class="text-textColor hover:text-white text-decoration-none">Sign up</Link>
-                <Link :href="route('view.register')">Sign up</Link>
             </button>
         </div>
     </header>
@@ -88,7 +86,6 @@
 import { Link } from "@inertiajs/vue3";
 import { usePage , router } from "@inertiajs/vue3";
 import { ref } from "vue";
-import VueClickAway from "vue3-click-away";
 
 const { authenticated, user } = usePage().props;
 const dropdownOpen = ref(false);
