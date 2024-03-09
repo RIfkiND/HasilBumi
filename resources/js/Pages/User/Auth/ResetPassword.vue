@@ -22,12 +22,12 @@
             The security of your account is very important to us!
             </span>
             <div class="py-2">
+                <label for="email" class="text-md text-textColor mb-2">Password <span class="text-danger">*</span> </label>
                 <input
-                type="password"
+                type="email"
                 class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
                 name="email"
                 id="email"
-                placeholder="New password"
                 autocomplate="false"
                 />
                 </div>

@@ -81,7 +81,7 @@
             class="w-full border border-gray-300 text-md p-2 rounded-lg mb-3 hover:bg-black hover:text-textColor hover:border-colorBorder"
           >
             <img :src="'./Assets/img/google.svg'" alt="Icons-google" class="w-6 h-6 inline mr-2" />
-            <a :href="route('google.login')" class="text-md">Sign up with Google</a>
+            <a :href="route('google.login')" class="text-md text-textColor text-decoration-none hover:text-textColor">Sign up with Google</a>
           </button>
           <div class="text-center text-gray-400">
             Already have an account?
