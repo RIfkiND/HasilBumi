@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
-
+use App\Models\Product;
 class FilterPageController extends Controller{
 
-    public function FilterMainPage(Request $request){
+    public function FilterLandingPage($category){
+ 
+     $products = Product::where('category', $category)->get();
 
-        if ($request->input){}
-
+   
+     return Inertia::render('', [
+         'category' => $category,
+         'products' => $products
+     ]);
     }
 }

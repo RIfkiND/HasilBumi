@@ -24,9 +24,8 @@ class GoogleAuthController extends Controller
         if (!$user) {
             $user = User::firstOrCreate(
                 ['email' => $googleUser->getEmail()],
-                ['name' => $googleUser->getName()]
-,               ['password' => Hash::make(Str::random(12))],
-                ['email_verified_at' => true ]
+                ['name' => $googleUser->getName()],
+                ['email_verified_at' =>  true ],
             );
         }
 
