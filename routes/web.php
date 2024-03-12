@@ -14,9 +14,9 @@ use Inertia\Inertia;
 */
 
 
-// Route::get('/percobaan', function () {
-//     return Inertia::render('Coba/login');
-// });
+Route::get('/percobaan', function () {
+    return Inertia::render('Coba/ckeditor');
+});
 
 Route::get('/forget-password', function () {
     return Inertia::render('User/Auth/ForgetPassword');

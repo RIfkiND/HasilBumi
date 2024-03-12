@@ -15,10 +15,12 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^41.2.0",
+        "@ckeditor/ckeditor5-vue": "^5.1.0",
         "@formkit/addons": "^1.5.9",
         "@formkit/vue": "^1.5.9",
-        "@inertiajs/inertia": "^0.11.1",
         "@fortawesome/free-regular-svg-icons": "^6.5.1",
+        "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/vue3": "^1.0.14",
         "@vitejs/plugin-vue": "^5.0.4",
         "daisyui": "^4.6.2",
