@@ -20,4 +20,9 @@ class FilterPageController extends Controller{
          'products' => $products
      ]);
     }
+
+    public function FilterMainPage($category){
+
+    
+    }
 }
