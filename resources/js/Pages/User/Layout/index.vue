@@ -11,6 +11,6 @@ import Footer from "./Component/Footer.vue";
 
         <Hero />
 
-        <!-- <Footer /> -->
+        <Footer />
     </body>
 </template>
