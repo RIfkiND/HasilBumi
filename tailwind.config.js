@@ -16,8 +16,8 @@ export default {
             'white': '#ffffff',
             'teal':'#3CB72B',
             'teal-dark':'#38E54D',
-            'dark':'#000000',
-            'grey':'#EEEDEB',
+            'dark':'#20262E',
+            'grey':'#F6F5F5',
             'border-secondary':'#B5C0D0'
 
         },

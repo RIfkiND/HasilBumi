@@ -228,16 +228,16 @@
                                 href="#"
                                 class="text-textColor transition hover:text-primaryColor"
                             >
-                                Ciamis
+                                <i class='bx bx-home-alt bx-sm'></i> : Ciamis
                             </a>
                         </li>
 
                         <li>
                             <a
-                                href="#"
+                                href="mailto:ajistwn301@gmail.com"
                                 class="text-textColor transition hover:text-primaryColor"
                             >
-                                0821******
+                                <i class='bx bx-envelope bx-sm'></i> : ajistwn301@gmail.com
                             </a>
                         </li>
                     </ul>

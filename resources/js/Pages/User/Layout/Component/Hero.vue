@@ -203,7 +203,7 @@ h4 {
 }
 .card:hover {
   transition: 0.3s ease-in-out;
-  background-color: #3cb72b;
+  background-color: #20262E;
   cursor: pointer;
   transform: translateY(-10px);
   color: #fff;

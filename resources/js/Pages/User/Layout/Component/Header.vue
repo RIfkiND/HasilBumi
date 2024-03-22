@@ -412,4 +412,5 @@ watch(search, (value) => {
     }
   );
 });
+
 </script>
