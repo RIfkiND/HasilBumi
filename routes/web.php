@@ -15,11 +15,7 @@ use Inertia\Inertia;
 
 
 Route::get('/percobaan', function () {
-<<<<<<< HEAD
     return Inertia::render('Coba/login');
-=======
-    return Inertia::render('Coba/ckeditor');
->>>>>>> c0f0384915975553fa4fd0151f3eddf682b97ece
 });
 
 Route::get('/admin', function(){
