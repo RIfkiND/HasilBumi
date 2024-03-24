@@ -10,7 +10,7 @@
 
                 <!-- medsos start -->
                 <ul
-                    class="mt-8 flex justify-center gap-6 sm:mt-0 sm:justify-end"
+                    class="mt-8 flex justify-center gap-6 sm:mt-0 sm:justify-end pl-0"
                 >
                     <li>
                         <a
@@ -115,7 +115,7 @@
                 <div>
                     <p class="font-medium text-textColor">Tautan Navigasi</p>
 
-                    <ul class="mt-6 space-y-4 text-sm">
+                    <ul class="mt-6 space-y-4 text-sm pl-0">
                         <li>
                             <a
                                 href="#"
@@ -157,7 +157,7 @@
                 <div>
                     <p class="font-medium text-textColor">Company</p>
 
-                    <ul class="mt-6 space-y-4 text-sm">
+                    <ul class="mt-6 space-y-4 text-sm pl-0">
                         <li>
                             <a
                                 href="#"
@@ -190,7 +190,7 @@
                 <div>
                     <p class="font-medium text-textColor">Informasi Kontak</p>
 
-                    <ul class="mt-6 space-y-4 text-sm">
+                    <ul class="mt-6 space-y-4 text-sm pl-0">
                         <li>
                             <a
                                 href="#"
@@ -222,7 +222,7 @@
                 <div>
                     <p class="font-medium text-textColor">Alamat Kantor</p>
 
-                    <ul class="mt-6 space-y-4 text-sm">
+                    <ul class="mt-6 space-y-4 text-sm pl-0">
                         <li>
                             <a
                                 href="#"
@@ -250,4 +250,3 @@
         </div>
     </footer>
 </template>
-
