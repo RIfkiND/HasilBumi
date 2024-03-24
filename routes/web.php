@@ -18,13 +18,6 @@ Route::get('/percobaan', function () {
     return Inertia::render('Coba/ckeditor');
 });
 
-Route::get('/forget-password', function () {
-    return Inertia::render('User/Auth/ForgetPassword');
-})->name('forget-password');
-
-Route::get('/reset-password', function () {
-    return Inertia::render('User/Auth/ResetPassword');
-});
 
 require __DIR__ . '/Pages/Main.php';
 

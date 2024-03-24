@@ -5,7 +5,8 @@ use App\Http\Controllers\User\Auth\GoogleAuthController;
 use App\Http\Controllers\User\Auth\LoginController;
 use App\Http\Controllers\User\Auth\RegisterController;
 use App\Http\Controllers\User\Auth\LogoutController;
-
+use App\Http\Controllers\User\Auth\ForgotPasswordController;
+use App\Http\Controllers\User\Auth\ResetPasswordController;
 
 
 
@@ -21,6 +22,9 @@ use App\Http\Controllers\User\Auth\LogoutController;
  * Without Google
  *
  */
+
+    Route::get('/forget-password', [ForgotPasswordController::class ,'ForgotPasswordView'])->name('forget-password');
+    Route::get('/reset-password',[ResetPasswordController::class ,'ResetPasswordView'])->name('Reset.password.view');
     Route::get('/Login',[LoginController::class,'loginview'])->name('view.login');
     Route::get('/Register',[RegisterController::class,'RegisterView'])->name('view.register');
     
