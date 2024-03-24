@@ -19,7 +19,7 @@ use App\Http\Controllers\User\Auth\ResetPasswordController;
 
 
 /**
- * Without Google
+ * GET Route
  *
  */
 
@@ -27,10 +27,11 @@ use App\Http\Controllers\User\Auth\ResetPasswordController;
     Route::get('/reset-password',[ResetPasswordController::class ,'ResetPasswordView'])->name('Reset.password.view');
     Route::get('/Login',[LoginController::class,'loginview'])->name('view.login');
     Route::get('/Register',[RegisterController::class,'RegisterView'])->name('view.register');
-    
+ /**
+  * Method
+  */
     Route::prefix('auth')->group(function (){
         Route::post('/login/process',[LoginController::class,'Login'])->name('auth.login');
         Route::post('/Register/Process',[RegisterController::class,'Register'])->name('auth.register');
         Route::post('/logout',[LogoutController::class,'logout'])->name('auth.logout');
-
     });
