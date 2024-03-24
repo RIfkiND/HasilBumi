@@ -168,8 +168,8 @@
                     <h4 class="text-center">meat</h4>
                 </div>
             </div>
-            <!-- hover -->
-    <!--  text-textColor hover:bg-primaryColor hover:text-white -->
+         
+     text-textColor hover:bg-primaryColor hover:text-white -->
 
     <!-- <div class="card flex flex-col items-center justify-center">
                 <div class="rounded-2xl p-5 px-8" style="border: 1px solid #3cb72b">
@@ -310,7 +310,7 @@
                         <h3 class="mt-4">Processed</h3>
                     </div>
                 </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
+                <a href="#" class="w-auto h-auto mx-auto rounded-md shadow-md overflow-hidden p-4 card" @click.prevent="filterByCategory('voluptatem')">
                     <div class="flex flex-col justify-center items-center">
                         <img :src="Spice" alt="" class="w-full icons" />
                         <h3 class="mt-4">Spice</h3>
@@ -474,64 +474,46 @@ h4 {
 }
 </style>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { router  } from '@inertiajs/vue3';
+const Meat = "/assets/icon/meat.svg";
+const Vegetable = "/assets/icon/vegetable.svg";
+const Fruit = "/assets/icon/fruit.svg";
+const Forest = "/assets/icon/forest.svg";
+const Grain = "/assets/icon/grain.svg";
+const Industri = "/assets/icon/industri.svg";
+const Ship = "/assets/icon/perahu.svg";
+const Processed = "/assets/icon/processed.svg";
+const Spice = "/assets/icon/spice.svg";
+const Textile = "/assets/icon/textile.svg";
+const Hutan = "/assets/icon/Hutan.svg";
 
-export default {
+const imageUrl = "/assets/img/Profile.svg";
+const imgBg = "/assets/img/bg-profile.svg";
 
-    data() {
-        return {
-            Meat: "",
-            Vegetable: "",
-            Fruit: "",
-            Forest: "",
-            Grain: "",
-            Industri: "",
-            Ship: "",
-            Processed: "",
-            Spice: "",
-            Textile: "",
-            imageUrl: "",
-            imgBg: "",
-            featureDriver: "",
-            featureFruit: "",
-            featurePayment: "",
-            Hutan: "",
+const featureFruit = "/assets/icon/Fitur-Sayur.svg";
+const featurePayment = "/assets/icon/Fitur-Payment.svg";
+const featureDriver = "/assets/icon/Fitur-Driver.svg";
 
-            leftButtonClicked: false,
-            rightButtonClicked: false
-        };
-    },
-    mounted() {
-        // Set imageUrl menggunakan properti asset dari Laravel
-        this.Meat = "/assets/icon/meat.svg";
-        this.Vegetable = "/assets/icon/vegetable.svg";
-        this.Fruit = "/assets/icon/fruit.svg";
-        this.Forest = "/assets/icon/forest.svg";
-        this.Grain = "/assets/icon/grain.svg";
-        this.Industri = "/assets/icon/industri.svg";
-        this.Ship = "/assets/icon/perahu.svg";
-        this.Processed = "/assets/icon/processed.svg";
-        this.Spice = "/assets/icon/spice.svg";
-        this.Textile = "/assets/icon/textile.svg";
-        this.Hutan = "/assets/icon/Hutan.svg";
+const leftButtonClicked = ref(false);
+const rightButtonClicked = ref(false);
 
-        this.imageUrl = "/assets/img/Profile.svg";
-        this.imgBg = "/assets/img/bg-profile.svg";
+const handleLeftButtonClick = () => {
+    leftButtonClicked.value = true;
+  
+};
 
-        this.featureFruit = "/assets/icon/Fitur-Sayur.svg"
-        this.featurePayment = "/assets/icon/Fitur-Payment.svg"
-        this.featureDriver = "/assets/icon/Fitur-Driver.svg"
-    },
+const handleRightButtonClick = () => {
+    rightButtonClicked.value = true;
+ 
+};
 
-    methods: {
-        handleLeftButtonClick() {
-            this.leftButtonClicked = true;
-            // Tambahkan logika atau pemanggilan fungsi yang sesuai di sini
-        },
-        handleRightButtonClick() {
-            this.rightButtonClicked = true;
-            // Tambahkan logika atau pemanggilan fungsi yang sesuai di sini
-        }
-    }
+onMounted(() => {
+ 
+});
+
+const filterByCategory = (category) => {
+  router.visit(route('products.filter', { category }));
 };
 </script>
