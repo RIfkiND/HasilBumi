@@ -220,7 +220,7 @@ h4 {
 }
 
 .card:hover .icons {
-  filter: invert(2);
+  filter: invert(1);
 }
 
 .card-field {
