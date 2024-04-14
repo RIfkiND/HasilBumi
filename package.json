@@ -18,6 +18,8 @@
         "@ckeditor/ckeditor5-build-classic": "^41.2.0",
         "@ckeditor/ckeditor5-vue": "^5.1.0",
         "@formkit/addons": "^1.5.9",
+        "@formkit/icons": "^1.6.2",
+        "@formkit/themes": "^1.6.2",
         "@formkit/vue": "^1.5.9",
         "@fortawesome/free-regular-svg-icons": "^6.5.1",
         "@fortawesome/free-solid-svg-icons": "^6.5.1",

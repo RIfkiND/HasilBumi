@@ -14,8 +14,8 @@ use Inertia\Inertia;
 */
 
 
-Route::get('/percobaan', function () {
-    return Inertia::render('Coba/ckeditor');
+Route::get('/testing', function () {
+    return Inertia::render('Seller/Testing/multiForm/index');
 });
 
 
