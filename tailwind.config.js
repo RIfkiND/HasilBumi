@@ -6,7 +6,9 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+
+        },
         colors: {
             'primaryColor': '#3CB72B',
             'hoverPrimary': '#40c057',
@@ -18,8 +20,9 @@ export default {
             'teal-dark':'#38E54D',
             'dark':'#20262E',
             'grey':'#F6F5F5',
-            'border-secondary':'#B5C0D0'
-
+            'border-secondary':'#B5C0D0',
+            'pink':'#F7418F',
+            'blue':'#31E1F7'
         },
         fonts: {
 

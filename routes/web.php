@@ -42,6 +42,11 @@ Route::get('/reset-password', function(){
     return Inertia::render('User/Auth/ResetPassword');
 });
 
+Route::get('/daftar', function(){
+    return Inertia::render('Seller/Testing/multiForm/index');
+});
+
+
 require __DIR__.'/Pages/Main.php';
 
 require __DIR__.'/Auth/callback.php';
