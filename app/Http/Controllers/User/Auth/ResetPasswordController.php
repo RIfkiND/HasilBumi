@@ -9,10 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-
+use Inertia\Inertia;
 class ResetPasswordController extends Controller
 {
 
+
+    public function ResetPasswordView(){
+        return Inertia::render('User/Auth/ResetPassword');
+    }
     public function ResetPassword(Request $request){
         $request->validate([
             'token' => 'required',

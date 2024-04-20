@@ -14,17 +14,10 @@ use Inertia\Inertia;
 */
 
 
-// Route::get('/percobaan', function () {
-//     return Inertia::render('Coba/login');
-// });
-
-Route::get('/forget-password', function () {
-    return Inertia::render('User/Auth/ForgetPassword');
-})->name('forget-password');
-
-Route::get('/reset-password', function () {
-    return Inertia::render('User/Auth/ResetPassword');
+Route::get('/testing', function () {
+    return Inertia::render('Seller/Testing/multiForm/index');
 });
+
 
 require __DIR__ . '/Pages/Main.php';
 
