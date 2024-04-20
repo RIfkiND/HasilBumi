@@ -47,7 +47,7 @@
                     </div>
                 </a>
                 <a
-                    href="#"
+                    :href="route('view.login')"
                     class="text-center text-textColor transition relative"
                 >
                     <div class="text-2xl">
@@ -161,7 +161,7 @@
     <!-- end header atas -->
 
     <!-- navbar pc -->
-    <nav class="hidden md:block" style="background-color: #51cf66">
+    <nav class="hidden md:block bg-primaryColor">
         <div class="container flex">
             <div
                 class="px-8 py-4 md:flex items-center cursor-pointer relative group bg-primaryColor hover:bg-hoverPrimary"

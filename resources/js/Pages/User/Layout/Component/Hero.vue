@@ -1,8 +1,7 @@
 <template>
-    <!-- Home Page -->
-    <section class="flex items-center flex-wrap justify-center gap-5 ">
+    <section class="flex items-center flex-wrap justify-center gap-5">
         <div class="layout-hero">
-            <h1 class="font-bold text-content  sm:text-4xl">
+            <h1 class="font-bold text-content sm:text-4xl">
                 Sumber
                 <span class="text-primaryColor">Kekayaan</span>,
                 <!-- <br /> -->
@@ -11,49 +10,141 @@
                 <!-- <br /> -->
                 <span class="text-primaryColor"> Bumi</span>, Negeri Sejahtera!
             </h1>
-            <p>
-                produce success, prosperity and let's take care of our bodies by
-                eating nutritious food
+            <p class="text-textColor opacity-70 fs-6 text-wrap">
+                Mari bergabung dengan kami dalam perjalanan untuk menikmati
+                keindahan dan kelezatan yang ditawarkan oleh hasil bumi alam.
+                Selamat menikmati pengalaman belanja yang menyenangkan dan
+                bermakna!
             </p>
             <button
-                class="inline-block text-primaryColor button-border border-b-hoverPrimary hover:text-white hover:bg-primaryColor px-8 py-2 rounded-full my-2 mx-0">
-                Shop Now &#8594
+                class="inline-block text-primaryColor button-border border-b-hoverPrimary hover:text-white hover:bg-primaryColor px-8 py-2 rounded-full my-2 mx-0"
+            >
+                Shop Now &#8594;
             </button>
         </div>
 
         <div class="">
-            <img :src="imageUrl" alt="" class="max-w-full py-10 px-0" width="600px" />
+            <img
+                :src="imageUrl"
+                alt=""
+                class="max-w-full py-10 px-0"
+                width="600px"
+            />
         </div>
     </section>
     <!-- Home Page End -->
 
     <!-- Feature Page -->
-
-    <!-- <div class="container py-16">
-        <div class="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center">
-            <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
-                <img :src="featureDriver" alt="Delivery" class="w-15 h-12 object-contain">
-                <div>
-                    <h4 class="font-medium capitalize text-lg">Free Shipping</h4>
-                    <p class="text-gray-500 text-sm">Order over $200</p>
-                </div>
+    <div class="d-block w-full bg-grey py-12 h-full">
+        <div class="container mx-auto justify-center my-12">
+            <div
+                class="text-textColor fs-2 fw-bold text-center d-flex mx-auto justify-center"
+            >
+                <h2 class="fw-bold fs-1 mb-5 mt-0">Layanan kami</h2>
+                <p></p>
             </div>
-            <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
-                <img src="assets/images/icons/money-back.svg" alt="Delivery" class="w-12 h-12 object-contain">
-                <div>
-                    <h4 class="font-medium capitalize text-lg">Money Rturns</h4>
-                    <p class="text-gray-500 text-sm">30 days money returs</p>
+            <div
+                class="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center"
+            >
+                <div
+                    class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5 md:flex-wrap lg:flex-nowrap"
+                >
+                    <i class="fa-solid fa-truck-fast h-8 w-8"></i>
+                    <div>
+                        <h4 class="font-medium capitalize text-md">
+                            Pengiriman langsung
+                        </h4>
+                        <p class="text-gray-500 text-xs text-wrap">
+                            Nikmati kemudahan berbelanja dengan layanan
+                            pengiriman kami yang mengantarkan produk langsung
+                            <br />
+                            ke pintu Anda
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
-                <img :src="featureDriver" alt="Delivery" class="w-15 h-12 object-contain">
-                <div>
-                    <h4 class="font-medium capitalize text-lg">24/7 Support</h4>
-                    <p class="text-gray-500 text-sm">Customer support</p>
+                <div
+                    class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5 md:flex-wrap lg:flex-nowrap"
+                >
+                    <i class="fa-solid fa-notes-medical h-6 w-6"></i>
+                    <div>
+                        <h4 class="font-medium capitalize text-md">
+                            Konsultasi ahli nutrisi
+                        </h4>
+                        <p class="text-gray-500 text-xs">
+                            Dapatkan panduan ahli tentang kesehatan dan gizi
+                            dengan layanan konsultasi nutrisi kami
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5 md:flex-wrap lg:flex-nowrap"
+                >
+                    <img
+                        :src="Forest"
+                        alt="Delivery"
+                        class="w-12 h-12 object-contain"
+                    />
+                    <div>
+                        <h4 class="font-medium capitalize text-md">
+                            Paket langganan bulanan
+                        </h4>
+                        <p class="text-gray-500 text-xs">
+                            Hemat waktu dan uang dengan paket langganan bulanan
+                            kami yang menyediakan produk-produk pilihan secara
+                            teratur
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5 md:flex-wrap lg:flex-nowrap"
+                >
+                    <i class="fa-solid fa-truck h-8 w-8"></i>
+                    <div>
+                        <h4 class="font-medium capitalize text-md">
+                            Pengiriman internasional
+                        </h4>
+                        <p class="text-gray-500 text-xs">
+                            Kami memungkinkan Anda menikmati produk berkualitas
+                            dari hasil bumi di mana pun Anda berada.
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5 md:flex-wrap lg:flex-nowrap"
+                >
+                    <img
+                        :src="Spice"
+                        alt="Delivery"
+                        class="w-12 h-12 object-contain"
+                    />
+                    <div>
+                        <h4 class="font-medium capitalize text-md">
+                            Layanan pelanggan 24/7
+                        </h4>
+                        <p class="text-gray-500 text-xs">
+                            Layanan pelanggan kami siap membantu Anda kapan pun
+                            Anda membutuhkannya
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5 md:flex-wrap lg:flex-nowrap"
+                >
+                    <i class="fa-solid fa-phone h-6 w-6"></i>
+                    <div>
+                        <h4 class="font-medium capitalize text-md">
+                            Support pelanggan 24/7
+                        </h4>
+                        <p class="text-gray-500 text-xs">
+                            Layanan pelanggan kami siap membantu Anda kapan pun
+                            Anda membutuhkannya
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
+    <!-- Feature Page end -->
 
     <!-- Feature Page end -->
 
@@ -90,74 +181,121 @@
         </div>
     </section> -->
 
-
     <section>
-    <div class="mt-16 mx-auto" style="max-width: 80%;">
-        <h3 class="text-gray-600 text-2xl font-medium">Populer Shop</h3>
+        <div class="mt-16 mx-auto" style="max-width: 80%">
+            <h3 class="text-gray-600 text-2xl font-medium">Populer Shop</h3>
 
-        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 relative">
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div class="flex items-end justify-end h-56 w-full bg-cover"
-                    style="background-image: url('https://images.unsplash.com/photo-1575218823251-f9d243b6f720?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+            <div
+                class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6 relative"
+            >
+                <div
+                    class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
+                >
+                    <div
+                        class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="
+                            background-image: url('https://images.unsplash.com/photo-1575218823251-f9d243b6f720?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                        "
+                    ></div>
+                    <div class="px-2 py-2 absolute">
+                        <h3 class="text-gray-700 uppercase">Vegetable</h3>
+                        <span class="text-gray-500 mt-2"
+                            >healthy and nutritious</span
+                        >
+                    </div>
                 </div>
-                <div class="px-2 py-2 absolute">
-                    <h3 class="text-gray-700 uppercase">Vegetable</h3>
-                    <span class="text-gray-500 mt-2">healthy and nutritious</span>
+                <div
+                    class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
+                >
+                    <div
+                        class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="
+                            background-image: url('https://media.istockphoto.com/id/861188910/photo/different-types-of-food-on-rustic-wooden-table.webp?b=1&s=170667a&w=0&k=20&c=zJ2AGlYkAHwkSZ18monpquAvvTQ5UurNIxxRLF4oqu0=');
+                        "
+                    ></div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Meat</h3>
+                        <span class="text-gray-500 mt-2"
+                            >healthy and nutritious</span
+                        >
+                    </div>
                 </div>
-            </div>
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div class="flex items-end justify-end h-56 w-full bg-cover"
-                    style="background-image: url('https://media.istockphoto.com/id/861188910/photo/different-types-of-food-on-rustic-wooden-table.webp?b=1&s=170667a&w=0&k=20&c=zJ2AGlYkAHwkSZ18monpquAvvTQ5UurNIxxRLF4oqu0=')">
+                <div
+                    class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
+                >
+                    <div
+                        class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="
+                            background-image: url('https://media.istockphoto.com/id/157581211/photo/grain-and-cereal-composition.webp?b=1&s=170667a&w=0&k=20&c=VvT8sVlKl982HQxoqqgr9qoyVC8ExYA7LhuzzbB6cSo=');
+                        "
+                    ></div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Grain</h3>
+                        <span class="text-gray-500 mt-2"
+                            >healthy and nutritious</span
+                        >
+                    </div>
+                </div>
+                <div
+                    class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
+                >
+                    <div
+                        class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="
+                            background-image: url('https://images.unsplash.com/photo-1523033904333-243d0283acae?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA2fHxmcnVpdHxlbnwwfHwwfHx8MA%3D%3D');
+                        "
+                    ></div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Fruit</h3>
+                        <span class="text-gray-500 mt-2"
+                            >healthy and nutritious</span
+                        >
+                    </div>
+                </div>
+                <button
+                    class="btn btn--left absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="btn-icon"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15.75 19.5 8.25 12l7.5-7.5"
+                        />
+                    </svg>
+                </button>
 
-                </div>
-                <div class="px-5 py-3">
-                    <h3 class="text-gray-700 uppercase">Meat</h3>
-                    <span class="text-gray-500 mt-2">healthy and nutritious</span>
-                </div>
-            </div>
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div class="flex items-end justify-end h-56 w-full bg-cover"
-                    style="background-image: url('https://media.istockphoto.com/id/157581211/photo/grain-and-cereal-composition.webp?b=1&s=170667a&w=0&k=20&c=VvT8sVlKl982HQxoqqgr9qoyVC8ExYA7LhuzzbB6cSo=')">
+                <button
+                    class="btn btn--right absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="btn-icon"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                        />
+                    </svg>
+                </button>
 
-                </div>
-                <div class="px-5 py-3">
-                    <h3 class="text-gray-700 uppercase">Grain</h3>
-                    <span class="text-gray-500 mt-2">healthy and nutritious</span>
-                </div>
-            </div>
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                <div class="flex items-end justify-end h-56 w-full bg-cover"
-                    style="background-image: url('https://images.unsplash.com/photo-1523033904333-243d0283acae?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA2fHxmcnVpdHxlbnwwfHwwfHx8MA%3D%3D')">
-
-                </div>
-                <div class="px-5 py-3">
-                    <h3 class="text-gray-700 uppercase">Fruit</h3>
-                    <span class="text-gray-500 mt-2">healthy and nutritious</span>
-                </div>
-            </div>
-            <button class="btn btn--left absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="btn-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                </svg>
-            </button>
-
-            <button class="btn btn--right absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="btn-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-            </button>
-
-            <!-- @click="handleLeftButtonClick" :disabled="leftButtonClicked"
+                <!-- @click="handleLeftButtonClick" :disabled="leftButtonClicked"
             @click="handleRightButtonClick" :disabled="rightButtonClicked" -->
+            </div>
         </div>
-    </div>
     </section>
     <!-- Populer Page End -->
-
-
-
 
     <!-- Card Page -->
     <!-- <section class="container w-3/4 mx-auto">
@@ -263,71 +401,90 @@
         </div>
     </section> -->
 
-    <section>
-        <div class="mt-20 mx-auto max-w-5xl">
-            <div class="container flex items-center justify-center gap-4 flex-nowrap md:flex-wrap">
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Meat" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Meat</h3>
-                    </div>
-                </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Vegetable" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Vegetable</h3>
-                    </div>
-                </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Grain" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Grain</h3>
-                    </div>
-                </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Forest" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Forest</h3>
-                    </div>
-                </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Industri" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Industri</h3>
-                    </div>
-                </a>
+    <!-- Card Page -->
+    <section class="container w-full mx-auto py-12">
+        <div
+            class="text-textColor fs-2 my-3 text-center d-inline mx-auto justify-center"
+        >
+            <h2 class="fw-bold fs-1 fw-bold">Kategori</h2>
+            <p
+                class="text-textColor opacity-70 fs-6 text-wrap mt-3"
+                style="margin-bottom: 85px"
+            >
+                Nikmati berbagai produk berkualitas tinggi dari hasil bumi,
+                membuat setiap saat makan menjadi pengalaman yang memuaskan
+                <br />
+                temukan pilihan terbaik dari bumi. Di sini, anda akan menemukan
+                berbagai produk berkualitas tinggi <br />
+                lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
+                tempora?
+            </p>
+        </div>
+        <div
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-12 mb-16 w-3/4 mx-auto"
+        >
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Meat" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">meat</h4>
+                </div>
             </div>
-            <div class="container flex items-center justify-center gap-4 flex-nowrap md:flex-wrap mt-2">
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Ship" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Ship</h3>
-                    </div>
-                </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Processed" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Processed</h3>
-                    </div>
-                </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Spice" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Spice</h3>
-                    </div>
-                </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Textile" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Textile</h3>
-                    </div>
-                </a>
-                <a href="#" class="w-auto h-auto mx-auto  rounded-md shadow-md overflow-hidden p-4 card">
-                    <div class="flex flex-col justify-center items-center">
-                        <img :src="Fruit" alt="" class="w-full icons" />
-                        <h3 class="mt-4">Fruit</h3>
-                    </div>
-                </a>
+            <!-- hover -->
+            <!--  text-textColor hover:bg-primaryColor hover:text-white -->
+
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Vegetable" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Vegetable</h4>
+                </div>
+            </div>
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Fruit" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Fruit</h4>
+                </div>
+            </div>
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Forest" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Forest</h4>
+                </div>
+            </div>
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Grain" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Grain</h4>
+                </div>
+            </div>
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Industri" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Industri</h4>
+                </div>
+            </div>
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Ship" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Ship</h4>
+                </div>
+            </div>
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Processed" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Processed</h4>
+                </div>
+            </div>
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Spice" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Spice</h4>
+                </div>
+            </div>
+            <div class="card flex flex-col items-center justify-center">
+                <div class="rounded-xl p-5 px-8">
+                    <img :src="Textile" alt="" class="icons w-16 mb-2" />
+                    <h4 class="text-center">Textile</h4>
+                </div>
             </div>
         </div>
     </section>
@@ -338,49 +495,75 @@
     <section>
         <div class="container my-14 md:my-24">
             <div class="flex flex-wrap items-center py-16">
-
                 <!-- ABOUT IMAGE -->
                 <div class="w-full md:w-5/12 lg:w-6/12">
                     <div class="mb-8">
-                        <img class="w-full h-auto"
+                        <img
+                            class="w-full h-auto"
                             src="https://media.istockphoto.com/id/843696046/photo/fruits-and-vegetables-at-the-farmers-market.webp?b=1&s=170667a&w=0&k=20&c=_JWAwTqjf0x5DuSsaUtcgswF-HSQ78HYqs3x5XGwQyQ="
-                            alt="about-image">
+                            alt="about-image"
+                        />
                     </div>
                 </div>
 
                 <!-- ABOUT TEXT -->
                 <div class="w-full md:w-7/12 lg:w-6/12 pl-10">
                     <div class="mb-8">
-
                         <!-- Title -->
-                        <h2 class="text-4xl font-bold mb-3 text-textColor">buy healthy necessities</h2>
+                        <h2 class="text-4xl font-bold mb-3 text-textColor">
+                            buy healthy necessities
+                        </h2>
                         <!-- List -->
                         <div class="text-textColor">
-                            <h3 class="font-semibold"><span class="text-primaryColor">&#x2713;</span> Cheap shopping
+                            <h3 class="font-semibold">
+                                <span class="text-primaryColor">&#x2713;</span>
+                                Cheap shopping
                             </h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur officia delectus
-                                eaque suscipit sunt inventore ab illum beatae,</p>
-                            <h3 class="font-semibold"><span class="text-primaryColor">&#x2713;</span> fresh quality</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, sequi ullam ipsa mollitia
-                                placeat vero aut quisquam nulla autem omnis vel possimus labore est.</p>
-                            <h3 class="font-semibold"><span class="text-primaryColor">&#x2713;</span> affordable prices
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Consequatur officia delectus
+                                eaque suscipit sunt inventore ab illum beatae,
+                            </p>
+                            <h3 class="font-semibold">
+                                <span class="text-primaryColor">&#x2713;</span>
+                                fresh quality
                             </h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto eligendi laboriosam
-                                iste cupiditate beatae porro voluptatum expedita saepe!</p>
-                            <h3 class="font-semibold"><span class="text-primaryColor">&#x2713;</span> easy payment</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi iusto et aliquam a
-                                cupiditate sit, modi repellat.</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Porro, sequi ullam ipsa
+                                mollitia placeat vero aut quisquam nulla autem
+                                omnis vel possimus labore est.
+                            </p>
+                            <h3 class="font-semibold">
+                                <span class="text-primaryColor">&#x2713;</span>
+                                affordable prices
+                            </h3>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Architecto eligendi laboriosam
+                                iste cupiditate beatae porro voluptatum expedita
+                                saepe!
+                            </p>
+                            <h3 class="font-semibold">
+                                <span class="text-primaryColor">&#x2713;</span>
+                                easy payment
+                            </h3>
+                            <p>
+                                Lorem ipsum dolor sit, amet consectetur
+                                adipisicing elit. Eligendi iusto et aliquam a
+                                cupiditate sit, modi repellat.
+                            </p>
                         </div>
-
                     </div>
-                </div> <!-- END ABOUT TEXT -->
-
-            </div> <!-- End flex -->
-        </div> <!-- End container -->
+                </div>
+                <!-- END ABOUT TEXT -->
+            </div>
+            <!-- End flex -->
+        </div>
+        <!-- End container -->
     </section>
 
     <!-- Testi Page End -->
-
 </template>
 
 <style>
@@ -388,7 +571,6 @@
     border: 2px solid #3cb72b;
     transition: background 0.5s;
 }
-
 .text-content {
     font-size: 50px;
     line-height: 1.05;
@@ -406,12 +588,15 @@ h4 {
     font-size: 20px;
 }
 
-.card {
-    border: 2px solid #3cb72b;
-    color: #3cb72b;
-    transition: transform 0.3s ease-in-out;
+h4 {
+    text-transform: capitalize;
+    font-size: 20px;
 }
 
+.card {
+    transition: transform 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
 .card:hover {
     transition: 0.3s ease-in-out;
     background-color: #3cb72b;
@@ -420,8 +605,27 @@ h4 {
     color: #fff;
 }
 
+.icons {
+    width: 50px;
+    border: none;
+    outline: none;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
 .card:hover .icons {
     filter: invert(1);
+}
+
+.card-field {
+    transition: 0.2s ease-in-out all;
+}
+
+.card-field:hover {
+    cursor: pointer;
+    box-shadow: 1px 2px 18px rgba(0, 0, 0, 0.2);
 }
 
 .btn {
@@ -475,9 +679,7 @@ h4 {
 </style>
 
 <script>
-
 export default {
-
     data() {
         return {
             Meat: "",
@@ -498,7 +700,7 @@ export default {
             Hutan: "",
 
             leftButtonClicked: false,
-            rightButtonClicked: false
+            rightButtonClicked: false,
         };
     },
     mounted() {
@@ -518,9 +720,9 @@ export default {
         this.imageUrl = "/assets/img/Profile.svg";
         this.imgBg = "/assets/img/bg-profile.svg";
 
-        this.featureFruit = "/assets/icon/Fitur-Sayur.svg"
-        this.featurePayment = "/assets/icon/Fitur-Payment.svg"
-        this.featureDriver = "/assets/icon/Fitur-Driver.svg"
+        this.featureFruit = "/assets/icon/Fitur-Sayur.svg";
+        this.featurePayment = "/assets/icon/Fitur-Payment.svg";
+        this.featureDriver = "/assets/icon/Fitur-Driver.svg";
     },
 
     methods: {
@@ -531,7 +733,7 @@ export default {
         handleRightButtonClick() {
             this.rightButtonClicked = true;
             // Tambahkan logika atau pemanggilan fungsi yang sesuai di sini
-        }
-    }
+        },
+    },
 };
 </script>
