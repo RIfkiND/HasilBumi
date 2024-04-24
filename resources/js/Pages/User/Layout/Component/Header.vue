@@ -11,7 +11,7 @@
 
       <div class="w-full max-w-xl relative flex">
         <span
-          class="absolute left-4 top-1/2 Custransform-translate text-lg text-gray-400 hidden md:block"
+          class="absolute left-4 top-1/2 Custransform-translate text-lg text-gray-400 hidden md:block group-focus:text-primaryColor"
         >
           <i class="fa-solid fa-magnifying-glass"></i>
         </span>
@@ -19,7 +19,7 @@
           type="text"
           name="search"
           id="search"
-          class="w-full border border-r-0 border-colorBorder pl-12 py-2 pr-3 rounded-l-md focus:outline-none hidden md:flex bg-white"
+          class="w-full border border-r-0 border-colorBorder pl-12 py-2 pr-3 rounded-l-md focus:outline-none hidden md:flex bg-white focus:ring-1 focus:ring-primaryColor focus:border-1 focus:border-primaryColor group"
           placeholder="search"
         />
         <button

@@ -8,8 +8,8 @@
     }
 </style>
 <template>
-    <div class="footer-top bg-teal-dark"></div>
-    <div class="flex items-center justify-center min-h-screen bg-white d-fixed">
+    <div class="footer-top bg-primaryColor"></div>
+    <div class="flex items-center justify-center min-h-screen bg-white d-fixed font-inter">
       <div
         class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
       >
@@ -21,10 +21,10 @@
           </span>
           <form @submit.prevent="form.post(route('auth.register'))" method="POST">
           <div class="py-2">
-            <label for="username" class="mb-2 text-md text-textColor">Username <span class="text-danger">*</span> </label>
+            <label for="username" class="mb-2 text-md text-textColor after:content-['*'] after:text-pink after:ml-1">Username</label>
             <input
               type="text"
-              class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+              class="w-full bg-white p-2 border border-slate-200 outline-none rounded-md focus:ring-2 focus:ring-primaryColor"
               name="username"
               id="username"
               v-model="form.name"
@@ -32,10 +32,10 @@
             />
           </div>
           <div class="py-2">
-            <label for="email" class="mb-2 text-md text-textColor">Email <span class="text-danger">*</span> </label>
+            <label for="email" class="mb-2 text-md text-textColor after:content-['*'] after:text-pink after:ml-1">Email</label>
             <input
               type="email"
-              class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+              class="w-full bg-white p-2 border border-slate-200 outline-none rounded-md focus:ring-2 focus:ring-primaryColor"
               name="email"
               id="email"
               v-model="form.email"
@@ -45,26 +45,26 @@
           <div class="row">
             <div class="col">
                 <div class="py-2">
-                    <label for="pass" class="mb-2 text-md text-textColor">Password <span class="text-danger">*</span> </label>
+                    <label for="pass" class="mb-2 text-md text-textColor after:content-['*'] after:text-pink after:ml-1">Password</label>
                     <input
                     type="password"
                     name="pass"
                     id="pass"
                     v-model="form.password"
                     autocomplate="false"
-                    class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                    class="w-full bg-white p-2 border border-slate-200 outline-none rounded-md focus:ring-2 focus:ring-primaryColor"
                     />
                 </div>
             </div>
             <div class="col">
                 <div class="py-2">
-                    <label for="pass" class="mb-2 text-md text-textColor">Confirm Password <span class="text-danger">*</span> </label>
+                    <label for="pass" class="mb-2 text-md text-textColor after:content-['*'] after:text-pink after:ml-1">Confirm Password</label>
                     <input
                     type="password"
                     name="pass"
                     id="pass"
                     autocomplate="false"
-                    class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                    class="w-full bg-white p-2 border border-slate-200 outline-none rounded-md focus:ring-2 focus:ring-primaryColor"
                     />
                 </div>
             </div>

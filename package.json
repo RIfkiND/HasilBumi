@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "start": "npx tailwindcss -i ./resources/css/app.css -o ./resources/css/output.css --watch"
+        "css": "npx tailwindcss -i ./resources/css/app.css -o ./resources/css/output.css --watch"
     },
     "devDependencies": {
         "@fortawesome/fontawesome-free": "^6.5.1",

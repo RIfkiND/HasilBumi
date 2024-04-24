@@ -9,7 +9,7 @@
 </style>
 <template>
     <div class="footer-top bg-teal-dark"></div>
-    <div class="flex items-center justify-center min-h-screen bg-white">
+    <div class="flex items-center justify-center min-h-screen bg-white font-inter">
         <div
             class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
         >
@@ -23,12 +23,12 @@
                 </span>
                 <form method="POST" @submit.prevent="form.post(route('auth.login'))">
                     <div class="py-2">
-                        <label for="email" class="mb-2 text-md text-textColor"
-                            >Email <span class="text-danger">*</span>
+                        <label for="email" class="mb-2 text-md text-textColor after:content-['*'] after:ml-1/2 after:text-pink"
+                            >Email
                         </label>
                         <input
                             type="email"
-                            class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                            class="w-full bg-white p-2 border border-slate-200 outline-none rounded-md focus:ring-2 focus:ring-primaryColor"
                             name="email"
                             id="email"
                             v-model="form.email"
@@ -37,8 +37,8 @@
                     </div>
                     <div v-if="form.errors.email">{{ form.errors.email }}</div>
                     <div class="py-2">
-                        <label for="pass" class="mb-2 text-md text-textColor"
-                            >Password <span class="text-danger">*</span>
+                        <label for="pass" class="mb-2 text-md text-textColor after:content-['*'] after:ml-1/2 after:text-pink" key=""
+                            >Password
                         </label>
                         <input
                             type="password"
@@ -46,7 +46,7 @@
                             id="password"
                             autocomplate="false"
                             v-model="form.password"
-                            class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                            class="w-full bg-white p-2 border border-slate-200 outline-none rounded-md focus:ring-2 focus:ring-primaryColor"
                         />
                     </div>
                     <div v-if="form.errors.password">{{ form.errors.password }}</div>
@@ -71,7 +71,7 @@
                     <button
                         type="submit"
                         class="w-full bg-teal text-md p-2 rounded-lg mb-3 text-white hover:bg-teal-dark d-inline-block justify-center align-center text-decoration-none text-center mx-auto"
-                       
+
                         >
                         Sign In
                     </button>
