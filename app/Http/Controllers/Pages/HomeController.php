@@ -16,6 +16,10 @@ class HomeController extends Controller
             'user' => $authenticated ? Auth::user() : null
         ]);
     }
-    
-
+    public function Whistlist(){
+        return Inertia::render('User/Layout/Component/Wislisht');
+    }
+    public function ShopCart(){
+        return Inertia::render('User/Layout/Component/shop_card');
+    }
 }

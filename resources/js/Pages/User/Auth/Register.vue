@@ -29,6 +29,7 @@
               id="username"
               v-model="form.name"
               autocomplate="false"
+              required
             />
           </div>
           <div class="py-2">
@@ -39,6 +40,7 @@
               name="email"
               id="email"
               v-model="form.email"
+              required
               autocomplate="false"
             />
           </div>
@@ -52,6 +54,7 @@
                     id="pass"
                     v-model="form.password"
                     autocomplate="false"
+                    required
                     class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
                     />
                 </div>
@@ -65,6 +68,7 @@
                     id="pass"
                     autocomplate="false"
                     class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                    required
                     />
                 </div>
             </div>

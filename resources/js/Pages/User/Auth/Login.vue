@@ -71,7 +71,7 @@
                     <button
                         type="submit"
                         class="w-full bg-teal text-md p-2 rounded-lg mb-3 text-white hover:bg-teal-dark d-inline-block justify-center align-center text-decoration-none text-center mx-auto"
-                       
+
                         >
                         Sign In
                     </button>

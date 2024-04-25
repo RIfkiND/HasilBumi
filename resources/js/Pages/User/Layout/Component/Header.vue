@@ -32,8 +32,8 @@
             </div>
 
             <div class="flex items-center space-x-4 gap-2">
-                <a
-                    href="#"
+                <Link
+                    :href="route('Home.Whistlist')"
                     class="text-center text-textColor transition relative"
                 >
                     <div class="text-2xl">
@@ -45,9 +45,9 @@
                     >
                         8
                     </div>
-                </a>
-                <a
-                    :href="route('view.login')"
+                </Link>
+                <Link
+                    :href="route('Home.ShopCart')"
                     class="text-center text-textColor transition relative"
                 >
                     <div class="text-2xl">
@@ -59,7 +59,7 @@
                     >
                         2
                     </div>
-                </a>
+                </Link>
                 <div class="flex gap-2" v-if="!authenticated">
                     <Link
                         :href="route('view.login')"
