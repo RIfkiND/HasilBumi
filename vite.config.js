@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
+import path from 'path'; // Import path module for resolving paths
 
 export default defineConfig({
     plugins: [
@@ -22,7 +23,8 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            vue: 'vue/dist/vue.esm-bundler.js',
+            '@': path.resolve(__dirname, 'resources/js/Pages'),
+            'vue': 'vue/dist/vue.esm-bundler.js',
         },
     },
 });

@@ -5,34 +5,24 @@
 <template>
   <!-- component -->
   <div class="min-h-screen bg-white p-6 flex items-center justify-center font-inter">
-    <div class="container max-w-screen-lg mx-auto p-3">
-      <div class="bg-white rounded-md shadow-lg p-4 px-4 py-5 md:p-8 mb-5">
+    <div class="container max-w-screen-lg m-auto py-4">
+      <div class="bg-white rounded-md shadow-lg py-5 px-4 p-5 md:p-8 mb-5">
         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-          <div class="p-2">
+          <div class="p-2 py-2">
             <div class="card-person ml-2 md:mx-auto">
-                <div class="-mt-5">
-                    <h2 class="text-[28px] font-bold mb-0 text-dark">Pendaftaran Seller</h2>
-                    <p class="text-sm text-slate-300">Daftarkan dirimu sekarang!</p>
+                <div class="-mt-5 flex">
+                    <Link :href="route('Home')">
+                        <div class="w-12 h-12 rounded-full hover:bg-white-50 hover:cursor-pointer text-3xl justify-center items-center flex">
+                            <i class='bx bx-left-arrow-alt text-dark'></i>
+                        </div>
+                    </Link>
+                    <div class="block ml-5">
+                        <h2 class="text-[25px] font-bold mb-0 text-dark">Pendaftaran Seller</h2>
+                        <p class="text-sm text-slate-300">Daftarkan dirimu sekarang!</p>
+                    </div>
                 </div>
-                <div class="mt-3">
-                    <div
-                        class="w-full h-[190px] border-3 border-dashed bg-white-50 border-slate-200 rounded-md mt-4 mb-2 flex justify-center items-center"
-                    >
-                        <label for="input-foto" class="block m-auto">
-                            <i class="bx bxs-camera-plus text-5xl text-slate-200 cursor-pointer ml-[13px]"></i>
-                            <p class="text-sm text-slate-200 text-center after:content-['*'] after:ml-1 after:text-pink">Foto anda</p>
-                            <input type="file" accept="image/*" class="w-full h-full cursor-pointer text-transparent hidden" id="input-foto">
-                        </label>
-                    </div>
-                    <div
-                        class="w-full h-[190px] border-3 border-dashed bg-white-50 border-slate-200 rounded-md mt-4 flex justify-center items-center" id="previewGambar"
-                    >
-                        <label for="input-foto" class="block m-auto">
-                            <i class="bx bxs-camera-plus text-5xl text-slate-200 cursor-pointer ml-1"></i>
-                            <p class="text-sm text-slate-200 text-center after:content-['*'] after:ml-1 after:text-pink">Foto KTP</p>
-                            <input type="file" accept="image/*" class="w-full h-full cursor-pointer text-transparent hidden" id="input-foto">
-                        </label>
-                    </div>
+                <div>
+                    <img :src="'./Assets/img/daftar-seller.gif'" alt="Gambar" class="w-full h-full bg-center bg-cover">
                 </div>
             </div>
           </div>
@@ -62,9 +52,12 @@
                   type="email"
                   name="email"
                   id="email"
-                  class="h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none"
+                  class="h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none peer"
                   placeholder=""
                 />
+                <p class="mt-2 text-pink text-sm hidden peer-invalid:block">
+                  Mohon masukan alamat email yang valid!
+                </p>
               </div>
 
               <div class="md:col-span-3">
@@ -86,8 +79,8 @@
                 <label
                   for="telp"
                   class="text-slate-300 after:content-['*'] after:text-pink after:ml-1"
-                  >No.Telp</label
-                >
+                  >No.Telp
+                </label>
                 <input
                   type="tel"
                   maxlength="12"
@@ -97,7 +90,6 @@
                   placeholder="+62"
                 />
               </div>
-
               <div class="md:col-span-2">
                 <div class="md:col-span-2">
                     <label
@@ -152,7 +144,42 @@
                   placeholder="**53"
                 />
               </div>
-
+            <div class="md:col-span-2">
+                <label
+                  for="person-poto"
+                  class="text-slate-300 after:content-['*'] after:text-pink after:ml-1"
+                  >Foto anda</label
+                >
+                <div class="h-10 border mt-1 rounded px-2 w-full bg-white outline-none relative flex py-[6px]">
+                    <input
+                        type="file"
+                        accept="image/*"
+                        name="potoPoto"
+                        id="person-poto"
+                        class="text-transparent bg-cover bg-center cursor-pointer"
+                        placeholder=""
+                    />
+                    <div class="w-full" id="viewPersonPoto"></div>
+                </div>
+            </div>
+            <div class="md:col-span-3">
+                <label
+                  for="poto-ktp"
+                  class="text-slate-300 after:content-['*'] after:text-pink after:ml-1"
+                  >Foto KTP</label
+                >
+                <div class="h-10 border mt-1 rounded px-2 w-full bg-white outline-none relative flex py-[6px]">
+                    <input
+                        type="file"
+                        accept="image/*"
+                        name="potoktp"
+                        id="poto-ktp"
+                        class="text-transparent bg-cover bg-center cursor-pointer"
+                        placeholder=""
+                    />
+                    <div class="w-full" id="viewPotoKtp"></div>
+                </div>
+            </div>
               <div class="md:col-span-5">
                 <div class="inline-flex items-center">
                   <input type="checkbox" name="acc" id="acc" class="accent-teal" />
@@ -178,8 +205,50 @@
       </div>
     </div>
   </div>
+<Footer />
 </template>
 
 <script setup>
+  import { onMounted } from 'vue';
+  import { Link } from '@inertiajs/vue3';
+  import Footer  from "@/User/Layout/Component/Footer.vue";
+  import Navbar  from "@/User/Layout/Component/Header.vue";
+  onMounted(() => {
+    // Poto sendiri
+    const inputFilePoto = document.getElementById('person-poto');
+    const imagePreview = document.getElementById('viewPersonPoto');
 
+    // Poto KTP
+    const potoKtp = document.getElementById('poto-ktp');
+    const viewPotoKtp = document.getElementById('viewPotoKtp');
+
+
+    inputFilePoto.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.classList.add('w-full', 'h-7', 'object-cover', 'rounded-sm', 'bg-cover', 'py-[3px]');
+          imagePreview.appendChild(img);
+        }
+        reader.readAsDataURL(file);
+      }
+    }),
+
+    potoKtp.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.classList.add('w-full', 'h-7', 'object-cover', 'rounded-sm', 'bg-cover', 'py-[3px]');
+          view.appendChild(img);
+        }
+        reader.readAsDataURL(file);
+      }
+    })
+  });
 </script>

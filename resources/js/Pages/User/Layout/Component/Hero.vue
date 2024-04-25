@@ -23,8 +23,8 @@
       </button>
     </div>
 
-    <div class="">
-      <img :src="imageUrl" alt="" class="max-w-full py-10 px-0" width="600px" />
+    <div>
+      <img :src="imageUrl" alt="" class="max-w-full py-10 px-0" width="600px"/>
     </div>
   </section>
   <!-- Home Page End -->

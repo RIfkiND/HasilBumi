@@ -43,8 +43,8 @@ Route::get('/reset-password', function(){
 });
 
 Route::get('/daftar', function(){
-    return Inertia::render('Seller/Testing/multiForm/PendaftaranSeller/formseller');
-});
+    return Inertia::render('Seller/PendaftaranSeller/formseller');
+})->name('sellerform');
 
 
 require __DIR__.'/Pages/Main.php';

@@ -2714,6 +2714,10 @@ input.tab:checked + .tab-content,
   height: 100vh;
 }
 
+.h-7 {
+  height: 1.75rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -2932,6 +2936,10 @@ input.tab:checked + .tab-content,
   border-radius: 0.75rem;
 }
 
+.rounded-sm {
+  border-radius: 0.125rem;
+}
+
 .rounded-l-md {
   border-top-left-radius: 0.375rem;
   border-bottom-left-radius: 0.375rem;
@@ -3016,6 +3024,14 @@ input.tab:checked + .tab-content,
 .bg-white-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(241 239 239 / var(--tw-bg-opacity));
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
 }
 
 .stroke-primaryColor {
@@ -3144,6 +3160,16 @@ input.tab:checked + .tab-content,
   padding-bottom: 1.5rem;
 }
 
+.py-\[3px\] {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.py-\[6px\] {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
 .pl-12 {
   padding-left: 3rem;
 }
@@ -3229,6 +3255,10 @@ input.tab:checked + .tab-content,
   line-height: 1rem;
 }
 
+.text-\[30px\] {
+  font-size: 30px;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -3294,6 +3324,11 @@ input.tab:checked + .tab-content,
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-pink {
+  --tw-text-opacity: 1;
+  color: rgb(247 65 143 / var(--tw-text-opacity));
 }
 
 .accent-teal {
@@ -3473,6 +3508,10 @@ input.tab:checked + .tab-content,
 .group:focus .group-focus\:text-primaryColor {
   --tw-text-opacity: 1;
   color: rgb(60 183 43 / var(--tw-text-opacity));
+}
+
+.peer:invalid ~ .peer-invalid\:block {
+  display: block;
 }
 
 @media (min-width: 640px) {

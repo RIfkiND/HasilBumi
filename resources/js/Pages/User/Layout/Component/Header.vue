@@ -52,16 +52,26 @@
             2
           </div>
         </a>
-        <div class="flex gap-2 mx-5" v-if="!authenticated">
+        <div class="flex gap-3 mx-5" v-if="!authenticated">
           <Link
             :href="route('view.login')"
-            class="text-primaryColor px-6 py-2 rounded-md border-1 button-border hover:text-white hover:bg-primaryColor"
+            class="text-primaryColor px-6 py-2 rounded-full border-1 button-border hover:text-primaryColor"
             >Login</Link
           >
           <Link
             :href="route('view.register')"
-            class="text-white bg-primaryColor px-6 py-2 rounded-md hover:bg-hoverPrimary"
+            class="text-white bg-primaryColor px-6 py-2 rounded-full hover:bg-hoverPrimary"
             >Register</Link
+          >
+          <Link
+            :href="route('sellerform')"
+            class="text-primaryColor px-6 py-2 rounded-full border-1 button-border flex justify-center items-center hover:text-primaryColor"
+            >
+                Daftar
+                <div>
+                    <i class='bx bx-right-arrow-alt ml-1'></i>
+                </div>
+            </Link
           >
         </div>
 
