@@ -137,8 +137,9 @@
                   >Kode Pos</label
                 >
                 <input
-                  type="text"
+                  type="number"
                   name="kode-pos"
+                  maxlength="4"
                   id="kode-pos"
                   class="transition-all flex items-center h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none"
                   placeholder="**53"

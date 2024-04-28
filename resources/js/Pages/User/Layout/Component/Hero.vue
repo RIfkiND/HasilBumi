@@ -1,15 +1,15 @@
 <template>
   <!-- Home Page -->
   <section class="flex items-center flex-wrap justify-center gap-5">
-    <div class="layout-hero">
+    <div class="layout-hero selection:text-white selection:bg-dark">
       <h1 class="font-bold text-content sm:text-4xl">
         Sumber
-        <span class="text-primaryColor">Kekayaan</span>,
+        <span class="text-primaryColor selection:text-primaryColor">Kekayaan</span>,
         <!-- <br /> -->
         Ladang
-        <span class="text-primaryColor">Berkah</span>, Hasil
+        <span class="text-primaryColor selection:text-primaryColor">Berkah</span>, Hasil
         <!-- <br /> -->
-        <span class="text-primaryColor"> Bumi</span>, Negeri Sejahtera!
+        <span class="text-primaryColor selection:text-primaryColor"> Bumi</span>, Negeri Sejahtera!
       </h1>
       <p class="text-textColor opacity-70 fs-6 text-wrap">
         Mari bergabung dengan kami dalam perjalanan untuk menikmati keindahan dan
@@ -24,86 +24,121 @@
     </div>
 
     <div>
-      <img :src="imageUrl" alt="" class="max-w-full py-10 px-0" width="600px"/>
+      <img :src="imageUrl" alt="" class="max-w-full py-10 px-0" width="600px" />
     </div>
   </section>
   <!-- Home Page End -->
 
   <!-- Feature Page -->
-    <div class="d-block w-full bg-grey py-12 h-full">
-        <div class="container mx-auto justify-center my-12">
-            <div class="text-textColor fs-2 fw-bold text-center d-flex mx-auto justify-center">
-                <h2 class="fw-bold fs-1 mb-5 mt-0">Layanan kami</h2>
-                <p></p>
-            </div>
-            <div class="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center">
-                <div class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5">
-                    <img :src="Meat" alt="Delivery" class="w-12 h-12 object-contain">
-                    <div>
-                        <h4 class="font-medium capitalize text-md">Pengiriman langsung</h4>
-                        <p class="text-gray-500 text-xs text-wrap">
-                            Nikmati kemudahan berbelanja dengan layanan pengiriman kami yang mengantarkan produk langsung <br> ke pintu Anda
-                        </p>
-                    </div>
-                </div>
-                <div class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5">
-                    <img :src="Vegetable" alt="Delivery" class="w-12 h-12 object-contain">
-                    <div>
-                        <h4 class="font-medium capitalize text-md">Konsultasi ahli nutrisi</h4>
-                        <p class="text-gray-500 text-xs">
-                            Dapatkan panduan ahli tentang kesehatan dan gizi dengan layanan konsultasi nutrisi kami
-                        </p>
-                    </div>
-                </div>
-                <div class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5">
-                    <img :src="Forest" alt="Delivery" class="w-12 h-12 object-contain">
-                    <div>
-                        <h4 class="font-medium capitalize text-md">Paket langganan bulanan</h4>
-                        <p class="text-gray-500 text-xs">
-                            Hemat waktu dan uang dengan paket langganan bulanan kami yang menyediakan produk-produk pilihan secara teratur
-                        </p>
-                    </div>
-                </div>
-                <div class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5">
-                    <img :src="Grain" alt="Delivery" class="w-12 h-12 object-contain">
-                    <div>
-                        <h4 class="font-medium capitalize text-md">Pengiriman internasional</h4>
-                        <p class="text-gray-500 text-xs">
-                            Kami memungkinkan Anda menikmati produk berkualitas dari hasil bumi di mana pun Anda berada.
-                        </p>
-                    </div>
-                </div>
-                <div class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5">
-                    <img :src="Spice" alt="Delivery" class="w-12 h-12 object-contain">
-                    <div>
-                        <h4 class="font-medium capitalize text-md">Layanan pelanggan 24/7</h4>
-                        <p class="text-gray-500 text-xs">
-                            Layanan pelanggan kami siap membantu Anda kapan pun Anda membutuhkannya
-                        </p>
-                    </div>
-                </div>
-                <div class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5">
-                    <img :src="Ship" alt="Delivery" class="w-12 h-12 object-contain">
-                    <div>
-                        <h4 class="font-medium capitalize text-md">Support pelanggan 24/7</h4>
-                        <p class="text-gray-500 text-xs">
-                            Layanan pelanggan kami siap membantu Anda kapan pun Anda membutuhkannya
-                        </p>
-                    </div>
+  <div class="d-block w-full bg-grey py-12 h-full selection:text-white selection:bg-dark">
+    <div class="container mx-auto justify-center my-12">
+      <div class="text-textColor fs-2 fw-bold text-center d-flex mx-auto justify-center">
+        <h2 class="fw-bold fs-1 mb-5 mt-0">Layanan kami</h2>
+        <p></p>
+      </div>
+      <div class="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center">
+        <a href="#">
+            <div
+                class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5"
+            >
+                <img :src="Meat" alt="Delivery" class="w-12 h-12 object-contain" />
+                <div>
+                    <h4 class="font-medium capitalize text-md text-dark">Pengiriman langsung</h4>
+                    <p class="text-slate-300 text-xs text-wrap">
+                    Nikmati kemudahan berbelanja dengan layanan pengiriman kami yang
+                    mengantarkan produk langsung <br />
+                    ke pintu Anda
+                    </p>
                 </div>
             </div>
+        </a>
+        <a href="#">
+            <div
+          class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5"
+        >
+          <img :src="Vegetable" alt="Delivery" class="w-12 h-12 object-contain"/>
+          <div>
+            <h4 class="font-medium capitalize text-md text-dark">Konsultasi ahli nutrisi</h4>
+            <p class="text-slate-300 text-xs">
+              Dapatkan panduan ahli tentang kesehatan dan gizi dengan layanan konsultasi
+              nutrisi kami
+            </p>
+          </div>
         </div>
+        </a>
+        <a href="#">
+            <div
+          class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5"
+        >
+          <img :src="Forest" alt="Delivery" class="w-12 h-12 object-contain" />
+          <div>
+            <h4 class="font-medium capitalize text-md text-dark">Paket langganan bulanan</h4>
+            <p class="text-slate-300 text-xs">
+              Hemat waktu dan uang dengan paket langganan bulanan kami yang menyediakan
+              produk-produk pilihan secara teratur
+            </p>
+          </div>
+        </div>
+        </a>
+        <a href="#">
+            <div
+          class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5"
+        >
+          <img :src="Grain" alt="Delivery" class="w-12 h-12 object-contain" />
+          <div>
+            <h4 class="font-medium capitalize text-md text-dark">Pengiriman internasional</h4>
+            <p class="text-slate-300 text-xs">
+              Kami memungkinkan Anda menikmati produk berkualitas dari hasil bumi di mana
+              pun Anda berada.
+            </p>
+          </div>
+        </div>
+        </a>
+        <a href="#">
+            <div
+          class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5"
+        >
+          <img :src="Spice" alt="Delivery" class="w-12 h-12 object-contain" />
+          <div>
+            <h4 class="font-medium capitalize text-md text-dark">Layanan pelanggan 24/7</h4>
+            <p class="text-slate-300 text-xs">
+              Layanan pelanggan kami siap membantu Anda kapan pun Anda membutuhkannya
+            </p>
+          </div>
+        </div>
+        </a>
+        <a href="#">
+            <div
+          class="card-field border border-border-secondary bg-white rounded-xl px-4 py-6 flex justify-center items-center gap-5"
+        >
+          <img :src="Ship" alt="Delivery" class="w-12 h-12 object-contain" />
+          <div>
+            <h4 class="font-medium capitalize text-md text-dark">Support pelanggan 24/7</h4>
+            <p class="text-slate-300 text-xs">
+              Layanan pelanggan kami siap membantu Anda kapan pun Anda membutuhkannya
+            </p>
+          </div>
+        </div>
+        </a>
+      </div>
     </div>
+  </div>
   <!-- Feature Page end -->
 
   <!-- Card Page -->
-  <section class="container w-full mx-auto py-12">
+  <section class="container w-full mx-auto py-12 selection:text-white selection:bg-dark">
     <div class="text-textColor fs-2 my-3 text-center d-inline mx-auto justify-center">
-        <h2 class="fw-bold fs-1 fw-bold">Kategori</h2>
-        <p class="text-textColor opacity-70 fs-6 text-wrap mt-3" style="margin-bottom:85px;">
-            Nikmati berbagai produk berkualitas tinggi dari hasil bumi, membuat setiap saat makan menjadi pengalaman yang memuaskan <br>
-            temukan pilihan terbaik dari bumi. Di sini, anda akan menemukan berbagai produk berkualitas tinggi <br> lorem ipsum dolor sit amet consectetur adipisicing elit. Est, tempora?
-        </p>
+      <h2 class="fw-bold fs-1 fw-bold">Kategori</h2>
+      <p
+        class="text-textColor opacity-70 fs-6 text-wrap mt-3"
+        style="margin-bottom: 85px"
+      >
+        Nikmati berbagai produk berkualitas tinggi dari hasil bumi, membuat setiap saat
+        makan menjadi pengalaman yang memuaskan <br />
+        temukan pilihan terbaik dari bumi. Di sini, anda akan menemukan berbagai produk
+        berkualitas tinggi <br />
+        lorem ipsum dolor sit amet consectetur adipisicing elit. Est, tempora?
+      </p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-12 mb-16 w-3/4 mx-auto">
       <div class="card flex flex-col items-center justify-center">
@@ -173,7 +208,189 @@
   </section>
   <!-- Card Page End -->
 
+  <!-- Star FAQ -->
+  <section class="bg-grey h-full selection:bg-dark selection:text-white" for="faq">
+    <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <h2
+        class="text-center text-4xl font-bold tracking-tight text-dark sm:text-4xl mb-5"
+      >
+        Apa kata mereka?
+      </h2>
 
+      <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
+        <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8 bg-white">
+          <div class="flex items-center gap-4">
+            <img
+              alt=""
+              src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              class="size-14 rounded-full object-cover"
+            />
+            <div>
+              <div class="block justify-center gap-0.5 text-primaryColor">
+                <div class="star flex">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+
+                  <i class="bx bx-star"></i>
+                  <i class="bx bx-star"></i>
+
+                  <span class="text-sm text-dark ml-2">3/5</span>
+                </div>
+              </div>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Marcelino uno</p>
+            </div>
+          </div>
+
+          <p class="mt-4 text-slate-300">
+            Saya sangat senang dengan layanan yang diberikan oleh perusahaan ini. Mereka
+            sangat responsif dan membantu saya menyelesaikan masalah dengan cepat dan
+            efisien.
+          </p>
+        </blockquote>
+
+        <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8 bg-white selection:bg-dark selection:text-white">
+          <div class="flex items-center gap-4">
+            <img
+              alt=""
+              src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              class="size-14 rounded-full object-cover"
+            />
+            <div>
+              <div class="block justify-center gap-0.5 text-primaryColor">
+                <div class="star flex">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+
+                  <i class="bx bx-star"></i>
+
+                  <span class="text-sm text-dark ml-2">4/5</span>
+                </div>
+              </div>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Sarah simith</p>
+            </div>
+          </div>
+
+          <p class="mt-4 text-slate-300">
+            Produk yang ditawarkan sangat berkualitas dan sesuai dengan yang saya harapkan. Saya sangat puas dengan pengalaman belanja di sini
+          </p>
+        </blockquote>
+
+        <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8 bg-white selection:bg-dark selection:text-white">
+          <div class="flex items-center gap-4">
+            <img
+              alt=""
+              src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              class="size-14 rounded-full object-cover"
+            />
+            <div>
+              <div class="block justify-center gap-0.5 text-primaryColor">
+                <div class="star flex">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+
+                  <i class="bx bx-star"></i>
+                  <i class="bx bx-star"></i>
+                  <i class="bx bx-star"></i>
+
+                  <span class="text-sm text-dark ml-2">2/5</span>
+                </div>
+              </div>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Jessica</p>
+            </div>
+          </div>
+
+          <p class="mt-4 text-slate-300">
+            Tim mereka sangat profesional dan penuh dengan ide-ide kreatif. Mereka membantu kami mengembangkan strategi yang efektif dan berhasil meningkatkan penjualan kami secara signifikan!
+          </p>
+        </blockquote>
+        <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8 bg-white selection:bg-dark selection:text-white">
+          <div class="flex items-center gap-4">
+            <img
+              alt=""
+              src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              class="size-14 rounded-full object-cover"
+            />
+            <div>
+              <div class="block justify-center gap-0.5 text-primaryColor">
+                <div class="star flex">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+
+                  <span class="text-sm text-dark ml-2">5/5</span>
+                </div>
+              </div>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Alexander</p>
+            </div>
+          </div>
+
+          <p class="mt-4 text-slate-300">
+            Pelayanan pelanggan mereka luar biasa! Saya selalu merasa didengar dan didukung setiap kali menghubungi mereka. Terima kasih atas profesionalisme dan perhatian yang diberikan.
+          </p>
+        </blockquote>
+        <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8 bg-white selection:bg-dark selection:text-white">
+          <div class="flex items-center gap-4">
+            <img
+              alt=""
+              src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              class="size-14 rounded-full object-cover"
+            />
+            <div>
+              <div class="block justify-center gap-0.5 text-primaryColor">
+                <div class="star flex">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+
+                    <i class="bx bx-star"></i>
+                    <i class="bx bx-star"></i>
+                    <i class="bx bx-star"></i>
+                    <span class="text-sm text-dark ml-2">2/5</span>
+                </div>
+              </div>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Johnson michael</p>
+            </div>
+          </div>
+
+          <p class="mt-4 text-slate-300">
+            Produk mereka tidak hanya memenuhi harapan, tetapi juga melebihinya! Saya sangat terkesan dengan kualitas dan inovasi yang ditampilkan dalam setiap produk yang mereka tawarkan.
+          </p>
+        </blockquote>
+        <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8 bg-white selection:bg-dark selection:text-white">
+          <div class="flex items-center gap-4">
+            <img
+              alt=""
+              src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+              class="size-14 rounded-full object-cover"
+            />
+            <div>
+              <div class="block justify-center gap-0.5 text-primaryColor">
+                <div class="star flex">
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+                  <i class="bx bxs-star"></i>
+
+                  <i class="bx bx-star"></i>
+                  <span class="text-sm text-dark ml-2">4/5</span>
+                </div>
+              </div>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">David anderson</p>
+            </div>
+          </div>
+
+          <p class="mt-4 text-slate-300">
+            Saya tidak ragu untuk merekomendasikan perusahaan ini kepada siapa pun yang mencari solusi yang andal dan berkualitas tinggi. Mereka benar-benar memberikan nilai tambah bagi bisnis kami.
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+  <!-- End FAQ -->
 </template>
 
 <style>
@@ -203,7 +420,7 @@ h4 {
 }
 .card:hover {
   transition: 0.3s ease-in-out;
-  background-color: #20262E;
+  background-color: #20262e;
   cursor: pointer;
   transform: translateY(-10px);
   color: #fff;
@@ -224,12 +441,12 @@ h4 {
 }
 
 .card-field {
-    transition: .2s ease-in-out all;
+  transition: 0.2s ease-in-out all;
 }
 
-.card-field:hover {
-    cursor: pointer;
-    box-shadow: 1px 2px 18px rgba(0,0,0,0.2);
+.card-field:hover{
+  cursor: pointer;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
 }
 
 @media only screen and (max-width: 800px) {
