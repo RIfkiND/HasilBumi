@@ -3,14 +3,20 @@ import { Link } from "@inertiajs/vue3";
 import Header from "./Component/Header.vue";
 import Hero from "./Component/Hero.vue";
 import Footer from "./Component/Footer.vue";
+import Shop_card from "./Component/shop_card.vue";
+import Wislisht from "./Component/Wislisht.vue";
 </script>
 
 <template>
-    <html class="dark">
-        <body>
-            <Header />
-            <Hero />
-            <Footer />
-        </body>
-    </html>
+    <body>
+        <Header />
+
+        <Hero />
+
+        <Footer />
+
+        <!-- <Wislisht /> -->
+
+        <!-- <Shop_card /> -->
+    </body>
 </template>

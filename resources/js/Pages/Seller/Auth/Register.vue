@@ -113,6 +113,3 @@ function prevStep() {
     </form>
 </template>
 
-function route(arg0) {
-  throw new Error("Function not implemented.");
-}

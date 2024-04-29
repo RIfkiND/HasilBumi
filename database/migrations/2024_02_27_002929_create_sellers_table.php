@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('location');
             $table->string('logo')->nullable();
             $table->text('description')->nullable();
-            $table->integer('Phone_number');
+            // $table->integer('Phone_number');
             //$table->foreignIdFor(Specialist::class);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

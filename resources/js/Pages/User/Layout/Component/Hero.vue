@@ -414,6 +414,12 @@ h4 {
   text-transform: capitalize;
   font-size: 20px;
 }
+
+h4 {
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
 .card {
   transition: transform 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
@@ -454,6 +460,7 @@ h4 {
     font-size: 36px;
   }
 }
+
 @media only screen and (max-width: 500px) {
   .text-content {
     font-size: 32px;

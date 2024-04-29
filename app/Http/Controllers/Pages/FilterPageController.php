@@ -8,21 +8,22 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Product;
-class FilterPageController extends Controller{
+use Illuminate\Support\Facades\Redirect;
 
-    public function FilterLandingPage($category){
- 
-     $products = Product::where('category', $category)->get();
+class FilterPageController extends Controller
+{
 
-   
-     return Inertia::render('', [
-         'category' => $category,
-         'products' => $products
-     ]);
-    }
+    public function filterByCategory($category)
+    {
+        $category = Category::with('products')->where('name', $category)->first();
 
-    public function FilterMainPage($category){
+        if (!$category) {
 
-    
+            return Redirect::back()->with('error', 'Category not found.');
+        }
+
+        return Inertia::render('Seller/Testing/Filter/FileterResult', [
+            'category' => $category,
+        ]);
     }
 }

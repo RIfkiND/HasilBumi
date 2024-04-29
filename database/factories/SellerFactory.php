@@ -25,7 +25,7 @@ class SellerFactory extends Factory
             'name' =>  fake()->name(),
             'email' =>fake()->unique()->safeEmail(),
             'location' => fake()->city(),
-            'logo' => null, // If you want to generate random images, you can use $this->faker->image() method
+            'logo' => null, 
             'description' =>  fake()->text(),
             'Phone_number' => fake()->phoneNumber(),
             'email_verified_at' => now(),

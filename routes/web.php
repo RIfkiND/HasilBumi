@@ -13,7 +13,6 @@ use Inertia\Inertia;
 |
 */
 
-
 Route::get('/percobaan', function () {
     return Inertia::render('Coba/login');
 });
@@ -40,7 +39,10 @@ Route::get('/forget-password', function(){
 
 Route::get('/reset-password', function(){
     return Inertia::render('User/Auth/ResetPassword');
+Route::get('/testing', function () {
+    return Inertia::render('Seller/Testing/multiForm/index');
 });
+
 
 Route::get('/daftar', function(){
     return Inertia::render('Seller/PendaftaranSeller/formseller');

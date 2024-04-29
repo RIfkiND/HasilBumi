@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { usePage } from "@inertiajs/vue3";
+
 import { router } from "@inertiajs/vue3";
 
 const filterByCategory = (category) => {
