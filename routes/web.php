@@ -39,6 +39,8 @@ Route::get('/forget-password', function(){
 
 Route::get('/reset-password', function(){
     return Inertia::render('User/Auth/ResetPassword');
+});
+
 Route::get('/testing', function () {
     return Inertia::render('Seller/Testing/multiForm/index');
 });
@@ -54,4 +56,3 @@ require __DIR__.'/Pages/Main.php';
 require __DIR__.'/Auth/callback.php';
 
 require __DIR__.'/Api/Chat.php';
-

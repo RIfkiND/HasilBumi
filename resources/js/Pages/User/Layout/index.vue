@@ -8,15 +8,17 @@ import Wislisht from "./Component/Wislisht.vue";
 </script>
 
 <template>
-    <body>
-        <Header />
+    <html>
+        <body>
+            <Header />
 
-        <Hero />
+            <Hero />
 
-        <Footer />
+            <Footer />
 
-        <!-- <Wislisht /> -->
+            <!-- <Wislisht /> -->
 
-        <!-- <Shop_card /> -->
-    </body>
+            <!-- <Shop_card /> -->
+        </body>
+    </html>
 </template>
