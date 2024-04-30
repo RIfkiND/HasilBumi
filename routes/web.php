@@ -21,8 +21,15 @@ Route::get('/testing', function () {
 
 require __DIR__ . '/Pages/Main.php';
 
+require __DIR__ . '/Pages/User.php';
+
+require __DIR__ . '/Pages/Seller.php';
+
 require __DIR__ . '/Auth/callback.php';
 
 require __DIR__ . '/Auth/Seller.php';
 
 require __DIR__ . '/Api/Chat.php';
+
+
+

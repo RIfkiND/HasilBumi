@@ -53,4 +53,10 @@ class User extends Authenticatable
         return $this->morphMany(Message::class, 'receiver_id');
     }
 
+    public function whistlist(){
+        return $this->hasMany(Whistlist::class );
+    }
+    public function cart(){
+        return $this->hasMany(Cart::class);
+    }
 }
