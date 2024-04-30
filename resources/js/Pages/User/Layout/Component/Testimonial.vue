@@ -2,15 +2,20 @@
 
 </style>
 <template>
-<!-- Star FAQ -->
+<!-- Star Testimonial -->
   <section class="bg-grey h-full selection:bg-dark selection:text-white" for="faq">
     <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
       <h2
-        class="text-center text-4xl font-bold tracking-tight text-dark sm:text-4xl mb-5"
+        class="text-4xl font-extrabold text-dark sm:text-5xl mb-4 text-center"
       >
         Apa kata mereka?
       </h2>
-
+      <p
+        class="text-gray-400 fs-6 text-wrap text-center"
+        style="margin-bottom: 85px"
+      >
+        Beberapa orang yang telah menggunakan layanan kami dan memberikan feedback yang positif, Lorem ipsum dolor sit amet.
+      </p>
       <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
         <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8 bg-white">
           <div class="flex items-center gap-4">
@@ -184,7 +189,7 @@
       </div>
     </div>
   </section>
-  <!-- End FAQ -->
+  <!-- End Testimonial -->
 </template>
 <script setup>
 

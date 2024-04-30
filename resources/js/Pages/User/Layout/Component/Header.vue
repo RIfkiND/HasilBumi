@@ -1,3 +1,57 @@
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+body {
+  font-family: "Roboto", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+.button-border {
+  border: 2px solid #3cb72b;
+}
+
+.icon-style {
+  color: #3cb72b;
+}
+
+.Custransform-translate {
+  transform: translate(0, -50%);
+}
+
+.card-hover:hover {
+  background-color: #3cb72b;
+}
+
+.card-hover:hover .card-hoverSecondary {
+  color: #fff;
+}
+
+.nav-menu{
+    display: flex;
+    position: relative;
+}
+
+.nav-menu::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;
+    background: white;
+    bottom: -3px;
+    transform: scaleX(0);
+    transition: transform .2s;
+    transform-origin: right;
+}
+
+.nav-menu:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+</style>
+
 <template>
   <!-- header atas -->
   <header class="py-2 shadow-sm bg-white w-full">
@@ -31,10 +85,10 @@
 
       <div class="flex items-center space-x-4 gap-2">
         <a href="#" class="text-center text-textColor relative hover:text-textColor">
-          <div class="text-2xl">
-            <i class="fa-regular fa-heart icon-style"></i>
+          <div class="text-primaryColor">
+            <i class='bx bxs-cart text-[29px]'></i>
           </div>
-          <div class="text-xs leading-3">Wishlist</div>
+          <div class="text-xs leading-3">Keranjang</div>
           <div
             class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
           >
@@ -45,7 +99,7 @@
           <div class="text-2xl">
             <i class="fa-solid fa-bag-shopping icon-style"></i>
           </div>
-          <div class="text-xs leading-3">Cart</div>
+          <div class="text-xs leading-5">Belanja</div>
           <div
             class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
           >
@@ -317,60 +371,6 @@
 
   <!-- Mobile end -->
 </template>
-
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-body {
-  font-family: "Roboto", sans-serif;
-}
-a {
-  text-decoration: none;
-}
-
-.button-border {
-  border: 2px solid #3cb72b;
-}
-
-.icon-style {
-  color: #3cb72b;
-}
-
-.Custransform-translate {
-  transform: translate(0, -50%);
-}
-
-.card-hover:hover {
-  background-color: #3cb72b;
-}
-
-.card-hover:hover .card-hoverSecondary {
-  color: #fff;
-}
-
-.nav-menu{
-    display: flex;
-    position: relative;
-}
-
-.nav-menu::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    border-radius: 5px;
-    background: white;
-    bottom: -3px;
-    transform: scaleX(0);
-    transition: transform .2s;
-    transform-origin: right;
-}
-
-.nav-menu:hover::after {
-    transform-origin: left;
-    transform: scaleX(1);
-}
-
-</style>
 
 <script setup>
 import { Link } from "@inertiajs/vue3";

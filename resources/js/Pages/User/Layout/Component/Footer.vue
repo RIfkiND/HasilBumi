@@ -1,3 +1,7 @@
+<style>
+
+</style>
+
 <template>
   <footer class="bg-white font-inter selection:text-white selection:bg-dark">
     <div
@@ -249,3 +253,7 @@
       </p>
   </footer>
 </template>
+
+<script setup>
+
+</script>

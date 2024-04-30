@@ -5,7 +5,8 @@ import Hero from "./Component/Hero.vue";
 import Footer from "./Component/Footer.vue";
 import Shop_card from "./Component/shop_card.vue";
 import Wislisht from "./Component/Wislisht.vue";
-import Faq from "./Component/Faq.vue";
+import Testimonial from "./Component/Testimonial.vue";
+import Pricing from "./Component/price.vue";
 </script>
 
 <template>
@@ -13,9 +14,10 @@ import Faq from "./Component/Faq.vue";
         <body>
             <Header />
             <Hero />
-            <Faq />
-            <Wislisht/>
-            <Shop_card/>
+            <Testimonial />
+            <!-- <Wislisht/> -->
+            <!-- <Shop_card/> -->
+            <Pricing />
             <Footer />
         </body>
     </html>

@@ -363,9 +363,9 @@
                             <span>Rp250.000</span>
                         </div>
                         <button
-                            class="bg-primaryColor text-white py-2 px-4 rounded-lg mt-4 w-full"
+                            class="bg-primaryColor text-white py-2 px-4 rounded-lg mt-4 w-full hover:bg-hoverPrimary"
                         >
-                            Beli (3)
+                            Beli &#10088;3&#10089;
                         </button>
                     </div>
                 </div>

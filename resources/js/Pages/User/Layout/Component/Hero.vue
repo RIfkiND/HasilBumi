@@ -1,3 +1,78 @@
+<style>
+.button-border {
+  border: 2px solid #3cb72b;
+  transition: background 0.5s;
+}
+.text-content {
+  font-size: 50px;
+  line-height: 1.05;
+  margin: 25px 0;
+}
+
+.layout-hero {
+  flex-basis: 50%;
+  min-width: 300px;
+  max-width: 550px;
+}
+
+h4 {
+  text-transform: capitalize;
+  font-size: 20px;
+}
+
+h4 {
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+.card {
+  transition: transform 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.card:hover {
+  transition: 0.3s ease-in-out;
+  background-color: #20262e;
+  cursor: pointer;
+  transform: translateY(-10px);
+  color: #fff;
+}
+
+.icons {
+  width: 50px;
+  border: none;
+  outline: none;
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.card:hover .icons {
+  filter: invert(1);
+}
+
+.card-field {
+  transition: 0.2s ease-in-out all;
+}
+
+.card-field:hover{
+  cursor: pointer;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
+}
+
+@media only screen and (max-width: 800px) {
+  .text-content {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .text-content {
+    font-size: 32px;
+  }
+}
+</style>
+
 <template>
   <!-- Home Page -->
   <section class="flex items-center flex-wrap justify-center gap-5">
@@ -32,9 +107,16 @@
   <!-- Feature Page -->
   <div class="d-block w-full bg-grey py-12 h-full selection:text-white selection:bg-dark">
     <div class="container mx-auto justify-center my-12">
-      <div class="text-textColor fs-2 fw-bold text-center d-flex mx-auto justify-center">
-        <h2 class="fw-bold fs-1 mb-5 mt-0">Layanan kami</h2>
-        <p></p>
+      <div class="text-textColor text-center block mx-auto justify-center">
+        <h2 class="text-4xl font-extrabold text-dark sm:text-5xl mb-4">
+            Layanan Kami
+        </h2>
+      <p
+        class="text-gray-400 fs-6 text-wrap mt-3"
+        style="margin-bottom: 85px"
+      >
+        Ducimus nobis quo natus voluptas debitis ullam voluptatibus sequi quibusdam neque distinctio porro eius,<br> reprehenderit atque quidem eligendi ipsam earum veniam. Provident repellat voluptatibus ad unde <br> commodi ipsa laboriosam quam tempore dolorum.
+      </p>
       </div>
       <div class="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center">
         <a href="#">
@@ -128,9 +210,11 @@
   <!-- Card Page -->
   <section class="container w-full mx-auto py-12 selection:text-white selection:bg-dark">
     <div class="text-textColor fs-2 my-3 text-center d-inline mx-auto justify-center">
-      <h2 class="fw-bold fs-1 fw-bold">Kategori</h2>
+      <h2 class="text-4xl font-extrabold text-dark sm:text-5xl mb-4">
+        Kategori
+      </h2>
       <p
-        class="text-textColor opacity-70 fs-6 text-wrap mt-3"
+        class="text-gray-400 fs-6 text-wrap mt-3"
         style="margin-bottom: 85px"
       >
         Nikmati berbagai produk berkualitas tinggi dari hasil bumi, membuat setiap saat
@@ -208,81 +292,6 @@
   </section>
   <!-- Card Page End -->
 </template>
-
-<style>
-.button-border {
-  border: 2px solid #3cb72b;
-  transition: background 0.5s;
-}
-.text-content {
-  font-size: 50px;
-  line-height: 1.05;
-  margin: 25px 0;
-}
-
-.layout-hero {
-  flex-basis: 50%;
-  min-width: 300px;
-  max-width: 550px;
-}
-
-h4 {
-  text-transform: capitalize;
-  font-size: 20px;
-}
-
-h4 {
-    text-transform: capitalize;
-    font-size: 20px;
-}
-
-.card {
-  transition: transform 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-.card:hover {
-  transition: 0.3s ease-in-out;
-  background-color: #20262e;
-  cursor: pointer;
-  transform: translateY(-10px);
-  color: #fff;
-}
-
-.icons {
-  width: 50px;
-  border: none;
-  outline: none;
-  display: flexbox;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
-
-.card:hover .icons {
-  filter: invert(1);
-}
-
-.card-field {
-  transition: 0.2s ease-in-out all;
-}
-
-.card-field:hover{
-  cursor: pointer;
-  box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
-}
-
-@media only screen and (max-width: 800px) {
-  .text-content {
-    font-size: 36px;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .text-content {
-    font-size: 32px;
-  }
-}
-</style>
 
 <script>
 export default {
