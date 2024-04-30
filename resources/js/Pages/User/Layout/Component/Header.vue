@@ -425,10 +425,11 @@ const editProfile = () => {
     // Navigasi ke halaman edit profil
 };
 
-const logout = () => {
+const logout =  async () => {
     router.post(route("auth.logout"));
     location.reload();
 };
+
 const search = ref("");
 
 watch(search, (value) => {

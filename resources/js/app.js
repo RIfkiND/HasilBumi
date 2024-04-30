@@ -6,8 +6,15 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 // import { plugin as formkitPlugin, defaultConfig } from '@formkit/vue';
 // import { createMultiStepPlugin } from '@formkit/addons';
+
 //vuetify
-import vuetify from './plugins/vuetify';
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+const vuetify = createVuetify({
+    components,
+    directives,
+})
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -19,12 +26,12 @@ createInertiaApp({
         app.use(plugin);
         app.mixin({ methods: { route } });
         app.use(vuetify);
-        app.use(VueSweetaler2);
+        // app.use(VueSweetaler2);
         // app.use(formkitPlugin, defaultConfig({
         //     plugins: [createMultiStepPlugin()],
         // }))
         return app.mount(el);
 
     },
-    progress: false,
+    progress: true,
 });

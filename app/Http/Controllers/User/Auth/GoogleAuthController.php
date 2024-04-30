@@ -31,7 +31,7 @@ class GoogleAuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/')->with('status', ['type' => 'success', 'action' => 'You can exit', 'text' => 'You Logged in']);
+        return redirect('/')->with('status', ['type' => 'success', 'title' => 'Login', 'text' => 'You Logged in']);
         ;
 
     }

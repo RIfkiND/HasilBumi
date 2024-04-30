@@ -10,7 +10,7 @@ const props = defineProps({
 
 function showSwal() {
     Swal.fire(
-        props.status.action,
+        props.status.title,
         props.status.text,
         props.status.type
     )
