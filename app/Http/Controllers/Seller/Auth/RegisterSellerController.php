@@ -10,13 +10,13 @@ class RegisterSellerController extends Controller
 {
 
 
-    public function index(Request $request)
+    public function Pendaftaran()
     {
         // Get the current step from the query parameters or default to Step1
-       
+
 
         // Render the appropriate step view
-        return Inertia::render('Seller/Testing/multiForm/index');
+        return Inertia::render('Seller/Auth/PendaftaranSeller');
     }
 
 
@@ -37,7 +37,7 @@ class RegisterSellerController extends Controller
     // // }
 
     // // public function Register(Request $request){
-                
+
     // //     $validated = $request->validate([
     // //         'name' => ['required'],
     // //         'body' => ['required'],
