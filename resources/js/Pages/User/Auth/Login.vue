@@ -99,7 +99,7 @@
   const form = useForm({
     email: null,
     password: null,
-    remember: false,
+    remember: true,
   });
 
   const handleLogin = async () => {
@@ -111,8 +111,7 @@
   };
 
   const handleGoogleLogin = () => {
-
-    showSuccessAlert();
+     showSuccessAlert();
   redirectToMainPage();
 }
 
