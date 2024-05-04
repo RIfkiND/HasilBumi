@@ -5,8 +5,10 @@ import { Link } from "@inertiajs/vue3";
 // import Card from "./Component/Body/card.vue";
 // import Footer from "./Component/Footer/footer.vue";
 import Layout from "./User/Layout/index.vue";
+
 </script>
 
 <template>
+
     <Layout />
 </template>
