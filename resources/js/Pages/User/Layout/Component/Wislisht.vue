@@ -1,4 +1,5 @@
 <template>
+    <Navbar />
     <body>
         <!-- wrapper -->
         <div class="container grid grid-cols-12 items-start gap-6 pt-4 pb-16">
@@ -209,8 +210,13 @@
         </div>
         <!-- ./wrapper -->
     </body>
+
+    <Footer />
 </template>
 
-<script></script>
+<script setup>
+import Footer from "./Footer.vue";
+import Navbar from "./navbar.vue";
+</script>
 
 <style></style>

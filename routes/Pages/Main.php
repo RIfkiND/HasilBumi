@@ -13,5 +13,3 @@ Route::get('/products/filter/{category}', [FilterPageController::class, 'filterB
 //whislist and Cart
 Route::get('/Whislist',[HomeController::class ,'WhistList'])->name('Home.Whistlist');
 Route::get('/ShopCart',[HomeController::class ,'ShopCart'])->name('Home.ShopCart');
-
-

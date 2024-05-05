@@ -119,7 +119,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 Halaman Beranda
                             </a>
@@ -128,7 +128,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 Kategori Produk
                             </a>
@@ -137,7 +137,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 Tentang Kami
                             </a>
@@ -146,7 +146,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 Hubungi Kami
                             </a>
@@ -161,7 +161,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 About
                             </a>
@@ -170,7 +170,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 Meet the Team
                             </a>
@@ -179,7 +179,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 Accounts Review
                             </a>
@@ -194,7 +194,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 Kontak Kami
                             </a>
@@ -203,7 +203,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 FAQs
                             </a>
@@ -226,7 +226,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 Ciamis
                             </a>
@@ -235,7 +235,7 @@
                         <li>
                             <a
                                 href="#"
-                                class="text-textColor transition hover:text-primaryColor"
+                                class="text-textColor transition hover:text-primaryColor no-underline"
                             >
                                 0821******
                             </a>
