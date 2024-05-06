@@ -1,5 +1,5 @@
 <template>
-    <section class="flex items-center flex-wrap justify-center gap-5">
+    <section class="flex items-center flex-wrap justify-center gap-5 z">
         <div class="layout-hero">
             <h1 class="font-bold text-content sm:text-4xl">
                 Sumber
@@ -10,7 +10,7 @@
                 <!-- <br /> -->
                 <span class="text-primaryColor"> Bumi</span>, Negeri Sejahtera!
             </h1>
-            <p class="text-textColor opacity-70 fs-6 text-wrap">
+            <p class="text-textColor opacity-70 fs-6 text-wrap ">
                 Mari bergabung dengan kami dalam perjalanan untuk menikmati
                 keindahan dan kelezatan yang ditawarkan oleh hasil bumi alam.
                 Selamat menikmati pengalaman belanja yang menyenangkan dan
@@ -737,3 +737,4 @@ export default {
     },
 };
 </script>
+ 

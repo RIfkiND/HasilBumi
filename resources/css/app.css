@@ -5,3 +5,11 @@
 .btn-wislisht {
     @apply px-6 py-2 text-center text-sm text-white bg-primaryColor border border-primaryColor rounded hover:bg-transparent hover:text-primaryColor transition uppercase font-medium;
 }
+
+.navbar-list {
+    @apply text-base text-textColor no-underline hover:text-primaryColor transition-all hidden md:block md:flex-wrap lg:text-base;
+}
+
+.btn-full {
+    @apply text-white px-6 py-2 bg-primaryColor rounded-md transition hover:text-primaryColor hover:bg-white;
+}
