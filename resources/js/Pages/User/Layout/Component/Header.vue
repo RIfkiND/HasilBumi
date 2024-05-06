@@ -84,7 +84,7 @@ a {
       </div>
 
       <div class="flex items-center space-x-4 gap-2">
-        <a href="#" class="text-center text-textColor relative hover:text-textColor">
+        <Link :href="route('Home.Whistlist')" class="text-center text-textColor relative hover:text-textColor">
           <div class="text-primaryColor">
             <i class='bx bxs-cart text-[29px]'></i>
           </div>
@@ -94,8 +94,8 @@ a {
           >
             8
           </div>
-        </a>
-        <a href="#" class="text-center text-textColor relative hover:text-textColor">
+        </Link>
+        <Link :href="route('Home.ShopCart')" class="text-center text-textColor relative hover:text-textColor">
           <div class="text-2xl">
             <i class="fa-solid fa-bag-shopping icon-style"></i>
           </div>
@@ -105,7 +105,7 @@ a {
           >
             2
           </div>
-        </a>
+        </Link>
         <div class="flex gap-3 mx-5" v-if="!authenticated">
           <Link
             :href="route('view.login')"
@@ -307,11 +307,11 @@ a {
 
       <div class="flex items-center justify-between flex-grow md:pl-12 py-2">
         <div class="flex items-center space-x-6 capitalize">
-          <a href="index.html" class="nav-menu text-white">Home</a>
-          <a href="pages/shop.html" class="nav-menu text-white">Shop</a>
-          <a href="pages/shop.html" class="nav-menu text-white">Kategori</a>
-          <a href="#" class="nav-menu text-white">About us</a>
-          <a href="#" class="nav-menu text-white">Contact us</a>
+          <Link :href="route('Home')" class="nav-menu text-white">Home</Link>
+          <Link href="pages/shop.html" class="nav-menu text-white">Shop</Link>
+          <Link href="pages/shop.html" class="nav-menu text-white">Kategori</Link>
+          <Link href="#" class="nav-menu text-white">About us</Link>
+          <Link href="#" class="nav-menu text-white">Contact us</Link>
         </div>
       </div>
     </div>

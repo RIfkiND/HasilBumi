@@ -1,6 +1,6 @@
 <template>
     <body>
-        <navbar />
+        <Header />
         <div class="h-screen py-8 font-inter">
             <div class="container mx-auto px-4">
                 <h1 class="text-2xl font-semibold mb-4">Keranjang</h1>
@@ -394,8 +394,9 @@
 
 <script setup>
 import Footer from "./Footer.vue";
-import navbar from "./navbar.vue";
+import Header from "./Header.vue";
 import { ref } from "vue";
+import navbar from "./navbar.vue";
 
 let count = ref(0);
 </script>
