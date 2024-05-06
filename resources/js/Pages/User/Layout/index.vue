@@ -5,7 +5,7 @@ import Hero from "./Component/Hero.vue";
 import Footer from "./Component/Footer.vue";
 import Shop_card from "./Component/shop_card.vue";
 import Wislisht from "./Component/Wislisht.vue";
-import Swal from "~/Swal.vue"
+// import Swal from "~/Swal.vue"
 </script>
 
 <template>

@@ -15,5 +15,3 @@ Route::get('/Shop-MainPage',[HomeController::class,'Shop'])->name('Shop.main');
 //whislist and Cart
 Route::get('/Whislist',[HomeController::class ,'WhistList'])->name('Home.Whistlist');
 Route::get('/ShopCart',[HomeController::class ,'ShopCart'])->name('Home.ShopCart');
-
-
