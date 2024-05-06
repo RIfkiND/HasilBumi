@@ -31,7 +31,7 @@ class Seller extends Authenticatable
     ];
 
 
- 
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -63,5 +63,9 @@ class Seller extends Authenticatable
 public function receivedMessages()
 {
     return $this->morphMany(Message::class, 'receiver_id');
+}
+
+public function SellerInfromation(){
+    return $this->hasOne(Seller_Information::class);
 }
 }

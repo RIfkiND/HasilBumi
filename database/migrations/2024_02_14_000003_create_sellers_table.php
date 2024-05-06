@@ -16,11 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('location');
-            $table->string('logo')->nullable();
-            $table->text('description')->nullable();
-            // $table->integer('Phone_number');
-            //$table->foreignIdFor(Specialist::class);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -18,10 +18,19 @@ class HomeController extends Controller
         ]);
     }
     public function Whistlist(){
-        return Inertia::render('User/Layout/Component/Wislisht');
+        $authenticated = Auth::check();
+
+        return Inertia::render('User/Layout/Component/Wislisht',[
+            'authenticated' => $authenticated,
+            'user' => $authenticated ? Auth::user() : null
+        ]);
     }
     public function ShopCart(){
-        return Inertia::render('User/Layout/Component/shop_card');
+        $authenticated = Auth::check();
+        return Inertia::render('User/Layout/Component/shop_card',[
+            'authenticated' => $authenticated,
+            'user' => $authenticated ? Auth::user() : null
+        ]);
     }
 
     public function Shop(){
