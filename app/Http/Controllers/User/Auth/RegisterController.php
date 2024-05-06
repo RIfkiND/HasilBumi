@@ -20,7 +20,7 @@ class RegisterController extends Controller
     public function Register(Request $request)
     {
 
-        
+
         $this->validate($request, [
             'name' => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users',
@@ -39,6 +39,6 @@ class RegisterController extends Controller
         Auth::attempt($credentials);
         $request->session()->regenerate();
         return redirect(RouteServiceProvider::HOME)
-            ->withSuccess('You have successfully registered & logged in!');
+            ->with('succes','You have successfully registered & logged in!');
     }
 }

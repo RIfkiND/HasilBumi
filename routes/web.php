@@ -58,4 +58,9 @@ require __DIR__.'/Pages/Main.php';
 
 require __DIR__.'/Auth/callback.php';
 
-require __DIR__.'/Api/Chat.php';
+require __DIR__ . '/Auth/Seller.php';
+
+require __DIR__ . '/Api/Chat.php';
+
+
+

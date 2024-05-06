@@ -21,6 +21,6 @@ class TransactionDetail extends Model
 
     public function transation()
     {
-        return $this->belongsTo(Transaction::class, 'transaction_id', 'id');
+        return $this->belongsTo(Transaction::class);
     }
 }

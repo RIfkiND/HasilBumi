@@ -74,29 +74,29 @@ h4 {
 </style>
 
 <template>
-  <!-- Home Page -->
-  <section class="flex items-center flex-wrap justify-center gap-5">
-    <div class="layout-hero selection:text-white selection:bg-dark">
-      <h1 class="font-bold text-content sm:text-4xl">
-        Sumber
-        <span class="text-primaryColor selection:text-primaryColor">Kekayaan</span>,
-        <!-- <br /> -->
-        Ladang
-        <span class="text-primaryColor selection:text-primaryColor">Berkah</span>, Hasil
-        <!-- <br /> -->
-        <span class="text-primaryColor selection:text-primaryColor"> Bumi</span>, Negeri Sejahtera!
-      </h1>
-      <p class="text-textColor opacity-70 fs-6 text-wrap">
-        Mari bergabung dengan kami dalam perjalanan untuk menikmati keindahan dan
-        kelezatan yang ditawarkan oleh hasil bumi alam. Selamat menikmati pengalaman
-        belanja yang menyenangkan dan bermakna!
-      </p>
-      <button
-        class="inline-block text-primaryColor button-border border-b-hoverPrimary hover:text-white hover:bg-primaryColor px-8 py-2 rounded-full my-2 mx-0"
-      >
-        Shop Now &#8594;
-      </button>
-    </div>
+    <section class="flex items-center flex-wrap justify-center gap-5 z">
+        <div class="layout-hero">
+            <h1 class="font-bold text-content sm:text-4xl">
+                Sumber
+                <span class="text-primaryColor">Kekayaan</span>,
+                <!-- <br /> -->
+                Ladang
+                <span class="text-primaryColor">Berkah</span>, Hasil
+                <!-- <br /> -->
+                <span class="text-primaryColor"> Bumi</span>, Negeri Sejahtera!
+            </h1>
+            <p class="text-textColor opacity-70 fs-6 text-wrap ">
+                Mari bergabung dengan kami dalam perjalanan untuk menikmati
+                keindahan dan kelezatan yang ditawarkan oleh hasil bumi alam.
+                Selamat menikmati pengalaman belanja yang menyenangkan dan
+                bermakna!
+            </p>
+            <button
+                class="inline-block text-primaryColor button-border border-b-hoverPrimary hover:text-white hover:bg-primaryColor px-8 py-2 rounded-full my-2 mx-0"
+            >
+                Shop Now &#8594;
+            </button>
+        </div>
 
     <div>
       <img :src="imageUrl" alt="" class="max-w-full py-10 px-0" width="600px" />

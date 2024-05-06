@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class LogoutController extends Controller
 {
-
-
-
 /**
  * Log the user out of the application.
  */
@@ -22,6 +19,6 @@ public function logout(Request $request)
 
     $request->session()->regenerateToken();
 
-    return to_route('Home')->with('succes' , 'You have Succesfully Logout');
+    return to_route('Home')->with('status', ['type' => 'success', 'action' => 'You can exit', 'text' => 'You Logged out ']);;
 }
 }
