@@ -4,7 +4,8 @@
 
 <template>
   <!-- component -->
-  <div class="min-h-screen bg-white p-6 flex items-center justify-center font-inter">
+  <div class="min-h-screen bg-white p-6 flex items-center justify-center font-inter relative z-10">
+  <div class="footer-top bg-teal-dark absolute -z-10"></div>
     <div class="container max-w-screen-lg m-auto py-4">
       <div class="bg-white rounded-md shadow-lg py-5 px-4 p-5 md:p-8 mb-5">
         <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">

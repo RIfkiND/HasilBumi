@@ -74,7 +74,7 @@ h4 {
 </style>
 
 <template>
-    <section class="flex items-center flex-wrap justify-center gap-5 z">
+    <section class="flex items-center flex-wrap justify-center gap-5 z font-inter">
         <div class="layout-hero">
             <h1 class="font-bold text-content sm:text-4xl">
                 Sumber

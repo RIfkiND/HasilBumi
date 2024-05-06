@@ -9,7 +9,7 @@ use App\Http\Requests\Auth\LoginSellerRequest;
 use App\Providers\RouteServiceProvider;
 class LoginSellerController extends Controller
 {
-    public function sellerlogin(){
+    public function loginForSeller(){
         return Inertia::render('Seller/Auth/Login');
     }
 

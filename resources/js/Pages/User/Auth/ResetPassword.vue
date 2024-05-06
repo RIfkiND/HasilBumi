@@ -10,10 +10,15 @@
 
 <template>
     <div class="footer-top bg-teal-dark"></div>
-    <div class="flex items-center justify-center min-h-screen bg-white">
+    <div class="flex items-center justify-center min-h-screen bg-white font-inter">
       <div
         class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
       >
+            <Link :href="route('Home')" class="no-underline float-left mx-3 my-4 left-3 absolute">
+                <div class="w-12 h-12 rounded-full hover:bg-white-50 hover:cursor-pointer text-3xl justify-center items-center flex">
+                    <i class='bx bx-left-arrow-alt text-dark'></i>
+                </div>
+            </Link>
             <!-- left side -->
             <div class="flex flex-col justify-center p-8 md:p-12">
             <img :src="'Assets/img/lock.png'" class="d-flex justify-center align-center mx-auto mb-3" alt="Design key" style="width:120px; height:120px;">
@@ -25,7 +30,7 @@
                 <label for="email" class="text-md text-textColor mb-2">Password <span class="text-danger">*</span> </label>
                 <input
                 type="email"
-                class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                class="w-full bg-white p-2 border-2 border-white-50 rounded-lg font-medium text-md focus:outline-none focus:border-2 focus:border-primaryColor text-slate-300"
                 name="email"
                 id="email"
                 autocomplate="false"
@@ -40,8 +45,11 @@
                         Reset Password
                     </span>
                 </a>
-                <Link :href="route('login')" class="d-inile-block justify-center align-center mx-auto mt-4 text-textColor text-decoration-none hover:text-teal">
-                    <i class='bx bx-chevron-left d-inline-block'></i>Back to Login
+                <Link
+                    :href="route('view.login')"
+                    class="flex justify-center align-center mx-auto mt-4 text-textColor text-decoration-none hover:text-teal"
+                >
+                    <i class="bx bx-chevron-left bx-sm"></i>Kembali ke login
                 </Link>
             </div>
       </div>

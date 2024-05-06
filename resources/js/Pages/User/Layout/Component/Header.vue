@@ -54,7 +54,7 @@ a {
 
 <template>
   <!-- header atas -->
-  <header class="py-2 shadow-sm bg-white w-full">
+  <header class="py-2 shadow-sm bg-white w-full font-inter">
     <div class="container flex items-center justify-evenly md:gap-4 sm:gap-6">
       <a
         href="#"

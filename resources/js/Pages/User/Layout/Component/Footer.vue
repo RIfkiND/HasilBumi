@@ -196,32 +196,22 @@
                   type="text"
                   list="HeadlineActArtist"
                   id="HeadlineAct"
-                  class="w-full rounded-lg border-white-50 p-2 bg-white text-textColor sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0 border-2 focus:border-1 focus:border-primaryColor outline-none focus:ring-1 focus:ring-primaryColor"
+                  class="w-full rounded-lg border-white-50 p-2 bg-white text-textColor sm:text-sm [&::-webkit-calendar-picker-indicator]:opacity-0 border-1 focus:border-1 focus:border-primaryColor outline-none focus:ring-1 focus:ring-primaryColor cursor-pointer"
                   placeholder="Pilih bahasa"
                 />
 
                 <span class="absolute inset-y-0 end-0 flex w-8 items-center right-0">
-                  <i class="bx bxs-down-arrow text-[10px] text-right"></i>
+                  <i class="bx bxs-down-arrow text-[10px] text-right text-slate-200"></i>
                 </span>
               </div>
 
               <datalist name="HeadlineAct" id="HeadlineActArtist">
-                <option value="JM">Afganistan</option>
-                <option value="SRV">Albania</option>
-                <option value="JH">Arab</option>
-                <option value="BBK">Andorra</option>
-                <option value="AK">Angola</option>
-                <option value="BG">Algeria</option>
-                <option value="EC">Bahrain</option>
-                <option value="EC">Bangladesh</option>
-                <option value="EC">Barbados</option>
-                <option value="EC">Belarus</option>
-                <option value="EC">Belgium</option>
-                <option value="EC">Cabo verde</option>
-                <option value="EC">Colombia</option>
-                <option value="EC">Cameroon</option>
-                <option value="EC">Canada</option>
-                <option value="EC">Central Aftican Republic</option>
+                <option>
+                    <a class="block w-full">Indonesia</a>
+                </option>
+                <option>
+                    <a class="block w-full">Englisk</a>
+                </option>
               </datalist>
             </div>
           </div>
@@ -254,6 +244,17 @@
   </footer>
 </template>
 
-<script setup>
-
+<script>
+export default {
+  data() {
+    return {
+      sertifikat_1: "",
+      sertifikat_2: "",
+    };
+  },
+  mounted() {
+    this.sertifikat_1 = "/Assets/img/sertifikat-1.png";
+    this.sertifikat_2 = "/Assets/img/sertifikat-2.png";
+  },
+};
 </script>

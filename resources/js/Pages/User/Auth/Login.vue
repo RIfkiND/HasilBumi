@@ -1,10 +1,15 @@
 <template>
     <div>
       <div class="footer-top bg-teal-dark"></div>
-      <div class="flex items-center justify-center min-h-screen bg-white">
+      <div class="flex items-center justify-center min-h-screen bg-white font-inter">
         <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+            <Link :href="route('Home')" class="no-underline float-left mx-2 my-5 left-1 absolute">
+                <div class="w-12 h-12 rounded-full hover:bg-white-50 hover:cursor-pointer text-3xl justify-center items-center flex">
+                    <i class='bx bx-left-arrow-alt text-dark'></i>
+                </div>
+            </Link>
           <!-- left side -->
-          <div class="flex flex-col justify-center p-8 md:p-12">
+          <div class="flex flex-col justify-center p-8 md:p-12 mx-4">
             <span class="mb-2 text-4xl font-bold text-textColor">Login</span>
             <span class="font-light text-gray-400 mb-8">
               Sign in now with us for the best experience!

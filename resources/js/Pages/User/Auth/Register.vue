@@ -13,8 +13,13 @@
       <div
         class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
       >
+        <Link :href="route('Home')" class="no-underline float-left mx-1 my-5 left-2 absolute">
+            <div class="w-12 h-12 rounded-full hover:bg-white-50 hover:cursor-pointer text-3xl justify-center items-center flex">
+                <i class='bx bx-left-arrow-alt text-dark'></i>
+            </div>
+        </Link>
         <!-- left side -->
-        <div class="flex flex-col justify-center p-8 md:p-12">
+        <div class="flex flex-col justify-center p-8 md:p-12 mx-4">
           <span class="mb-2 text-4xl font-bold text-textColor">Register</span>
           <span class="font-light text-gray-400 mb-8">
             Register now with us for the best experience!

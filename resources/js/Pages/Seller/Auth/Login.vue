@@ -38,7 +38,7 @@
 </style>
 
 <template>
-<body class="bg-white">
+<body class="bg-white font-inter">
   <!-- Example -->
   <div class="flex min-h-screen">
 
@@ -58,10 +58,10 @@
             <h1 class="lg:text-3xl xl:text-5xl xl:leading-snug font-extrabold text-dark">Masukan akun Anda dan temukan yang baru
                 pengalaman
             </h1>
-            <p class="text-lg">Anda belum memiliki akun?</p>
+            <p class="text-lg text-white">Anda belum memiliki akun?</p>
             <Link
-                class="inline-block flex-none px-5 text-center py-3 border-2 rounded-lg font-medium text-white hover:bg-teal-dark relative border-p-2 hover:cursor-pointer no-underline" :href="route('register')">
-                <span class="mr-2">Membuat akun disini</span>
+                class="inline-block flex-none px-5 text-center py-3 border-2 rounded-lg font-medium text-white hover:bg-teal-dark relative border-p-2 hover:cursor-pointer no-underline" :href="route('Seller.pendaftaran')">
+                <span class="mr-2">Daftar jadi seller</span>
                 <span class="text-white absolute text-lg text-center animate-bounce-right">
                     <i class='bx bx-right-arrow-alt bx-sm'></i>
                 </span>

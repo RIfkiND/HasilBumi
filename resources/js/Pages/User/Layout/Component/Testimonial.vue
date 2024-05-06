@@ -3,7 +3,7 @@
 </style>
 <template>
 <!-- Star Testimonial -->
-  <section class="bg-grey h-full selection:bg-dark selection:text-white" for="faq">
+  <section class="bg-grey h-full selection:bg-dark selection:text-white font-inter" for="faq">
     <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
       <h2
         class="text-4xl font-extrabold text-dark sm:text-5xl mb-4 text-center"
