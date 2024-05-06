@@ -2,16 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/percobaan', function () {
     return Inertia::render('Coba/login');
@@ -45,16 +36,13 @@ Route::get('/testing', function () {
     return Inertia::render('Seller/Testing/multiForm/index');
 });
 
-
 Route::get('/daftar', function(){
-    return Inertia::render('Seller/PendaftaranSeller/formseller');
+    return Inertia::render('Seller/Auth/PendaftaranSeller');
 })->name('sellerform');
 
-Route::get('/login-seller', function(){
-    return Inertia::render('User/Layout/Component/LoginSeller');
-});
-
 require __DIR__.'/Pages/Main.php';
+
+require __DIR__.'/Pages/Seller.php';
 
 require __DIR__.'/Auth/callback.php';
 

@@ -16,12 +16,13 @@
                 </label>
                 <input
                   type="email"
-                  class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                  class="w-full bg-white p-2 border-2 border-white-50 rounded-lg font-medium focus:outline-none focus:border-2 focus:border-primaryColor text-slate-300 peer"
                   name="email"
                   id="email"
                   v-model="form.email"
                   autocomplete="false"
                 />
+                <span class="text-pink text-md hidden peer-invalid:block my-2">Masukan email yang valid</span>
                 <div v-if="form.errors.email" class="text-red-500">{{ form.errors.email }}</div>
               </div>
               <div class="py-2">
@@ -34,7 +35,8 @@
                   id="password"
                   autocomplete="false"
                   v-model="form.password"
-                  class="w-full bg-white p-2 border border-gray-300 rounded-md focus:border-colorBorder"
+                  class="w-full bg-white p-2 border-2 border-white-50 rounded-lg font-medium focus:outline-none focus:border-2 focus:border-primaryColor text-slate-300"
+                  required
                 />
                 <div v-if="form.errors.password" class="text-red-500">{{ form.errors.password }}</div>
               </div>

@@ -9,9 +9,9 @@ use App\Http\Requests\Auth\LoginSellerRequest;
 use App\Providers\RouteServiceProvider;
 class LoginSellerController extends Controller
 {
-   public function sellerlogin(){
-    return Inertia::render('Seller/Auth/Login');
-   }
+    public function sellerlogin(){
+        return Inertia::render('Seller/Auth/Login');
+    }
 
    public function login(LoginSellerRequest $request){
     $request->authenticate();
@@ -19,7 +19,5 @@ class LoginSellerController extends Controller
     $request->session()->regenerate();
 
     return redirect(RouteServiceProvider::Seller_Dashboard)->with('succes','You have Login Succes Fully');
-   }  
-
-
+   }
 }
