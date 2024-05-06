@@ -15,8 +15,9 @@ use Inertia\Inertia;
 
 
 Route::get('/testing', function () {
-    return Inertia::render('Seller/Testing/multiForm/index');
+    return Inertia::render('Coba/Skeleton/Main');
 });
+
 
 
 require __DIR__ . '/Pages/Main.php';
