@@ -50,6 +50,9 @@ Route::get('/daftar', function(){
     return Inertia::render('Seller/PendaftaranSeller/formseller');
 })->name('sellerform');
 
+Route::get('/login-seller', function(){
+    return Inertia::render('User/Layout/Component/LoginSeller');
+});
 
 require __DIR__.'/Pages/Main.php';
 

@@ -54,7 +54,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     {{-- CDN Crisp Live Chat --}}
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         window.$crisp = [];
         window.CRISP_WEBSITE_ID = "0f639ac1-6f11-4786-b4c9-74b961e41be0";
         (function() {
@@ -64,7 +64,7 @@
             s.async = 1;
             d.getElementsByTagName("head")[0].appendChild(s);
         })();
-    </script>
+    </script> --}}
 
     {{-- Font Google --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
