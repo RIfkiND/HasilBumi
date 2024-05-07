@@ -26,4 +26,55 @@ class FilterPageController extends Controller
             'category' => $category,
         ]);
     }
+
+    // public function filterByStar(){
+
+    // }
+
+    public function filterByPrice(Request $request){
+
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+
+
+        $products = Product::whereBetween('price', [$minPrice, $maxPrice])->get();
+
+
+        return Inertia::render('Shop/Shop',[
+            'products'=> $products,
+        ]);
+    }
+
+
+    public function filterByNew(Request $request){
+        $products = Product::latest();
+
+        return Inertia::render('Shop/shop',[
+            'terbaru'=>$products,
+        ]);
+
+    }
+
+    Public function filterByOld(){
+        $products = Product::oldest();
+
+        return Inertia::render('Shop/shop',[
+            'terlama'=> $products,
+        ]);
+    }
+
+    public function filterBySatuan(Request $request){
+
+        $satuan = $request->input('satuan');
+
+
+        $products = Product::where('satuan', $satuan)->get();
+
+
+        return Inertia::render('Shop/shop' ,[
+            'products' => $products,
+        ]);
+    }
+
+
 }

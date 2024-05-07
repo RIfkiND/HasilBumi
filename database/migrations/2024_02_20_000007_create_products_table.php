@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignIdFor(Seller::class);
-            $table->integer('Harga')->nullable();
-            $table->integer('stock')->nullable();
-            $table->text('deskripsi')->nullable();
             $table->foreignIdFor(Category::class);
+            $table->foreignIdFor(Seller::class);
+            $table->string('name');
+            $table->integer('Harga');
+            $table->integer('stock');
+            $table->text('deskripsi')->nullable();
+            $table->string('satuan');
             $table->timestamps();
         });
     }

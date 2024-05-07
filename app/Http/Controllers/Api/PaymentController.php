@@ -10,5 +10,6 @@ class PaymentController extends Controller
 {
     public function __construct()
     {
+        
     }
 }
