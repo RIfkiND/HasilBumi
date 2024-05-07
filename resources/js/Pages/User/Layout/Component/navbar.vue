@@ -1,6 +1,6 @@
 <template>
     <!-- header atas -->
-    <header class="py-3 shadow-sm bg-white w-full z-50">
+    <header class="py-3 shadow-sm bg-white w-full z-50 font-inter">
         <div
             class="container flex items-center justify-between md:gap-4 sm:gap-6"
         >
@@ -86,7 +86,7 @@
                         <div
                             class="absolute top-12 text-base bg-white rounded-md shadow-lg z-10"
                             v-if="profileDropdown"
-                            @click.away="profileDropdown = false"
+                            @click="profileDropdown = false"
                         >
                             <ul class="px-0" aria-labelledby="user-menu-button">
                                 <li class="py-2 px-4 style-bg">
@@ -119,10 +119,9 @@
                                     class="block text-sm text-neutral-500 mb-2"
                                     >{{ user.email }}</span
                                 > -->
-                        <span
-                            class="block text-md truncate text-textColor font-bold"
-                            >{{ user.name }}</span
-                        >
+                        <span class="block text-md truncate text-textColor font-bold">
+                            {{ user.name }}
+                        </span>
                     </div>
                 </div>
 

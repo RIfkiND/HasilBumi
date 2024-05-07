@@ -44,7 +44,7 @@ class PendaftaranSellerController extends Controller
         $seller = $user->seller()->first();
         $sellerInformation = $seller->sellerInformation()->first();
 
-        return inertia('Coba/APi/pendaftranform', [
+        return inertia('Seller/Auth/PendaftaranSeller', [
             'sellerInformation' => $sellerInformation,
         ]);
     }
@@ -73,6 +73,6 @@ class PendaftaranSellerController extends Controller
 
         $sellerInformation->save();
 
-        return Inertia::render('')->with(['success' => 'Seller information saved successfully']);
+        return redirect('/')->with(['success' => 'Seller information saved successfully']);
     }
 }
