@@ -5,7 +5,7 @@ use App\Http\Controllers\Seller\Auth\PendaftaranSellerController;
 
 
 //get
-Route::get('/Pendaftaran/form',[PendaftaranSellerController::class, 'PendaftranForm'])->name('view.seller.pendaftaran');
+Route::get('/Pendaftaran/form',[PendaftaranSellerController::class, 'PendaftranForm'])->name('sellerform');
 
 //Post
 Route::post('/seller/pendaftaran', [PendaftaranSellerController::class, 'Pendaftaran'])->name('seller.pendaftaran');

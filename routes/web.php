@@ -9,9 +9,6 @@ Route::get('/testing', function () {
     return Inertia::render('Coba/APi/Become_Seller');
 });
 
-Route::get('/daftar', function(){
-    return Inertia::render('Seller/Auth/PendaftaranSeller');
-})->name('sellerform');
 
 require __DIR__.'/Pages/Main.php';
 
