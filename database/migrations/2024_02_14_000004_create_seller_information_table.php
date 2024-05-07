@@ -12,10 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seller__information', function (Blueprint $table) {
+        Schema::create('seller_information', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Seller::class);
-            
+            $table->string('no_hp');
+            $table->string('nama_toko');
+            $table->string('nip');
+            $table->string('kota');
+            $table->string('provinsi');
+            $table->string('kode_pos');
+            $table->string('foto_toko')->nullable();
             $table->timestamps();
         });
     }

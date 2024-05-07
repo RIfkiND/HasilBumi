@@ -14,7 +14,8 @@
     {{-- CDN Box icons --}}
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=[AIzaSyBUcL-JhKedwvrdTsJ9XucwXlfC83Z7v_8]"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
+
   </head>
   <body>
     @inertia

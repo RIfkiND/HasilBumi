@@ -48,6 +48,7 @@ class User extends Authenticatable
         return $this->morphMany(Message::class, 'sender_id');
     }
 
+
     public function receivedMessages()
     {
         return $this->morphMany(Message::class, 'receiver_id');
@@ -59,4 +60,21 @@ class User extends Authenticatable
     public function cart(){
         return $this->hasMany(Cart::class);
     }
+
+    public function seller(){
+        return $this->hasOne(Seller::class);
+    }
+
+    /**
+     *
+     *
+     * @return boolean
+     */
+    public function isSeller()
+    {
+
+        return $this->seller()->exists();
+    }
+
+
 }

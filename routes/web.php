@@ -15,7 +15,7 @@ use Inertia\Inertia;
 
 
 Route::get('/testing', function () {
-    return Inertia::render('Coba/Skeleton/Main');
+    return Inertia::render('Coba/APi/Become_Seller');
 });
 
 
