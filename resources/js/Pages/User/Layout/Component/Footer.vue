@@ -210,7 +210,7 @@
                     <a class="block w-full">Indonesia</a>
                 </option>
                 <option>
-                    <a class="block w-full">Englisk</a>
+                    <a class="block w-full">English</a>
                 </option>
               </datalist>
             </div>

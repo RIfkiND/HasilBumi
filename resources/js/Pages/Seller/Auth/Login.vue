@@ -61,7 +61,7 @@
             <p class="text-lg text-white">Anda belum memiliki akun?</p>
             <Link
                 class="inline-block flex-none px-5 text-center py-3 border-2 rounded-lg font-medium text-white hover:bg-teal-dark relative border-p-2 hover:cursor-pointer no-underline" :href="route('Seller.pendaftaran')">
-                <span class="mr-2">Daftar jadi seller</span>
+                <span class="mr-2">Register</span>
                 <span class="text-white absolute text-lg text-center animate-bounce-right">
                     <i class='bx bx-right-arrow-alt bx-sm'></i>
                 </span>
