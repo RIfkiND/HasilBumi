@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+
 class PendaftaranSellerController extends Controller
 {
 
@@ -16,7 +17,7 @@ class PendaftaranSellerController extends Controller
     {
         $user = Auth::user();
         if ($user->isSeller()) {
-            return Inertia::render('Coba/APi/Become_Seller')->with(['errors' ,'The user Has Become A seller']);
+            return Inertia::render('Coba/APi/Become_Seller')->with(['errors', 'The user Has Become A seller']);
         }
 
         try {
@@ -32,9 +33,8 @@ class PendaftaranSellerController extends Controller
             return Inertia::render('Coba/APi/pendaftranform')->with(['success' => 'User successfully became a seller']);
         } catch (\Exception $e) {
             DB::rollBack();
-
+        }
     }
-}
 
 
     public function PendaftranForm()
@@ -57,11 +57,11 @@ class PendaftaranSellerController extends Controller
 
         $validateData = $request->validate([
             'no_hp' => 'required|integer|min:1',
-            'nama_toko'=>'required|string|min:5',
-            'nip'=> 'required|integer|min:10',
-            'kota'=> 'required|string|min:1',
-            'provinsi'=> 'required|string|min:1',
-            'foto_toko' =>'image|mimes:png,jpg.jpeg|max:2048'
+            'nama_toko' => 'required|string|min:5',
+            'nip' => 'required|integer|min:10',
+            'kota' => 'required|string|min:1',
+            'provinsi' => 'required|string|min:1',
+            'foto_toko' => 'image|mimes:png,jpg.jpeg|max:2048'
         ]);
 
         $sellerInformation = $seller->sellerInformation()->firstOrNew([]);

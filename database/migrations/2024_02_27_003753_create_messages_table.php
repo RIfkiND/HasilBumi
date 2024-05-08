@@ -14,10 +14,12 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->text('massage');
-            $table->morphs('sender_id'); 
-            $table->morphs('receiver_id');
+            $table->unsignedBigInteger('from');
+            $table->unsignedBigInteger('to');
+            $table->text('content');
             $table->timestamps();
+            $table->foreign('from')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('to')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

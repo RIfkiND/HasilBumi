@@ -5,47 +5,56 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Events\ChatBoxEvents;
+use App\Events\SendMessageEvents;
 use Inertia\Inertia;
+use Symfony\Component\httpFoundation\Response; 
+use Illuminate\Support\Facades\Event;
 
-use App\Models\Message;
+use App\Models\User; 
+use App\Models\Message; 
+
 
 class MessageController extends Controller
 {
-    public function index()
+    public function store(Request $request)
     {
+        $message = new Message();
+        $message->from = Auth::user()->id;
+        $message->to = $request->to;
+        $message->content = filter_var($request->content, FILTER_SANITIZE_STRIPPED);
+        $message->save();
 
-        $messages = Message::orderBy('created_at', 'asc')->get();
-
-        return Inertia::render('Component/Body/chat', compact('messages'));
+        // Chamando o evento
+        Event::dispatch(new SendMessageEvents($message, $request->to)); 
     }
 
-    public function broadcast(Request $request)
+
+
+    public function listMessages(User $user)
     {
-        $validatedData = $request->validate([
-            'message' => 'required|string',
-            'sender_type' => 'required|in:user,seller',
-            'sender_id' => 'required|integer',
-            'receiver_type' => 'required|in:user,seller',
-            'receiver_id' => 'required|integer',
-        ]);
+        $userFrom = Auth::user()->id; 
+        $userTo = $user->id;
 
-        $messageContent = $validatedData['message'];
-        $senderType = $validatedData['sender_type'];
-        $senderId = $validatedData['sender_id'];
-        $receiverType = $validatedData['receiver_type'];
-        $receiverId = $validatedData['receiver_id'];
+       
 
-        
-        $message = Message::create([
-            'massage' => $messageContent,
-            'sender_id' => $senderId,
-            'sender_type' => $senderType,
-            'receiver_id' => $receiverId,
-            'receiver_type' => $receiverType,
-        ]);
+        $messages = Message::where(
+            function($query) use ($userFrom, $userTo) { 
+                $query->where([
+                    'from' => $userFrom,
+                    'to' => $userTo
+                ]);
+            }
+        )->orWhere(
+            function($query) use ($userFrom, $userTo) { 
+                $query->where([
+                    'from' => $userTo,
+                    'to' => $userFrom
+                ]);
+            }
+        )->orderBy('created_at','ASC')->get();
 
-      
-        broadcast(new ChatBoxEvents($messageContent, $senderId, $receiverId));
+        return response()->json([
+            'messages' => $messages
+        ],Response::HTTP_OK);
     }
 }
