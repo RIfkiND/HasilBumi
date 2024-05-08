@@ -13,11 +13,5 @@ class LoginSellerController extends Controller
         return Inertia::render('Seller/Auth/Login');
     }
 
-   public function login(LoginSellerRequest $request){
-    $request->authenticate();
-
-    $request->session()->regenerate();
-
-    return redirect(RouteServiceProvider::Seller_Dashboard)->with('succes','You have Login Succes Fully');
-   }
+ 
 }

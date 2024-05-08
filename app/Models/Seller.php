@@ -22,46 +22,29 @@ class Seller extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'location',
-        'logo',
-        'description',
-        'password',
+        'user_id',
     ];
 
 
- 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     public function product()
     {
         return $this->hasMany(Product::class);
     }
     public function sentMessages()
-{
-    return $this->morphMany(Message::class, 'sender_id');
-}
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
 
-public function receivedMessages()
-{
-    return $this->morphMany(Message::class, 'receiver_id');
-}
+    public function receivedMessages()
+    {
+        return $this->hasMany(Message::class, 'receiver_id');
+    }
+
+    public function sellerInformation()
+    {
+        return $this->hasOne(Seller_Information::class);
+    }
 }
