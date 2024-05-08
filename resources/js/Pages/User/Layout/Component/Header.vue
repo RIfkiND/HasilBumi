@@ -117,7 +117,7 @@ a {
             class="text-white bg-primaryColor px-6 py-2 rounded-full hover:bg-hoverPrimary"
             >Register</Link
           >
-          <Link
+          <!-- <Link
             :href="route('sellerform')"
             class="text-primaryColor px-6 py-2 rounded-full border-1 button-border flex justify-center items-center hover:text-primaryColor"
             >
@@ -126,7 +126,7 @@ a {
                     <i class='bx bx-right-arrow-alt ml-1'></i>
                 </div>
             </Link
-          >
+          > -->
         </div>
 
         <div v-if="authenticated" class="flex items-center relative">
