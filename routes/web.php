@@ -6,8 +6,9 @@ use Inertia\Inertia;
 
 
 Route::get('/testing', function () {
-    return Inertia::render('Coba/APi/Become_Seller');
+    return Inertia::render('Shop/Product');
 });
+
 
 
 require __DIR__.'/Pages/Main.php';
