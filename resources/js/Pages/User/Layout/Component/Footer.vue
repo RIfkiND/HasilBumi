@@ -82,11 +82,11 @@
                 <p class="text-dark font-bold">Penghargaan</p><br>
                 <div class="block">
                     <div class="flex gap-3">
-                        <div class="w-24 h-20 rounded-md bg-text-grey mb-3 overflow-hidden">
-                            <img src="#" alt="Sertifikat" class="w-full h-full bg-cover bg-center">
+                        <div class="w-24 h-20 rounded-md bg-white-50 mb-3 overflow-hidden" id="congrast">
+                            <img :src=sertifikat_1 alt="Sertifikat" class="w-full h-full bg-cover bg-center">
                         </div>
-                        <div class="w-24 h-20 rounded-md bg-text-grey overflow-hidden">
-                            <img src="#" alt="Sertifikat" class="w-full h-full bg-cover bg-center">
+                        <div class="w-24 h-20 rounded-md bg-white-50 overflow-hidden" id="congrast">
+                            <img :src=sertifikat_2 alt="Sertifikat" class="w-full h-full bg-cover bg-center">
                         </div>
                     </div>
                 </div>
@@ -253,8 +253,8 @@ export default {
     };
   },
   mounted() {
-    this.sertifikat_1 = "/Assets/img/sertifikat-1.png";
-    this.sertifikat_2 = "/Assets/img/sertifikat-2.png";
+    this.sertifikat_1 = "/assets/img/sertifikat1.png";
+    this.sertifikat_2 = "/assets/img/sertifikat2.png";
   },
 };
 </script>
