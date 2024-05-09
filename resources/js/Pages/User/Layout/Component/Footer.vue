@@ -82,10 +82,10 @@
                 <p class="text-dark font-bold">Penghargaan</p><br>
                 <div class="block">
                     <div class="flex gap-3">
-                        <div class="w-24 h-20 rounded-md bg-white-50 mb-3 overflow-hidden" id="congrast">
+                        <div class="w-24 h-20 rounded-md bg-white border-1 border-white-50 mb-3 overflow-hidden hover:drop-shadow-lg transition cursor-pointer">
                             <img :src=sertifikat_1 alt="Sertifikat" class="w-full h-full bg-cover bg-center">
                         </div>
-                        <div class="w-24 h-20 rounded-md bg-white-50 overflow-hidden" id="congrast">
+                        <div class="w-24 h-20 rounded-md bg-white border-1 border-white-50 overflow-hidden hover:drop-shadow-lg transition cursor-pointer">
                             <img :src=sertifikat_2 alt="Sertifikat" class="w-full h-full bg-cover bg-center">
                         </div>
                     </div>

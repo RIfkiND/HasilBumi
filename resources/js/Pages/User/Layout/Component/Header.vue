@@ -213,7 +213,7 @@ a {
   <!-- end header atas -->
 
   <!-- navbar pc -->
-  <nav class="hidden md:block" style="background-color: #51cf66">
+  <nav class="hidden md:block bg-[#51cf66]">
     <div class="container flex">
       <div
         class="px-8 py-4 md:flex items-center cursor-pointer relative group bg-primaryColor hover:bg-hoverPrimary"
