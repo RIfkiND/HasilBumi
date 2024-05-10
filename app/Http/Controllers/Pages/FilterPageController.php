@@ -46,7 +46,7 @@ class FilterPageController extends Controller
     }
 
 
-    public function filterByNew(Request $request){
+    public function filterByNew(){
         $products = Product::latest();
 
         return Inertia::render('Shop/shop',[

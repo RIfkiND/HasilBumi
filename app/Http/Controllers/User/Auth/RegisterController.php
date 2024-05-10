@@ -39,6 +39,6 @@ class RegisterController extends Controller
         Auth::attempt($credentials);
         $request->session()->regenerate();
         return redirect(RouteServiceProvider::HOME)
-            ->with('succes','You have successfully registered & logged in!');
+            ->with(['succes','You have successfully registered & logged in!']);
     }
 }

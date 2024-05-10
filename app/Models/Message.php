@@ -11,9 +11,7 @@ class Message extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable=[
-        'message',
-    ];
+    protected $fillable = ['from','to','content'];
 
 
     public function sender()
