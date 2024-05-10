@@ -4,9 +4,6 @@
     <Body />
     <Footer />
 </template>
-
-
-
 <script setup>
 
 import Header from '@/User/Layout/Component/Header.vue'

@@ -123,79 +123,6 @@
         mendukung keberlanjutan alam.
       </p>
 
-      <div class="pt-4 font-inter">
-        <h3 class="text-sm text-dark capitalize mb-2 font-semibold">Size</h3>
-        <div class="flex items-center gap-2">
-          <div class="size-selector">
-            <input type="radio" name="size" id="size-xs" class="hidden" />
-            <label
-              for="size-xs"
-              class="text-xs border border-slate-200 rounded-sm h-6 w-7 flex items-center justify-center cursor-pointer shadow-sm text-dark"
-              >XS</label
-            >
-          </div>
-          <div class="size-selector">
-            <input type="radio" name="size" id="size-sm" class="hidden" />
-            <label
-              for="size-sm"
-              class="text-xs border border-slate-200 rounded-sm h-6 w-7 flex items-center justify-center cursor-pointer shadow-sm text-dark"
-              >S</label
-            >
-          </div>
-          <div class="size-selector">
-            <input type="radio" name="size" id="size-m" class="hidden" />
-            <label
-              for="size-m"
-              class="text-xs border border-slate-200 rounded-sm h-6 w-7 flex items-center justify-center cursor-pointer shadow-sm text-dark"
-              >M</label
-            >
-          </div>
-          <div class="size-selector">
-            <input type="radio" name="size" id="size-l" class="hidden" />
-            <label
-              for="size-l"
-              class="text-xs border border-slate-200 rounded-sm h-6 w-7 flex items-center justify-center cursor-pointer shadow-sm text-dark"
-              >L</label
-            >
-          </div>
-          <div class="size-selector">
-            <input type="radio" name="size" id="size-xl" class="hidden" />
-            <label
-              for="size-xl"
-              class="text-xs border border-slate-200 rounded-sm h-6 w-7 flex items-center justify-center cursor-pointer shadow-sm text-dark"
-              >XL</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <div class="pt-4 font-inter">
-        <h3 class="text-sm text-dark mb-2 capitalize font-semibold">Color</h3>
-        <div class="flex items-center gap-2">
-          <div class="color-selector">
-            <input type="radio" name="color" id="red" class="hidden" />
-            <label
-              for="red"
-              class="border border-slate-200 rounded-sm h-6 w-6 cursor-pointer shadow-sm block bg-pink"
-            ></label>
-          </div>
-          <div class="color-selector">
-            <input type="radio" name="color" id="black" class="hidden" />
-            <label
-              for="black"
-              class="border border-slate-200 rounded-sm h-6 w-6 cursor-pointer shadow-sm block bg-dark"
-            ></label>
-          </div>
-          <div class="color-selector">
-            <input type="radio" name="color" id="white" class="hidden" />
-            <label
-              for="white"
-              class="border border-slate-200 rounded-sm h-6 w-6 cursor-pointer shadow-sm block bg-white"
-            ></label>
-          </div>
-        </div>
-      </div>
-
       <div class="mt-4">
         <h3 class="text-sm text-dark capitalize mb-2 font-semibold">Quantity</h3>
         <div
@@ -219,15 +146,15 @@
 
       <div class="mt-6 flex gap-3 pt-3 pb-5">
         <Link
-          class="bg-hoverPrimary text-white px-8 py-2 font-medium rounded-md hover:bg-primaryColor uppercase flex items-center gap-2 transition"
+          class="bg-hoverPrimary text-white px-8 py-2 font-medium rounded-md hover:bg-primaryColor capitalize flex items-center gap-2 transition no-underline"
         >
           <i class="fa-solid fa-bag-shopping"></i> Beli sekarang
         </Link>
         <Link
-          class="border-1 border-slate-300 text-dark px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-dark transition group"
+          class="border-2 border-slate-200 text-slate-300 px-8 py-2 font-medium rounded capitalize flex items-center gap-2 hover:bg-white-50 no-underline group"
         >
           <i class="bx bx-shopping-bag text-pink bx-xs"></i>
-          <span class="group-hover:text-white">Tambahkan ke keranjang</span>
+          <span class="group-hover:text-slate-300 outline-none">Tambahkan ke keranjang</span>
         </Link>
       </div>
     </div>
@@ -235,7 +162,7 @@
   <!-- ./product-detail -->
 
   <!-- description -->
-  <div class="container pb-16">
+  <div class="container pb-16 font-inter">
     <h3 class="border-b border-slate-300 font-roboto text-dark pb-3 font-semibold">
       Product details
     </h3>
@@ -270,32 +197,27 @@
         <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
           <div class="py-2 inline-block min-w-full">
             <div class="overflow-hidden">
-              <table class="min-w-full table-auto text-dark text-sm mt-10">
-                <thead class="bg-white-50 border-b border-slate-200">
+              <table class="w-20 h-20 table-auto text-dark text-sm mt-10 divide-y-2 divide-white-50">
+                <thead class="text-slate-300">
                   <tr class="capitalize text-sm">
                     <th scope="col" class="py-2 px-4 font-semibold">nama produk</th>
                     <th scope="col" class="py-2 px-4 font-semibold">
                       harga &#40;Rp&#41;
                     </th>
-                    <th scope="col" class="py-2 px-4 font-semibold">ukuran</th>
-                    <th scope="col" class="py-2 px-4 font-semibold">warna</th>
-                    <th scope="col" class="py-2 px-4 font-semibold">bahan</th>
-                    <th scope="col" class="py-2 px-4 font-semibold">ketersediaan</th>
                     <th scope="col" class="py-2 px-4 font-semibold">rating</th>
                     <th scope="col" class="py-2 px-4 font-semibold">ulasan</th>
-                    <th scope="col" class="py-2 px-4 font-semibold">detail pengiriman</th>
                     <th scope="col" class="py-2 px-4 font-semibold">
                       kebijakan pengembalian
                     </th>
                     <th scope="col" class="py-2 px-4 font-semibold uppercase">sku</th>
-                    <th scope="col" class="py-2 px-4 font-semibold">berat</th>
+                    <th scope="col" class="py-2 px-4 font-semibold">satuan</th>
                     <th scope="col" class="py-2 px-4 font-semibold">deskripsi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="border-b border-white-50 capitalize">
                     <td
-                      class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
                     >
                       pohon jati
                     </td>
@@ -307,55 +229,30 @@
                     <td
                       class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
                     >
-                      125 cm
+                      5/10
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      -
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      Kayu
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      55
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      3/5
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-sm text-slate-300 font-light px-6 py-4 whitespace-nowrap"
                     >
                       5500
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-                    >
-                      Bandung, jawa barat
-                    </td>
-                    <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-sm text-slate-300 font-light px-6 py-4 whitespace-nowrap"
                     >
                       Garansi 1 tahun
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-sm text-slate-300 font-light px-6 py-4 whitespace-nowrap"
                     >
                       02BJDBC12
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-sm text-slate-300 font-light px-6 py-4 whitespace-nowrap"
                     >
-                      50,5
+                      kg
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+                      class="text-sm text-slate-300 font-light px-6 py-4 whitespace-nowrap"
                     >
                       Kayu yang awet tidak mudah rapuh
                     </td>
@@ -371,33 +268,30 @@
   <!-- ./description -->
 
   <!-- related product -->
-  <div class="container pb-16">
+  <div class="container pb-16 font-inter">
     <h2 class="text-2xl font-medium text-dark capitalize mb-6">produk lainnya</h2>
     <!-- Show produk -->
-    <div class="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-        <div class="bg-white shadow rounded-md overflow-hidden group">
-            <div class="relative flex justify-center items-center">
-            <div class="w-full h-[180px] overflow-hidden">
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div class="bg-white shadow rounded-md overflow-hidden" v-for="index in 20" :key="index">
+            <div class="relative flex justify-center items-center group">
+            <div class="w-full h-[170px] overflow-hidden">
                 <img
                 :src="product1"
                 alt="product 1"
-                class="w-full h-full bg-cover bg-center"
+                class="w-full h-full bg-cover bg-center transition hover:cursor-pointer hover:brightness-50 group-hover:brightness-50"
                 />
             </div>
-            <div
-                class="absolute inset-0 flex items-center justify-center gap-2 bg-dark opacity-0 hover:opacity-50 transition hover:cursor-pointer group"
-            ></div>
             <div class="absolute gap-2 hidden group-hover:flex">
                 <Link
                 href="#"
-                class="text-white text-lg w-10 h-10 rounded-full bg-dark flex items-center justify-center opacity-80 transition"
+                class="text-white text-lg w-10 h-10 rounded-full bg-dark flex items-center justify-center opacity-60 hover:opacity-90 transition"
                 title="view product"
                 >
                 <i class="fa-solid fa-magnifying-glass"></i>
                 </Link>
                 <Link
                 href="#"
-                class="text-white text-lg w-10 h-10 rounded-full bg-dark flex items-center justify-center opacity-80 transition"
+                class="text-white text-lg w-10 h-10 rounded-full bg-dark flex items-center justify-center opacity-60 hover:opacity-90 transition"
                 title="add to wishlist"
                 >
                 <i class="fa-solid fa-heart"></i>
@@ -405,9 +299,9 @@
             </div>
             </div>
             <div class="pt-3 pb-3 px-3">
-            <Link href="#">
-                <h4 class="capitalize font-semibold text-xl mb-1 text-dark transition no-decoration underline-none">
-                pohon jati asli | untuk bahan material
+            <Link class="no-underline">
+                <h4 class="capitalize font-semibold text-xl mb-1 text-dark transition">
+                    pohon jati asli | untuk bahan material
                 </h4>
             </Link>
             <div class="capitalize text-[10px] flex gap-2 text-center">
@@ -436,13 +330,13 @@
             </div>
             </div>
             <div class="flex items-center divide-white-50 space-x-2 divide-x-2 pb-2">
-            <div class="flex gap-1 text-xs text-[#37B5B6] ml-4">
-                <i class="bx bxs-car"></i>
-                <span class="px-1">1-3 hari</span>
-            </div>
-            <div class="text-xs text-slate-300 ml-3 px-2 capitalize inline text-center">
-                <i class="bx bx-location-plus"></i> Bandung
-            </div>
+                <div class="flex gap-1 text-xs text-[#37B5B6] ml-4">
+                    <i class="bx bxs-car"></i>
+                    <span class="px-1">1-3 hari</span>
+                </div>
+                <div class="text-xs text-slate-300 ml-3 px-2 capitalize inline text-center">
+                    <i class="bx bx-location-plus"></i> Bandung {{ current }}
+                </div>
             </div>
         </div>
     </div>
@@ -464,4 +358,5 @@ const product9 = "/assets/products/product9.jpg";
 const product10 = "/assets/products/product10.jpg";
 const product11 = "/assets/products/product11.jpg";
 const product12 = "/assets/products/product12.jpg";
+
 </script>
