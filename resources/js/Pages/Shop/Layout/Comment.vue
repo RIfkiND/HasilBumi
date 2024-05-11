@@ -2,22 +2,22 @@
 
 </style>
 <template>
-    <section class="bg-white text-dark py-5 lg:py-16 antialiased font-inter">
+    <section class="bg-white text-dark py-5 lg:py-16 antialiased font-inter float-left">
         <div class="max-w-2xl mx-auto px-4">
             <div class="flex justify-between items-center mb-2">
                 <h2 class="text-lg lg:text-2xl font-bold text-dark dark:text-white capitalize">komentar</h2>
             </div>
             <form class="mb-3" method="#" action="#">
                 <div class="pb-4 pt-1 px-3 mb-4 rounded-lg rounded-t-lg border-2 border-white-50 relative">
-                    <textarea id="comment" rows="7"
-                        class="px-0 w-full text-sm text-slate-300 border-0 focus:ring-0 focus:outline-none"
+                    <textarea id="comment" rows="6"
+                        class="px-0 w-full text-sm text-slate-300 border-0 focus:ring-0 focus:outline-none relative"
                         placeholder="Ketik pesan..." required>
                     </textarea>
-                    <div class="w-50 h-40 mt-5 rounded-lg bg-dark overflow-hidden flex">
+                    <div class="w-50 h-40 mt-5 rounded-lg bg-dark overflow-hidden hidden">
                         <video class="w-full h-full bg-cover bg-center" ref="videoElement" :hidden="!isCameraOn" autoplay></video>
                     </div>
                     <!-- icons untuk inputan file, audio dan camera -->
-                    <div class="flex absolute left-4 top-[163px] space-x-2 z-10 w-full">
+                    <div class="flex absolute left-4 top-[143px] space-x-2 z-10 w-full">
                         <span class="hover:cursor-pointer" @click="toggleCamera" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Rekaman video">
                             <svg class="w-5 h-5 text-slate-200 text-xs hover:text-gray-400" v-if="!isCameraOn" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M4 18V8a1 1 0 0 1 1-1h1.5l1.707-1.707A1 1 0 0 1 8.914 5h6.172a1 1 0 0 1 .707.293L17.5 7H19a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/>

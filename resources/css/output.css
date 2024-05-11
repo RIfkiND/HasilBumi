@@ -3967,6 +3967,26 @@ details.collapse summary::-webkit-details-marker {
   top: 148px;
 }
 
+.top-\[140px\] {
+  top: 140px;
+}
+
+.top-\[120px\] {
+  top: 120px;
+}
+
+.top-\[130px\] {
+  top: 130px;
+}
+
+.top-\[135px\] {
+  top: 135px;
+}
+
+.top-\[143px\] {
+  top: 143px;
+}
+
 .-z-50 {
   z-index: -50;
 }
@@ -6669,6 +6689,10 @@ details.collapse summary::-webkit-details-marker {
 
   .lg\:ml-12 {
     margin-left: 3rem;
+  }
+
+  .lg\:ml-36 {
+    margin-left: 9rem;
   }
 
   .lg\:flex {

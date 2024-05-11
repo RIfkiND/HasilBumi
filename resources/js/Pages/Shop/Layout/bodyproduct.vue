@@ -259,6 +259,7 @@
                   </tr>
                 </tbody>
               </table>
+              <Comment/>
             </div>
           </div>
         </div>
@@ -348,6 +349,7 @@
 </template>
 <script setup>
 import { Link } from "@inertiajs/vue3";
+import Comment from './Comment.vue';
 
 const product1 = "/assets/products/pohon1.jpg";
 const product2 = "/assets/products/pohon2.jpg";
