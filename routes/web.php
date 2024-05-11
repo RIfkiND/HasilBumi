@@ -9,6 +9,10 @@ Route::get('/testing', function () {
     return Inertia::render('Shop/MainShop');
 });
 
+Route::get('/coment', function () {
+    return Inertia::render('Shop/Layout/Comment');
+});
+
 
 
 require __DIR__.'/Pages/Main.php';

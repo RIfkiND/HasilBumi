@@ -29,7 +29,7 @@
                 type="checkbox"
                 name="cat-1"
                 id="cat-1"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="cat-1" class="text-slate-300 ml-3">Bedroom</label>
               <div class="ml-auto text-slate-300 text-sm">&lpar;15&rpar;</div>
@@ -39,7 +39,7 @@
                 type="checkbox"
                 name="cat-2"
                 id="cat-2"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="cat-2" class="text-slate-300 ml-3">Sofa</label>
               <div class="ml-auto text-slate-300 text-sm">&lpar;9&rpar;</div>
@@ -49,7 +49,7 @@
                 type="checkbox"
                 name="cat-3"
                 id="cat-3"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="cat-3" class="text-slate-300 ml-3">Office</label>
               <div class="ml-auto text-slate-300 text-sm">&lpar;21&rpar;</div>
@@ -59,7 +59,7 @@
                 type="checkbox"
                 name="cat-4"
                 id="cat-4"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="cat-4" class="text-slate-300 ml-3">Outdoor</label>
               <div class="ml-auto text-slate-300 text-sm">&lpar;10&rpar;</div>
@@ -76,7 +76,7 @@
                 type="checkbox"
                 name="brand-1"
                 id="brand-1"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="brand-1" class="text-slate-300 ml-3"
                 >Cooking Color</label
@@ -88,7 +88,7 @@
                 type="checkbox"
                 name="brand-2"
                 id="brand-2"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="brand-2" class="text-slate-300 ml-3"
                 >Magniflex</label
@@ -100,7 +100,7 @@
                 type="checkbox"
                 name="brand-3"
                 id="brand-3"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="brand-3" class="text-slate-300 ml-3"
                 >Ashley</label
@@ -112,7 +112,7 @@
                 type="checkbox"
                 name="brand-4"
                 id="brand-4"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="brand-4" class="text-slate-300 ml-3">M & D</label>
               <div class="ml-auto text-slate-300 text-sm">&lpar;10&rpar;</div>
@@ -122,7 +122,7 @@
                 type="checkbox"
                 name="brand-5"
                 id="brand-5"
-                class="accent-primaryColor rounded-sm cursor-pointer"
+                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
               />
               <label for="brand-5" class="text-slate-300 ml-3"
                 >Olympic</label
@@ -134,14 +134,14 @@
 
         <!-- Price -->
         <div class="pt-4">
-          <h3 class="text-xl text-dark mb-3 capitalize font-semibold">Price</h3>
+          <h3 class="text-xl text-dark mb-3 capitalize font-semibold">Harga</h3>
           <div class="mt-4 flex items-center">
             <input
               type="text"
               name="min"
               id="min"
               class="w-full border-2 border-white-50 focus:border-slate-200 rounded px-3 py-1 text-slate-300 shadow-sm bg-white outline-none text-center"
-              placeholder="Min"
+              placeholder="Rp0"
             />
             <span class="mx-3 text-dark">-</span>
             <input
@@ -149,7 +149,7 @@
               name="max"
               id="max"
               class="w-full border-2 border-white-50 focus:border-slate-200 rounded px-3 py-1 text-slate-300 shadow-sm bg-white outline-none text-center"
-              placeholder="Max"
+              placeholder="Rp0"
             />
           </div>
         </div>
@@ -215,7 +215,7 @@
               >
             </div>
           </div>
-            <button type="submit" class="mt-4 w-full py-2 bg-hoverPrimary hover:cursor-pointer hover:bg-primaryColor rounded-md block px-4 text-white font-medium capitalize text-md">
+            <button type="submit" class="mt-4 w-full py-2 bg-hoverPrimary hover:cursor-pointer hover:bg-teal-dark rounded-md block px-4 text-white font-medium capitalize text-md">
                 <i class="fa-solid fa-magnifying-glass text-white px-1"></i> cari sekarang
             </button>
         </div>
@@ -294,13 +294,16 @@
                     <div class="text-xs text-slate-300 ml-3 px-2">1,5rb Terjual</div>
                 </div>
                 </div>
-                <div class="flex items-center divide-white-50 space-x-2 divide-x-2 pb-2">
+                <div class="flex items-center divide-white-50 space-x-2 divide-x-2 pb-3">
                     <div class="flex gap-1 text-xs text-[#37B5B6] ml-4">
                         <i class="bx bxs-car"></i>
                         <span class="px-1">1-3 hari</span>
                     </div>
-                    <div class="text-xs text-slate-300 ml-3 px-2 capitalize inline text-center">
-                        <i class="bx bx-location-plus"></i> Bandung
+                    <div class="text-xs ml-3 px-2 capitalize text-center flex text-slate-300 gap-1">
+                        <svg class="w-4 h-4 text-xs text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"/>
+                        </svg> Bandung
                     </div>
                 </div>
             </div>
