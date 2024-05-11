@@ -54,8 +54,8 @@
                     <div class="flex items-center">
                         <p class="inline-flex items-center mr-3 text-sm text-dark font-semibold capitalize">
                             <img
-                            class="mr-2 w-7 h-7 rounded-full"
-                            src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                            class="mr-2 w-7 h-7 rounded-full bg-cover bg-center"
+                            :src="user1"
                             alt="Michael Gough"
                             >Aji setiyawan
                         </p>
@@ -63,13 +63,12 @@
                             <time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb 8, 2022</time>
                         </p>
                     </div>
-                    <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
-                        class="inline-flex items-center p-2 text-sm font-medium text-center text-slate-200 hover:text-slate-300 rounded-lg focus:outline-none"
+                    <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" data-bs-toggle="tooltip" data-bs-placement="top"         title="Pengaturan"
+                        class="inline-flex items-center p-3 text-sm font-medium text-center text-slate-200 hover:text-slate-300 rounded-full focus:outline-none w-4 h-4 hover:bg-white-50 relative justify-center"
                         type="button">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                        <svg class="w-6 h-6 absolute" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
                         </svg>
-                        <span class="sr-only">Pengaturan</span>
                     </button>
                     <!-- Dropdown menu -->
                     <div id="dropdownComment1"
@@ -107,158 +106,326 @@
                     </div>
                 </footer>
                 <p class="text-slate-300">Aku baru saja mencoba produk baru dari petani lokal di daerah kita. Rasanya sangat segar dan alami!</p>
-                <div class="flex items-center mt-4 space-x-4">
+                <div class="flex items-center mt-3 space-x-4">
+                    <button type="button"
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
+                        <svg class="mr-1 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+                        </svg>
+                        Balas
+                    </button>
+                    <button type="button"
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
+                        <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11c.889-.086 1.416-.543 2.156-1.057a22.323 22.323 0 0 0 3.958-5.084 1.6 1.6 0 0 1 .582-.628 1.549 1.549 0 0 1 1.466-.087c.205.095.388.233.537.406a1.64 1.64 0 0 1 .384 1.279l-1.388 4.114M7 11H4v6.5A1.5 1.5 0 0 0 5.5 19v0A1.5 1.5 0 0 0 7 17.5V11Zm6.5-1h4.915c.286 0 .372.014.626.15.254.135.472.332.637.572a1.874 1.874 0 0 1 .215 1.673l-2.098 6.4C17.538 19.52 17.368 20 16.12 20c-2.303 0-4.79-.943-6.67-1.475"/>
+                        </svg>
+                        Like
+                    </button>
+                </div>
+            </article>
+            <article class="p-6 mb-3 ml-6 lg:ml-12 text-base rounded-lg">
+                <footer class="flex justify-between items-center mb-2">
+                    <div class="flex items-center">
+                            <p class="inline-flex items-center mr-3 text-sm text-dark capitalize font-semibold">
+                                <img
+                                class="mr-2 w-6 h-6 rounded-full"
+                                :src="user2"
+                                alt="Jese Leos">Jess no limit
+                            </p>
+                        <p class="text-sm text-slate-200">
+                            <time pubdate datetime="2022-02-08" title="February 8th, 2022">
+                                Feb 8, 2022
+                            </time>
+                        </p>
+                    </div>
+                    <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" data-bs-toggle="tooltip" data-bs-placement="top"         title="Pengaturan"
+                        class="inline-flex items-center p-3 text-sm font-medium text-center text-slate-200 hover:text-slate-300 rounded-full focus:outline-none w-4 h-4 hover:bg-white-50 relative justify-center"
+                        type="button">
+                        <svg class="w-6 h-6 absolute" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownComment1"
+                        class="hidden flex z-10 w-36 bg-white rounded-md divide-y divide-slate-200 shadow justify-center items-center px-2 py-2">
+                        <ul class="text-sm text-slate-300 space-y-1 text-left block mt-3 px-2"
+                            aria-labelledby="dropdownMenuIconHorizontalButton">
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"/>
+                                    </svg>
+                                    Edit
+                                </Link>
+                            </li>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                                    </svg>
+                                    Remove
+                                </Link>
+                            </li>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14v7M5 4.971v9.541c5.6-5.538 8.4 2.64 14-.086v-9.54C13.4 7.61 10.6-.568 5 4.97Z"/>
+                                    </svg>
+                                    Report
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                </footer>
+                <p class="text-slate-300">itu terdengar menarik! Apa produknya? Saya juga suka mendukung produk lokal.</p>
+                <div class="flex items-center mt-3 space-x-4">
                     <button type="button"
                         class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
                         <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
                         </svg>
-                        Reply
+                        Balas
                     </button>
-                </div>
-            </article>
-            <article class="p-6 mb-3 ml-6 lg:ml-12 text-base bg-white rounded-lg dark:bg-gray-900">
-                <footer class="flex justify-between items-center mb-2">
-                    <div class="flex items-center">
-                        <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
-                                class="mr-2 w-6 h-6 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                alt="Jese Leos">Jese Leos</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-12"
-                                title="February 12th, 2022">Feb. 12, 2022</time></p>
-                    </div>
-                    <button id="dropdownComment2Button" data-dropdown-toggle="dropdownComment2"
-                        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        type="button">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
-                        </svg>
-                        <span class="sr-only">Comment settings</span>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdownComment2"
-                        class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="dropdownMenuIconHorizontalButton">
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                            </li>
-                        </ul>
-                    </div>
-                </footer>
-                <p class="text-slae-300">itu terdengar menarik! Apa produknya? Saya juga suka mendukung produk lokal.</p>
-                <div class="flex items-center mt-4 space-x-4">
                     <button type="button"
-                        class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
-                        <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
+                        <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11c.889-.086 1.416-.543 2.156-1.057a22.323 22.323 0 0 0 3.958-5.084 1.6 1.6 0 0 1 .582-.628 1.549 1.549 0 0 1 1.466-.087c.205.095.388.233.537.406a1.64 1.64 0 0 1 .384 1.279l-1.388 4.114M7 11H4v6.5A1.5 1.5 0 0 0 5.5 19v0A1.5 1.5 0 0 0 7 17.5V11Zm6.5-1h4.915c.286 0 .372.014.626.15.254.135.472.332.637.572a1.874 1.874 0 0 1 .215 1.673l-2.098 6.4C17.538 19.52 17.368 20 16.12 20c-2.303 0-4.79-.943-6.67-1.475"/>
                         </svg>
-                        Reply
+                        Like
                     </button>
                 </div>
             </article>
-            <article class="p-6 mb-3 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+            <article class="p-6 mb-3 text-base border-t border-gray-200">
                 <footer class="flex justify-between items-center mb-2">
                     <div class="flex items-center">
-                        <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                        <p class="inline-flex items-center mr-3 text-sm text-dark dark:text-white font-semibold capitalize">
+                            <img
                                 class="mr-2 w-6 h-6 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-                                alt="Bonnie Green">Bonnie Green</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-03-12"
-                                title="March 12th, 2022">Mar. 12, 2022</time></p>
+                                :src="user3"
+                                alt="Bonnie Green"
+                            >
+                            rifki naufal dzaki
+                        </p>
+                        <p class="text-sm text-slate-200">
+                            <time pubdate datetime="2022-03-12" title="March 12th, 2022">
+                                Mar 12, 2022
+                            </time>
+                        </p>
                     </div>
-                    <button id="dropdownComment3Button" data-dropdown-toggle="dropdownComment3"
-                        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" data-bs-toggle="tooltip" data-bs-placement="top"         title="Pengaturan"
+                        class="inline-flex items-center p-3 text-sm font-medium text-center text-slate-200 hover:text-slate-300 rounded-full focus:outline-none w-4 h-4 hover:bg-white-50 relative justify-center"
                         type="button">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                        <svg class="w-6 h-6 absolute" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
                         </svg>
-                        <span class="sr-only">Comment settings</span>
                     </button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdownComment3"
-                        class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                    <!-- Dropdown! -->
+                    <div id="dropdownComment1"
+                        class="hidden flex z-10 w-36 bg-white rounded-md divide-y divide-slate-200 shadow justify-center items-center px-2 py-2">
+                        <ul class="text-sm text-slate-300 space-y-1 text-left block mt-3 px-2"
                             aria-labelledby="dropdownMenuIconHorizontalButton">
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"/>
+                                    </svg>
+                                    Edit
+                                </Link>
                             </li>
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                                    </svg>
+                                    Remove
+                                </Link>
                             </li>
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14v7M5 4.971v9.541c5.6-5.538 8.4 2.64 14-.086v-9.54C13.4 7.61 10.6-.568 5 4.97Z"/>
+                                    </svg>
+                                    Report
+                                </Link>
                             </li>
                         </ul>
                     </div>
                 </footer>
-                <p class="text-gray-500 dark:text-gray-400">The article covers the essentials, challenges, myths and stages the UX designer should consider while creating the design strategy.</p>
-                <div class="flex items-center mt-4 space-x-4">
-                    <button type="button" class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
+                <p class="text-slate-300">Produknya adalah madu organik murni. Sangat lezat dan terasa begitu alami tanpa tambahan bahan kimia.</p>
+                <div class="flex items-center mt-3 space-x-4">
+                    <button type="button"
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
                         <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
                         </svg>
                         Balas
                     </button>
+                    <button type="button"
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
+                        <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11c.889-.086 1.416-.543 2.156-1.057a22.323 22.323 0 0 0 3.958-5.084 1.6 1.6 0 0 1 .582-.628 1.549 1.549 0 0 1 1.466-.087c.205.095.388.233.537.406a1.64 1.64 0 0 1 .384 1.279l-1.388 4.114M7 11H4v6.5A1.5 1.5 0 0 0 5.5 19v0A1.5 1.5 0 0 0 7 17.5V11Zm6.5-1h4.915c.286 0 .372.014.626.15.254.135.472.332.637.572a1.874 1.874 0 0 1 .215 1.673l-2.098 6.4C17.538 19.52 17.368 20 16.12 20c-2.303 0-4.79-.943-6.67-1.475"/>
+                        </svg>
+                        Like
+                    </button>
                 </div>
             </article>
-            <article class="p-6 text-base bg-white border-t border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+            <article class="p-6 text-base border-t border-gray-200">
                 <footer class="flex justify-between items-center mb-2">
                     <div class="flex items-center">
-                        <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                        <p class="inline-flex items-center mr-3 text-sm text-dark capitalize font-semibold">
+                            <img
                                 class="mr-2 w-6 h-6 rounded-full"
                                 src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
-                                alt="Helene Engels">Helene Engels</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-06-23"
-                                title="June 23rd, 2022">Jun. 23, 2022</time></p>
+                                alt="rifki naufal dzaki"
+                            >
+                            marchelino uno
+                        </p>
+                        <p class="text-sm text-slate-200">
+                            <time pubdate datetime="2022-06-23" title="June 23rd, 2022">
+                                Jun 23, 2024
+                            </time>
+                        </p>
                     </div>
-                    <button id="dropdownComment4Button" data-dropdown-toggle="dropdownComment4"
-                        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" data-bs-toggle="tooltip" data-bs-placement="top"         title="Pengaturan"
+                        class="inline-flex items-center p-3 text-sm font-medium text-center text-slate-200 hover:text-slate-300 rounded-full focus:outline-none w-4 h-4 hover:bg-white-50 relative justify-center"
                         type="button">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                        <svg class="w-6 h-6 absolute" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
                         </svg>
                     </button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownComment4"
-                        class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                    <div id="dropdownComment1"
+                        class="hidden flex z-10 w-36 bg-white rounded-md divide-y divide-slate-200 shadow justify-center items-center px-2 py-2">
+                        <ul class="text-sm text-slate-300 space-y-1 text-left block mt-3 px-2"
                             aria-labelledby="dropdownMenuIconHorizontalButton">
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"/>
+                                    </svg>
+                                    Edit
+                                </Link>
                             </li>
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                                    </svg>
+                                    Remove
+                                </Link>
                             </li>
-                            <li>
-                                <a href="#"
-                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14v7M5 4.971v9.541c5.6-5.538 8.4 2.64 14-.086v-9.54C13.4 7.61 10.6-.568 5 4.97Z"/>
+                                    </svg>
+                                    Report
+                                </Link>
                             </li>
                         </ul>
                     </div>
                 </footer>
-                <p class="text-gray-500 dark:text-gray-400">Thanks for sharing this. I do came from the Backend development and explored some of the tools to design my Side Projects.</p>
-                <div class="flex items-center mt-4 space-x-4">
+                <p class="text-slate-300">
+                    Kamu bisa mendapatkannya langsung dari petani. Mereka punya stand di pasar mingguan setiap hari Sabtu. Aromanya begitu segar!
+                </p>
+                <div class="flex items-center mt-3 space-x-4">
                     <button type="button"
-                        class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
                         <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
                         </svg>
-                        Reply
+                        Balas
+                    </button>
+                    <button type="button"
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
+                        <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11c.889-.086 1.416-.543 2.156-1.057a22.323 22.323 0 0 0 3.958-5.084 1.6 1.6 0 0 1 .582-.628 1.549 1.549 0 0 1 1.466-.087c.205.095.388.233.537.406a1.64 1.64 0 0 1 .384 1.279l-1.388 4.114M7 11H4v6.5A1.5 1.5 0 0 0 5.5 19v0A1.5 1.5 0 0 0 7 17.5V11Zm6.5-1h4.915c.286 0 .372.014.626.15.254.135.472.332.637.572a1.874 1.874 0 0 1 .215 1.673l-2.098 6.4C17.538 19.52 17.368 20 16.12 20c-2.303 0-4.79-.943-6.67-1.475"/>
+                        </svg>
+                        Like
+                    </button>
+                </div>
+            </article>
+            <article class="p-6 mb-3 ml-6 lg:ml-12 text-base rounded-lg">
+                <footer class="flex justify-between items-center mb-2">
+                    <div class="flex items-center">
+                            <p class="inline-flex items-center mr-3 text-sm text-dark capitalize font-semibold">
+                                <img
+                                class="mr-2 w-6 h-6 rounded-full"
+                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                alt="Jese Leos">Jess no limit
+                            </p>
+                        <p class="text-sm text-slate-200">
+                            <time pubdate datetime="2022-02-08" title="February 8th, 2022">
+                                Feb 8, 2022
+                            </time>
+                        </p>
+                    </div>
+                    <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1" data-bs-toggle="tooltip" data-bs-placement="top"         title="Pengaturan"
+                        class="inline-flex items-center p-3 text-sm font-medium text-center text-slate-200 hover:text-slate-300 rounded-full focus:outline-none w-4 h-4 hover:bg-white-50 relative justify-center"
+                        type="button">
+                        <svg class="w-6 h-6 absolute" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M12 6h.01M12 12h.01M12 18h.01"/>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownComment1"
+                        class="hidden flex z-10 w-36 bg-white rounded-md divide-y divide-slate-200 shadow justify-center items-center px-2 py-2">
+                        <ul class="text-sm text-slate-300 space-y-1 text-left block mt-3 px-2"
+                            aria-labelledby="dropdownMenuIconHorizontalButton">
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"/>
+                                    </svg>
+                                    Edit
+                                </Link>
+                            </li>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                                    </svg>
+                                    Remove
+                                </Link>
+                            </li>
+                            <li class="mx-7">
+                                <Link href="#"
+                                    class="flex gap-2 py-2 text-slate-300 hover:bg-white-50 hover:cursor-pointer px-[35px] rounded-md text-center">
+                                    <svg class="w-5 h-5 text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14v7M5 4.971v9.541c5.6-5.538 8.4 2.64 14-.086v-9.54C13.4 7.61 10.6-.568 5 4.97Z"/>
+                                    </svg>
+                                    Report
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                </footer>
+                <p class="text-slate-300">itu terdengar menarik! Apa produknya? Saya juga suka mendukung produk lokal.</p>
+                <div class="flex items-center mt-3 space-x-4">
+                    <button type="button"
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
+                        <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+                        </svg>
+                        Balas
+                    </button>
+                    <button type="button"
+                        class="flex items-center text-sm text-slate-200 hover:text-slate-300 font-medium">
+                        <svg class="w-4 h-4 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11c.889-.086 1.416-.543 2.156-1.057a22.323 22.323 0 0 0 3.958-5.084 1.6 1.6 0 0 1 .582-.628 1.549 1.549 0 0 1 1.466-.087c.205.095.388.233.537.406a1.64 1.64 0 0 1 .384 1.279l-1.388 4.114M7 11H4v6.5A1.5 1.5 0 0 0 5.5 19v0A1.5 1.5 0 0 0 7 17.5V11Zm6.5-1h4.915c.286 0 .372.014.626.15.254.135.472.332.637.572a1.874 1.874 0 0 1 .215 1.673l-2.098 6.4C17.538 19.52 17.368 20 16.12 20c-2.303 0-4.79-.943-6.67-1.475"/>
+                        </svg>
+                        Like
                     </button>
                 </div>
             </article>
@@ -266,7 +433,8 @@
     </section>
 </template>
 <script>
-    export default {
+import { Link } from "@inertiajs/vue3";
+export default {
   data() {
     return {
       //untuk real-time audio
@@ -305,6 +473,18 @@
         console.error('Error accessing camera:', error);
       }
     },
+  },
+  data() {
+    return {
+      user1: "",
+      user2: "",
+      user3: "",
+    };
+  },
+  mounted() {
+    this.user1 = "/assets/img/users/ajiw.png";
+    this.user2 = "/assets/img/users/aji.jpg";
+    this.user3 = "/assets/img/users/profil.JPG";
   },
 };
 </script>

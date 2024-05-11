@@ -5145,6 +5145,10 @@ details.collapse summary::-webkit-details-marker {
   background-size: cover;
 }
 
+.bg-contain {
+  background-size: contain;
+}
+
 .bg-center {
   background-position: center;
 }
@@ -6271,6 +6275,10 @@ details.collapse summary::-webkit-details-marker {
   --tw-ring-color: rgb(241 239 239 / var(--tw-ring-opacity));
 }
 
+.active\:flex:active {
+  display: flex;
+}
+
 .active\:bg-white-50:active {
   --tw-bg-opacity: 1;
   background-color: rgb(241 239 239 / var(--tw-bg-opacity));
@@ -6298,6 +6306,10 @@ details.collapse summary::-webkit-details-marker {
 .group:focus .group-focus\:text-primaryColor {
   --tw-text-opacity: 1;
   color: rgb(60 183 43 / var(--tw-text-opacity));
+}
+
+.group:active .group-active\:flex {
+  display: flex;
 }
 
 .peer:checked ~ .peer-checked\:start-6 {
