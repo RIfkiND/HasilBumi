@@ -61,7 +61,7 @@ class User extends Authenticatable
     }
 
     public function seller(){
-        return $this->hasOne(Seller::class);
+        return $this->hasOne(Seller_Information::class);
     }
 
     public function isSeller()
@@ -69,6 +69,7 @@ class User extends Authenticatable
 
         return $this->seller()->exists();
     }
+
 
 
 }

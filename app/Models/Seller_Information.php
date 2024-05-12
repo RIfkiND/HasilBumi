@@ -23,6 +23,6 @@ class Seller_Information extends Model
     ];
 
     public function seller(){
-        return $this->belongsTo(Seller::class);
+        return $this->belongsTo(User::class);
     }
 }
