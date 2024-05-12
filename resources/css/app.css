@@ -13,3 +13,15 @@
 .btn-full {
     @apply text-white px-6 py-2 bg-primaryColor rounded-md transition hover:text-primaryColor hover:bg-white;
 }
+
+.btn-header-outline {
+    @apply text-primaryColor px-6 py-2 rounded-full button-border hover:bg-primaryColor hover:text-white transition;
+}
+
+.btn-header-full {
+    @apply text-white bg-primaryColor px-6 py-2 rounded-full hover:bg-white hover:text-primaryColor button-border transition;
+}
+
+.button-border {
+    box-shadow: inset 0 0 0 2px #3cb72b;
+}

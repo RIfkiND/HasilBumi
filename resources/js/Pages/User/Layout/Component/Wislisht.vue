@@ -1,8 +1,10 @@
 <template>
-    <Header />
+    <Navbar />
     <body>
         <!-- wrapper -->
-        <div class="container grid grid-cols-12 items-start gap-6 pt-4 pb-16 font-inter">
+        <div
+            class="container grid grid-cols-12 items-start gap-6 pt-4 pb-16 font-inter"
+        >
             <!-- wishlist -->
             <div class="col-span-12 space-y-4">
                 <div
@@ -215,9 +217,9 @@
 </template>
 
 <script setup>
-    import Footer from "./Footer.vue";
-    import Header from "./Header.vue";
-    // import Navbar from "./navbar.vue";
+import Footer from "./Footer.vue";
+// import Header from "./Header.vue";
+import Navbar from "./navbar.vue";
 </script>
 
 <style></style>

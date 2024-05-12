@@ -1,6 +1,6 @@
 <template>
     <!-- header atas -->
-    <header class="py-3 shadow-sm bg-white w-full z-50 font-inter">
+    <header class="py-2 shadow-sm bg-white w-full z-50 font-inter">
         <div
             class="container flex items-center justify-between md:gap-4 sm:gap-6"
         >
@@ -22,30 +22,30 @@
             <div class="flex items-center space-x-4 gap-2">
                 <Link
                     :href="route('Home.Whistlist')"
-                    class="text-center text-textColor transition relative"
+                    class="text-center text-textColor relative hover:text-textColor"
                 >
                     <div class="text-2xl">
                         <i class="fa-regular fa-heart icon-style"></i>
                     </div>
-                    <div class="text-xs leading-3">Wishlist</div>
+                    <div class="text-xs leading-3">Favorite</div>
                     <div
-                        class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-hoverPrimary text-white text-xs"
+                        class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
                     >
                         8
                     </div>
                 </Link>
                 <Link
                     :href="route('Home.ShopCart')"
-                    class="text-center text-textColor transition relative"
+                    class="text-center text-textColor relative hover:text-textColor"
                 >
-                    <div class="text-2xl">
-                        <i class="fa-solid fa-bag-shopping icon-style"></i>
+                    <div class="text-primaryColor">
+                        <i class="bx bxs-cart text-[29px]"></i>
                     </div>
-                    <div class="text-xs leading-3">Cart</div>
+                    <div class="text-xs leading-3">Keranjang</div>
                     <div
-                        class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-hoverPrimary text-white text-xs"
+                        class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
                     >
-                        2
+                        8
                     </div>
                 </Link>
                 <div class="flex gap-2" v-if="!authenticated">
@@ -119,7 +119,9 @@
                                     class="block text-sm text-neutral-500 mb-2"
                                     >{{ user.email }}</span
                                 > -->
-                        <span class="block text-md truncate text-textColor font-bold">
+                        <span
+                            class="block text-md truncate text-textColor font-bold"
+                        >
                             {{ user.name }}
                         </span>
                     </div>
@@ -162,7 +164,7 @@
                     Home
                 </a>
                 <a
-                    href="pages/shop.html"
+                    href="#"
                     class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"
                 >
                     Shop
