@@ -31,5 +31,8 @@ export default {
             poppins:['Poppins']
         }
     },
-    plugins: [require('daisyui')],
+    plugins: [
+        require('daisyui'),
+        
+    ],
 }

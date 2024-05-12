@@ -43,15 +43,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function sentMessages()
-    {
-        return $this->morphMany(Message::class, 'sender_id');
+
+    public function messages(){
+        return $this->hasMany(Message::class);
     }
 
+    public function User_Infromation(){
 
-    public function receivedMessages()
-    {
-        return $this->morphMany(Message::class, 'receiver_id');
+        return $this->hasOne(User_Infromation::class);
     }
 
     public function whistlist(){
@@ -65,11 +64,6 @@ class User extends Authenticatable
         return $this->hasOne(Seller::class);
     }
 
-    /**
-     *
-     *
-     * @return boolean
-     */
     public function isSeller()
     {
 

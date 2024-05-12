@@ -17,6 +17,9 @@ Route::get('/Shop-MainPage',[HomeController::class,'Shop'])->name('Shop.main');
 //whislist and Cart
 Route::get('/Whislist',[HomeController::class ,'WhistList'])->name('Home.Whistlist')->middleware('auth');
 Route::get('/ShopCart',[HomeController::class ,'ShopCart'])->name('Home.ShopCart')->middleware('auth');
+//chat
+Route::get('/chat', [HomeController::class, 'chat'])->name('Home.chat');
+
 
 
 //filter
@@ -25,3 +28,4 @@ Route::get('/Products/filter/price', [FilterPageController::class, 'filterByPric
 Route::get('/Products/filter/new', [FilterPageController::class, 'filterByNew'])->name('filter.new');
 Route::get('/Products/filter/old', [FilterPageController::class, 'filterByOld'])->name('filter.old');
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
+

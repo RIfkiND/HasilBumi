@@ -6,7 +6,7 @@ use Inertia\Inertia;
 
 
 Route::get('/testing', function () {
-    return Inertia::render('Shop/Product');
+    return Inertia::render('Coba/Chat/Chat');
 });
 
 

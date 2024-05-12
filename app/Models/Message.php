@@ -11,18 +11,12 @@ class Message extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['from','to','content'];
+    protected $fillable = ['user_id', 'message'];
 
-
-    public function sender()
+  
+    public function user()
     {
-        return $this->morphTo();
-    }
-
-    
-    public function receiver()
-    {
-        return $this->morphTo();
+       return $this->belongsTo(User::class);
     }
 
     public function image(){

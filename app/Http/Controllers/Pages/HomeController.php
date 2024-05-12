@@ -40,4 +40,8 @@ class HomeController extends Controller
             'products '=> $products,
         ]);
     }
+
+    public function chat(){
+        return Inertia::render('Coba/Chat/Chat');
+    }
 }

@@ -20,7 +20,7 @@ class LoginController extends Controller
 
             $request->session()->regenerate();
 
-            return redirect(RouteServiceProvider::HOME)->with('status', ['type' => 'success', 'action' => 'You can exit', 'text' => 'You Logged in']);;
+            return redirect(RouteServiceProvider::HOME)->with(['success'=> 'You have Success loggedin']);
     }
 
 }
