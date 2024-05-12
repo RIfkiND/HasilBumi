@@ -1,6 +1,6 @@
 <template>
     <body>
-        <Header />
+        <navbar />
         <div class="h-screen py-8 font-inter">
             <div class="container mx-auto px-4">
                 <h1 class="text-2xl font-semibold mb-4">Keranjang</h1>
