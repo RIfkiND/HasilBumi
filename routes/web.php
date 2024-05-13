@@ -6,10 +6,14 @@ use Inertia\Inertia;
 
 
 Route::get('/testing', function () {
-    return Inertia::render('Shop/MainShop');
+    return Inertia::render('Coba/APi/pendaftranform');
 });
 
 Route::get('/coment', function () {
+    return Inertia::render('Shop/MainShop');
+});
+
+Route::get('/skeleton', function () {
     return Inertia::render('Shop/Layout/Skeleton');
 });
 

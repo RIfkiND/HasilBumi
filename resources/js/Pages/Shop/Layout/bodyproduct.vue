@@ -77,7 +77,7 @@
           </Link>
         </div>
         <div class="inline-block">
-          <div class="grid grid-cols-3 divide-x gap-2 text-center">
+          <div class="grid grid-cols-2 divide-x gap-2 text-center">
             <span
               class="mt-1/2 text-center text-sm text-dark capitalize border-l border-l-1 px-1"
             >
@@ -87,7 +87,7 @@
               >penilaian
             </span>
             <div class="mt-1/2 text-center text-sm text-dark capitalize px-1">
-              <span class="text-center ml-3">5,8rb terjual</span>
+              <span class="text-center ml-3">26rb terjual</span>
             </div>
           </div>
         </div>

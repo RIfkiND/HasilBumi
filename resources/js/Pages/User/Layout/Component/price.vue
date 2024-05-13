@@ -25,7 +25,7 @@
           <p class="mt-2 text-md text-slate-300">Mulailah dengan fitur dasar kami.</p>
         </div>
         <div class="mb-8">
-          <span class="text-5xl font-extrabold text-primaryColor">$10</span>
+          <span class="text-2xl sm:text-sm md:text-md lg:text-lg font-extrabold text-primaryColor">Rp10.000</span>
           <span class="text-xl font-medium text-slate-300">/month</span>
         </div>
         <ul class="mb-8 space-y-2 text-gray-400 text-sm">
@@ -60,7 +60,7 @@
           <p class="mt-2 text-md text-gray-400">Sempurna untuk usaha kecil dan startup.</p>
         </div>
         <div class="mb-8">
-          <span class="text-5xl font-extrabold text-primaryColor">$25</span>
+          <span class="text-2xl sm:text-sm md:text-md lg:text-lg font-extrabold text-primaryColor">Rp25.000</span>
           <span class="text-xl font-medium text-gray-400">/month</span>
         </div>
         <ul class="mb-8 space-y-2 text-gray-400 text-sm">
@@ -95,7 +95,7 @@
           <p class="mt-2 text-md text-gray-400">Ideal untuk bisnis dan perusahaan.</p>
         </div>
         <div class="mb-8">
-          <span class="text-5xl font-extrabold text-primaryColor">$50</span>
+          <span class="text-2xl sm:text-sm md:text-md lg:text-lg font-extrabold text-primaryColor">Rp50.000</span>
           <span class="text-xl font-medium text-gray-400">/month</span>
         </div>
         <ul class="mb-8 space-y-2 text-gray-400 text-sm">
@@ -124,13 +124,13 @@
       </div>
 
       <!-- Pro Plan -->
-      <div class="bg-white rounded-lg shadow-xl p-6 transform hover:scale-105 transition duration-300">
+      <div class="bg-white rounded-lg shadow-xl p-6 transform hover:scale-105 transition duration-300 hover:border-3">
         <div class="mb-8">
-          <h3 class="text-2xl font-semibold text-dark">Pro</h3>
+          <h3 class="text-2xl sm:text-sm md:text-md lg:text-lg font-semibold text-dark">Pro</h3>
           <p class="mt-2 text-md text-gray-400">Disesuaikan untuk penerapan dan kebutuhan khusus.</p>
         </div>
         <div class="mb-8">
-          <span class="text-5xl font-extrabold text-primaryColor">$99</span>
+          <span class="text-2xl sm:text-sm md:text-md lg:text-lg font-extrabold text-primaryColor">Rp99.000</span>
           <span class="text-xl font-medium text-gray-400">/month</span>
         </div>
         <ul class="mb-8 space-y-2 text-gray-400 text-sm">

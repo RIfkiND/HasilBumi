@@ -13,46 +13,45 @@ use Inertia\Inertia;
 class PendaftaranSellerController extends Controller
 {
 
-    public function MenjadiSeller(Request $request)
-    {
-        $user = Auth::user();
-        if ($user->isSeller()) {
-            return Inertia::render('Coba/APi/Become_Seller')->with(['errors', 'The user Has Become A seller']);
-        }
+    // public function MenjadiSeller(Request $request)
+    // {
+    //     $user = Auth::user();
+    //     if ($user->isSeller()) {
+    //         return Inertia::render('Coba/APi/Become_Seller')->with(['errors', 'The user Has Become A seller']);
+    //     }
 
-        try {
+    //     try {
 
-            DB::beginTransaction();
+    //         DB::beginTransaction();
 
-            $seller = new Seller();
-            $seller->user_id = $user->id;
-            $seller->save();
+    //         $seller = new Seller();
+    //         $seller->user_id = $user->id;
+    //         $seller->save();
 
-            DB::commit();
+    //         DB::commit();
 
-            return Inertia::render('Coba/APi/pendaftranform')->with(['success' => 'User successfully became a seller']);
-        } catch (\Exception $e) {
-            DB::rollBack();
-        }
-    }
+    //         return Inertia::render('Coba/APi/pendaftranform')->with(['success' => 'User successfully became a seller']);
+    //     } catch (\Exception $e) {
+    //         DB::rollBack();
+    //     }
+    // }
 
 
     public function PendaftaranForm()
     {
 
         $user = Auth::user();
-        $seller = $user->seller()->first();
-        $sellerInformation = $seller->sellerInformation()->first();
+        // $sellerInformation = $seller->sellerInformation()->first();
 
         return inertia('Seller/Auth/PendaftaranSeller', [
-            'sellerInformation' => $sellerInformation,
+            // 'sellerInformation' => $sellerInformation,
         ]);
     }
 
     public function Pendaftaran(Request $request)
     {
         $user = Auth::user();
-        $seller = $user->seller()->first();
+        // $seller = $user->seller()->first();
 
 
         $validateData = $request->validate([
@@ -64,14 +63,14 @@ class PendaftaranSellerController extends Controller
             'foto_toko' => 'image|mimes:png,jpg.jpeg|max:2048'
         ]);
 
-        $sellerInformation = $seller->sellerInformation()->firstOrNew([]);
-        $sellerInformation->fill($request->only($validateData));
+        // $sellerInformation = $seller->sellerInformation()->firstOrNew([]);
+        // $sellerInformation->fill($request->only($validateData));
 
         if ($request->hasFile('foto_toko')) {
-            $sellerInformation->foto_toko = $request->file('foto_toko')->store('seller_photos');
+            // $sellerInformation->foto_toko = $request->file('foto_toko')->store('seller_photos');
         }
 
-        $sellerInformation->save();
+        // $sellerInformation->save();
 
         return redirect('/')->with(['success' => 'Seller information saved successfully']);
     }
