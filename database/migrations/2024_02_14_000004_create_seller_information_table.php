@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('seller_information', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
+            $table->string('foto_toko')->nullable();
             $table->string('no_hp');
             $table->string('nama_toko');
             $table->string('nip');
             $table->string('kota');
             $table->string('provinsi');
             $table->string('kode_pos');
-            $table->string('foto_toko')->nullable();
             $table->timestamps();
         });
     }

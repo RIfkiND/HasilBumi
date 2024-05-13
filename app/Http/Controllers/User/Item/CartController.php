@@ -11,14 +11,6 @@ use Illuminate\Support\Facades\DB;
 class CartController extends Controller
 {
 
-    public function showCart()
-    {
-        $user = auth()->user();
-
-        $cartItems = Cart::where('user_id', $user->id)->with('product')->get();
-
-        return view('components.Welcome.cart.cart', compact('cartItems'));
-    }
     public function AddProductCart($id)
     {
 

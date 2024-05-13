@@ -15,7 +15,7 @@ class CreateProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('Islogin');
+        $this->middleware('IsSeller');
     }
 
     public function ProductView()

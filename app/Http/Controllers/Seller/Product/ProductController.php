@@ -39,7 +39,7 @@ class ProductController extends Controller
             $subtotal = 0;
         }
 
-        // Pass cart information to the Blade view
+      
         return view('components.Welcome.card', compact('Products', 'categories', 'selectedCategory', 'cartItems', 'subtotal'));
     }
 

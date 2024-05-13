@@ -10,55 +10,30 @@ class CreateSnapTokenService extends Midtrans
 {
 	protected $order;
 
-	public function __construct($order)
-	{
-		parent::__construct();
+    public function __construct($order)
+    {
+        parent::__construct();
 
-		$this->order = $order;
-	}
+        $this->order = $order;
+    }
 
-	public function getSnapToken()
-	{
-        $userName = Auth::user()->name;
-        $userEmail = Auth::user()->email;
-        $userPhnoeNumber = 
-		$params = [
-			/**
-			 * 'order_id' => id order unik yang akan digunakan sebagai "primary key" oleh Midtrans untuk
-			 * 				 membedakan order satu dengan order lain. Key ini harus unik (tidak boleh ada duplikat).
-			 * 'gross_amount' => merupakan total harga yang harus dibayar customer.
-			 */
-			'transaction_details' => [
-				'order_id' => $this->order->number,
-				'gross_amount' => $this->order->total_price,
-			],
-			/**
-			 * 'item_details' bisa diisi dengan detail item dalam order.
-			 * Umumnya, data ini diambil dari tabel `order_items`.
-			 */
-			'item_details' => [
-				[
-					'id' => 1, // primary key produk
-					'price' => '150000', // harga satuan produk
-					'quantity' => 1, // kuantitas pembelian
-					'name' => 'Flashdisk Toshiba 32GB', // nama produk
-				],
-				[
-					'id' => 2,
-					'price' => '60000',
-					'quantity' => 2,
-					'name' => 'Memory Card VGEN 4GB',
-				],
-			],
-			'customer_details' => [
-				'first_name' => $userName,
-				'email' => $userEmail,
-				'phone' => '081234567890',
-			]
-		];
+    public function getSnapToken()
+    {
+        $params = [
+            'transaction_details' => [
+                'order_id' => $this->order->id,
+                'gross_amount' => $this->order->grand_total,
+            ],
+            'customer_details' => [
+                'first_name' => $this->order->first_name,
+                'last_name' => $this->order->last_name,
+                'email' => $this->order->email,
+                'phone' => $this->order->mobile,
+            ]
+        ];
 
-		$snapToken = Snap::getSnapToken($params);
+        $snapToken = Snap::getSnapToken($params);
 
-		return $snapToken;
-	}
+        return $snapToken;
+    }
 }

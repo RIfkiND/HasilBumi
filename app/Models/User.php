@@ -50,7 +50,11 @@ class User extends Authenticatable
 
     public function User_Infromation(){
 
-        return $this->hasOne(User_Infromation::class);
+        return $this->hasOne(User_Information::class);
+    }
+
+    public function User_Adress(){
+        return $this->hasone(UserAdresess::class);
     }
 
     public function whistlist(){

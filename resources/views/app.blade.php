@@ -75,10 +75,14 @@
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
+    </script>
+
 
   </head>
   <body>
     {{-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=[AIzaSyBUcL-JhKedwvrdTsJ9XucwXlfC83Z7v_8]"></script> --}}
+    
 </head>
 
 <body>
