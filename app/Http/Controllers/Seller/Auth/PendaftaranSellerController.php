@@ -37,7 +37,7 @@ class PendaftaranSellerController extends Controller
     }
 
 
-    public function PendaftranForm()
+    public function PendaftaranForm()
     {
 
         $user = Auth::user();

@@ -2,7 +2,7 @@
 
 </style>
 <template>
-    <section class="bg-white text-dark py-5 lg:py-16 antialiased font-inter float-left">
+    <section class="bg-white text-dark py-5 lg:py-16 antialiased font-inter float-left w-full">
         <div class="max-w-2xl mx-auto px-4">
             <div class="flex justify-between items-center mb-2">
                 <h2 class="text-lg lg:text-2xl font-bold text-dark dark:text-white capitalize">komentar</h2>
