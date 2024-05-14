@@ -36,7 +36,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     {{-- CDN Crisp Live Chat --}}
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
         window.$crisp = [];
         window.CRISP_WEBSITE_ID = "0f639ac1-6f11-4786-b4c9-74b961e41be0";
         (function() {
@@ -46,7 +46,7 @@
             s.async = 1;
             d.getElementsByTagName("head")[0].appendChild(s);
         })();
-    </script> --}}
+    </script>
 
     {{-- Font Google --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,12 +69,12 @@
     <body>
         @inertia
     </body>
-    <div class="fixed float-right bottom-[90px] right-7">
+    {{-- <div class="fixed float-right bottom-[90px] right-7">
         <div class="w-14 h-14 bg-teal rounded-full relative justify-center items-center flex hover:bg-hoverPrimary">
             <a class="absolute m-auto" href="https://api.whatsapp.com/send?phone=6281563929896" rel="noreferrer" target="_blank">
                 <i class="bx bxl-whatsapp bx-md text-white"></i>
             </a>
         </div>
-    </div>
+    </div> --}}
 </body>
 </html>

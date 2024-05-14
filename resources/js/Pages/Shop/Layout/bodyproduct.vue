@@ -29,37 +29,55 @@
   <div
     class="container grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 font-inter"
   >
-    <div>
-      <img :src="product1" alt="product" class="w-full rounded-md" />
-      <div class="grid grid-cols-5 gap-3 mt-4">
-        <img
-          :src="product2"
-          alt="product2"
-          class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-        />
-        <img
-          :src="product3"
-          alt="product2"
-          class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-        />
-        <img
-          :src="product4"
-          alt="product2"
-          class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-        />
-        <img
-          :src="product5"
-          alt="product2"
-          class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-        />
-        <img
-          :src="product6"
-          alt="product2"
-          class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-        />
-      </div>
+    <div class="relative mb-24">
+        <div class="w-full lg:h-[480px] bg-white-50 overflow-hidden rounded-md sm:h-[280px] md:h-[350px]">
+            <img :src="currentImage" alt="product" class="w-full h-full" id="image-main"/>
+        </div>
+        <div class="grid grid-cols-6 gap-2 mt-3">
+            <div @mouseenter="changeMainImage(product2)" @mouseleave="resetMainImage">
+                <img
+                    :src="product2"
+                    alt="product2"
+                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                />
+            </div>
+            <div @mouseenter="changeMainImage(product3)" @mouseleave="resetMainImage">
+                <img
+                    :src="product3"
+                    alt="product3"
+                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                />
+            </div>
+            <div @mouseenter="changeMainImage(product4)" @mouseleave="resetMainImage">
+                <img
+                    :src="product4"
+                    alt="product4"
+                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                />
+            </div>
+            <div @mouseenter="changeMainImage(product5)" @mouseleave="resetMainImage">
+                <img
+                    :src="product5"
+                    alt="product5"
+                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                />
+            </div>
+            <div @mouseenter="changeMainImage(product6)" @mouseleave="resetMainImage">
+                <img
+                    :src="product6"
+                    alt="product6"
+                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                />
+            </div>
+            <div @mouseenter="changeMainImage(product7)" @mouseleave="resetMainImage">
+                <img
+                    :src="product7"
+                    alt="product6"
+                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                />
+            </div>
+        </div>
     </div>
-
     <div>
       <h2 class="text-3xl font-bold capitalize mb-3 sm:text-sm md:text-md lg:text-4xl">pohon jati asli</h2>
       <div class="flex items-center mb-4">
@@ -87,7 +105,8 @@
       <div class="space-y-2">
         <p class="text-dark font-semibold space-x-2">
           <span>Availability: </span>
-          <span class="text-primaryColor">In Stock</span>
+          <span class="text-primaryColor" v-if="statusProduct === 'In Stock'">{{ statusProduct }}</span>
+          <span class="text-pink" v-else>{{ statusProduct }}</span>
         </p>
         <p class="space-x-2">
           <span class="text-dark font-semibold">Brand: </span>
@@ -116,36 +135,40 @@
 
       <div class="mt-4">
         <h3 class="text-sm text-dark capitalize mb-2 font-semibold">Quantity</h3>
-        <div
-          class="flex border border-slate-200 text-slate-300 divide-x divide-slate-200 w-max"
-        >
-          <button
-            type="button" class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none text-slate-300 active:bg-white-50 transition"
-          >
-            -
-          </button>
-          <div class="h-8 w-8 text-base flex items-center justify-center text-slate-300">
-            1
-          </div>
-          <button
-            type="button" class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none text-slate-300 active:bg-white-50 transition"
-          >
-            +
-          </button>
+        <div class="flex">
+            <button
+                v-if="count >= 1"
+                @click="decrement"
+                type="button"
+                class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none text-slate-300 active:bg-white-50 transition border-1 border-white-50 rounded-bl-md rounded-tl-md"
+            >
+                -
+            </button>
+            <button class="h-8 w-8 text-base flex items-center justify-center text-slate-300 border-1 border-white-50 px-4" disabled>
+                {{ count }}
+            </button>
+            <button
+                v-if="count <= 10"
+                @click="increment"
+                type="button"
+                class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none text-slate-300 active:bg-white-50 transition border-1 border-white-50 rounded-br-md rounded-tr-md"
+            >
+                +
+            </button>
         </div>
       </div>
 
       <div class="mt-6 flex gap-3 pt-3 pb-5">
         <Link
-          class="bg-hoverPrimary text-white px-8 py-2 font-medium rounded-md hover:bg-primaryColor capitalize flex items-center gap-2 transition no-underline"
+          class="bg-primaryColor text-white px-8 py-2 font-medium rounded-md capitalize flex items-center gap-2 transition no-underline"
         >
           <i class="fa-solid fa-bag-shopping"></i> Beli sekarang
         </Link>
         <Link
-          class="border-2 border-slate-200 text-slate-300 px-8 py-2 font-medium rounded capitalize flex items-center gap-2 hover:bg-white-50 no-underline group hover:cursor-pointer"
+          class="border-1 border-dark text-dark px-8 py-2 font-medium rounded capitalize flex items-center gap-2 hover:bg-dark no-underline group hover:cursor-pointer transition duration-2000"
         >
-          <i class="bx bx-shopping-bag text-primaryColor bx-xs outline-none"></i>
-          <span class="group-hover:text-slate-300 outline-none">masukan keranjang</span>
+          <i class="bx bx-shopping-bag text-primaryColor text-[20px] outline-none"></i>
+          <span class="group-hover:text-white outline-none">masukan keranjang</span>
         </Link>
       </div>
     </div>
@@ -356,7 +379,12 @@ export default {
         product9: "",
         product10:"",
         product11:"",
-        product12:""
+        product12:"",
+        count:1,
+        popup:"",
+        mainImage: "",
+        currentImage: "",
+        statusProduct:"In Stock"
     };
   },
   mounted() {
@@ -364,6 +392,8 @@ export default {
     this.user2 = "/assets/img/users/aji.jpg";
     this.user3 = "/assets/img/users/profil.JPG";
     this.product1 = "/assets/products/pohon1.jpg";
+    this.mainImage = "/assets/products/pohon1.jpg";
+    this.currentImage = '/assets/products/pohon1.jpg';
     this.product2 = "/assets/products/pohon2.jpg";
     this.product3 = "/assets/products/pohon3.jpg";
     this.product4 = "/assets/products/pohon4.jpg";
@@ -376,6 +406,31 @@ export default {
     this.product11 = "/assets/products/product11.jpg";
     this.product12 = "/assets/products/product12.jpg";
   },
+    methods: {
+        increment() {
+            if(this.count < 10){
+                this.count++;
+            } else if(this.count <= 10){
+                this.popup = alert('nilai sudah maximal');
+            }
+        },
+        decrement() {
+            if (this.count > 1) {
+                this.count--;
+            } else if(this.count >= 1){
+                this.popup = alert('Nilai sudah minimal');
+            }
+        }, //Code selesai disini untuk membatasi nilai max dan min
+
+        // Di bawah ini adalah kode untuk menampilkan gambar ketika di hover
+        changeMainImage(imageSrc) {
+            this.currentImage = imageSrc;
+        },
+        resetMainImage() {
+            this.currentImage = this.mainImage;
+        },
+    },
+
 }
 </script>
 <script setup>

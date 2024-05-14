@@ -445,7 +445,10 @@ export default {
 
       //untuk real-time camera
       isCameraOn: false,
-      videoStream: null
+      videoStream: null,
+      user1: "",
+      user2: "",
+      user3: ""
     };
   },
   methods: {
@@ -476,13 +479,6 @@ export default {
         console.error('Error accessing camera:', error);
       }
     },
-  },
-  data() {
-    return {
-      user1: "",
-      user2: "",
-      user3: "",
-    };
   },
   mounted() {
     this.user1 = "/assets/img/users/ajiw.png";

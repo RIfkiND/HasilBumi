@@ -34,10 +34,10 @@ class HomeController extends Controller
     }
 
     public function Shop(){
-        $products = Product::all();
+        // $products = Product::all();
 
         return Inertia::render('Shop/shop',[
-            'products '=> $products,
+            // 'products '=> $products,
         ]);
     }
 
