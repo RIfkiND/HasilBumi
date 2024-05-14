@@ -19,7 +19,7 @@
                         elit. Esse non cupiditate quae nam molestias.
                     </p>
 
-                    <ul class="mt-3 flex gap-6">
+                    <ul class="mt-4 flex gap-6">
                         <li>
                             <a
                                 href="https://facebook.com"
@@ -82,7 +82,7 @@
                         <div class="block">
                             <div class="flex gap-3">
                                 <div
-                                    class="w-24 h-20 rounded-md bg-white-50 mb-3 overflow-hidden"
+                                    class="w-24 h-20 rounded-md bg-white-50 mb-3 overflow-hidden hover:border-2 hover:border-primaryColor hover:cursor-pointer"
                                     id="congrast"
                                 >
                                     <img
@@ -92,7 +92,7 @@
                                     />
                                 </div>
                                 <div
-                                    class="w-24 h-20 rounded-md bg-white-50 overflow-hidden"
+                                    class="w-24 h-20 rounded-md bg-white-50 overflow-hidden hover:border-2 hover:border-primaryColor hover:cursor-pointer"
                                     id="congrast"
                                 >
                                     <img
