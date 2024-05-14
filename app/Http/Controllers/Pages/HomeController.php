@@ -40,4 +40,13 @@ class HomeController extends Controller
             'products '=> $products,
         ]);
     }
+
+    public function ShowProduct()
+    {
+        return Inertia::render('Shop/Product');
+    }
+
+    public function Skeleton(){
+        return Inertia::render('Shop/Layout/Skeleton');
+    }
 }

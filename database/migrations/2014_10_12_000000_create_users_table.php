@@ -4,9 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 return new class extends Migration
 {
+
+    protected static ?string $password;
     /**
      * Run the migrations.
      */
@@ -17,7 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->default(Str::random(20))->nullable();
+            $table->string('password')->default(static::$password ??= Hash::make('password'))->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

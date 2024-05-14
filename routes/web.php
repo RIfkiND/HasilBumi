@@ -9,13 +9,7 @@ Route::get('/testing', function () {
     return Inertia::render('Coba/APi/pendaftranform');
 });
 
-Route::get('/coment', function () {
-    return Inertia::render('Shop/MainShop');
-});
 
-Route::get('/skeleton', function () {
-    return Inertia::render('Shop/Layout/Skeleton');
-});
 
 
 require __DIR__.'/Pages/Main.php';

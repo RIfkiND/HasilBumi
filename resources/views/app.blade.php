@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
     {{-- Favicon --}}
-    <link rel="shortcut icon" href="./assets/img/google.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/img/favicon-hasilbumi.svg" type="image/x-icon" class="w-5 h-5">
 
     @vite('resources/js/app.js')
     @vite('resources/css/app.css')
@@ -69,5 +69,12 @@
     <body>
         @inertia
     </body>
+    <div class="fixed float-right bottom-[90px] right-7">
+        <div class="w-14 h-14 bg-teal rounded-full relative justify-center items-center flex hover:bg-hoverPrimary">
+            <a class="absolute m-auto" href="https://api.whatsapp.com/send?phone=6281563929896" rel="noreferrer" target="_blank">
+                <i class="bx bxl-whatsapp bx-md text-white"></i>
+            </a>
+        </div>
+    </div>
 </body>
 </html>

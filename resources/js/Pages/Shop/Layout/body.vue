@@ -140,7 +140,7 @@
               type="text"
               name="min"
               id="min"
-              class="w-full border-2 border-white-50 focus:border-slate-200 rounded px-3 py-1 text-slate-300 shadow-sm bg-white outline-none text-center"
+              class="w-full border-2 border-white-50 rounded px-3 py-1 text-slate-300 shadow-sm bg-white outline-none text-center text-md focus:border-2 focus:border-primaryColor focus:placeholder:text-primaryColor focus:text-primaryColor"
               placeholder="Rp0"
             />
             <span class="mx-3 text-dark">-</span>
@@ -148,7 +148,7 @@
               type="text"
               name="max"
               id="max"
-              class="w-full border-2 border-white-50 focus:border-slate-200 rounded px-3 py-1 text-slate-300 shadow-sm bg-white outline-none text-center"
+              class="w-full border-2 border-white-50 rounded px-3 py-1 text-slate-300 shadow-sm bg-white outline-none text-center text-md focus:border-2 focus:border-primaryColor focus:placeholder:text-primaryColor focus:text-primaryColor"
               placeholder="Rp0"
             />
           </div>
@@ -252,19 +252,19 @@
                     class="text-white text-lg w-10 h-10 rounded-full bg-dark flex items-center justify-center opacity-60 hover:opacity-90 transition"
                     title="view product"
                     >
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </Link>
                     <Link
                     href="#"
                     class="text-white text-lg w-10 h-10 rounded-full bg-dark flex items-center justify-center opacity-60 hover:opacity-90 transition"
                     title="add to wishlist"
                     >
-                    <i class="fa-solid fa-heart"></i>
+                        <i class="fa-solid fa-heart"></i>
                     </Link>
                 </div>
                 </div>
                 <div class="pt-3 pb-3 px-3">
-                <Link class="no-underline pt-5">
+                <Link class="no-underline pt-5" :href="route('Showshop.main')">
                     <h4 class="capitalize font-semibold text-xl mb-1 text-dark transition">
                         pohon jati asli | untuk bahan material
                     </h4>
