@@ -45,4 +45,12 @@ class HomeController extends Controller
             'products ' => $products,
         ]);
     }
+    public function Product()
+    {
+        $products = Product::all();
+
+        return Inertia::render('User/Layout/Shop/List_Product', [
+            'products ' => $products,
+        ]);
+    }
 }

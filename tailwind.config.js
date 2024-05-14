@@ -24,7 +24,8 @@ export default {
             'border-secondary':'#B5C0D0',
             'pink':'#F7418F',
             'blue': '#31E1F7',
-            'white-50':'#F1EFEF'
+            'white-50':'#F1EFEF',
+            'Red': '#f03e3e'
         },
         fontFamily: {
             inter: ['Inter'],
