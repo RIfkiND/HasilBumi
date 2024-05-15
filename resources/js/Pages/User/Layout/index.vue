@@ -19,7 +19,10 @@ import Pricing from "./Component/price.vue";
             <!-- <Wislisht/> -->
             <!-- <Shop_card/> -->
             <Pricing />
-            <Swal v-if="$page?.props.flash?.status" :status="$page?.props.flash?.status" />
+            <Swal
+                v-if="$page?.props.flash?.status"
+                :status="$page?.props.flash?.status"
+            />
             <Footer />
         </body>
     </html>
