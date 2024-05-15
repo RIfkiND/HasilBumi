@@ -28,3 +28,4 @@ Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySat
 
 // Skeleton -> tampilan cadangan ketika system rendering data dari server
 Route::get('/skeleton', [HomeController::class, 'Skeleton']);
+Route::get('/pajak', [HomeController::class, 'Pajak']);
