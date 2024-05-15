@@ -12,12 +12,14 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import 'sweetalert2/dist/sweetalert2.min.css'
 //plugins
+import { createPinia } from 'pinia'
 
 const vuetify = createVuetify({
     components,
     directives,
 })
 
+const pinia = createPinia();
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Hasil Bumi'
 
@@ -37,5 +39,15 @@ createInertiaApp({
         return app.mount(el);
 
     },
-    progress: true,
+    progress: {
+        color: '#0076ff',
+    },
 });
+const darkModeStore = useDarkModeStore(pinia)
+
+if (
+   (!localStorage['darkMode'] && window.matchMedia('(prefers-color-scheme: dark)').matches) ||
+   localStorage['darkMode'] === '1'
+ ) {
+   darkModeStore.set(true)
+}
