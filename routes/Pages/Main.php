@@ -25,3 +25,6 @@ Route::get('/Products/filter/price', [FilterPageController::class, 'filterByPric
 Route::get('/Products/filter/new', [FilterPageController::class, 'filterByNew'])->name('filter.new');
 Route::get('/Products/filter/old', [FilterPageController::class, 'filterByOld'])->name('filter.old');
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
+
+// Skeleton -> tampilan cadangan ketika system rendering data dari server
+Route::get('/skeleton', [HomeController::class, 'Skeleton']);
