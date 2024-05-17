@@ -49,7 +49,7 @@ class HomeController extends Controller
     {
         $products = Product::all();
 
-        return Inertia::render('User/Layout/Shop/List_Product', [
+        return Inertia::render('Shop/Layout/body', [
             'products ' => $products,
         ]);
     }
