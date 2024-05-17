@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProductRating;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('specialists', function (Blueprint $table) {
+        Schema::create('product_ratings_images', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignIdFor(ProductRating::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('url');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('specialists');
+        Schema::dropIfExists('product_ratings_images');
     }
 };

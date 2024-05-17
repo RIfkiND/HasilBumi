@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(Category::class);
             $table->foreignIdFor(Seller::class);
             $table->string('name');
-            $table->integer('Harga');
+            $table->decimal('Harga',10,2);
             $table->integer('stock');
             $table->text('deskripsi')->nullable();
             $table->string('satuan');
