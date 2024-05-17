@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+
 class HomeController extends Controller
 {
-    public function Home(){
+    public function Home()
+    {
         $authenticated = Auth::check();
 
         return Inertia::render('Home', [
@@ -17,17 +19,19 @@ class HomeController extends Controller
             'user' => $authenticated ? Auth::user() : null
         ]);
     }
-    public function Whistlist(){
+    public function Whistlist()
+    {
         $authenticated = Auth::check();
 
-        return Inertia::render('User/Layout/Component/Wislisht',[
+        return Inertia::render('User/Layout/Component/Wislisht', [
             'authenticated' => $authenticated,
             'user' => $authenticated ? Auth::user() : null
         ]);
     }
-    public function ShopCart(){
+    public function ShopCart()
+    {
         $authenticated = Auth::check();
-        return Inertia::render('User/Layout/Component/shop_card',[
+        return Inertia::render('User/Layout/Component/shop_card', [
             'authenticated' => $authenticated,
             'user' => $authenticated ? Auth::user() : null
         ]);
@@ -38,6 +42,22 @@ class HomeController extends Controller
 
         return Inertia::render('Shop/shop',[
             // 'products '=> $products,
+
+    public function Shop()
+    {
+        $products = Product::all();
+
+        return Inertia::render('User/Layout/Shop/Shop', [
+            'products ' => $products,
+        ]);
+    }
+    public function Product()
+    {
+        $products = Product::all();
+
+        return Inertia::render('User/Layout/Shop/List_Product', [
+            'products ' => $products,
+
         ]);
     }
 

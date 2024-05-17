@@ -330,7 +330,9 @@ a {
                     <Link :href="route('Home')" class="nav-menu text-white"
                         >Home</Link
                     >
-                    <Link href="#" class="nav-menu text-white">Shop</Link>
+                    <Link :href="route('Shop.main')" class="nav-menu text-white"
+                        >Shop</Link
+                    >
                     <Link href="#" class="nav-menu text-white">Kategori</Link>
                     <Link href="#" class="nav-menu text-white">About us</Link>
                     <Link href="#" class="nav-menu text-white">Contact us</Link>

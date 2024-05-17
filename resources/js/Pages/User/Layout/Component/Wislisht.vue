@@ -159,7 +159,7 @@
                         </h2>
                         <p class="text-textColor text-sm">
                             Availability:
-                            <span class="text-hoverPrimary font-semibold"
+                            <span class="text-Red font-semibold"
                                 >Out of Stock</span
                             >
                         </p>
