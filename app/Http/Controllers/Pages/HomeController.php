@@ -37,6 +37,12 @@ class HomeController extends Controller
         ]);
     }
 
+    public function Shop(){
+        // $products = Product::all();
+
+        return Inertia::render('Shop/shop',[
+            // 'products '=> $products,
+
     public function Shop()
     {
         $products = Product::all();
@@ -51,6 +57,16 @@ class HomeController extends Controller
 
         return Inertia::render('Shop/Layout/body', [
             'products ' => $products,
+
         ]);
+    }
+
+    public function ShowProduct()
+    {
+        return Inertia::render('Shop/Product');
+    }
+
+    public function Skeleton(){
+        return Inertia::render('Shop/Layout/Skeleton');
     }
 }

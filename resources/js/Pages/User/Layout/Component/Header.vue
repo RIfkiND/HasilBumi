@@ -152,7 +152,7 @@ a {
                         <div
                             class="absolute top-12 text-base bg-white rounded-md shadow-lg z-10"
                             v-if="profileDropdown"
-                            @click.away="profileDropdown = false"
+                            @click="profileDropdown = false"
                         >
                             <ul class="px-0" aria-labelledby="user-menu-button">
                                 <li class="py-2 px-4 style-bg">

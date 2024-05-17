@@ -54,7 +54,8 @@ h4 {
 }
 
 .card-field {
-    transition: 0.2s ease-in-out all;
+    transition: 0.2s all;
+    position: relative;
 }
 
 .card-field:hover {
@@ -95,11 +96,11 @@ h4 {
                 Selamat menikmati pengalaman belanja yang menyenangkan dan
                 bermakna!
             </p>
-            <button
-                class="inline-block text-primaryColor button-border-hero border-b-hoverPrimary hover:text-white hover:bg-primaryColor px-8 py-2 rounded-full my-2 mx-0"
+            <Link
+                :href="route('Shop.main')" class="inline-block text-primaryColor button-border-hero border-b-hoverPrimary hover:text-white hover:bg-primaryColor px-8 py-2 rounded-full my-2 mx-0"
             >
                 Shop Now &#8594;
-            </button>
+            </Link>
         </div>
 
         <div class="">
@@ -334,7 +335,6 @@ h4 {
 
     <Price />
 </template>
-
 <script>
 export default {
     data() {
@@ -370,4 +370,7 @@ export default {
         this.imgBg = "/assets/img/bg-profile.svg";
     },
 };
+</script>
+<script setup>
+    import { Link } from "@inertiajs/vue3";
 </script>
