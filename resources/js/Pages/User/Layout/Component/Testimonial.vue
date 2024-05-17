@@ -37,7 +37,7 @@
                   <span class="text-sm text-dark ml-2">3/5</span>
                 </div>
               </div>
-              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Marcelino uno</p>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Ali Husain</p>
             </div>
           </div>
 
@@ -68,7 +68,7 @@
                   <span class="text-sm text-dark ml-2">4/5</span>
                 </div>
               </div>
-              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Sarah simith</p>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Fauzan Fadilah</p>
             </div>
           </div>
 
@@ -97,7 +97,7 @@
                   <span class="text-sm text-dark ml-2">2/5</span>
                 </div>
               </div>
-              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Jessica</p>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Angga permana</p>
             </div>
           </div>
 
@@ -124,7 +124,7 @@
                   <span class="text-sm text-dark ml-2">5/5</span>
                 </div>
               </div>
-              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Alexander</p>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Novianti</p>
             </div>
           </div>
 
@@ -151,7 +151,7 @@
                     <span class="text-sm text-dark ml-2">2/5</span>
                 </div>
               </div>
-              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Johnson michael</p>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Robert Albert ngabert</p>
             </div>
           </div>
 
@@ -178,7 +178,7 @@
                   <span class="text-sm text-dark ml-2">4/5</span>
                 </div>
               </div>
-              <p class="mt-0.5 text-lg font-medium text-dark capitalize">David anderson</p>
+              <p class="mt-0.5 text-lg font-medium text-dark capitalize">Stev jobs</p>
             </div>
           </div>
 

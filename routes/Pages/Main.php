@@ -5,14 +5,15 @@ use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\Pages\FilterPageController;
 
 
-
-
-
+// Route Utama
 Route::get('/',[HomeController::class,'Home'])->name('Home');
 
-
 //Shop
+Route::get('/shop',[HomeController::class,'Shop'])->name('Shop.main');
+Route::get('/show-product',[HomeController::class,'ShowProduct'])->name('Showshop.main');
 
+
+=======
 Route::get('/Shop-MainPage',[HomeController::class,'Shop'])->name('Shop.main');
 Route::get('/Shop-Product',[HomeController::class,'Product'])->name('Shop.Product');
 //whislist and Cart
@@ -25,4 +26,11 @@ Route::get('/Products/filter/category/{category}', [FilterPageController::class,
 Route::get('/Products/filter/price', [FilterPageController::class, 'filterByPrice'])->name('filter.price');
 Route::get('/Products/filter/new', [FilterPageController::class, 'filterByNew'])->name('filter.new');
 Route::get('/Products/filter/old', [FilterPageController::class, 'filterByOld'])->name('filter.old');
+
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
+
+// Skeleton -> tampilan cadangan ketika system rendering data dari server
+Route::get('/skeleton', [HomeController::class, 'Skeleton']);
+
+Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
+
