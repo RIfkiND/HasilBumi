@@ -22,14 +22,9 @@
     {{-- Tag Noscript kode ini akan aktif ketika user menonaktifkan javascript --}}
     <noscript>
         <div class="min-h-screen bg-white w-full">
-            <template>
-            <v-empty-state
-                icon="mdi-magnify"
-                text="Try adjusting your search terms or filters. Sometimes less specific terms or broader queries can help you find what you're looking for."
-                title="We couldn't find a match."
-            ></v-empty-state>
-        </template>
+            <img src="Assets/img/ilustration/ilustration4.png" alt="pageNotFound">
         </div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit magni in eum!
     </noscript>
 
     {{-- CDN Box icons --}}
@@ -37,7 +32,7 @@
 
     {{-- CDN SweetAlert2 --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     {{-- CDN Crisp Live Chat --}}
     <script type="text/javascript">
         window.$crisp = [];

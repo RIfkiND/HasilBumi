@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div>
-                    <img :src=sellerGif alt="Gambar" class="w-full h-full bg-center bg-cover">
+                    <img :src="sellerIlustration" alt="Gambar" class="w-full h-full bg-center bg-cover">
                 </div>
             </div>
           </div>
@@ -203,7 +203,7 @@
   import { Link } from '@inertiajs/vue3';
   import Footer  from "@/User/Layout/Component/Footer.vue";
   import Navbar  from "@/User/Layout/Component/Header.vue";
-  const sellerGif= "/assets/img/daftar-seller.gif";
+  const sellerIlustration = "/assets/img/ilustration/ilustration6.png";
   onMounted(() => {
     // Poto sendiri
     const inputFilePoto = document.getElementById('person-poto');

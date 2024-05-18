@@ -19,7 +19,7 @@
             </div>
         </Link>
         <!-- left side -->
-        <div class="flex flex-col justify-center p-8 md:p-12 mx-4">
+        <div class="flex flex-col justify-center md:p-12 mx-4">
           <span class="mb-2 text-4xl font-bold text-textColor">Register</span>
           <span class="font-light text-gray-400 mb-8">
             Register now with us for the best experience!
@@ -110,11 +110,11 @@
           </div>
         </div>
         <!-- {/* right side */} -->
-        <div class="relative">
+        <div class="relative flex items-center">
           <img
-            :src="'Assets/img/bg-register.png'"
+            :src="'Assets/img/ilustration/ilustration3.png'"
             alt="Petani Menanam Sayuran"
-            class="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
+            class="w-full h-[500px] hidden rounded-r-2xl md:block object-cover"
             loading="lazy"
           />
         </div>
