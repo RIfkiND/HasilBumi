@@ -51,6 +51,7 @@ class HomeController extends Controller
 
         return Inertia::render('User/Layout/Shop/List_Product', [
             'products ' => $products,
+
         ]);
     }
 

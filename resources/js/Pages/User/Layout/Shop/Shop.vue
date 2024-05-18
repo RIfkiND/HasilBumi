@@ -2,6 +2,70 @@
     <Header />
     <!-- shop wrapper -->
     <div
+        class="container mx-auto w-full py-20 px-5 flex items-center justify-center bg-cyan-800"
+    >
+        <!-- Slider wrapper -->
+        <div class="w-full relative">
+            <!-- Single Slider -->
+            <div
+                v-show="sliderIndex === indexSlider"
+                v-for="(product, indexSlider) in sliders"
+                :key="indexSlider"
+            >
+                <img
+                    :src="product.image"
+                    alt="Meat"
+                    class="w-full h-[400px] object-cover object-center rounded-md shadow"
+                />
+            </div>
+            <!-- Single Slider end -->
+
+            <!-- Arrows prev -->
+            <button
+                @click="prevSlider"
+                class="w-10 h-10 rounded-full bg-white hover:shadow-lg active:scale-90 transition absolute left-2 top-1/2 text-gray-700 flex items-center justify-center opacity-50 hover:opacity-100"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.75 19.5L8.25 12l7.5-7.5"
+                    />
+                </svg>
+            </button>
+            <!-- Arrows prev end -->
+
+            <!-- Arrows next -->
+            <button
+                @click="nextSlider"
+                class="w-10 h-10 rounded-full bg-white hover:shadow-lg active:scale-90 transition absolute right-2 top-1/2 text-gray-700 flex items-center justify-center opacity-50 hover:opacity-100"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                    />
+                </svg>
+            </button>
+            <!-- Arrows next end -->
+        </div>
+    </div>
+    <div
         class="container grid md:grid-cols-4 grid-cols- gap-6 pt-4 pb-16 items-start font-inter"
     >
         <!-- ./sidebar -->
@@ -575,7 +639,7 @@
                 <a
                     :href="route('Shop.Product')"
                     class="bg-white shadow inline-block rounded-md overflow-hidden hover:cursor-pointer hover:brightness-95 group-hover:brightness-50 transition"
-                    v-for="index in 12"
+                    v-for="(product, index) in visibleProducts"
                     :key="index"
                 >
                     <div
@@ -583,8 +647,8 @@
                     >
                         <div class="w-full h-[160px] overflow-hidden">
                             <img
-                                :src="product1"
-                                alt="product 1"
+                                :src="product.image"
+                                :alt="`product ${index + 1}`"
                                 class="w-full h-full bg-cover bg-center"
                             />
                         </div>
@@ -610,7 +674,7 @@
                             <h4
                                 class="capitalize font-semibold text-xl mb-1 text-dark transition"
                             >
-                                pohon jati asli | untuk bahan material
+                                {{ product.title }}
                             </h4>
                         </Link>
                         <div
@@ -618,23 +682,26 @@
                         >
                             <span
                                 class="px-1 border-1 text-primaryColor rounded-sm border-primaryColor text-[10px] italic"
-                                >bebas pengembalian</span
                             >
+                                bebas pengembalian
+                            </span>
                             <span
                                 class="px-1 border-1 text-primaryColor rounded-sm border-primaryColor text-[10px] italic"
-                                >cicilan</span
                             >
+                                cicilan
+                            </span>
                         </div>
                         <div
                             class="flex items-baseline space-x-2 capitalize mb-2 mt-2"
                         >
                             <span
                                 class="text-md text-primaryColor font-semibold"
-                                >Rp650.000</span
                             >
-                            <span class="text-sm text-slate-200 line-through"
-                                >rp.1.500,000</span
-                            >
+                                {{ product.price }}
+                            </span>
+                            <span class="text-sm text-slate-200 line-through">
+                                {{ product.oldPrice }}
+                            </span>
                         </div>
                         <div
                             class="flex items-center divide-white-50 space-x-2 divide-x-2"
@@ -692,7 +759,17 @@
             </div>
             <!-- List Product -->
             <div class="col-span-3 flex justify-center items-center mt-4">
-                <button class="btn-outline-shop">Learn More</button>
+                <div class="flex items-center w-full gap-4">
+                    <div
+                        class="flex-grow border-t border-gray-300 opacity-35"
+                    ></div>
+                    <button class="btn-outline-shop" @click="loadMoreProducts">
+                        Learn More
+                    </button>
+                    <div
+                        class="flex-grow border-t border-gray-300 opacity-35"
+                    ></div>
+                </div>
             </div>
         </div>
 
@@ -706,6 +783,198 @@
 <script setup>
 import Header from "../Component/Header.vue";
 import Footer from "../Component/Footer.vue";
+import { ref, computed } from "vue";
+
+const sliders = ref([
+    {
+        title: "Red car",
+        image: product1,
+    },
+    {
+        title: "White car",
+        image: product2,
+    },
+    {
+        title: "Blue car",
+        image: product3,
+    },
+]);
+
+const sliderIndex = ref(0);
+
+function prevSlider() {
+    if (sliderIndex.value) {
+        sliderIndex.value--;
+    } else {
+        sliderIndex.value = sliders.value.length - 1;
+    }
+}
+
+function nextSlider() {
+    if (sliderIndex.value < sliders.value.length - 1) {
+        sliderIndex.value++;
+    } else {
+        sliderIndex.value = 0;
+    }
+}
+
+const products = ref([
+    {
+        image: product1,
+        title: "Pohon Jati Asli",
+        price: "Rp650.000",
+        oldPrice: "Rp1.500.000",
+    },
+    // Tambahkan data produk lainnya di sini
+    {
+        image: product1,
+        title: "Produk 2",
+        price: "Rp700.000",
+        oldPrice: "Rp1.400.000",
+    },
+    {
+        image: product1,
+        title: "Produk 3",
+        price: "Rp800.000",
+        oldPrice: "Rp1.300.000",
+    },
+    {
+        image: product1,
+        title: "Produk 4",
+        price: "Rp900.000",
+        oldPrice: "Rp1.200.000",
+    },
+    {
+        image: product1,
+        title: "Produk 5",
+        price: "Rp1.000.000",
+        oldPrice: "Rp1.100.000",
+    },
+    {
+        image: product1,
+        title: "Produk 6",
+        price: "Rp1.100.000",
+        oldPrice: "Rp1.000.000",
+    },
+    {
+        image: product1,
+        title: "Produk 7",
+        price: "Rp1.200.000",
+        oldPrice: "Rp900.000",
+    },
+    {
+        image: product1,
+        title: "Produk 8",
+        price: "Rp1.300.000",
+        oldPrice: "Rp800.000",
+    },
+    {
+        image: product1,
+        title: "Produk 9",
+        price: "Rp1.400.000",
+        oldPrice: "Rp700.000",
+    },
+    {
+        image: product1,
+        title: "Produk 10",
+        price: "Rp1.500.000",
+        oldPrice: "Rp650.000",
+    },
+    {
+        image: product1,
+        title: "Produk 11",
+        price: "Rp1.600.000",
+        oldPrice: "Rp600.000",
+    },
+    {
+        image: product1,
+        title: "Produk 12",
+        price: "Rp1.700.000",
+        oldPrice: "Rp550.000",
+    },
+    {
+        image: product1,
+        title: "Produk 13",
+        price: "Rp1.800.000",
+        oldPrice: "Rp500.000",
+    },
+    {
+        image: product1,
+        title: "Produk 14",
+        price: "Rp1.900.000",
+        oldPrice: "Rp450.000",
+    },
+    {
+        image: product1,
+        title: "Produk 15",
+        price: "Rp2.000.000",
+        oldPrice: "Rp400.000",
+    },
+    {
+        image: product1,
+        title: "Produk 16",
+        price: "Rp2.100.000",
+        oldPrice: "Rp350.000",
+    },
+    {
+        image: product1,
+        title: "Produk 13",
+        price: "Rp1.800.000",
+        oldPrice: "Rp500.000",
+    },
+    {
+        image: product1,
+        title: "Produk 14",
+        price: "Rp1.900.000",
+        oldPrice: "Rp450.000",
+    },
+    {
+        image: product1,
+        title: "Produk 15",
+        price: "Rp2.000.000",
+        oldPrice: "Rp400.000",
+    },
+    {
+        image: product1,
+        title: "Produk 16",
+        price: "Rp2.100.000",
+        oldPrice: "Rp350.000",
+    },
+    {
+        image: product1,
+        title: "Produk 13",
+        price: "Rp1.800.000",
+        oldPrice: "Rp500.000",
+    },
+    {
+        image: product1,
+        title: "Produk 14",
+        price: "Rp1.900.000",
+        oldPrice: "Rp450.000",
+    },
+    {
+        image: product1,
+        title: "Produk 15",
+        price: "Rp2.000.000",
+        oldPrice: "Rp400.000",
+    },
+    {
+        image: product1,
+        title: "Produk 16",
+        price: "Rp2.100.000",
+        oldPrice: "Rp350.000",
+    },
+]);
+
+const visibleCount = ref(12);
+
+const visibleProducts = computed(() => {
+    return products.value.slice(0, visibleCount.value);
+});
+
+const loadMoreProducts = () => {
+    visibleCount.value += 4; //
+};
 const product1 = "/assets/products/product1.jpg";
 const product2 = "/assets/products/product2.jpg";
 const product3 = "/assets/products/product3.jpg";
