@@ -37,12 +37,6 @@ class HomeController extends Controller
         ]);
     }
 
-    // public function Shop(){
-    //     // $products = Product::all();
-
-    //     return Inertia::render('Shop/shop',[
-    //         // 'products '=> $products,
-
     public function Shop()
     {
         $products = Product::all();
