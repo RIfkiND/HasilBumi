@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+
 class EditProductController extends Controller
 {
-    
+
     public function edit($id){
         $products = Product::findOrFail($id);
-        return view();
+        return Inertia::render('');
     }
 
 
