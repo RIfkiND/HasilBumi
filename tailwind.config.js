@@ -1,8 +1,7 @@
 {import('tailwindcss').Config}
 export default {
     content: [
-        "./resources/**/*.{blade.php,vue,js}",
-        "./node_modules/flowbite/**/*.{blade.php,vue,js}"
+        "./resources/**/*.{blade.php,vue,js}"
     ],
     theme: {
         extend: {
