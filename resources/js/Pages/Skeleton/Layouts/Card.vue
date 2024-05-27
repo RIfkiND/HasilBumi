@@ -10,9 +10,6 @@
         </div>
     </section>
 </template>
-<style>
-
-</style>
 <script>
     export default {
         data: function(){
@@ -27,7 +24,7 @@
         methods: {
             async loadData(){
                 await new Promise((resolve) => {
-                    setTimeout(resolve, 1000)
+                    setTimeout(resolve, 2000)
                 });
                 this.isDataLoad = false;
             },

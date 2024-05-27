@@ -973,14 +973,14 @@ const visibleProducts = computed(() => {
 });
 
 const loadMoreProducts = () => {
-    visibleCount.value += 4; //
+    visibleCount.value += 8; //
 };
-const product1 = "/assets/products/product1.jpg";
-const product2 = "/assets/products/product2.jpg";
-const product3 = "/assets/products/product3.jpg";
-const product4 = "/assets/products/product4.jpg";
-const product5 = "/assets/products/product5.jpg";
-const product6 = "/assets/products/product6.jpg";
+const product1 = "/assets/products/pohon1.jpg";
+const product2 = "/assets/products/pohon2.jpg";
+const product3 = "/assets/products/pohon3.jpg";
+const product4 = "/assets/products/pohon4.jpg";
+const product5 = "/assets/products/pohon5.jpg";
+const product6 = "/assets/products/pohon6.jpg";
 const product7 = "/assets/products/product7.jpg";
 const product8 = "/assets/products/product8.jpg";
 const product9 = "/assets/products/product9.jpg";

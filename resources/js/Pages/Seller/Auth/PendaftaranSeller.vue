@@ -222,8 +222,8 @@
         reader.onload = function(e) {
           const img = document.createElement('img');
           img.src = e.target.result;
-          img.classList.add('h-20', 'object-cover', 'rounded-sm', 'bg-cover','bg-center');
-          potan.classList.add('py-5', 'items-center', 'justify-center', 'flex');
+          img.classList.add('h-32', 'object-cover', 'rounded-sm', 'bg-cover','bg-center','justify-self-start','relative','hover:brightness-50','hover:transition');
+          potan.classList.add('py-5','items-center', 'justify-items-start', 'flex', 'justify-start','h-36');
           imagePreview.appendChild(img);
         }
         reader.readAsDataURL(file);
@@ -231,14 +231,14 @@
     }),
 
     potoKtp.addEventListener('change', function() {
-      const file = this.files[0];
+        const file = this.files[0];
       if (file) {
-        const reader = new FileReader();
+          const reader = new FileReader();
         reader.onload = function(e) {
-          const img = document.createElement('img');
+            const img = document.createElement('img');
           img.src = e.target.result;
-          img.classList.add('h-20', 'object-cover', 'rounded-sm', 'bg-cover','bg-center');
-          pokan.classList.add('py-5', 'items-center', 'justify-center', 'flex');
+            img.classList.add('h-32', 'object-cover', 'rounded-sm', 'bg-cover','bg-center','justify-self-start','relative','hover:brightness-50','hover:transition');
+          pokan.classList.add('py-5','items-center', 'justify-items-start', 'flex', 'justify-start','h-36');
           viewPotoKtp.appendChild(img);
         }
         reader.readAsDataURL(file);

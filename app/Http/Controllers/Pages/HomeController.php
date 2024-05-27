@@ -60,4 +60,7 @@ class HomeController extends Controller
         return Inertia::render('Shop/Product');
     }
 
+    public function Skeleton(){
+        return Inertia::render('Skeleton/Layouts/Card');
+    }
 }
