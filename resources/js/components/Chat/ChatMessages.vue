@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div ref="chatContainer" class="chat-container">
       <div
         v-for="(message, index) in messages"
         :key="index"
@@ -19,21 +19,45 @@
       </div>
     </div>
   </template>
-  
+
   <script setup>
-  import { defineProps, computed} from 'vue';
-  
+  import { defineProps, ref, watch, onMounted, nextTick } from 'vue';
+
   const props = defineProps({
     messages: Array,
     auth_id: [String, Number],
   });
-  
+
+  const chatContainer = ref(null);
+
   const isReceivedMessage = (message) => {
     return message.receiver_id === props.auth_id;
   };
+
+  // Watch for changes in messages array to trigger scroll
+  watch(
+    () => props.messages,
+    () => {
+      nextTick(() => {
+        if (chatContainer.value) {
+          chatContainer.value.scrollTop = chatContainer.value.scrollHeight;
+        }
+      });
+    },
+    { deep: true }
+  );
+
+  onMounted(() => {
+    if (chatContainer.value) {
+      chatContainer.value.scrollTop = chatContainer.value.scrollHeight;
+    }
+  });
   </script>
-  
+
   <style scoped>
+  .chat-container {
+    overflow-y: auto;
+    height: 400px; /* Adjust this value to the desired height */
+  }
   /* Add any scoped styles here if necessary */
   </style>
-  

@@ -102,7 +102,7 @@
 
   <script setup>
   import { Link, useForm } from "@inertiajs/vue3";
-  import Swal from "../../../components/Swal.vue";
+ 
   const form = useForm({
     email: null,
     password: null,
@@ -112,24 +112,16 @@
   const handleLogin = async () => {
     const response = await form.post(route('auth.login'));
     if (response.ok) {
-      showSuccessAlert();
       redirectToMainPage();
     }
   };
 
   const handleGoogleLogin = () => {
-     showSuccessAlert();
+
   redirectToMainPage();
 }
 
-  const showSuccessAlert = () => {
-    Swal.fire({
-      icon: 'success',
-      title: 'Login Successful!',
-      text: 'You have successfully logged in.',
-      showCloseButton : false,
-    });
-  };
+
 
   const redirectToMainPage = () => {
     setTimeout(() => {
