@@ -636,7 +636,7 @@
             <div
                 class="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
             >
-                <a
+                <Link
                     :href="route('Shop.Product')"
                     class="bg-white shadow inline-block rounded-md overflow-hidden hover:cursor-pointer hover:brightness-95 group-hover:brightness-50 transition"
                     v-for="(product, index) in visibleProducts"
@@ -755,7 +755,7 @@
                             Bandung
                         </div>
                     </div>
-                </a>
+                </Link>
             </div>
             <!-- List Product -->
             <div class="col-span-3 flex justify-center items-center mt-4">
@@ -783,6 +783,7 @@
 <script setup>
 import Header from "../Component/Header.vue";
 import Footer from "../Component/Footer.vue";
+import {Link} from '@inertiajs/vue3'
 import { ref, computed } from "vue";
 
 const sliders = ref([

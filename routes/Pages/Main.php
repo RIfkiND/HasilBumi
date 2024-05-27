@@ -9,10 +9,8 @@ use App\Http\Controllers\Pages\FilterPageController;
 Route::get('/',[HomeController::class,'Home'])->name('Home');
 
 //Shop
-Route::get('/shop',[HomeController::class,'Shop'])->name('Shop.main');
-Route::get('/show-product',[HomeController::class,'ShowProduct'])->name('Showshop.main');
 Route::get('/Shop-MainPage',[HomeController::class,'Shop'])->name('Shop.main');
-Route::get('/Shop-Product',[HomeController::class,'Product'])->name('Shop.Product');
+Route::get('/Show-Product',[HomeController::class,'ShowProduct'])->name('Shop.Product');
 
 //whislist and Cart
 Route::get('/Whislist',[HomeController::class ,'WhistList'])->name('Home.Whistlist')->middleware('auth');

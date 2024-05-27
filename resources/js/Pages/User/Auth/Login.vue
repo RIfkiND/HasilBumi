@@ -124,37 +124,30 @@
   </div>
 </template>
 
-<script setup>
-import { Link, useForm } from "@inertiajs/vue3";
-import Swal from "sweetalert2";
-const form = useForm({
-  email: null,
-  password: null,
-  remember: true,
-});
 
-const handleLogin = async () => {
-  const response = await form.post(route("auth.login"));
-  if (response.ok) {
-    showSuccessAlert();
-    redirectToMainPage();
-  }
-};
+  <script setup>
+  import { Link, useForm } from "@inertiajs/vue3";
+ 
+  const form = useForm({
+    email: null,
+    password: null,
+    remember: true,
+  });
 
-const handleGoogleLogin = () => {
-  showSuccessAlert();
+  const handleLogin = async () => {
+    const response = await form.post(route('auth.login'));
+    if (response.ok) {
+      redirectToMainPage();
+    }
+  };
+
+  const handleGoogleLogin = () => {
+
+
   redirectToMainPage();
 };
 
-const showSuccessAlert = () => {
-  Swal.fire({
-    icon: "success",
-    title: "Login berhasil",
-    text: "Anda berhasil login",
-    allowEnterKey:true,
-    timer:3000
-  });
-};
+
 
 const redirectToMainPage = () => {
   setTimeout(() => {

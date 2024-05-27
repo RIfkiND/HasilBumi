@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ImageMassage extends Model
+class ImageMessage extends Model
 {
     use HasFactory;
-    protected $fillable =[
+
+    protected $fillable = [
         'url'
     ];
 
     public function message(){
         return $this->belongsTo(Message::class);
-    }
+     }
 }
