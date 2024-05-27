@@ -8,10 +8,11 @@
             width="50"
           />
           <i v-else class="fa fa-user-circle text-gray-300 text-5xl"></i>
-  
+
           <h3 class="text-md pl-4 text-gray-400">
             {{ receiver?.name }}
           </h3>
+
         </div>
         <div>
           <i class="fa fa-message text-violet-300"></i>
@@ -21,14 +22,13 @@
       </div>
     </div>
   </template>
-  
-  <script setup>
 
+  <script setup>
   
+
 defineProps({receiver: Object, });
   </script>
-  
+
   <style scoped>
 
   </style>
-  

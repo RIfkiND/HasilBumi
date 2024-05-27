@@ -13,12 +13,21 @@ class LogoutController extends Controller
  */
 public function logout(Request $request)
 {
-    Auth::guard('web')->logout();
 
-    $request->session()->invalidate();
 
-    $request->session()->regenerateToken();
+     $user = Auth::user();
+     if ($user) {
+         $user->update(['is_online' => false]);
+     }
 
-    return to_route('Home')->with('status', ['type' => 'success', 'action' => 'You can exit', 'text' => 'You Logged out ']);;
+     Auth::logout();
+
+
+     $request->session()->invalidate();
+
+
+     $request->session()->regenerateToken();
+
+    return $this->loggedOut($request) ?: to_route('Home')->with('status', ['type' => 'success', 'action' => 'You can exit', 'text' => 'You Logged out ']);;
 }
 }

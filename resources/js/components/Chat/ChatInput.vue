@@ -3,15 +3,15 @@
       <form @submit.prevent="submit">
         <TextInput
           class="h-16 w-full overflow-y-auto bg-white pt-3 font-light border-0 hover:border-0 focus:border-0 focus:ring-0 !shadow-none focus:!outline-none"
-          placeholder="Write a message"
+          placeholder="Chat...."
           name="message"
           v-model="form.message"
         />
       </form>
     </div>
   </template>
-  
-  
+
+
 <script setup>
 
 import { ref, onMounted } from 'vue';
@@ -40,5 +40,4 @@ const submit = () => {
 
 
   </script>
-  
-  
+

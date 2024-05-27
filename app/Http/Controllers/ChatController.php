@@ -23,14 +23,14 @@ class ChatController extends Controller
      */
     public function index(Request $request, ?int $receiverId = null)
     {
-       
+
         $messages = empty($receiverId) ? [] : $this->chat->getUserMessages((int) $request->user()->id, (int) $receiverId);
 
         return Inertia::render('chat/Chat', [
             'messages' => $messages,
             'recentMessages' => $this->chat->getRecentUsersWithMessage($request->user()->id),
             'receiver' => User::find($receiverId),
-           
+
         ]);
     }
 

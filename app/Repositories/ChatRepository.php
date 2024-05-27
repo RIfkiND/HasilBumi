@@ -46,9 +46,11 @@ class ChatRepository
         foreach ($recentMessages as $message) {
             $userId = $message->sender_id == $senderId ? $message->receiver_id : $message->sender_id;
             if (!in_array($userId, $usedUserIds)) {
+                $user = User::select('name', 'is_online')->find($userId);
                 $recentUsersWithMessage[] = [
                     'user_id' => $userId,
-                    'message' => $message->message
+                    'message' => $message->message,
+                    'is_online' => $user->is_online,
                 ];
                 $usedUserIds[] = $userId;
             }

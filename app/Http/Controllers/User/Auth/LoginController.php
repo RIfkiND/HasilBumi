@@ -15,9 +15,10 @@ class LoginController extends Controller
         return Inertia::render('User/Auth/Login');
     }
 
-    public function Login(LoginRequest $request){
+    public function Login(LoginRequest $request,$user){
             $request->authenticate();
 
+            $user->update(['is_online' => true]);
             $request->session()->regenerate();
 
             return redirect(RouteServiceProvider::HOME)->with('status', ['type' => 'success', 'action' => 'You can exit', 'text' => 'You Logged in']);;

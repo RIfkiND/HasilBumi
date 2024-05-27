@@ -1,5 +1,5 @@
 <template>
-<ChatLayout>
+
       <div class="messenger h-screen overflow-hidden p-4">
         <div class="flex">
           <div class="basis-2/6 border-r border-slate-100 bg-white pt-3">
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-</ChatLayout>
+
   </template>
 
   <script setup>
@@ -32,17 +32,12 @@
   import ChatMessages from '~/Components/Chat/ChatMessages.vue';
   import ChatSidebar from '~/Components/Chat/ChatSidebar.vue';
   import ChatUserInfoHeader from '~/Components/Chat/ChatUserInfoHeader.vue';
-  import  ChatLayout from '~/Layout/ChatLayout.vue'
+
 
  const props =  defineProps({auth: Object, errors: Object, recentMessages: Array, receiver: Object, messages: Array, });
 
 const messages = ref(props.messages || []);
 
-//   Echo.private(`messenger.1.2`).listen('MessageSent', (data) => {
-//     if (data.message) {
-//       messages.value.push(data.message);
-//     }
-//   });
   Echo.private(`messenger.1.2`)
     .listen('MessageSent', async(data) => {
         if (data.message) {
