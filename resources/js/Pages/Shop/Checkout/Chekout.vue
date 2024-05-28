@@ -2,7 +2,7 @@
     <div
         class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32"
     >
-        <a href="#" class="text-2xl font-bold text-gray-800">sneekpeeks</a>
+        <a href="#" class="text-2xl font-bold text-gray-800">HasilBumi</a>
         <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
             <div class="relative">
                 <ul
@@ -53,7 +53,7 @@
                             >2</a
                         >
                         <span class="font-semibold text-gray-900"
-                            >Shipping</span
+                            >Checkout</span
                         >
                     </li>
                     <svg
@@ -86,10 +86,8 @@
     </div>
     <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
         <div class="px-4 pt-8">
-            <p class="text-xl font-medium">Order Summary</p>
-            <p class="text-gray-400">
-                Check your items. And select a suitable shipping method.
-            </p>
+            <p class="text-xl font-medium">Daftar Pesanan</p>
+
             <div
                 class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6"
             >
@@ -151,40 +149,10 @@
                         />
                         <div class="ml-5">
                             <span class="mt-2 font-semibold"
-                                >Fedex Delivery</span
+                                >SiCepat</span
                             >
                             <p class="text-slate-500 text-sm leading-6">
-                                Delivery: 2-4 Days
-                            </p>
-                        </div>
-                    </label>
-                </div>
-                <div class="relative">
-                    <input
-                        class="peer hidden"
-                        id="radio_2"
-                        type="radio"
-                        name="radio"
-                        checked
-                    />
-                    <span
-                        class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"
-                    ></span>
-                    <label
-                        class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
-                        for="radio_2"
-                    >
-                        <img
-                            class="w-14 object-contain"
-                            src="/images/oG8xsl3xsOkwkMsrLGKM4.png"
-                            alt=""
-                        />
-                        <div class="ml-5">
-                            <span class="mt-2 font-semibold"
-                                >Fedex Delivery</span
-                            >
-                            <p class="text-slate-500 text-sm leading-6">
-                                Delivery: 2-4 Days
+                                Delivery: 2-4 Hari
                             </p>
                         </div>
                     </label>
@@ -192,9 +160,9 @@
             </form>
         </div>
         <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-            <p class="text-xl font-medium">Payment Details</p>
+            <p class="text-xl font-medium">Deatail Pembayaran</p>
             <p class="text-gray-400">
-                Complete your order by providing your payment details.
+                Silahkan Isi Form ini untuk menyelesaikan pembayaran.
             </p>
             <div class="">
                 <label for="email" class="mt-4 mb-2 block text-sm font-medium"
@@ -206,7 +174,7 @@
                         id="email"
                         name="email"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="your.email@gmail.com"
+                        placeholder="   your.email@gmail.com"
                     />
                     <div
                         class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
@@ -238,7 +206,7 @@
                         id="card-holder"
                         name="card-holder"
                         class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="Your full name here"
+                        placeholder="    Nama Lengkap"
                     />
                     <div
                         class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
@@ -259,88 +227,24 @@
                         </svg>
                     </div>
                 </div>
-                <label for="card-no" class="mt-4 mb-2 block text-sm font-medium"
-                    >Card Details</label
-                >
-                <div class="flex">
-                    <div class="relative w-7/12 flex-shrink-0">
-                        <input
-                            type="text"
-                            id="card-no"
-                            name="card-no"
-                            class="w-full rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="xxxx-xxxx-xxxx-xxxx"
-                        />
-                        <div
-                            class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
-                        >
-                            <svg
-                                class="h-4 w-4 text-gray-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                            >
-                                <path
-                                    d="M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z"
-                                />
-                                <path
-                                    d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v5H1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-1 9H2a1 1 0 0 1-1-1v-1h14v1a1 1 0 0 1-1 1z"
-                                />
-                            </svg>
-                        </div>
-                    </div>
-                    <input
-                        type="text"
-                        name="credit-expiry"
-                        class="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="MM/YY"
-                    />
-                    <input
-                        type="text"
-                        name="credit-cvc"
-                        class="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="CVC"
-                    />
-                </div>
                 <label
                     for="billing-address"
                     class="mt-4 mb-2 block text-sm font-medium"
                     >Billing Address</label
                 >
-                <div class="flex flex-col sm:flex-row">
-                    <div class="relative flex-shrink-0 sm:w-7/12">
-                        <input
-                            type="text"
-                            id="billing-address"
-                            name="billing-address"
-                            class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="Street Address"
-                        />
-                        <div
-                            class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
-                        >
-                            <img
-                                class="h-4 w-4 object-contain"
-                                src="https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg"
-                                alt=""
-                            />
-                        </div>
-                    </div>
-                    <select
-                        type="text"
-                        name="billing-state"
-                        class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                    >
-                        <option value="State">State</option>
-                    </select>
+                <div class="relative">
                     <input
                         type="text"
-                        name="billing-zip"
-                        class="flex-shrink-0 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                        placeholder="ZIP"
+                        id="card-holder"
+                        name="card-holder"
+                        class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="Alamat"
                     />
+                    <div
+                        class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
+                    >
+
+                    </div>
                 </div>
 
                 <!-- Total -->

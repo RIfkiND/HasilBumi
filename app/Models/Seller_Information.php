@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Seller_Information extends Model
 {
@@ -21,8 +22,12 @@ class Seller_Information extends Model
         'kode_pos',
         'foto_toko'
     ];
+    
 
-    public function seller(){
-        return $this->belongsTo(Seller::class);
+    public function UserSeller(){
+        return $this->belongsTo(User::class);
+    }
+    public function product(){
+        return $this->hasMany(Product::class);
     }
 }
