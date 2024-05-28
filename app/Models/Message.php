@@ -4,28 +4,47 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Message extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    protected $fillable = ['from','to','content'];
+    protected $fillable = [
+        'message',
+        'sender_id',
+        'receiver_id'
+    ];
 
+    protected $appends = ['time_ago'];
 
     public function sender()
     {
-        return $this->morphTo();
+        return $this->belongsTo(User::class, 'sender_id');
     }
 
-    
     public function receiver()
     {
-        return $this->morphTo();
+        return $this->belongsTo(User::class, 'receiver_id');
     }
 
-    public function image(){
-        return $this->hasMany(ImageMassage::class);
+    public function getTimeAgoAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
+    public static function getMessagesQueryBetweenTwoUsers($request, $sender_id, $receiver_id)
+    {
+        $query = self::with(['sender', 'receiver'])->where(function($q) use($request, $sender_id, $receiver_id) {
+            $q->where(function($sub) use ($sender_id, $receiver_id) {
+                $sub->where('sender_id', $sender_id)
+                    ->where('receiver_id', $receiver_id);
+            })
+             ->orWhere(function($sub) use ($sender_id, $receiver_id) {
+                 $sub->where('receiver_id', $sender_id)
+                     ->where('sender_id', $receiver_id);
+             });
+        });
+
+        return $query;
     }
 }

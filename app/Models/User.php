@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_online',
     ];
 
     /**
@@ -43,16 +44,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function sentMessages()
-    {
-        return $this->morphMany(Message::class, 'sender_id');
-    }
-
-
-    public function receivedMessages()
-    {
-        return $this->morphMany(Message::class, 'receiver_id');
-    }
 
     public function whistlist(){
         return $this->hasMany(Whistlist::class );

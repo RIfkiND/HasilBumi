@@ -20,7 +20,7 @@ class GoogleAuthController extends Controller
     {
         $googleUser = Socialite::driver('google')->user();
         $user = User::where('email', $googleUser->email)->first();
-
+        $user->update(['is_online' => true]);
         if (!$user) {
             $user = User::firstOrCreate(
                 ['email' => $googleUser->getEmail()],

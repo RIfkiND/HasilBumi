@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\models\Category;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -40,7 +41,7 @@ class ProductController extends Controller
         }
 
         // Pass cart information to the Blade view
-        return view('components.Welcome.card', compact('Products', 'categories', 'selectedCategory', 'cartItems', 'subtotal'));
+        return Inertia::render('', compact('Products', 'categories', 'selectedCategory', 'cartItems', 'subtotal'));
     }
 
 
@@ -58,6 +59,6 @@ class ProductController extends Controller
         $products = Product::find($id);
         $products->images;
 
-        return view('components.Welcome.Productshow', compact('products', 'categories'));
+        return Inertia::render('', compact('products', 'categories'));
     }
 }

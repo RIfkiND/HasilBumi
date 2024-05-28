@@ -1,3 +1,6 @@
+import "./bootstrap"
+import "../css/app.css"
+
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -25,10 +28,6 @@ createInertiaApp({
         app.use(plugin);
         app.mixin({ methods: { route } });
         app.use(vuetify);
-        // app.use(VueSweetaler2);
-        // app.use(formkitPlugin, defaultConfig({
-        //     plugins: [createMultiStepPlugin()],
-        // }))
         return app.mount(el);
 
     },

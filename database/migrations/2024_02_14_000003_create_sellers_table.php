@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
+            // $table->
             $table->timestamps();
         });
     }
