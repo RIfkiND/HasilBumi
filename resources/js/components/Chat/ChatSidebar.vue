@@ -1,12 +1,12 @@
 <template>
     <div>
       <div class="search-box h-10 text-slate-300">
-        <div class="flex justify-between border-b border-slate-100 px-5 pb-1">
+        <div class="flex justify-between border-b border-white-50 px-5 pb-1">
           <form class="flex justify-center items-center">
             <i class="fa fa-search"></i>
             <input
               type="search"
-              class="font-light border-0 hover:border-0 focus:border-0 focus:ring-0 !shadow-none focus:!outline-none"
+              class="font-light border-1 rounded-md py-2 px-2 bg-white focus:border-0 focus:ring-0 !shadow-none focus:!outline-none"
               placeholder="Search"
             />
           </form>

@@ -16,9 +16,6 @@ public function logout(Request $request)
 
 
      $user = Auth::user();
-     if ($user) {
-         $user->update(['is_online' => false]);
-     }
 
      Auth::logout();
 
@@ -28,6 +25,9 @@ public function logout(Request $request)
 
      $request->session()->regenerateToken();
 
+     if ($user) {
+         $user->update(['is_online' => false]);
+     }
     return $this->loggedOut($request) ?: to_route('Home')->with('status', ['type' => 'success', 'action' => 'You can exit', 'text' => 'You Logged out ']);;
 }
 }

@@ -8,9 +8,6 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {
-
-        },
         colors: {
             'primaryColor': '#3CB72B',
             'hoverPrimary': '#40c057',
