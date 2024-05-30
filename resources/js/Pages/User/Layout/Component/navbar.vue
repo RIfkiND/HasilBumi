@@ -49,14 +49,12 @@
                     </div>
                 </Link>
                 <div class="flex gap-2" v-if="!authenticated">
-                    <Link
-                        :href="route('view.login')"
-                        class="text-primaryColor transition px-6 py-2 rounded-md border-2 button-border hover:text-white hover:bg-primaryColor"
+                    <Link :href="route('view.login')" class="btn-header-outline"
                         >Login</Link
                     >
                     <Link
                         :href="route('view.register')"
-                        class="btn-full btn-border"
+                        class="btn-header-full btn-border"
                         >Register</Link
                     >
                 </div>

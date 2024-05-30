@@ -157,9 +157,8 @@ a {
                             <ul class="px-0" aria-labelledby="user-menu-button">
                                 <li class="py-2 px-4 style-bg">
                                     <Link
-                                        href="#"
+                                        :href="route('userProfile')"
                                         class="block text-sm truncate mb-1 text-left style-text"
-                                        @click="editProfile"
                                     >
                                         Akun Saya
                                     </Link>
@@ -198,15 +197,6 @@ a {
                 >
                     <i class="fas fa-bars"></i>
                 </button>
-                <!-- <a
-                    href="#"
-                    class="text-center text-gray-700 hover:text-primary transition relative"
-                >
-                    <div class="text-2xl">
-                        <i class="fa-regular fa-user"></i>
-                    </div>
-                    <div class="text-xs leading-3">Account</div>
-                </a> -->
             </div>
         </div>
     </header>
@@ -333,7 +323,6 @@ a {
                     <Link :href="route('Shop.main')" class="nav-menu text-white"
                         >Shop</Link
                     >
-                    <Link href="#" class="nav-menu text-white">Kategori</Link>
                     <Link href="#" class="nav-menu text-white">About us</Link>
                     <Link href="#" class="nav-menu text-white">Contact us</Link>
                 </div>
@@ -454,3 +443,6 @@ watch(search, (value) => {
     );
 });
 </script>
+
+<!--                                          @click="editProfile"
+-->
