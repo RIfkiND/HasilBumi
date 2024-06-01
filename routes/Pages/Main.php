@@ -22,6 +22,7 @@ Route::get('/main-skeleton', [HomeController::class, 'MainSkeleton']);
 
 // User Profile
 Route::get('/UserProfile', [HomeController::class, 'UserProfile'])->name('userProfile')->middleware('auth');
+Route::get('/UserProducts', [HomeController::class, 'UserProducts'])->name('userProducts')->middleware('auth');
 
 //filter
 Route::get('/Products/filter/category/{category}', [FilterPageController::class, 'filterByCategory'])->name('filter.category');

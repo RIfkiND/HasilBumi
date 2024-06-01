@@ -2,24 +2,8 @@
 import Navbar from "../Component/navbar.vue";
 import Footer from "../Component/Footer.vue";
 import Sidebar from "./components/Sidebar.vue";
-import Profile from "./components/Profile.vue";
-
+// import Products from "./components/Products.vue";
 </script>
-
-<style scoped>
-.hidden {
-    display: none;
-}
-
-.modal-enter-active,
-.modal-leave-active {
-    transition: opacity 0.5s;
-}
-.modal-enter,
-.modal-leave-to /* .modal-leave-active in <2.1.8 */ {
-    opacity: 0;
-}
-</style>
 
 <template>
     <Navbar />
@@ -27,7 +11,7 @@ import Profile from "./components/Profile.vue";
         <div class="container mx-auto mt-12">
             <div class="max-w-7xl mx-auto flex w-[1200px] gap-10">
                 <Sidebar />
-                <Profile />
+                <!-- <Products /> -->
             </div>
         </div>
     </section>
