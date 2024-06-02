@@ -3,8 +3,10 @@ import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <div class="flex flex-row shadow-lg justify-self-start">
-        <div class="flex flex-col p-4 bg-white rounded-r-3xl overflow-hidden">
+    <div class="flex flex-row shadow-md justify-self-start">
+        <div
+            class="flex flex-col p-4 bg-white rounded-r-lg rounded-lg overflow-hidden"
+        >
             <div class="flex items-center gap-3">
                 <div class="avatar placeholder">
                     <div
@@ -38,7 +40,7 @@ import { Link } from "@inertiajs/vue3";
                             class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
                             ><i class="bx bx-shopping-bag"></i
                         ></span>
-                        <span class="text-sm font-medium">Pesanan</span>
+                        <span class="text-sm font-medium">Product</span>
                     </Link>
                 </li>
                 <li>

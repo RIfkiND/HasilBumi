@@ -3,7 +3,6 @@ import Navbar from "../Component/navbar.vue";
 import Footer from "../Component/Footer.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Profile from "./components/Profile.vue";
-
 </script>
 
 <style scoped>
