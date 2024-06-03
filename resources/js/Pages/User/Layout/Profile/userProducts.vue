@@ -8,8 +8,8 @@ import Products from "./components/Products.vue";
 <template>
     <Navbar />
     <section>
-        <div class="container mx-auto mt-12">
-            <div class="max-w-7xl mx-auto flex w-[1200px] gap-10">
+        <div class="container mx-auto mt-12 font-poppins">
+            <div class="max-w-7xl mx-auto flex gap-10">
                 <Sidebar />
                 <Products />
             </div>

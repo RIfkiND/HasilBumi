@@ -137,7 +137,6 @@ const showAddProductForm = ref(false);
 const productImage = ref("");
 const productName = ref("");
 const category = ref("");
-const brand = ref("");
 const quantity = ref("");
 const price = ref("");
 const stock = ref("");
@@ -149,7 +148,6 @@ const submitAddProductForm = () => {
         image: productImage.value,
         name: productName.value,
         category: category.value,
-        brand: brand.value,
         quantity: quantity.value,
         price: price.value,
         stock: stock.value,
@@ -161,7 +159,6 @@ const submitAddProductForm = () => {
     productImage.value = "";
     productName.value = "";
     category.value = "";
-    brand.value = "";
     quantity.value = "";
     price.value = "";
     stock.value = "";
@@ -199,7 +196,6 @@ const editedProduct = ref({
     image: "",
     name: "",
     category: "",
-    brand: "",
     quantity: "",
     price: "",
     stock: "",
@@ -212,7 +208,6 @@ const prepareEditProduct = (product) => {
         image: product.image,
         name: product.name,
         category: product.category,
-        brand: product.brand,
         quantity: product.quantity,
         price: product.price,
         stock: product.stock,
@@ -257,9 +252,9 @@ const prepareEditProduct = (product) => {
 // };
 </script>
 <template>
-    <section class="p-3 sm:p-5">
+    <section class="max-w-full">
         <!-- end -->
-        <div class="mx-auto max-w-screen-xl px-4 lg:px-">
+        <div class="mx-auto">
             <!-- Start coding here -->
             <div
                 class="bg-white relative shadow-md sm:rounded-lg overflow-hidden"
@@ -314,21 +309,24 @@ const prepareEditProduct = (product) => {
                 </div>
                 <div class="overflow-x-auto">
                     <table
-                        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+                        class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
                     >
-                        <thead
-                            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-                        >
+                        <thead class="text-2xs text-textColor capitalize">
                             <tr>
-                                <th scope="col" class="px-4 py-3">
+                                <th scope="col" class="px-4 py-3 text-center">
+                                    Image
+                                </th>
+                                <th scope="col" class="px-4 py-3 truncate">
                                     Product name
                                 </th>
                                 <th scope="col" class="px-4 py-3">Category</th>
-                                <th scope="col" class="px-4 py-3">Brand</th>
                                 <th scope="col" class="px-4 py-3">Quantity</th>
                                 <th scope="col" class="px-4 py-3">Price</th>
                                 <th scope="col" class="px-4 py-3">Stock</th>
                                 <th scope="col" class="px-4 py-3">Publish</th>
+                                <th scope="col" class="px-4 py-3 text-center">
+                                    Action
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -342,6 +340,12 @@ const prepareEditProduct = (product) => {
                             >
                                 <th
                                     scope="row"
+                                    class="px-8 py-3 font-medium text-textColor whitespace-nowrap"
+                                >
+                                    Image
+                                </th>
+                                <th
+                                    scope="row"
                                     class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
                                 >
                                     <!-- {{ product.title }} -->
@@ -350,9 +354,7 @@ const prepareEditProduct = (product) => {
                                 <td class="px-2 py-3 text-center">
                                     {{ product.name }}
                                 </td>
-                                <td class="px-2 py-3 text-center">
-                                    {{ product.name }}
-                                </td>
+
                                 <td class="px-2 py-3 text-center">
                                     {{ product.quantity }}
                                 </td>
@@ -366,7 +368,7 @@ const prepareEditProduct = (product) => {
                                     </span>
                                     <span
                                         v-else
-                                        class="text-Red text-xs font-semibold"
+                                        class="text-Red text-xs font-semibold truncate"
                                     >
                                         Out of Stock
                                     </span>
@@ -375,14 +377,14 @@ const prepareEditProduct = (product) => {
                                     <button
                                         v-if="product.published === 0"
                                         type="button"
-                                        class="px-3 py-2 text-xs font-medium text-center bg-primaryColor rounded-full text-white focus:ring-2 focus:outline-none focus:ring-primaryColor"
+                                        class="px-3 py-2 text-xs font-medium text-center bg-hijau-1 rounded-full text-primaryColor focus:ring-2 focus:outline-none focus:ring-primaryColor"
                                     >
                                         Published
                                     </button>
                                     <button
                                         v-else
                                         type="button"
-                                        class="px-3 py-2 text-xs font-medium text-center text-white bg-Red rounded-full focus:ring-2 focus:outline-none focus:ring-Red"
+                                        class="px-3 py-2 text-xs font-medium text-center text-merah-2 bg-merah-1 rounded-full focus:ring-2 focus:outline-none focus:ring-Red"
                                     >
                                         UnPublished
                                     </button>
@@ -397,16 +399,44 @@ const prepareEditProduct = (product) => {
                                                 showEditProductForm = true
                                             "
                                             class="block py-2 px-4 bg-primaryColor text-white rounded-full"
-                                            >Edit</a
-                                        >
+                                            ><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="w-6 h-6 text-blue-400"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
+                      2 0 112.828
+                      2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                                /></svg
+                                        ></a>
                                         <a
                                             href="#"
                                             @click.prevent="
                                                 deleteProduct(product, index)
                                             "
                                             class="block py-2 px-4 text-sm bg-Red text-white rounded-full"
-                                            >Delete</a
                                         >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="w-6 h-6 text-red-400"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
+                      4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                                /></svg
+                                        ></a>
                                     </div>
                                 </td>
                             </tr>
@@ -561,18 +591,7 @@ const prepareEditProduct = (product) => {
                             required
                         />
                     </div>
-                    <div class="mb-4">
-                        <label for="brand" class="block text-gray-700"
-                            >Brand</label
-                        >
-                        <input
-                            type="text"
-                            id="brand"
-                            v-model="brand"
-                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-                            required
-                        />
-                    </div>
+
                     <div class="mb-4">
                         <label for="quantity" class="block text-gray-700"
                             >Quantity</label
@@ -696,18 +715,7 @@ const prepareEditProduct = (product) => {
                             required
                         />
                     </div>
-                    <div class="mb-4">
-                        <label for="editBrand" class="block text-gray-700"
-                            >Brand</label
-                        >
-                        <input
-                            type="text"
-                            id="editBrand"
-                            v-model="editedProduct.brand"
-                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-                            required
-                        />
-                    </div>
+
                     <div class="mb-4">
                         <label for="editQuantity" class="block text-gray-700"
                             >Quality</label

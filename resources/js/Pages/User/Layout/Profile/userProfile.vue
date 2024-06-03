@@ -23,7 +23,7 @@ import Profile from "./components/Profile.vue";
 <template>
     <Navbar />
     <section>
-        <div class="container mx-auto mt-12">
+        <div class="container mx-auto mt-12 font-poppins">
             <div class="max-w-7xl mx-auto flex w-[1200px] gap-10">
                 <Sidebar />
                 <Profile />
