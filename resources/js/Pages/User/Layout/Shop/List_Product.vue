@@ -35,76 +35,130 @@
     <div
         class="container grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 font-inter"
     >
-        <div>
-            <img :src="product1" alt="product" class="w-full rounded-md" />
-            <div class="grid grid-cols-5 gap-4 mt-4">
+        <div class="relative mb-24">
+            <div
+                class="w-full lg:h-[480px] bg-white-50 overflow-hidden rounded-md sm:h-[280px] md:h-[350px]"
+            >
                 <img
-                    :src="product2"
-                    alt="product2"
-                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                />
-                <img
-                    :src="product3"
-                    alt="product2"
-                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                />
-                <img
-                    :src="product4"
-                    alt="product2"
-                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                />
-                <img
-                    :src="product5"
-                    alt="product2"
-                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                />
-                <img
-                    :src="product6"
-                    alt="product2"
-                    class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                    :src="currentImage"
+                    alt="product"
+                    class="w-full h-full"
+                    id="image-main"
                 />
             </div>
-        </div>
-
-        <div>
-            <h2 class="text-3xl font-bold uppercase mb-2">pohon jati asli</h2>
-            <div class="flex items-center mb-4">
-                <div class="flex gap-1 text-sm text-primaryColor">
-                    <span><i class="fa-solid fa-star"></i></span>
-                    <span><i class="fa-solid fa-star"></i></span>
-                    <span><i class="fa-solid fa-star"></i></span>
-                    <span><i class="fa-solid fa-star"></i></span>
-                    <span><i class="fa-solid fa-star"></i></span>
-                    <Link
-                        Link
-                        class="mt-1/2 text-center text-sm text-dark mr-3 ml-2 hover:border-b-2 hover:border-primaryColor"
-                    >
-                        5.3
-                    </Link>
+            <div class="grid grid-cols-6 gap-2 mt-3">
+                <div
+                    @mouseenter="changeMainImage(product2)"
+                    @mouseleave="resetMainImage"
+                >
+                    <img
+                        :src="product2"
+                        alt="product2"
+                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                    />
                 </div>
-                <div class="inline-block">
-                    <div class="grid grid-cols-2 divide-x gap-2 text-center">
+                <div
+                    @mouseenter="changeMainImage(product3)"
+                    @mouseleave="resetMainImage"
+                >
+                    <img
+                        :src="product3"
+                        alt="product3"
+                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                    />
+                </div>
+                <div
+                    @mouseenter="changeMainImage(product4)"
+                    @mouseleave="resetMainImage"
+                >
+                    <img
+                        :src="product4"
+                        alt="product4"
+                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                    />
+                </div>
+                <div
+                    @mouseenter="changeMainImage(product5)"
+                    @mouseleave="resetMainImage"
+                >
+                    <img
+                        :src="product5"
+                        alt="product5"
+                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                    />
+                </div>
+                <div
+                    @mouseenter="changeMainImage(product6)"
+                    @mouseleave="resetMainImage"
+                >
+                    <img
+                        :src="product6"
+                        alt="product6"
+                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                    />
+                </div>
+                <div
+                    @mouseenter="changeMainImage(product7)"
+                    @mouseleave="resetMainImage"
+                >
+                    <img
+                        :src="product7"
+                        alt="product6"
+                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
+                    />
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2
+                class="text-3xl font-bold capitalize mb-3 sm:text-sm md:text-md lg:text-4xl"
+            >
+                pohon jati asli
+            </h2>
+            <div class="flex items-center mb-4">
+                <div
+                    class="flex text-sm text-primaryColor divide-x-2 divide-white-50"
+                >
+                    <div class="flex relative">
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                        <span><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    <span class="text-center text-sm mr-1 ml-2">
+                        <Link
+                            class="mx-3 text-dark hover:border-b-2 hover:border-primaryColor"
+                            >5.3</Link
+                        >
+                    </span>
+                    <div class="grid grid-cols-2 gap-2 text-center">
                         <span
-                            class="mt-1/2 text-center text-sm text-dark capitalize border-l border-l-1 px-1"
+                            class="mt-1/2 text-center text-sm text-dark capitalize"
                         >
                             <Link
                                 class="text-center ml-3 mr-1 hover:border-b-2 hover:border-primaryColor text-dark"
                                 >5,3rb</Link
-                            >penilaian
+                            >
+                            penilaian
                         </span>
-                        <div
-                            class="mt-1/2 text-center text-sm text-dark capitalize px-1"
-                        >
-                            <span class="text-center ml-3">26rb terjual</span>
+                        <div class="text-center border-l-2 border-white-50">
+                            <span class="text-sm text-dark capitalize"
+                                >26rb terjual</span
+                            >
                         </div>
                     </div>
                 </div>
-                <div></div>
             </div>
             <div class="space-y-2">
                 <p class="text-dark font-semibold space-x-2">
                     <span>Availability: </span>
-                    <span class="text-pink">In Stock</span>
+                    <span
+                        class="text-primaryColor"
+                        v-if="statusProduct === 'In Stock'"
+                        >{{ statusProduct }}</span
+                    >
+                    <span class="text-pink" v-else>{{ statusProduct }}</span>
                 </p>
                 <p class="space-x-2">
                     <span class="text-dark font-semibold">Brand: </span>
@@ -123,7 +177,7 @@
                 <p class="text-xl text-primaryColor font-semibold">
                     Rp5.000,000
                 </p>
-                <p class="text-base text-gray-400 line-through">Rp9.500,000</p>
+                <p class="text-base text-slate-200 line-through">Rp9.500,000</p>
             </div>
 
             <p class="mt-4 text-slate-300">
@@ -138,41 +192,47 @@
                 <h3 class="text-sm text-dark capitalize mb-2 font-semibold">
                     Quantity
                 </h3>
-                <div
-                    class="flex border border-slate-200 text-slate-300 divide-x divide-slate-200 w-max"
-                >
-                    <div
-                        class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none text-slate-300 active:bg-white-50 transition"
+                <div class="flex">
+                    <button
+                        v-if="count >= 1"
+                        @click="decrement"
+                        type="button"
+                        class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none text-slate-300 active:bg-white-50 transition border-1 border-white-50 rounded-bl-md rounded-tl-md"
                     >
                         -
-                    </div>
-                    <div
-                        class="h-8 w-8 text-base flex items-center justify-center text-slate-300"
+                    </button>
+                    <button
+                        class="h-8 w-8 text-base flex items-center justify-center text-slate-300 border-1 border-white-50 px-4"
+                        disabled
                     >
-                        1
-                    </div>
-                    <div
-                        class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none text-slate-300 active:bg-white-50 transition"
+                        {{ count }}
+                    </button>
+                    <button
+                        v-if="count <= 10"
+                        @click="increment"
+                        type="button"
+                        class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none text-slate-300 active:bg-white-50 transition border-1 border-white-50 rounded-br-md rounded-tr-md"
                     >
                         +
-                    </div>
+                    </button>
                 </div>
             </div>
 
             <div class="mt-6 flex gap-3 pt-3 pb-5">
                 <Link
-                    class="bg-hoverPrimary text-white px-8 py-2 font-medium rounded-md hover:bg-primaryColor capitalize flex items-center gap-2 transition no-underline"
+                    class="bg-hoverPrimary text-white px-8 py-2 font-medium rounded-md capitalize flex items-center gap-2 transition no-underline hover:bg-primaryColor"
                 >
                     <i class="fa-solid fa-bag-shopping"></i> Beli sekarang
                 </Link>
                 <Link
-                    class="border-2 border-slate-200 text-slate-300 px-8 py-2 font-medium rounded capitalize flex items-center gap-2 hover:bg-white-50 no-underline group"
+                    class="border-1 border-dark text-dark px-8 py-2 font-medium rounded capitalize flex items-center gap-2 hover:bg-dark no-underline group hover:cursor-pointer transition duration-2000"
+                    @click="popupSuccess"
                 >
                     <i
-                        class="bx bx-shopping-bag text-slate-300 bx-xs outline-none"
+                        class="bx bx-shopping-bag text-primaryColor text-[20px] outline-none"
                     ></i>
-                    <span class="group-hover:text-slate-300 outline-none"
-                        >masukan keranjang</span
+                    <span class="group-hover:text-white outline-none"
+                        >Tambahkan ke keranjang</span
                     >
                 </Link>
             </div>
@@ -183,7 +243,7 @@
     <!-- description -->
     <div class="container pb-16 font-inter">
         <h3
-            class="border-b border-slate-300 font-roboto text-dark pb-3 font-semibold"
+            class="border-b-2 border-white-50 font-roboto text-dark pb-3 font-semibold"
         >
             Product details
         </h3>
@@ -369,6 +429,7 @@
                             href="#"
                             class="text-white text-lg w-10 h-10 rounded-full bg-dark flex items-center justify-center opacity-60 hover:opacity-90 transition"
                             title="add to wishlist"
+                            @click="popupFavorite"
                         >
                             <i class="fa-solid fa-heart"></i>
                         </Link>
@@ -459,17 +520,115 @@
     </div>
     <!-- ./related product -->
 </template>
+<script>
+export default {
+    data() {
+        return {
+            user1: "",
+            user2: "",
+            user3: "",
+            product1: "",
+            product2: "",
+            product3: "",
+            product4: "",
+            product5: "",
+            product6: "",
+            product7: "",
+            product8: "",
+            product9: "",
+            product10: "",
+            product11: "",
+            product12: "",
+            count: 1,
+            mainImage: "",
+            currentImage: "",
+            statusProduct: "In Stock",
+        };
+    },
+    mounted() {
+        this.user1 = "/assets/img/users/ajiw.png";
+        this.user2 = "/assets/img/users/aji.jpg";
+        this.user3 = "/assets/img/users/profil.JPG";
+        this.product1 = "/assets/products/pohon1.jpg";
+        this.mainImage = "/assets/products/pohon1.jpg";
+        this.currentImage = "/assets/products/pohon1.jpg";
+        this.product2 = "/assets/products/pohon2.jpg";
+        this.product3 = "/assets/products/pohon3.jpg";
+        this.product4 = "/assets/products/pohon4.jpg";
+        this.product5 = "/assets/products/pohon5.jpg";
+        this.product6 = "/assets/products/pohon6.jpg";
+        this.product7 = "/assets/products/product7.jpg";
+        this.product8 = "/assets/products/product8.jpg";
+        this.product9 = "/assets/products/product9.jpg";
+        this.product10 = "/assets/products/product10.jpg";
+        this.product11 = "/assets/products/product11.jpg";
+        this.product12 = "/assets/products/product12.jpg";
+    },
+    methods: {
+        increment() {
+            if (this.count < 10) {
+                this.count++;
+            } else if (this.count <= 10) {
+                Swal.fire({
+                    icon: "info",
+                    title: "Perhatian",
+                    text: "Anda telah mencapai jumlah minimal pembelian untuk produk ini",
+                    allowEnterKey: true,
+                    timer: 3000,
+                    iconColor: "#ffe066",
+                });
+            }
+        },
+        decrement() {
+            if (this.count > 1) {
+                this.count--;
+            } else if (this.count >= 1) {
+                Swal.fire({
+                    icon: "info",
+                    title: "Perhatian",
+                    text: "Anda telah mencapai jumlah maksimal pembelian untuk produk ini",
+                    allowEnterKey: true,
+                    timer: 3000,
+                    iconColor: "#ffe066",
+                });
+            }
+        }, //Code selesai disini untuk membatasi nilai max dan min
+
+        // Di bawah ini adalah kode untuk menampilkan gambar ketika di hover
+        changeMainImage(imageSrc) {
+            this.currentImage = imageSrc;
+        },
+        resetMainImage() {
+            this.currentImage = this.mainImage;
+        },
+
+        popupSuccess() {
+            Swal.fire({
+                title: "Sukses",
+                text: "Produk berhasil di tambahkan",
+                icon: "success",
+                timer: 3000,
+                allowEnterKey: true,
+                iconColor: "#3CB72B",
+                heightAuto: true,
+            });
+        },
+
+        popupFavorite() {
+            Swal.fire({
+                iconColor: "#3CB72B",
+                position: "top-end",
+                icon: "success",
+                title: "Sukses",
+                text: "Produk berhasil di tambahkan ke favorite",
+                showConfirmButton: false,
+                timer: 2000,
+            });
+        },
+    },
+};
+</script>
 <script setup>
-const product1 = "/assets/products/product1.jpg";
-const product2 = "/assets/products/product2.jpg";
-const product3 = "/assets/products/product3.jpg";
-const product4 = "/assets/products/product4.jpg";
-const product5 = "/assets/products/product5.jpg";
-const product6 = "/assets/products/product6.jpg";
-const product7 = "/assets/products/product7.jpg";
-const product8 = "/assets/products/product8.jpg";
-const product9 = "/assets/products/product9.jpg";
-const product10 = "/assets/products/product10.jpg";
-const product11 = "/assets/products/product11.jpg";
-const product12 = "/assets/products/product12.jpg";
+import { Link } from "@inertiajs/vue3";
+import Comment from "./Comment.vue";
 </script>

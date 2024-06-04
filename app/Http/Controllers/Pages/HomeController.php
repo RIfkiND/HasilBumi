@@ -51,4 +51,11 @@ class HomeController extends Controller
         return Inertia::render('Shop/Product');
     }
 
+    public function userProfile(){
+        return Inertia::render('User/Layout/Profile/userProfile');
+    }
+    public function userProducts(){
+        return Inertia::render('User/Layout/Profile/userProducts');
+    }
+
 }

@@ -670,9 +670,9 @@
                         </div>
                     </div>
                     <div class="pt-3 pb-3 px-3 cursor-pointer">
-                        <Link class="no-underline pt-5">
+                        <Link class="no-underline pt-4">
                             <h4
-                                class="capitalize font-semibold text-xl mb-1 text-dark transition"
+                                class="capitalize font-semibold text-xl mb-2 text-dark transition"
                             >
                                 {{ product.title }}
                             </h4>
@@ -783,20 +783,17 @@
 <script setup>
 import Header from "../Component/Header.vue";
 import Footer from "../Component/Footer.vue";
-import {Link} from '@inertiajs/vue3'
+import { Link } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 
 const sliders = ref([
     {
-        title: "Red car",
         image: product1,
     },
     {
-        title: "White car",
         image: product2,
     },
     {
-        title: "Blue car",
         image: product3,
     },
 ]);
@@ -976,9 +973,9 @@ const visibleProducts = computed(() => {
 const loadMoreProducts = () => {
     visibleCount.value += 4; //
 };
-const product1 = "/assets/products/product1.jpg";
-const product2 = "/assets/products/product2.jpg";
-const product3 = "/assets/products/product3.jpg";
+const product1 = "/assets/products/pohon1.jpg";
+const product2 = "/assets/products/pohon2.jpg";
+const product3 = "/assets/products/pohon3.jpg";
 const product4 = "/assets/products/product4.jpg";
 const product5 = "/assets/products/product5.jpg";
 const product6 = "/assets/products/product6.jpg";
