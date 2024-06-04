@@ -14,13 +14,15 @@ class Seller_Information extends Model
     protected $table = 'Seller_Information';
     protected $guarded = ['id'];
     protected $fillable = [
-        'no_hp',
+        'user_id',
+        'nama_lengkap',
         'nama_toko',
-        'nip',
+        'no_telp_toko',
         'kota',
         'provinsi',
         'kode_pos',
-        'foto_toko'
+        'foto_ktp',
+        'foto_sendiri'
     ];
     
 

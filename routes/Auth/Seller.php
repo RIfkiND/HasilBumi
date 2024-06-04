@@ -1,13 +1,13 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Seller\Auth\PendaftaranSellerController;
+use App\Http\Controllers\Seller\Auth\PendaftaranSellerController    ;
 
 
 
 //get
-Route::get('/Pendaftaran/form',[PendaftaranSellerController::class, 'PendaftaranForm'])->name('sellerform');
+Route::get('/Pendaftaran/form',[PendaftaranSellerController::class, 'PendaftaranForm'])->name('seller.form');
 
 //Post
-Route::post('/seller/pendaftaran', [PendaftaranSellerController::class, 'Pendaftaran'])->name('seller.pendaftaran');
-Route::post('/Pendaftaran', [PendaftaranSellerController::class , 'MenjadiSeller'])->name('seller.becomeSeller');
+// Route::post('/seller/pendaftaran/proses', [PendaftaranSellerController::class, 'Pendaftaran'])->name('pendaftaran.seller');
+
 

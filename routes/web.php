@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ChatController;
 use App\Models\User;
+use App\Http\Controllers\Seller\Auth\PendaftaranSellerController;
 Route::get('/testing', function () {
     return Inertia::render('Shop/Checkout/Chekout');
 });
@@ -21,6 +22,10 @@ Route::middleware('auth')->group(function () {
        Route::get('/{receiverId?}', [ChatController::class, 'index'])->name('index');
        Route::post('prosess/{receiverId?}', [ChatController::class, 'store'])->name('store');
    });
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/seller/pendaftaran/proses', [PendaftaranSellerController::class, 'Pendaftaran'])->name('pendaftaran.seller');
 });
 
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Seller;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('seller_information', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Seller::class);
-            $table->string('no_hp');
+            $table->foreignIdFor(User::class);
+            $table->string('nama_lengkap');
             $table->string('nama_toko');
-            $table->string('nip');
+            $table->string('no_telp_toko');
             $table->string('kota');
             $table->string('provinsi');
-            $table->string('kode_pos');
-            $table->string('foto_toko')->nullable();
+            $table->integer('kode_pos');
+            $table->string('foto_ktp');
+            $table->string('foto_sendiri');
             $table->timestamps();
         });
     }

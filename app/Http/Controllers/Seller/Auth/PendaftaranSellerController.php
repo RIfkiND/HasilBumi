@@ -5,73 +5,67 @@ namespace App\Http\Controllers\Seller\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seller;
+use App\Models\Seller_Information;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 class PendaftaranSellerController extends Controller
 {
 
-    // public function MenjadiSeller(Request $request)
-    // {
-    //     $user = Auth::user();
-    //     if ($user->isSeller()) {
-    //         return Inertia::render('Coba/APi/Become_Seller')->with(['errors', 'The user Has Become A seller']);
-    //     }
-
-    //     try {
-
-    //         DB::beginTransaction();
-
-    //         $seller = new Seller();
-    //         $seller->user_id = $user->id;
-    //         $seller->save();
-
-    //         DB::commit();
-
-    //         return Inertia::render('Coba/APi/pendaftranform')->with(['success' => 'User successfully became a seller']);
-    //     } catch (\Exception $e) {
-    //         DB::rollBack();
-    //     }
-    // }
-
-
     public function PendaftaranForm()
     {
-
-        $user = Auth::user();
-        // $sellerInformation = $seller->sellerInformation()->first();
-
-        return inertia('Seller/Auth/PendaftaranSeller', [
-            // 'sellerInformation' => $sellerInformation,
-        ]);
+        return inertia('Seller/Auth/PendaftaranSeller');
     }
 
     public function Pendaftaran(Request $request)
     {
+
+        Log::info('User authenticated: ' . (Auth::check() ? 'Yes' : 'No'));
+        // Ensure the user is authenticated
         $user = Auth::user();
-        // $seller = $user->seller()->first();
 
-
-        $validateData = $request->validate([
-            'no_hp' => 'required|integer|min:1',
-            'nama_toko' => 'required|string|min:5',
-            'nip' => 'required|integer|min:10',
-            'kota' => 'required|string|min:1',
-            'provinsi' => 'required|string|min:1',
-            'foto_toko' => 'image|mimes:png,jpg.jpeg|max:2048'
-        ]);
-
-        // $sellerInformation = $seller->sellerInformation()->firstOrNew([]);
-        // $sellerInformation->fill($request->only($validateData));
-
-        if ($request->hasFile('foto_toko')) {
-            // $sellerInformation->foto_toko = $request->file('foto_toko')->store('seller_photos');
+        if (!$user) {
+            return redirect()->back()->withErrors(['error' => 'User is not authenticated.']);
         }
 
-        // $sellerInformation->save();
+        // Validate the request data
+        $validatedData = $request->validate([
+            'nama_lengkap' => 'required|string|max:255',
+            'nama_toko' => 'required|string|max:255',
+            'no_telp_toko' => 'required|string|max:20', // Adjusted to string
+            'kota' => 'required|string|max:255',
+            'provinsi' => 'required|string|max:255',
+            'kode_pos' => 'required|integer',
+            'foto_ktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto_sendiri' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $validatedData['user_id'] = $user->id;
+
+
+        $validatedData['foto_ktp'] = $this->storeImage($request, 'foto_ktp', 'toko/foto_ktp');
+        $validatedData['foto_sendiri'] = $this->storeImage($request, 'foto_sendiri', 'toko/foto_sendiri');
+
+        Seller_Information::create($validatedData);
+
+
 
         return redirect('/')->with(['success' => 'Seller information saved successfully']);
     }
+
+    private function storeImage(Request $request, $fieldName, $storagePath)
+    {
+        if ($request->hasFile($fieldName)) {
+            $image = $request->file($fieldName);
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs($storagePath, $fileName);
+            return Storage::url($imagePath);
+        }
+
+        return null;
+    }
+
 }
