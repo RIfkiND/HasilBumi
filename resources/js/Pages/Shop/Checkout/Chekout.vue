@@ -370,6 +370,9 @@
             </button>
         </div>
     </div>
+    <Footer/>
 </template>
 
-<script setup></script>
+<script setup>
+import Footer from "@/User/Layout/Component/Footer.vue";
+</script>

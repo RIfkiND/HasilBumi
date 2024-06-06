@@ -12,6 +12,9 @@ Route::get('/',[HomeController::class,'Home'])->name('Home');
 Route::get('/Shop-MainPage',[HomeController::class,'Shop'])->name('Shop.main');
 Route::get('/Show-Product',[HomeController::class,'ShowProduct'])->name('Shop.Product');
 
+// Checkout
+Route::get('/checkout', [HomeController::class, 'Checkout']);
+
 //whislist and Cart
 Route::get('/Whislist',[HomeController::class ,'WhistList'])->name('Home.Whistlist')->middleware('auth');
 Route::get('/ShopCart',[HomeController::class ,'ShopCart'])->name('Home.ShopCart')->middleware('auth');

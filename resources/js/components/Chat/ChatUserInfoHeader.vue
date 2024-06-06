@@ -1,5 +1,5 @@
 <template>
-    <div class="user-info-header bg-white px-5 py-3">
+    <div class="user-info-header bg-primaryColor px-5 py-3">
       <div class="flex justify-between">
         <div class="flex items-center">
           <img
@@ -15,16 +15,16 @@
 
         </div>
         <div>
-          <i class="fa fa-message text-violet-300"></i>
-          <i class="fa fa-video ml-3 text-gray-200"></i>
-          <i class="fa fa-phone ml-3 text-gray-200"></i>
+          <i class="fa fa-message text-slate-300"></i>
+          <i class="fa fa-video ml-3 text-slate-200"></i>
+          <i class="fa fa-phone ml-3 text-slate-200"></i>
         </div>
       </div>
     </div>
   </template>
 
   <script setup>
-  
+
 
 defineProps({receiver: Object, });
   </script>

@@ -46,6 +46,15 @@ class HomeController extends Controller
         ]);
     }
 
+    public function Checkout()
+    {
+        $products = Product::all();
+
+        return Inertia::render('Shop/Layout/bodyproduct', [
+            'products ' => $products,
+        ]);
+    }
+
     public function ShowProduct()
     {
         return Inertia::render('Shop/Product');

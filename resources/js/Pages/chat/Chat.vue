@@ -15,7 +15,7 @@
           </div>
         </div>
         <div v-else class="flex justify-center items-center bg-white h-screen">
-          <p class="font-bold text-3xl text-dark">
+          <p class="font-bold text-3xl text-primaryColor">
             Please select a User to start chatting...
           </p>
         </div>

@@ -11,7 +11,7 @@
         <div
           :class="[
             'mb-2 max-w-[80%] rounded px-5 py-2 text-sm',
-            isReceivedMessage(message) ? 'bg-violet-400 text-white' : 'bg-violet-200 text-slate-500'
+            isReceivedMessage(message) ? 'bg-violet-400 text-slate-300' : 'bg-violet-200 text-slate-300 bg-dark'
           ]"
         >
           <p>{{ message.message }}</p>

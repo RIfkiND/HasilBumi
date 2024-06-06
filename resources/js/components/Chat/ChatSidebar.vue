@@ -3,17 +3,17 @@
       <div class="search-box h-10 text-slate-300">
         <div class="flex justify-between border-b border-white-50 px-5 pb-1">
           <form class="flex justify-center items-center">
-            <i class="fa fa-search"></i>
+            <i class="fa fa-search text-slate-200"></i>
             <input
               type="search"
-              class="font-light border-1 rounded-md py-2 px-2 bg-white focus:border-0 focus:ring-0 !shadow-none focus:!outline-none"
+              class="font-light border-1 border-slate-200 focus:text-dark rounded-md py-2 px-2 bg-white mx-3 focus:ring-1 focus:ring-dark focus:border-none !shadow-none focus:!outline-none"
               placeholder="Search"
             />
           </form>
           <div class="flex justify-center items-center">
-            <button class="relative">
-              <i class="fa fa-message"></i>
-              <i class="fa fa-plus absolute -top-2 text-sm"></i>
+            <button class="relative hover:text-dark">
+              <i class="fa fa-message text-slate-200"></i>
+              <i class="fa fa-plus absolute -top-2 text-sm text-slate-200"></i>
             </button>
           </div>
         </div>
