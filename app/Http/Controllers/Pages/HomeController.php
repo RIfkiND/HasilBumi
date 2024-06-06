@@ -50,7 +50,7 @@ class HomeController extends Controller
     {
         $products = Product::all();
 
-        return Inertia::render('Shop/Layout/bodyproduct', [
+        return Inertia::render('Shop/Checkout/Chekout', [
             'products ' => $products,
         ]);
     }
