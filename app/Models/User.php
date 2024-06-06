@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar_user',  
+        'tgl_lahir',
+        'jenis_kelamin',
+        'no_hp',
+        'alamat',
         'is_online',
     ];
 

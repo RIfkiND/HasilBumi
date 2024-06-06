@@ -28,6 +28,6 @@ public function logout(Request $request)
 
      $request->session()->regenerateToken();
 
-    return $this->loggedOut($request) ?: to_route('Home')->with('status', ['type' => 'success', 'action' => 'You can exit', 'text' => 'You Logged out ']);;
+    return $this->loggedOut($request) ?: to_route('Home')->with('success','You Have Logout');
 }
 }
