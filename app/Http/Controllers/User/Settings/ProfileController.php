@@ -13,6 +13,7 @@ class ProfileController extends Controller
 {
     public function update(Request $request, $id)
     {
+        dd($request->all());
         $user = User::findOrFail($id);
 
         // Validate the request data
@@ -56,7 +57,6 @@ class ProfileController extends Controller
             ]);
         }
 
-         // Handle avatar update if provided
     if ($request->hasFile('avatar_user')) {
         $avatar = $request->file('avatar_user');
         $avatar->storeAs('User/Avatar/', $avatar->hashName());
@@ -66,7 +66,7 @@ class ProfileController extends Controller
         ]);
 
     }
-        
+
         return redirect()->route('userProfile')->with('success', 'you have updated succeafully');
     }
 

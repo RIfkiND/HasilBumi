@@ -15,7 +15,7 @@ class PaymentController extends Controller
     {
         $order = Order::create([
             'cart_id' => $cart->id,
-            'price_ids' => [$cart->product->price], // Assuming price_id is the product's price
+            'price_ids' => [$cart->product->price],
             'status' => 'incomplete',
         ]);
 
@@ -82,27 +82,27 @@ class PaymentController extends Controller
     public function handle(Request $request)
     {
         $sessionId = $request->get('session_id');
-     
+
         if ($sessionId === null) {
-            abort(404); // Or handle it in a way that fits your application
+            abort(404);
         }
-     
+
         $session = Cashier::stripe()->checkout->sessions->retrieve($sessionId);
-     
+
         if ($session->payment_status !== 'paid') {
-            abort(404); // Or handle it in a way that fits your application
+            abort(404);
         }
-     
+
         $orderId = $session['metadata']['order_id'] ?? null;
-     
+
         if (!$orderId) {
-            abort(404); // Or handle it in a way that fits your application
+            abort(404);
         }
-     
+
         $order = Order::findOrFail($orderId);
-     
+
         $order->update(['status' => 'completed']);
-     
+
         // return Inertia::render('CheckoutSuccess', ['order' => $order]);
     }
 }

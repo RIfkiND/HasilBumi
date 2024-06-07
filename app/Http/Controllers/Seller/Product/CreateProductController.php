@@ -21,7 +21,7 @@ class CreateProductController extends Controller
     public function ProductView()
     {
         $categories = Category::all();
-        return view('components.Product.AddProduct', compact('categories'));
+        return Inertia::render('', compact('categories'));
     }
 
     public function store(Request $request)
@@ -30,10 +30,13 @@ class CreateProductController extends Controller
 
         $validatedData = $request->validate([
             'user_id' => $user->id,
-            'title' => 'required',
-            'price' => 'required|integer',
+            'seller__information_id'=> $user->id,
+            'name' => 'required|string|min:2',
+            'price' => 'required|integer|min:1',
+            'stock'=>'required|integer|min:1',
             'category_id' => 'required|exists:categories,id',
-            'description' => 'required|string|min:1'
+            'deskripsi' => 'required|string|min:1',
+            'satuan'=>'required|string|min:1',
         ]);
 
         $newProduct = Product::create($validatedData);

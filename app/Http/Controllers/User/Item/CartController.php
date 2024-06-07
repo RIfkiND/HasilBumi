@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 
 class CartController extends Controller
 {
@@ -17,7 +18,7 @@ class CartController extends Controller
 
         $cartItems = Cart::where('user_id', $user->id)->with('product')->get();
 
-        return view('components.Welcome.cart.cart', compact('cartItems'));
+        return Inertia::render('User/Layout/Component/shop_card', compact('cartItems'));
     }
     public function AddProductCart($id)
     {

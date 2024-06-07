@@ -15,8 +15,7 @@
                         type="file"
                         ref="photoInput"
                         class="hidden"
-                        @input="avatar.avatar_user = $event.target.files[0]"
-                        @change="previewPhoto"
+                        @change="selectPhoto"
                     />
 
                     <label
@@ -36,15 +35,12 @@
                             </div>
 
                             <div v-else class="avatar">
-                                <span
+
+                                <img
                                     class="block w-24 h-24 rounded-full m-auto shadow"
-                                    :style="{
-                                        'background-size': 'cover',
-                                        'background-repeat': 'no-repeat',
-                                        'background-position': 'center center',
-                                        'background-image': `url(${photoUrl})`,
-                                    }"
-                                ></span>
+                                    :src="`/${ $page.props.auth.user.avatar_user[0].image}`"
+                                    :alt=" $page.props.auth.user.avatar_user"
+                                >
                             </div>
                         </div>
                     </label>
@@ -314,30 +310,17 @@ import { ref, watch,computed ,reactive} from "vue";
 import { usePage ,router ,useForm } from "@inertiajs/vue3";
 import success from "~/Components/alert/success.vue"
 const page = usePage();
-const photoInput = ref(null);
-const photoPreview = ref(null);
 const initial = computed(() => page.props.auth.user.name.charAt(0).toUpperCase());
+const userId = page.props.auth.user.id;
 
-const selectPhoto = () => {
-    photoInput.value.click();
-};
+
+const photoInput = ref(null);
+
+
 const photoUrl = computed(() => {
     return photoPreview.value || (page.props.auth.user.avatar_user ? page.props.auth.user.avatar_user : null);
 });
 
-
-const previewPhoto = ($event) => {
-    const file = $event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            photoPreview.value = e.target.result;
-            avatar.avatar_user = file;
-            upload()
-        };
-        reader.readAsDataURL(file);
-    }
-};
 
 const birthDate = ref({
     day: null,
@@ -381,23 +364,40 @@ const showDateForm = ref(false);
 //form-end
 
 //submit
-const userId = page.props.auth.user.id;
 
 const avatar = useForm({
-    avatar_user : null,
+    avatar_user:null
 })
+const selectPhoto = () => {
+    if (photoInput.value) {
+        photoInput.value.click();
+        photoInput.value.addEventListener('change', async () => {
+            const file = photoInput.value.files[0];
+            if (file) {
+                avatar.avatar_user = file;
+                const formData = new FormData();
+                formData.append('avatar_user', avatar.avatar_user);
 
-const upload = () => {
-    const formData = new FormData();
-    formData.append('avatar_user', avatar.avatar_user)
+                try {
 
-  router.put(route('user.edit', { id: userId }), formData, {
-    forceFormData: true,
-    headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-  })
+                      await router.put(route('user.edit', { id: userId }), {
+                        _method: 'put',
+                        body: formData,
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    });
+
+
+                } catch (error) {
+                    console.error('An error occurred:', error);
+
+                }
+            }
+        });
+    }
 };
+
 
 const profile = reactive({
     name: null,

@@ -1,9 +1,8 @@
 <script setup>
 import { router, usePage } from "@inertiajs/vue3";
 import { ref, defineProps } from "vue";
-
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const products = ref([
-    // your array of products
     {
         id: 1,
         name: "Product 1",
@@ -12,120 +11,34 @@ const products = ref([
         inStock: 0,
         published: 0,
     },
-    {
-        id: 2,
-        name: "Product 2",
-        quantity: 20,
-        price: 9.99,
-        inStock: 1,
-        published: 1,
-    },
-    {
-        id: 3,
-        name: "Product 3",
-        quantity: 15,
-        price: 3.99,
-        inStock: 1,
-        published: 0,
-    },
-    {
-        id: 4,
-        name: "Product 4",
-        quantity: 8,
-        price: 6.99,
-        inStock: 0,
-        published: 1,
-    },
-    {
-        id: 5,
-        name: "Product 5",
-        quantity: 12,
-        price: 4.99,
-        inStock: 1,
-        published: 0,
-    },
-    {
-        id: 6,
-        name: "Product 6",
-        quantity: 25,
-        price: 8.99,
-        inStock: 1,
-        published: 1,
-    },
-    {
-        id: 7,
-        name: "Product 7",
-        quantity: 30,
-        price: 2.99,
-        inStock: 0,
-        published: 1,
-    },
-    {
-        id: 8,
-        name: "Product 8",
-        quantity: 18,
-        price: 7.99,
-        inStock: 1,
-        published: 0,
-    },
-    {
-        id: 9,
-        name: "Product 9",
-        quantity: 22,
-        price: 5.49,
-        inStock: 0,
-        published: 1,
-    },
-    {
-        id: 10,
-        name: "Product 10",
-        quantity: 16,
-        price: 9.49,
-        inStock: 1,
-        published: 0,
-    },
-    {
-        id: 11,
-        name: "Product 11",
-        quantity: 14,
-        price: 1.99,
-        inStock: 0,
-        published: 1,
-    },
-    {
-        id: 12,
-        name: "Product 12",
-        quantity: 19,
-        price: 6.49,
-        inStock: 1,
-        published: 0,
-    },
-    {
-        id: 13,
-        name: "Product 13",
-        quantity: 23,
-        price: 8.49,
-        inStock: 1,
-        published: 1,
-    },
-    {
-        id: 14,
-        name: "Product 14",
-        quantity: 26,
-        price: 4.49,
-        inStock: 0,
-        published: 1,
-    },
-    {
-        id: 15,
-        name: "Product 15",
-        quantity: 11,
-        price: 2.49,
-        inStock: 1,
-        published: 0,
-    },
+
 ]);
 
+const editor = ref(ClassicEditor);
+
+  const editorConfig = {
+    height: '450px',
+    toolbar: [
+      'heading',
+      '|',
+      'bold',
+      'italic',
+      'link',
+      'bulletedList',
+      'numberedList',
+      '|',
+      'insertTable',
+      '|',
+      'mediaEmbed',
+      '|',
+      'undo',
+      'redo',
+    ],
+    table: {
+      toolbar: ['tableColumn', 'tableRow', 'mergeTableCells'],
+    },
+    language: 'nl',
+  };
 // defineProps({
 //     products: Array,
 // });
@@ -140,6 +53,7 @@ const category = ref("");
 const quantity = ref("");
 const price = ref("");
 const stock = ref("");
+const deskripsi = ref("")
 const publish = ref(false);
 
 const submitAddProductForm = () => {
@@ -151,6 +65,7 @@ const submitAddProductForm = () => {
         quantity: quantity.value,
         price: price.value,
         stock: stock.value,
+        deskripsi :deskripsi.value,
         publish: publish.value,
     };
     console.log("New Product:", newProduct);
@@ -630,6 +545,13 @@ const prepareEditProduct = (product) => {
                     </div>
                     <div class="mb-4">
                         <label for="publish" class="block text-gray-700"
+                            >Deskripsi</label
+                        >
+                    <!-- <ckeditor :editor="editor" v-model="deskripsi" :config="editorConfig" ></ckeditor> -->
+
+                    </div>
+                    <div class="mb-4">
+                        <label for="publish" class="block text-gray-700"
                             >Publish</label
                         >
                         <input
@@ -639,6 +561,7 @@ const prepareEditProduct = (product) => {
                             class="mt-1 p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
                         />
                     </div>
+
                     <div class="col-span-2 justify-self-center">
                         <div class="flex justify-center">
                             <button
