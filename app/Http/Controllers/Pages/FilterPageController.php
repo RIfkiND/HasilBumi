@@ -75,6 +75,7 @@ class FilterPageController extends Controller
             'products' => $products,
         ]);
     }
+    
 
 
 }
