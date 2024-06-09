@@ -3,16 +3,16 @@
       <ckeditor :editor="editor" v-model="form.content" :config="editorConfig" />
     </form>
   </template>
-  
+
   <script setup>
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   import {ref} from 'vue';
   const form = ref({
     content: null,
   });
-  
+
   const editor = ref(ClassicEditor);
-  
+
   const editorConfig = {
     height: '450px',
     toolbar: [
@@ -36,9 +36,8 @@
     },
     language: 'nl',
   };
-  
+
   const store = () => {
     // Your store logic here
   };
   </script>
-  

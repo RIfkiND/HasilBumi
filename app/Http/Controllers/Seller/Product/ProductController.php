@@ -29,10 +29,6 @@ class ProductController extends Controller
         // Pass cart information to the Blade view
         return Inertia::render('', compact('Products', 'categories', 'selectedCategory', 'cartItems', 'subtotal'));
     }
-
-
-
-
     /**
      * Show To Products show tih categories
      *
