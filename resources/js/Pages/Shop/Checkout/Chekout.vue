@@ -473,7 +473,7 @@
             <p class="text-md font-semibold text-slate-300 capitalize">Harga barang</p>
             <p class="font-semibold text-slate-300">Rp399.000</p>
           </div>
-          <div class="flex items-center justify-between py-3">
+          <!-- <div class="flex items-center justify-between py-3">
             <p class="text-md font-semibold text-slate-300 capitalize">Diskon</p>
             <p class="font-semibold text-slate-300">Rp19.950</p>
           </div>
@@ -483,7 +483,7 @@
               <i class="bx bxs-discount flex bx-sm mr-2 text-primaryColor"></i>
               5%
             </p>
-          </div>
+          </div> -->
           <div class="flex items-center justify-between py-3">
             <p class="text-md font-semibold text-slate-300 capitalize">
               biaya pengiriman

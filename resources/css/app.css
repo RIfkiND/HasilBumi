@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn-wislisht {
+/* .btn-wislisht {
     @apply px-6 py-2 text-center text-sm text-white bg-primaryColor border border-primaryColor rounded hover:bg-transparent hover:text-primaryColor transition uppercase font-medium;
 }
 
@@ -28,4 +28,4 @@
 
 .button-border {
     box-shadow: inset 0 0 0 2px #3cb72b;
-}
+} */

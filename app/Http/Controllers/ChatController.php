@@ -30,7 +30,6 @@ class ChatController extends Controller
             'messages' => $messages,
             'recentMessages' => $this->chat->getRecentUsersWithMessage($request->user()->id),
             'receiver' => User::find($receiverId),
-
         ]);
     }
 

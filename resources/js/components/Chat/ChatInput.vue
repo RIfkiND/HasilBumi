@@ -1,12 +1,18 @@
 <template>
-  <div class="fixed bottom-0 w-full bg-white pl-4 border-2 border-slate-300">
+  <div class="fixed bottom-5 w-full border-b-2 border-white-50">
     <form @submit.prevent="submit">
-      <TextInput
-        class="h-16 w-full overflow-y-auto bg-white pt-3 font-light border-0 hover:border-0 focus:border-0 focus:ring-0 !shadow-none focus:!outline-none"
-        placeholder="Chat...."
-        name="message"
-        v-model="form.message"
-      />
+      <div class="flex items-center">
+        <input
+          type="text"
+          class="h-16 overflow-y-auto pt-2 px-3 border-0 hover:border-0 focus:border-0 focus:ring-0 !shadow-none focus:!outline-none w-full text-slate-300 font-medium text-md"
+          placeholder="Ketik pesan...."
+          name="message"
+          v-model="form.message"
+        />
+        <button type="submit" class="fixed z-10 right-5 text-center items-center text-slate-200 hover:text-slate-300">
+          <i class="bx bxs-send bx-sm"></i>
+        </button>
+      </div>
     </form>
   </div>
 </template>

@@ -161,32 +161,31 @@
             </span>
             <div class="flex gap-2">
               <span class="text-slate-200 text-[14px] font-inter">Beri Rating : </span>
-              <div class="rating w-16">
+              <div class="rating flex">
                 <input
                   type="radio"
                   name="rating-2"
-                  class="mask mask-star-2 bg-[#F3CA52]"
+                  class="mask mask-star-2 bg-[#F3CA52] w-4"
                 />
                 <input
                   type="radio"
                   name="rating-2"
-                  class="mask mask-star-2 bg-[#F3CA52]"
-                  checked
+                  class="mask mask-star-2 bg-[#F3CA52] w-4"
                 />
                 <input
                   type="radio"
                   name="rating-2"
-                  class="mask mask-star-2 bg-[#F3CA52]"
+                  class="mask mask-star-2 bg-[#F3CA52] w-4"
                 />
                 <input
                   type="radio"
                   name="rating-2"
-                  class="mask mask-star-2 bg-[#F3CA52]"
+                  class="mask mask-star-2 bg-[#F3CA52] w-4"
                 />
                 <input
                   type="radio"
                   name="rating-2"
-                  class="mask mask-star-2 bg-[#F3CA52]"
+                  class="mask mask-star-2 bg-[#F3CA52] w-4"
                 />
               </div>
             </div>

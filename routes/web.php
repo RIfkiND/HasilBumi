@@ -8,8 +8,6 @@ Route::get('/testing', function () {
     return Inertia::render('Coba/APi/pendaftranform');
 });
 
-
-
 Route::get('/dashboard', function () {
     $users = User::all();
    return Inertia::render('Dashboard', compact('users'));
