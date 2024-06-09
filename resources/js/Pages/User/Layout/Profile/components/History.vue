@@ -142,48 +142,6 @@ const price = ref("");
 const stock = ref("");
 const publish = ref(false);
 
-const submitAddProductForm = () => {
-    // Lakukan logika untuk menyimpan data produk baru
-    const newProduct = {
-        image: productImage.value,
-        name: productName.value,
-        category: category.value,
-        quantity: quantity.value,
-        price: price.value,
-        stock: stock.value,
-        publish: publish.value,
-    };
-    console.log("New Product:", newProduct);
-
-    // Reset nilai field
-    productImage.value = "";
-    productName.value = "";
-    category.value = "";
-    quantity.value = "";
-    price.value = "";
-    stock.value = "";
-    publish.value = false;
-
-    // Tutup form setelah disubmit
-    showAddProductForm.value = false;
-};
-
-const handleImageChange = (event) => {
-    // Mengambil file gambar yang dipilih oleh pengguna
-    const selectedFile = event.target.files[0];
-
-    // Jika pengguna memilih gambar
-    if (selectedFile) {
-        // Mengubah gambar menjadi URL data
-        const reader = new FileReader();
-        reader.readAsDataURL(selectedFile);
-        reader.onload = () => {
-            // Menyimpan URL data gambar ke dalam variabel productImage
-            productImage.value = reader.result;
-        };
-    }
-};
-
 // Props untuk menerima produk dan indeks dari komponen induk
 const props = defineProps({
     product: Object,
@@ -191,33 +149,6 @@ const props = defineProps({
 });
 
 // Edit
-const showEditProductForm = ref(false);
-const editedProduct = ref({
-    image: "",
-    name: "",
-    category: "",
-    quantity: "",
-    price: "",
-    stock: "",
-    publish: false,
-});
-
-const prepareEditProduct = (product) => {
-    // Menetapkan nilai produk yang akan diedit ke editedProduct
-    editedProduct.value = {
-        image: product.image,
-        name: product.name,
-        category: product.category,
-        quantity: product.quantity,
-        price: product.price,
-        stock: product.stock,
-        publish: product.publish,
-    };
-
-    // Menampilkan formulir edit
-    showEditProductForm.value = true;
-};
-
 const deleteProduct = (product, index) => {
     Swal.fire({
         title: "Are you Sure",
@@ -253,7 +184,7 @@ const deleteProduct = (product, index) => {
 <template>
     <section class="max-w-full">
         <!-- end -->
-        <div class="">
+        <div class="mx-auto">
             <!-- Start coding here -->
             <div
                 class="bg-white relative shadow-md sm:rounded-lg overflow-hidden"
@@ -297,13 +228,13 @@ const deleteProduct = (product, index) => {
                     <div
                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
                     >
-                        <button
+                        <!-- <button
                             type="button"
                             @click.prevent="showAddProductForm = true"
                             class="text-textColor border-2 border-primaryColor bg-white hover:bg-primaryColor focus:ring-2 focus:ring-primaryColor font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
                         >
                             Add product
-                        </button>
+                        </button> -->
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -312,20 +243,17 @@ const deleteProduct = (product, index) => {
                     >
                         <thead class="text-2xs text-textColor capitalize">
                             <tr>
-                                <th scope="col" class="px-4 py-3 text-center">
-                                    Image
+                                <th scope="col" class="px-5 py-3 text-center truncate">
+                                    Payment Date
                                 </th>
-                                <th scope="col" class="px-4 py-3 truncate">
-                                    Product name
+                                <th scope="col" class="px-5 py-3 truncate ">
+                                    Payment Code
                                 </th>
-                                <th scope="col" class="px-4 py-3">Category</th>
+                                <th scope="col" class="px-4 py-3">Name</th>
                                 <th scope="col" class="px-4 py-3">Quantity</th>
-                                <th scope="col" class="px-4 py-3">Price</th>
-                                <th scope="col" class="px-4 py-3">Stock</th>
-                                <th scope="col" class="px-4 py-3">Publish</th>
-                                <th scope="col" class="px-4 py-3 text-center">
-                                    Action
-                                </th>
+                                <th scope="col" class="px-4 py-3 truncate">Total Price</th>
+                                <th scope="col" class="px-5 py-3 truncate">Payment Type</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -339,26 +267,26 @@ const deleteProduct = (product, index) => {
                             >
                                 <th
                                     scope="row"
-                                    class="px-8 py-3 font-medium text-textColor whitespace-nowrap"
+                                    class="px-12 py-3 font-medium text-textColor whitespace-nowrap"
                                 >
                                     Image
                                 </th>
                                 <th
                                     scope="row"
-                                    class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+                                    class="px-14 py-3 font-medium text-textColor whitespace-nowrap"
                                 >
                                     <!-- {{ product.title }} -->
                                     Fruit Dragon
                                 </th>
-                                <td class="px-2 py-3 text-center">
+                                <td class="py-4 text-center">
                                     {{ product.name }}
                                 </td>
 
                                 <td class="px-2 py-3 text-center">
                                     {{ product.quantity }}
                                 </td>
-                                <td class="px-4 py-3">${{ product.price }}</td>
-                                <td class="px-4 py-3">
+                                <td class="px-4 py-3 text-center">${{ product.price }}</td>
+                                <td class="px-4 py-3 text-center">
                                     <span
                                         v-if="product.inStock === 0"
                                         class="text-textColor text-xs font-semibold mr-2 px-2.5 py-0.5"
@@ -372,7 +300,7 @@ const deleteProduct = (product, index) => {
                                         Out of Stock
                                     </span>
                                 </td>
-                                <td class="px-4 py-3">
+                                <!-- <td class="px-4 py-3">
                                     <button
                                         v-if="product.published === 0"
                                         type="button"
@@ -387,12 +315,12 @@ const deleteProduct = (product, index) => {
                                     >
                                         UnPublished
                                     </button>
-                                </td>
+                                </td> -->
                                 <td class="px-4 py-3 flex items-center">
                                     <div
                                         class="bg-white text-textColor rounded flex items-center gap-4"
                                     >
-                                        <a
+                                        <!-- <a
                                             href="#"
                                             @click.prevent="
                                                 showEditProductForm = true
@@ -413,7 +341,7 @@ const deleteProduct = (product, index) => {
                       2 0 112.828
                       2.828L11.828 15H9v-2.828l8.586-8.586z"
                                                 /></svg
-                                        ></a>
+                                        ></a> -->
                                         <a
                                             href="#"
                                             @click.prevent="
