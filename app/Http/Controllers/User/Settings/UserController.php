@@ -11,6 +11,7 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
+
     public function userProfile()
     {
 
@@ -30,4 +31,16 @@ class UserController extends Controller
             'Categories' => $Categories,
         ]);
     }
+
+    public function userHistory(){
+        return Inertia::render('User/Layout/Profile/userHistory');
+    }
+
+    public function userOpen(){
+        return Inertia::render('User/Layout/Profile/userOpen');
+    }
+
+    // public function Pendaftaran(){
+    //     return Inertia::render('Seller/Auth/PendaftaranSeller');
+    // }
 }

@@ -2,8 +2,7 @@
 import Navbar from "../Component/navbar.vue";
 import Footer from "../Component/Footer.vue";
 import Sidebar from "./components/Sidebar.vue";
-import Products from "./components/Products.vue";
-import Card from "./components/Card.vue";
+import History from "./components/History.vue";
 </script>
 
 <template>
@@ -14,10 +13,7 @@ import Card from "./components/Card.vue";
                 <div class="justify-self-start">
                     <Sidebar />
                 </div>
-                <div>
-                    <Card />
-                    <Products />
-                </div>
+                <History />
             </div>
         </div>
     </section>

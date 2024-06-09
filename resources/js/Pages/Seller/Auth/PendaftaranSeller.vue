@@ -19,7 +19,7 @@
                         <div class="p-2 py-2">
                             <div class="card-person ml-2 md:mx-auto">
                                 <div class="-mt-5 flex">
-                                    <Link :href="route('Home')">
+                                    <Link :href="route('userStore')">
                                         <div
                                             class="w-12 h-12 rounded-full hover:bg-white-50 hover:cursor-pointer text-3xl justify-center items-center flex"
                                         >

@@ -8,7 +8,7 @@
                     <div
                         class="bg-neutral text-neutral-content rounded-full w-12"
                     >
-                    <span class="text-2xl"> {{ initial }}</span>
+                        <span class="text-2xl"> {{ initial }}</span>
                     </div>
                 </div>
                 <span class="text-xl capitalize text-indigo-500">{{
@@ -56,6 +56,31 @@
                     </Link>
                 </li>
                 <li>
+                    <Link
+                        :href="route('userStore')"
+                        class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-primaryColor"
+                    >
+                        <span
+                            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+                            ><i class="bx bx-store"></i
+                        ></span>
+                        <span class="text-sm font-medium">Open Store</span>
+                    </Link>
+                </li>
+
+                <li>
+                    <Link
+                        :href="route('userHistory')"
+                        class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-primaryColor"
+                    >
+                        <span
+                            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+                            ><i class="bx bx-history"></i
+                        ></span>
+                        <span class="text-sm font-medium">History</span>
+                    </Link>
+                </li>
+                <li>
                     <a
                         href="#"
                         class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-primaryColor"
@@ -64,38 +89,9 @@
                             class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
                             ><i class="bx bx-chat"></i
                         ></span>
-                        <span class="text-sm font-medium">Chat</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href="#"
-                        class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-primaryColor"
-                    >
+                        <span class="text-sm font-medium">Chats</span>
                         <span
-                            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
-                            ><i class="bx bx-bell"></i
-                        ></span>
-                        <span class="text-sm font-medium">History</span>
-                        <span
-                            class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500"
-                            >5</span
-                        >
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="#"
-                        class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-primaryColor"
-                    >
-                        <span
-                            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
-                            ><i class="bx bx-bell"></i
-                        ></span>
-                        <span class="text-sm font-medium">Order</span>
-                        <span
-                            class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500"
+                            class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-hoverPrimary"
                             >5</span
                         >
                     </a>
@@ -104,7 +100,7 @@
                     <Link
                         class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-primaryColor"
                         @click="Logout"
-                        >
+                    >
                         <span
                             class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
                             ><i class="bx bx-log-out"></i
@@ -117,7 +113,7 @@
     </div>
 </template>
 <script setup>
-import { Link, usePage ,router} from "@inertiajs/vue3";
+import { Link, usePage, router } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
 const page = usePage();
 const initial = computed(() =>
@@ -133,7 +129,6 @@ const photoUrl = computed(() => {
             : null)
     );
 });
-
 
 const Logout = async () => {
     router.post(route("auth.logout"));

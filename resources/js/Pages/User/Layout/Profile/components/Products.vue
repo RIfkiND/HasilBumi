@@ -110,38 +110,37 @@ const prepareEditProduct = (product) => {
   showEditProductForm.value = true;
 };
 
-// delete product method
-// const deleteProduct = (product, index) => {
-//     Swal.fire({
-//         title: "Are you Sure",
-//         text: "This actions cannot undo!",
-//         icon: "warning",
-//         showCancelButton: true,
-//         confirmButtonColor: "#3085d6",
-//         cancelButtonColor: "#d33",
-//         cancelButtonText: "no",
-//         confirmButtonText: "yes, delete!",
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             try {
-//                 router.delete("products/destory/" + product.id, {
-//                     onSuccess: (page) => {
-//                         this.delete(product, index);
-//                         Swal.fire({
-//                             toast: true,
-//                             icon: "success",
-//                             position: "top-end",
-//                             showConfirmButton: false,
-//                             title: page.props.flash.success,
-//                         });
-//                     },
-//                 });
-//             } catch (err) {
-//                 console.log(err);
-//             }
-//         }
-//     });
-// };
+const deleteProduct = (product, index) => {
+    Swal.fire({
+        title: "Are you Sure",
+        text: "This actions cannot undo!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "no",
+        confirmButtonText: "yes, delete!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            try {
+                router.delete("/products/" + product.id, {
+                    onSuccess: (page) => {
+                        this.delete(product, index);
+                        Swal.fire({
+                            toast: true,
+                            icon: "success",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            title: page.props.flash.success,
+                        });
+                    },
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    });
+};
 </script>
 <template>
   <section class="max-w-full">

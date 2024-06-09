@@ -3,6 +3,7 @@ import Navbar from "../Component/navbar.vue";
 import Footer from "../Component/Footer.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Profile from "./components/Profile.vue";
+import ShopProfile from "./components/ShopProfile.vue";
 </script>
 
 <style scoped>
@@ -24,9 +25,14 @@ import Profile from "./components/Profile.vue";
     <Navbar />
     <section>
         <div class="container mx-auto mt-12 font-poppins">
-            <div class="max-w-7xl mx-auto flex w-[1200px] gap-10">
-                <Sidebar />
-                <Profile />
+            <div class="flex w-full gap-10">
+                <div class="justify-self-start">
+                    <Sidebar />
+                </div>
+                <div class="flex flex-col gap-16">
+                    <Profile />
+                    <ShopProfile />
+                </div>
             </div>
         </div>
     </section>

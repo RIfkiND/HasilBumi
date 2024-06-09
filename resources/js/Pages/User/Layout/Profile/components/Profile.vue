@@ -23,10 +23,7 @@
                         for="photo"
                     >
                         <div class="flex justify-center items-center gap-3">
-                            <div
-                                v-if="!photUrl"
-                                class="avatar placeholder"
-                            >
+                            <div v-if="!photUrl" class="avatar placeholder">
                                 <div
                                     class="bg-neutral text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
                                 >
@@ -54,7 +51,6 @@
                             Ganti poto
                         </button>
                     </div>
-
                 </div>
 
                 <div class="flex flex-col gap-4">
@@ -63,33 +59,81 @@
                     </h3>
                     <div class="flex items-center text-sm">
                         <span class="w-[114px]">Nama</span>
-                        <span class="mr-3">{{ $page.props.auth.user.name }}</span>
+                        <span class="mr-3">{{
+                            $page.props.auth.user.name
+                        }}</span>
                         <a
                             href="#"
                             class="text-primaryColor hover:text-hoverPrimary font-semibold"
                             @click.prevent="showForm = true"
-                            >Ubah</a
-                        >
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6 text-blue-400"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
+                      2 0 112.828
+                      2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                /></svg
+                        ></a>
                     </div>
                     <div class="flex items-center text-sm">
                         <span class="w-[114px]">Tanggal Lahir</span>
-                        <span class="mr-3">{{ $page.props.auth.user.tgl_lahir }}</span>
+                        <span class="mr-3">{{
+                            $page.props.auth.user.tgl_lahir
+                        }}</span>
                         <a
                             href="#"
                             class="text-primaryColor hover:text-hoverPrimary font-semibold"
                             @click.prevent="showDateForm = true"
-                            >Ubah tanggal lahir</a
-                        >
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6 text-blue-400"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
+                      2 0 112.828
+                      2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                /></svg
+                        ></a>
                     </div>
                     <div class="flex items-center text-sm">
                         <span class="w-[114px]">Jenis kelamin</span>
-                        <span class="mr-3">{{ $page.props.auth.user.jenis_kelamin }}</span>
+                        <span class="mr-3">{{
+                            $page.props.auth.user.jenis_kelamin
+                        }}</span>
                         <a
                             href="#"
                             class="text-primaryColor hover:text-hoverPrimary font-semibold"
                             @click.prevent="showGenderForm = true"
-                            >Ubah</a
-                        >
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6 text-blue-400"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
+                      2 0 112.828
+                      2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                /></svg
+                        ></a>
                     </div>
                     <hr
                         class="mt-6 border-b-1 w-full col-span-2 border-blueGray-300"
@@ -99,21 +143,54 @@
                     </h3>
                     <div class="flex items-center text-sm">
                         <span class="w-[114px]">Email</span>
-                        <span class="mr-3">{{ $page.props.auth.user.email }}</span>
+                        <span class="mr-3">{{
+                            $page.props.auth.user.email
+                        }}</span>
                         <a
                             href="#"
                             class="text-primaryColor hover:text-hoverPrimary font-semibold"
-                            >Ubah   </a
-                        >
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6 text-blue-400"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
+                      2 0 112.828
+                      2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                />
+                            </svg>
+                        </a>
                     </div>
                     <div class="flex items-center text-sm">
                         <span class="w-[114px]">NomorHp</span>
-                        <span class="mr-3">{{ $page.props.auth.user.no_hp }}</span>
+                        <span class="mr-3">{{
+                            $page.props.auth.user.no_hp
+                        }}</span>
                         <a
                             href="#"
                             class="text-primaryColor hover:text-hoverPrimary font-semibold"
-                            >Ubah</a
-                        >
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-6 h-6 text-blue-400"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
+                      2 0 112.828
+                      2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                /></svg
+                        ></a>
                     </div>
                 </div>
             </div>
@@ -146,7 +223,7 @@
                             required
                         />
                     </div>
-                    <div class="flex justify-center">
+                    <div class="flex justify-center flex-wrap gap-3">
                         <button
                             type="button"
                             class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
@@ -158,7 +235,7 @@
                             type="submit"
                             class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
                             @click="showForm = false"
-                            >
+                        >
                             Simpan
                         </button>
                     </div>
@@ -172,7 +249,7 @@
             v-if="showDateForm"
             class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
         >
-            <div class="bg-white p-8 rounded shadow-lg z-100 w-1/4">
+            <div class="bg-white p-8 rounded shadow-lg z-100 w-1/3">
                 <h2 class="text-2xl font-bold mb-4">Ubah Tanggal Lahir</h2>
                 <p class="text-md text-textColor opacity-70">
                     Kamu hanya dapat mengatur tanggal lahir satu kali. Pastikan
@@ -238,7 +315,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="flex justify-center">
+                    <div class="flex justify-center flex-wrap gap-3">
                         <button
                             type="button"
                             class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
@@ -250,7 +327,7 @@
                             type="submit"
                             class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
                             @click="showDateForm = false"
-                            >
+                        >
                             Simpan
                         </button>
                     </div>
@@ -282,7 +359,7 @@
                             <option value="Perempuan">Perempuan</option>
                         </select>
                     </div>
-                    <div class="flex justify-center">
+                    <div class="flex justify-center flex-wrap gap-3">
                         <button
                             type="button"
                             class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
@@ -294,7 +371,7 @@
                             type="submit"
                             class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
                             @click="showGenderForm = false"
-                            >
+                        >
                             Simpan
                         </button>
                     </div>
@@ -302,7 +379,6 @@
             </div>
         </div>
     </transition>
-
 </template>
 
 <script setup>
@@ -318,7 +394,12 @@ const photoInput = ref(null);
 
 
 const photoUrl = computed(() => {
-    return photoPreview.value || (page.props.auth.user.avatar_user ? page.props.auth.user.avatar_user : null);
+    return (
+        photoPreview.value ||
+        (page.props.auth.user.avatar_user
+            ? page.props.auth.user.avatar_user
+            : null)
+    );
 });
 
 
@@ -328,13 +409,13 @@ const birthDate = ref({
     year: null,
 });
 
-const birthform = computed(()=>{
-    if(birthDate.value.day && birthDate.value.month && birthDate.value.year){
-        return `${birthDate.value.day}-${birthDate.value.month}-${birthDate.value.year}`
-    }else{
+const birthform = computed(() => {
+    if (birthDate.value.day && birthDate.value.month && birthDate.value.year) {
+        return `${birthDate.value.day}-${birthDate.value.month}-${birthDate.value.year}`;
+    } else {
         return null;
     }
-})
+});
 
 // Days, months, and years arrays
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
@@ -401,35 +482,39 @@ const selectPhoto = () => {
 
 const profile = reactive({
     name: null,
-    tgl_lahir:birthform,
-    no_hp:null,
-    jenis_kelamin:null
+    tgl_lahir: birthform,
+    no_hp: null,
+    jenis_kelamin: null,
 });
 
-function submit(){
-
+function submit() {
     const updatedProfile = {};
-
 
     if (profile.name !== null && profile.name !== page.props.auth.user.name) {
         updatedProfile.name = profile.name;
     }
 
-    if (profile.tgl_lahir !== null && profile.tgl_lahir !== page.props.auth.user.tgl_lahir) {
+    if (
+        profile.tgl_lahir !== null &&
+        profile.tgl_lahir !== page.props.auth.user.tgl_lahir
+    ) {
         updatedProfile.tgl_lahir = profile.tgl_lahir;
     }
 
-    if (profile.no_hp !== null && profile.no_hp !== page.props.auth.user.no_hp) {
+    if (
+        profile.no_hp !== null &&
+        profile.no_hp !== page.props.auth.user.no_hp
+    ) {
         updatedProfile.no_hp = profile.no_hp;
     }
 
-    if (profile.jenis_kelamin !== null && profile.jenis_kelamin !== page.props.auth.user.jenis_kelamin) {
+    if (
+        profile.jenis_kelamin !== null &&
+        profile.jenis_kelamin !== page.props.auth.user.jenis_kelamin
+    ) {
         updatedProfile.jenis_kelamin = profile.jenis_kelamin;
     }
 
-
-
-router.put(route('user.edit',{id :userId}),updatedProfile)
+    router.put(route("user.edit", { id: userId }), updatedProfile);
 }
-
 </script>
