@@ -52,6 +52,6 @@ class CreateProductController extends Controller
             }
         }
 
-        return redirect()->route('dashboard')->with('success', 'You have added a new Product');
+        return redirect()->route('userProducts')->with('success', 'You have added a new Product');
     }
 }

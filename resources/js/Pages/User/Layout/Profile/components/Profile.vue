@@ -308,7 +308,7 @@
 <script setup>
 import { ref, watch,computed ,reactive} from "vue";
 import { usePage ,router ,useForm } from "@inertiajs/vue3";
-import success from "~/Components/alert/success.vue"
+
 const page = usePage();
 const initial = computed(() => page.props.auth.user.name.charAt(0).toUpperCase());
 const userId = page.props.auth.user.id;

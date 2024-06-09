@@ -13,13 +13,13 @@ class ProfileController extends Controller
 {
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        
         $user = User::findOrFail($id);
 
-        // Validate the request data
+   
         $this->validate($request,[
             'name' => 'string|min:5|max:50',
-            'tgl_lahir' => 'string|min:1', // Assuming the date format is "dd-mm-yyyy"
+            'tgl_lahir' => 'string|min:1', 
             'avatar_user' => 'image|mimes:png,jpg,jpeg|max:2048',
             'alamat' => 'string|min:1|max:255',
             'no_hp' => 'integer|min:9|max:13',
