@@ -177,7 +177,7 @@ a {
                         </div>
                     </div>
                 </div>
-                <div v-if="authenticated" class="py-2">
+                <div v-if="$page.props.auth.user" class="py-2">
                     <!-- INi Hover
                                 hover:bg-primaryColor hover:text-white
                             -->

@@ -12,7 +12,8 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
-import ckeditor from "./Pages/Coba/ckeditor.vue";
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 
 const vuetify = createVuetify({
@@ -30,8 +31,10 @@ createInertiaApp({
         app.use(plugin);
         app.mixin({ methods: { route } });
         app.use(vuetify);
-        app.use(CKEditor)
+        app.use(CKEditor);
+        app.use(ElementPlus);
         app.use(VueSweetaler2)
+        window.Swal =  app.config.globalProperties.$swal
         return app.mount(el);
 
     },

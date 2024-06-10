@@ -1,17 +1,14 @@
 <script setup>
-import { router, usePage } from "@inertiajs/vue3";
+import { router, usePage} from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { Plus } from '@element-plus/icons-vue'
 
 defineProps({
   products: Array,
 });
 const Categories = usePage().props.Categories;
-
-const products = ref([]);
-
 const editor = ref(ClassicEditor);
-
 const editorConfig = {
   height: "450px",
   toolbar: [
@@ -35,61 +32,72 @@ const editorConfig = {
   },
   language: "nl",
 };
-// defineProps({
-//     products: Array,
-// });
+const products = ref([]);
+const handleFileChange = (file) => {
+    console.log(file)
+    productImages.value.push(file)
+}
+const productImages = ref([])
 
+const showAddProductForm = ref(false);
 const dropdownOpen = ref(false);
 
-// Props to receive product and index from the parent component
-const showAddProductForm = ref(false);
-const productImage = ref("");
-const productName = ref("");
-const quantity = ref("");
-const price = ref("");
-const stock = ref("");
-const deskripsi = ref("");
-const category_id = ref("");
-const publish = ref(false);
+const id = ref('');
+const name = ref('')
+const price = ref('')
+const stock = ref('')
+const deskripsi = ref('')
+const images = ref([])
+const category_id = ref('')
+const satuan = ref('')
 
-const submitAddProductForm = () => {
-  // Lakukan logika untuk menyimpan data products baru
-  const newProduct = {
-    image: productImage.value,
-    name: productName.value,
-    // category: category.value,
-    quantity: quantity.value,
-    price: price.value,
-    stock: stock.value,
-    deskripsi: deskripsi.value,
-    publish: publish.value,
-  };
-  console.log("New Product:", newProduct);
+const submitAddProductForm = async () => {
+  const formData = new FormData();
+    formData.append('title', name.value);
+    formData.append('price', price.value);
+    formData.append('stock', stock .value);
+    formData.append('description', description.value);
+    formData.append('category_id', category_id.value);
+    formData.append('satuan', satuan.value);
+    for (const image of productImages.value) {
+        formData.append('url[]', image.raw);
+    }
 
-  // Reset nilai field
-  productImage.value = "";
-  productName.value = "";
-  // category.value = "";
-  quantity.value = "";
-  price.value = "";
-  stock.value = "";
-  publish.value = false;
+    try {
+        await router.post(route(''), formData, {
+            onSuccess: page => {
+                Swal.fire({
+                    toast: true,
+                    icon: 'success',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    title: page.props.flash.success
+                })
+                dialogVisible.value = false;
+                resetFormData();
+            },
+        })
+    } catch (err) {
+        console.log(err)
+    }
 
-  // Tutup form setelah disubmit
   showAddProductForm.value = false;
+};
+const resetFormData = () => {
+    id.value = '';
+    name.value = '';
+    price.value = '';
+    stock.value = '';
+    deskripsi.value = '';
+    images.value = [];
 };
 
 const handleImageChange = (event) => {
-  // Mengambil file gambar yang dipilih oleh pengguna
   const selectedFile = event.target.files[0];
-
-  // Jika pengguna memilih gambar
   if (selectedFile) {
-    // Mengubah gambar menjadi URL data
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onload = () => {
-      // Menyimpan URL data gambar ke dalam variabel productImage
       productImage.value = reader.result;
     };
   }
@@ -445,14 +453,12 @@ const deleteProduct = (product, index) => {
             <div class="mb-4">
               <label for="productImage" class="block text-gray-700">Product Image</label>
               <!-- Tambahkan input untuk gambar products -->
-              <input
-                type="file"
-                id="productImage"
-                accept="image/*"
-                class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-                v-on:change="handleImageChange"
-                required
-              />
+              <el-upload v-model:file-list="productImages" list-type="picture-card" multiple
+              :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
+              <el-icon>
+                  <Plus />
+              </el-icon>
+          </el-upload>
             </div>
           </div>
           <div class="mb-4">

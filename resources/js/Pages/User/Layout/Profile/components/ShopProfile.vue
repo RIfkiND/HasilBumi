@@ -1,5 +1,5 @@
 <template>
-    <div
+    <div v-if="$page.props.auth.seller"
         class="relative flex flex-col min-w-0 break-words w-full shadow-md rounded-lg bg-blueGray-100 border-0"
     >
         <div class="rounded-t bg-white mb-0 px-6 py-6">
@@ -203,6 +203,7 @@
             <button class="btn-no-full">Simpan</button>
         </div>
     </div>
+    <div v-else></div>
 
     <transition name="modal">
         <div
@@ -376,6 +377,7 @@
             </div>
         </div>
     </transition>
+    
 </template>
 
 <script setup>
