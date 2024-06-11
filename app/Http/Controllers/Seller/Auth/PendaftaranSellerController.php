@@ -53,7 +53,7 @@ class PendaftaranSellerController extends Controller
 
 
 
-        return redirect('/')->with(['success' => 'Seller information saved successfully']);
+        return redirect('/UserProfile')->with(['success' => 'Seller information saved successfully']);
     }
 
     private function storeImage(Request $request, $fieldName, $storagePath)

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama_lengkap');
             $table->string('nama_toko');
             $table->string('no_telp_toko');
+            $table->string('photo_toko')->nullable();
             $table->string('kota');
             $table->string('provinsi');
             $table->integer('kode_pos');

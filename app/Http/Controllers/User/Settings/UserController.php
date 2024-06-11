@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Settings;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -26,9 +27,12 @@ class UserController extends Controller
             ->paginate(10);
         $Categories = Category::get();
 
+        
+
         return Inertia::render('User/Layout/Profile/userProducts', [
             'products' => $products,
             'Categories' => $Categories,
+
         ]);
     }
 

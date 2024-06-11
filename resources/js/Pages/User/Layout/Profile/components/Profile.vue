@@ -32,25 +32,41 @@
                             </div>
 
                             <div v-else class="avatar">
-
                                 <img
                                     class="block w-24 h-24 rounded-full m-auto shadow"
-                                    :src="`/${ $page.props.auth.user.avatar_user[0].image}`"
-                                    :alt=" $page.props.auth.user.avatar_user"
-                                >
+                                    :src="`/${$page.props.auth.user.avatar_user[0].image}`"
+                                    :alt="$page.props.auth.user.avatar_user"
+                                />
                             </div>
                         </div>
                     </label>
 
-                    <div>
-                        <button
-                            type="button"
-                            class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2"
-                            @click="selectPhoto"
+                        <div>
+                            <button
+                                type="submit"
+                                class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2"
+
+                            >
+                                Ganti poto
+                            </button>
+                        </div>
+                        <el-upload
+                            class="mt-5"
+                            :action="uploadUrl"
+                            v-model:file-list="avatar_user"
+                            list-type="picture-card"
+                            accept="image/*"
+                            :on-preview="handlePictureCardPreview"
+                            :on-remove="handleRemove"
+                            method="put"
+                            :on-change="handleFileChange"
+                             :auto-upload="true"
                         >
-                            Ganti poto
-                        </button>
-                    </div>
+                            <el-icon>
+                                <Plus />
+                            </el-icon>
+                        </el-upload>
+
                 </div>
 
                 <div class="flex flex-col gap-4">
@@ -382,16 +398,16 @@
 </template>
 
 <script setup>
-import { ref, watch,computed ,reactive} from "vue";
-import { usePage ,router ,useForm } from "@inertiajs/vue3";
-
+import { ref, watch, computed, reactive } from "vue";
+import { usePage, router, useForm } from "@inertiajs/vue3";
+import { Plus } from "@element-plus/icons-vue";
 const page = usePage();
-const initial = computed(() => page.props.auth.user.name.charAt(0).toUpperCase());
+const initial = computed(() =>
+    page.props.auth.user.name.charAt(0).toUpperCase()
+);
 const userId = page.props.auth.user.id;
 
-
 const photoInput = ref(null);
-
 
 const photoUrl = computed(() => {
     return (
@@ -402,6 +418,11 @@ const photoUrl = computed(() => {
     );
 });
 
+const avatar_user = ref("");
+const handleFileChange = (file) => {
+    console.log(file);
+    avatar_user.value.push(file);
+};
 
 const birthDate = ref({
     day: null,
@@ -445,47 +466,9 @@ const showDateForm = ref(false);
 //form-end
 
 //submit
-
-const avatar = useForm({
-    avatar_user:null
-})
-const selectPhoto = () => {
-    if (photoInput.value) {
-        photoInput.value.click();
-        photoInput.value.addEventListener('change', async () => {
-            const file = photoInput.value.files[0];
-            if (file) {
-                avatar.avatar_user = file;
-                const formData = new FormData();
-                formData.append('avatar_user', avatar.avatar_user);
-
-                try {
-
-                      await router.put(route('user.edit', { id: userId }), {
-                        _method: 'put',
-                        body: formData,
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    });
-
-
-                } catch (error) {
-                    console.error('An error occurred:', error);
-
-                }
-            }
-        });
-    }
-};
-
-
-const profile = reactive({
-    name: null,
-    tgl_lahir: birthform,
-    no_hp: null,
-    jenis_kelamin: null,
-});
+//upload
+const uploadUrl = `/seller/update/${userId}`;
+//end
 
 function submit() {
     const updatedProfile = {};

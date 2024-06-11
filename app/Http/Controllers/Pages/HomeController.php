@@ -12,12 +12,9 @@ class HomeController extends Controller
 {
     public function Home()
     {
-        $authenticated = Auth::check();
+ 
 
-        return Inertia::render('Home', [
-            'authenticated' => $authenticated,
-            'user' => $authenticated ? Auth::user() : null
-        ]);
+        return Inertia::render('Home', []);
     }
     public function Whistlist()
     {
@@ -28,9 +25,9 @@ class HomeController extends Controller
     }
     public function ShopCart()
     {
-        $authenticated = Auth::check();
+
         return Inertia::render('User/Layout/Component/shop_card', [
-           
+
         ]);
     }
 
