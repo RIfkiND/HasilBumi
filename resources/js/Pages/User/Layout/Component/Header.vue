@@ -109,7 +109,7 @@ a {
                         8
                     </div>
                 </Link>
-                <div class="flex gap-3 mx-5 md:flex" v-if="!authenticated">
+                <div class="flex gap-3 mx-5 md:flex" v-if="!$page.props.auth.user">
                     <Link :href="route('view.login')" class="btn-header-outline"
                         >Login</Link
                     >
@@ -127,7 +127,7 @@ a {
                     </Link> -->
                 </div>
 
-                <div v-if="authenticated" class="flex items-center relative">
+                <div v-if="$page.props.auth.user" class="flex items-center relative">
                     <!-- Profil bulat -->
                     <div
                         class="rounded-full border cursor-pointer shadow-white-lg flex items-center justify-center text-xl font-bold border-primaryColor text-textColor w-10 h-10 mr-6"
@@ -187,7 +187,7 @@ a {
                                 > -->
                     <span
                         class="block text-md truncate text-textColor font-bold"
-                        >{{ user.name }}</span
+                        >{{ $page.props.auth.user.name}}</span
                     >
                 </div>
 
@@ -411,7 +411,6 @@ const toggleDropdown = (isOpen) => {
 //     profileDropdown.value = isOpen;
 // };
 
-const { authenticated, user } = usePage().props;
 const profileDropdown = ref(false);
 const profileToggleDropdown = () => {
     profileDropdown.value = !profileDropdown.value;

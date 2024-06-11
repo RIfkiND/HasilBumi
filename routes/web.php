@@ -6,7 +6,7 @@ use App\Http\Controllers\ChatController;
 use App\Models\User;
 use App\Http\Controllers\Seller\Auth\PendaftaranSellerController;
 Route::get('/testing', function () {
-    return Inertia::render('Coba/ckeditor');
+    return Inertia::render('Shop/Checkout/Chekout');
 });
 
 
