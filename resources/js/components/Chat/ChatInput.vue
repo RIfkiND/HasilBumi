@@ -1,26 +1,33 @@
 <template>
-    <div class="fixed bottom-0 w-full bg-white pl-4">
-      <form @submit.prevent="submit">
-        <TextInput
-          class="h-16 w-full overflow-y-auto bg-white pt-3 font-light border-0 hover:border-0 focus:border-0 focus:ring-0 !shadow-none focus:!outline-none"
-          placeholder="Chat...."
+  <div class="fixed bottom-0 w-full border-b-2 border-white-50">
+    <form @submit.prevent="submit">
+      <div class="flex items-center max-w-[980px]">
+        <input
+          type="text"
+          class="h-16 overflow-y-auto pt-2 border-0 hover:border-0 focus:border-0 focus:ring-0 !shadow-none focus:!outline-none w-full text-slate-300 font-medium text-md"
+          placeholder="Ketik pesan...."
           name="message"
           v-model="form.message"
         />
-      </form>
-    </div>
-  </template>
-
+          <button
+            type="submit"
+            class="fixed z-10 right-5 text-center items-center text-slate-200 hover:text-slate-300"
+          >
+            <i class="bx bxs-send bx-sm"></i>
+          </button>
+      </div>
+    </form>
+  </div>
+</template>
 
 <script setup>
-
-import { ref, onMounted } from 'vue';
-import { useForm } from '@inertiajs/vue3';
-import TextInput from './../TextInput.vue';
+import { ref, onMounted } from "vue";
+import { useForm } from "@inertiajs/vue3";
+import TextInput from "./../TextInput.vue";
 
 const props = defineProps({
   receiver: Object,
-  messages: Array
+  messages: Array,
 });
 
 const form = useForm({
@@ -28,16 +35,10 @@ const form = useForm({
 });
 
 const submit = () => {
-  form.post(route('chat.store', props.receiver.id), {
+  form.post(route("chat.store", props.receiver.id), {
     onSuccess: () => {
-      form.reset('message');
-    }
+      form.reset("message");
+    },
   });
 };
-
-
-
-
-
-  </script>
-
+</script>
