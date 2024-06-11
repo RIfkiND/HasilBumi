@@ -8,6 +8,7 @@ export default {
         "./resources/**/*.js",
     ],
     theme: {
+        extend: {},
         colors: {
             primaryColor: "#3CB72B",
             hoverPrimary: "#40c057",
@@ -24,6 +25,12 @@ export default {
             grey: "#F6F5F5",
             "border-secondary": "#B5C0D0",
             "white-50": "#F1EFEF",
+            "merah-1": "#ffe3e3",
+            "merah-2": "#fa5252",
+            "merah-3": "#ffa8a8",
+            "hijau-1": "#d3f9d8",
+            "hijau-3": "#8ce99a",
+
         },
         fontFamily: {
             inter: ["Inter"],

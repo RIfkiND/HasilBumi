@@ -1,7 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\ChatController;
+Route::middleware('auth')->group(function () {
 
-Route::get('/messages', [MessageController::class, 'index']);
-Route::post('/send-message', [MessageController::class, 'sendMessage']);
-
+    Route::group(['prefix' => 'chat', 'as' => 'chat.'], function() {
+        Route::get('/{receiverId?}', [ChatController::class, 'index'])->name('index');
+        Route::post('prosess/{receiverId?}', [ChatController::class, 'store'])->name('store');
+    });
+ });

@@ -12,28 +12,24 @@ class HomeController extends Controller
 {
     public function Home()
     {
-        $authenticated = Auth::check();
+  
 
         return Inertia::render('Home', [
-            'authenticated' => $authenticated,
-            'user' => $authenticated ? Auth::user() : null
+
         ]);
     }
     public function Whistlist()
     {
-        $authenticated = Auth::check();
 
         return Inertia::render('User/Layout/Component/Wislisht', [
-            'authenticated' => $authenticated,
-            'user' => $authenticated ? Auth::user() : null
+
         ]);
     }
     public function ShopCart()
     {
-        $authenticated = Auth::check();
+
         return Inertia::render('User/Layout/Component/shop_card', [
-            'authenticated' => $authenticated,
-            'user' => $authenticated ? Auth::user() : null
+           
         ]);
     }
 
@@ -60,7 +56,9 @@ class HomeController extends Controller
         return Inertia::render('Shop/Product');
     }
 
+
     public function Skeleton(){
         return Inertia::render('Skeleton/Layouts/Card');
     }
+
 }

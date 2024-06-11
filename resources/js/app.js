@@ -5,12 +5,15 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import VueSweetaler2 from 'vue-sweetalert2';
+import CKEditor from '@ckeditor/ckeditor5-vue';
 //vuetify
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 
 const vuetify = createVuetify({
@@ -28,6 +31,10 @@ createInertiaApp({
         app.use(plugin);
         app.mixin({ methods: { route } });
         app.use(vuetify);
+        app.use(CKEditor);
+        app.use(ElementPlus);
+        app.use(VueSweetaler2)
+        window.Swal =  app.config.globalProperties.$swal
         return app.mount(el);
 
     },

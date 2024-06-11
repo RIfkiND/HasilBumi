@@ -20,9 +20,14 @@ class SeachController extends Controller
         $query->where('name','LIKE' , "%$search%");
     })->paginate(15);
 
-    return Inertia::render('',[
+    return Inertia::render('Shop/MainShop',[
         'search'=> $search,
         'product'=>$product,
     ]);
+}
+
+public function searchSellerProduct(Request $request){
+        $search =  $request->search;
+        
 }
 }

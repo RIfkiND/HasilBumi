@@ -23,6 +23,7 @@ Route::get('/ShopCart',[HomeController::class ,'ShopCart'])->name('Home.ShopCart
 Route::get('/skeleton', [HomeController::class, 'Skeleton']);
 Route::get('/main-skeleton', [HomeController::class, 'MainSkeleton']);
 
+
 //filter
 Route::get('/Products/filter/category/{category}', [FilterPageController::class, 'filterByCategory'])->name('filter.category');
 Route::get('/Products/filter/price', [FilterPageController::class, 'filterByPrice'])->name('filter.price');
@@ -30,7 +31,4 @@ Route::get('/Products/filter/new', [FilterPageController::class, 'filterByNew'])
 Route::get('/Products/filter/old', [FilterPageController::class, 'filterByOld'])->name('filter.old');
 
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
-
-
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
-

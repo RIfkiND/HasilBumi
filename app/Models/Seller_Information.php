@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Seller_Information extends Model
 {
@@ -13,16 +14,22 @@ class Seller_Information extends Model
     protected $table = 'Seller_Information';
     protected $guarded = ['id'];
     protected $fillable = [
-        'no_hp',
+        'user_id',
+        'nama_lengkap',
         'nama_toko',
-        'nip',
+        'no_telp_toko',
         'kota',
         'provinsi',
         'kode_pos',
-        'foto_toko'
+        'foto_ktp',
+        'foto_sendiri'
     ];
+    
 
-    public function seller(){
-        return $this->belongsTo(Seller::class);
+    public function UserSeller(){
+        return $this->belongsTo(User::class);
+    }
+    public function product(){
+        return $this->hasMany(Product::class);
     }
 }

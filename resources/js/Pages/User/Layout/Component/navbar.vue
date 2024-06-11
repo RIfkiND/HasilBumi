@@ -48,20 +48,18 @@
                         8
                     </div>
                 </Link>
-                <div class="flex gap-2" v-if="!authenticated">
-                    <Link
-                        :href="route('view.login')"
-                        class="text-primaryColor transition px-6 py-2 rounded-md border-2 button-border hover:text-white hover:bg-primaryColor"
+                <div class="flex gap-2" v-if="!$page.props.auth.user">
+                    <Link :href="route('view.login')" class="btn-header-outline"
                         >Login</Link
                     >
                     <Link
                         :href="route('view.register')"
-                        class="btn-full btn-border"
+                        class="btn-header-full btn-border"
                         >Register</Link
                     >
                 </div>
 
-                <div v-if="authenticated" class="flex items-center relative">
+                <div v-if="$page.props.auth.user" class="flex items-center relative">
                     <!-- Profil bulat -->
                     <div
                         class="rounded-full border cursor-pointer shadow-white-lg flex items-center justify-center text-xl font-bold border-primaryColor text-textColor w-10 h-10 mr-6"
@@ -122,7 +120,7 @@
                         <span
                             class="block text-md truncate text-textColor font-bold"
                         >
-                            {{ user.name }}
+                            {{ $page.props.auth.user.name }}
                         </span>
                     </div>
                 </div>
@@ -242,6 +240,7 @@ a {
 import { Link } from "@inertiajs/vue3";
 import { usePage, router } from "@inertiajs/vue3";
 import { ref, watch } from "vue";
+
 
 const mobileMenuOpen = ref(false);
 const toggleMobileMenu = () => {

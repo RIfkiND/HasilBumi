@@ -25,28 +25,10 @@ class ProductController extends Controller
             $selectedCategory = null;
         }
 
-        $user = Auth::user();
-
-        if ($user) {
-            $cartItems = Cart::where('user_id', $user->id)->with('product')->get(); //find the user id and the product relation
-            $subtotal = 0;
-            foreach ($cartItems as $cartItem) {
-                if ($cartItem->product) {
-                    $subtotal += $cartItem->quantity * $cartItem->product->price;
-                }
-            }
-        } else {
-            $cartItems = [];
-            $subtotal = 0;
-        }
 
         // Pass cart information to the Blade view
         return Inertia::render('', compact('Products', 'categories', 'selectedCategory', 'cartItems', 'subtotal'));
     }
-
-
-
-
     /**
      * Show To Products show tih categories
      *

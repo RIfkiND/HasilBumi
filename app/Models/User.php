@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Laravel\Cashier\Billable;
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Billable ,HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar_user',  
+        'tgl_lahir',
+        'jenis_kelamin',
+        'no_hp',
+        'alamat',
         'is_online',
     ];
 
@@ -53,14 +58,8 @@ class User extends Authenticatable
     }
 
     public function seller(){
-        return $this->hasOne(Seller::class);
+        return $this->hasOne(Seller_Information::class);
     }
-
-    /**
-     *
-     *
-     * @return boolean
-     */
     public function isSeller()
     {
 

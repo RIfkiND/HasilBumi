@@ -14,6 +14,10 @@
     @apply text-white px-6 py-2 bg-primaryColor rounded-md transition hover:text-primaryColor hover:bg-white;
 }
 
+.btn-no-full {
+    @apply text-primaryColor px-6 py-2 bg-white rounded-full border-2 border-primaryColor transition-all hover:text-white hover:bg-primaryColor;
+}
+
 .btn-outline-shop {
     @apply text-primaryColor px-12 py-2 rounded-full button-border hover:bg-primaryColor hover:text-white transition;
 }

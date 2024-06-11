@@ -7,6 +7,7 @@
     <div
       class="mt-2 py-3 text-xs sm:mt-0 sm:ml-auto sm:text-base bg-slate-300 p-5 rounded-full"
     >
+
       <div class="relative">
         <ul
           class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4"
@@ -98,9 +99,11 @@
               <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
               <span class="float-right text-slate-200 text-sm">Varian : Putih, XL</span>
               <p class="text-lg font-bold text-primaryColor mt-1">Rp350.000</p>
+
             </div>
           </div>
         </div>
+
         <div class="flex flex-row py-2">
           <label class="flex cursor-pointer label">
             <input
@@ -214,6 +217,7 @@
             <label
               class="peer-checked:border-2 peer-checked:border-primaryColor flex cursor-pointer border-2 border-white-50 rounded-lg p-4"
               for="radio_5"
+
             >
               <img
                 class="w-14 object-contain rounded-md"
