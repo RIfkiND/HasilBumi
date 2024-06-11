@@ -187,7 +187,7 @@ a {
                                 > -->
                     <span
                         class="block text-md truncate text-textColor font-bold"
-                        >{{ $page.props.auth.user.name }}</span
+                        >{{ $page.props.auth.user.name}}</span
                     >
                 </div>
 
@@ -411,7 +411,6 @@ const toggleDropdown = (isOpen) => {
 //     profileDropdown.value = isOpen;
 // };
 
-const { authenticated, user } = usePage().props;
 const profileDropdown = ref(false);
 const profileToggleDropdown = () => {
     profileDropdown.value = !profileDropdown.value;
