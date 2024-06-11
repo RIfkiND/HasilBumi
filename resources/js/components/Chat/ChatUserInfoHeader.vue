@@ -1,5 +1,5 @@
 <template>
-  <div class="user-info-header bg-white-50 px-5 py-[17px]">
+  <div class="user-info-header bg-white-50 px-5 py-[12px]">
     <div class="flex justify-between">
       <div class="flex items-center">
         <img

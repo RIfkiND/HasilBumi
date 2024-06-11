@@ -1,17 +1,19 @@
 <template>
   <div class="messenger h-screen overflow-hidden">
     <div class="flex">
-      <div class="basis-2/6 border-r border-white-50 bg-white pt-3">
+      <div class="basis-2/6 border-r border-white-50 bg-white pt-3 relative z-50">
         <ChatSidebar :recentMessages="recentMessages" class="border-r border-white-50"/>
       </div>
       <div class="w-4/6">
         <div v-if="receiver?.id">
           <ChatUserInfoHeader :receiver="receiver" />
           <div class="messenger mt-5">
-            <div class="px-4">
+            <div class="px-4 -translate-y-7">
               <ChatMessages :messages="messages" :auth_id="auth?.user?.id" />
             </div>
-            <ChatInput :receiver="receiver" />
+            <div class="relative z-10">
+                <ChatInput :receiver="receiver" />
+            </div>
           </div>
         </div>
         <div v-else class="flex justify-center items-center bg-[#fdfdfd] h-screen">
