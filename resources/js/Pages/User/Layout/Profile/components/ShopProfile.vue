@@ -1,5 +1,6 @@
 <template>
-    <div v-if="$page.props.auth.seller"
+    <div
+        v-if="$page.props.auth.seller"
         class="relative flex flex-col min-w-0 break-words w-full shadow-md rounded-lg bg-blueGray-100 border-0"
     >
         <div class="rounded-t bg-white mb-0 px-6 py-6">
@@ -17,7 +18,6 @@
                             ref="photoInput"
                             class="hidden"
                             @input="avatar.avatar_user = $event.target.files[0]"
-                            @change="previewPhoto"
                         />
 
                         <label
@@ -63,26 +63,17 @@
                             for="poto-ktp"
                             class="text-slate-300 after:content-['*'] after:text-pink after:ml-1 mb-4"
                         >
-                            Foto KTP
+                            Foto Toko
                             <!-- <i
                                 class="bx bx-camera bx-sm text-slate-200 absolute right-2 float-right top-8 z-10 sm:text-xm cursor-pointer"
                             ></i> -->
                         </label>
-                        <div
-                            class="h-36 border mt-1 rounded px-2 max-w-full w-3/4 mx-auto bg-white outline-none relative flex py-[6px]"
-                            id="pokan"
-                        >
-                            <input
-                                @change="handleFotoKtpChange"
-                                type="file"
-                                accept="image/*"
-                                name="potoktp"
-                                id="poto-ktp"
-                                class="text-transparent bg-cover bg-center cursor-pointer hidden"
-                                placeholder=""
-                            />
-                            <div id="viewPotoKtp"></div>
-                        </div>
+                        <el-upload v-model:file-list="tokoImages" list-type="picture-card"
+              :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
+              <el-icon>
+                  <Plus />
+              </el-icon>
+          </el-upload>
                     </div>
                 </div>
 
@@ -93,7 +84,7 @@
                     <div class="flex items-center text-sm">
                         <span class="w-[114px]">Nama Toko</span>
                         <span class="mr-3">{{
-                            $page.props.auth.user.name
+                            $page.props.auth.seller.nama_toko
                         }}</span>
                         <a
                             href="#"
@@ -173,7 +164,7 @@
                     <div class="flex items-center text-sm">
                         <span class="w-[114px]">NomorHp</span>
                         <span class="mr-3">{{
-                            $page.props.auth.user.no_hp
+                            $page.props.auth.seller.no_telp_toko
                         }}</span>
                         <a
                             href="#"
@@ -377,20 +368,21 @@
             </div>
         </div>
     </transition>
-    
 </template>
 
 <script setup>
 import { ref, computed, reactive, onMounted } from "vue";
 import { usePage, router, useForm } from "@inertiajs/vue3";
-// import success from "~/Components/alert/success.vue"
+import { Plus } from "@element-plus/icons-vue";
+import { ElMessage } from "element-plus";
+
 const page = usePage();
 const photoInput = ref(null);
 const photoPreview = ref(null);
 const initial = computed(() =>
     page.props.auth.user.name.charAt(0).toUpperCase()
 );
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~Image~~~~~~~~~~~~~~~~~~
 const selectPhoto = () => {
     photoInput.value.click();
 };
@@ -398,63 +390,18 @@ const photoUrl = computed(() => {
     return (
         photoPreview.value ||
         (page.props.auth.user.avatar_user
-            ? page.props.auth.user.avatar_user
+            ? page.props.auth.seller.photo_toko
             : null)
     );
 });
+//~~~~~~~~~~~~~~~~~~~~~~~~imageUpload
+const TokoImage= ref('')
+const handleFileChange = (file) => {
+    console.log(file)
+    TokoImage.value.push(file)
+}
 
-const previewPhoto = ($event) => {
-    const file = $event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            photoPreview.value = e.target.result;
-            avatar.avatar_user = file;
-            upload();
-        };
-        reader.readAsDataURL(file);
-    }
-};
-
-const handleFotoKtpChange = (event) => {
-    profile.foto_ktp = event.target.files[0];
-};
-
-// Update gambar
-onMounted(() => {
-    // Poto KTP
-    const potoKtp = document.getElementById("poto-ktp");
-    const viewPotoKtp = document.getElementById("viewPotoKtp");
-    const pokan = document.getElementById("pokan");
-
-    // Poto KTP
-    potoKtp.addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                img.classList.add(
-                    "h-full",
-                    "object-cover",
-                    "rounded-sm",
-                    "bg-cover",
-                    "bg-center"
-                );
-                pokan.classList.add(
-                    "py-5",
-                    "items-center",
-                    "justify-center",
-                    "flex"
-                );
-                viewPotoKtp.appendChild(img);
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-});
-//form
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~END Image~~~~~~~~~~~
 const showFormShop = ref(false);
 const showAddressForm = ref(false);
 //form-end
@@ -465,18 +412,6 @@ const userId = page.props.auth.user.id;
 const avatar = useForm({
     avatar_user: null,
 });
-
-const upload = () => {
-    const formData = new FormData();
-    formData.append("avatar_user", avatar.avatar_user);
-
-    router.put(route("user.edit", { id: userId }), formData, {
-        forceFormData: true,
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
-    });
-};
 
 const profile = reactive({
     name: null,

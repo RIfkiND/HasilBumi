@@ -139,15 +139,15 @@
                                             class="h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none"
                                             aria-label="Default select example"
                                         >
-                                            <option value="1" selected>
+                                            <option value="Bandung" selected>
                                                 Bandung
                                             </option>
-                                            <option value="2">Bekasi</option>
-                                            <option value="3">Bogor</option>
-                                            <option value="4">Cianjur</option>
-                                            <option value="5">Ciamis</option>
-                                            <option value="6">Cirebon</option>
-                                            <option value="7">Garut</option>
+                                            <option value="Bekasi">Bekasi</option>
+                                            <option value="Bogor">Bogor</option>
+                                            <option value="Cianjur">Cianjur</option>
+                                            <option value="Ciamis">Ciamis</option>
+                                            <option value="Cirebon">Cirebon</option>
+                                            <option value="Garut">Garut</option>
                                         </select>
                                     </div>
                                 </div>
@@ -164,30 +164,30 @@
                                             class="h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none"
                                             aria-label="Default select example"
                                         >
-                                            <option value="1">
+                                            <option value="Nanggroe Aceh Darussalam">
                                                 Nanggroe Aceh Darussalam
                                             </option>
-                                            <option value="2">
+                                            <option value="Sumatera Utara">
                                                 Sumatera Utara
                                             </option>
-                                            <option value="3">
+                                            <option value="Sumatera Selatan">
                                                 Sumatera Selatan
                                             </option>
-                                            <option value="4">
+                                            <option value="Sumatera Barat">
                                                 Sumatera Barat
                                             </option>
-                                            <option value="5">Bengkulu</option>
-                                            <option value="6">Riau</option>
-                                            <option value="7">
+                                            <option value="Bengkulu">Bengkulu</option>
+                                            <option value="Riau">Riau</option>
+                                            <option value="Kepulauan Riau">
                                                 Kepulauan Riau
                                             </option>
-                                            <option value="8" selected>
+                                            <option value="Jawa Barat" selected>
                                                 Jawa Barat
                                             </option>
-                                            <option value="9">
+                                            <option value="Jawa Tengah">
                                                 Jawa Tengah
                                             </option>
-                                            <option value="9">
+                                            <option value="Jawa Timur">
                                                 Jawa Timur
                                             </option>
                                         </select>

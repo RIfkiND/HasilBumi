@@ -92,16 +92,6 @@ const resetFormData = () => {
     images.value = [];
 };
 
-const handleImageChange = (event) => {
-  const selectedFile = event.target.files[0];
-  if (selectedFile) {
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-    reader.onload = () => {
-      productImage.value = reader.result;
-    };
-  }
-};
 
 const prepareEditProduct = (product) => {
   editedProduct.value = {
@@ -453,7 +443,7 @@ const deleteProduct = (product, index) => {
             <div class="mb-4">
               <label for="productImage" class="block text-gray-700">Product Image</label>
               <!-- Tambahkan input untuk gambar products -->
-              <el-upload v-model:file-list="productImages" list-type="picture-card" multiple
+              <el-upload v-model:file-list="TokoImage" list-type="picture-card" 
               :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
               <el-icon>
                   <Plus />
@@ -518,10 +508,10 @@ const deleteProduct = (product, index) => {
               required
             >
               <option value="" disabled>Pilih Satuan</option>
-              <option value="">Kg</option>
-              <option value="">Gr</option>
-              <option value="">ml</option>
-              <option value="">Ton</option>
+              <option value="Kg">Kg</option>
+              <option value="Gr">Gr</option>
+              <option value="ml">ml</option>
+              <option value="Ton">Ton</option>
             </select>
           </div>
           <div class="col-span-2">
@@ -642,10 +632,10 @@ const deleteProduct = (product, index) => {
               required
             >
               <option value="" disabled>Pilih Satuan</option>
-              <option value="">Kg</option>
-              <option value="">Gr</option>
-              <option value="">ml</option>
-              <option value="">Ton</option>
+              <option value="Kg">Kg</option>
+              <option value="Gr">Gr</option>
+              <option value="ml">ml</option>
+              <option value="TOn">Ton</option>
             </select>
           </div>
           <div class="col-span-2">

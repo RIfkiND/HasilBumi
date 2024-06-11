@@ -20,13 +20,14 @@ class Seller_Information extends Model
         'no_telp_toko',
         'kota',
         'provinsi',
+        'photo_toko',
         'kode_pos',
         'foto_ktp',
         'foto_sendiri'
     ];
-    
 
-    public function UserSeller(){
+
+    public function user(){
         return $this->belongsTo(User::class);
     }
     public function product(){
