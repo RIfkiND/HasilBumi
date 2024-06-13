@@ -10,7 +10,14 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-
+        'user_id',
+        'seller__information_id',
+        'name',
+        'price',
+        'stock',
+        'category_id',
+        'deskripsi',
+        'satuan',
     ];
 
     public function image(){
@@ -21,5 +28,5 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-   
+
 }

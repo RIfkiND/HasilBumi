@@ -47,16 +47,16 @@ const name = ref('')
 const price = ref('')
 const stock = ref('')
 const deskripsi = ref('')
-const images = ref([])
+const image = ref([])
 const category_id = ref('')
 const satuan = ref('')
 
 const submitAddProductForm = async () => {
   const formData = new FormData();
-    formData.append('title', name.value);
+    formData.append('name', name.value);
     formData.append('price', price.value);
     formData.append('stock', stock .value);
-    formData.append('description', description.value);
+    formData.append('deskripsi', deskripsi.value);
     formData.append('category_id', category_id.value);
     formData.append('satuan', satuan.value);
     for (const image of productImages.value) {
@@ -64,7 +64,7 @@ const submitAddProductForm = async () => {
     }
 
     try {
-        await router.post(route(''), formData, {
+        await router.post(route('product.add'), formData, {
             onSuccess: page => {
                 Swal.fire({
                     toast: true,
@@ -443,12 +443,13 @@ const deleteProduct = (product, index) => {
             <div class="mb-4">
               <label for="productImage" class="block text-gray-700">Product Image</label>
               <!-- Tambahkan input untuk gambar products -->
-              <el-upload v-model:file-list="TokoImage" list-type="picture-card" 
-              :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
-              <el-icon>
-                  <Plus />
-              </el-icon>
-          </el-upload>
+              <el-upload v-model:file-list="productImages" list-type="picture-card" multiple
+                            :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
+                            <el-icon>
+                                <Plus />
+                            </el-icon>
+                        </el-upload>
+
             </div>
           </div>
           <div class="mb-4">
@@ -456,7 +457,7 @@ const deleteProduct = (product, index) => {
             <input
               type="text"
               id="productName"
-              v-model="productName"
+              v-model="name"
               class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
               required
             />
@@ -484,7 +485,7 @@ const deleteProduct = (product, index) => {
             <input
               type="number"
               id="quantity"
-              v-model="quantity"
+              v-model="stock"
               class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
               required
             />
@@ -503,6 +504,7 @@ const deleteProduct = (product, index) => {
             <label for="stock" class="block text-gray-700">satuan</label>
             <select
               type="number"
+              v-model="satuan"
               id="stock"
               class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
               required
