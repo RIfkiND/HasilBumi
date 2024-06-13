@@ -5,11 +5,12 @@ namespace App\Http\Controllers\User\Settings;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Seller_Information;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
-
 class UserController extends Controller
 {
 
@@ -18,21 +19,26 @@ class UserController extends Controller
 
         return Inertia::render('User/Layout/Profile/userProfile');
     }
-    public function userProducts (Request $request)
+    public function userProductsMain()
     {
-        $user = Auth::user();
-        $products = Product::with(['category', 'image'])
-            ->where('seller__information_id', $user->id)
-            ->latest()
-            ->paginate(10);
-        $Categories = Category::get();
-
         
-
+        $user = Auth::user();
+        $sellerInfo = Seller_Information::where('user_id', $user->id)->first();
+    
+        if (!$sellerInfo) {
+            return Inertia::render('User/Layout/Profile/UserProducts', [
+                'products' => [],
+                'Categories' => Category::all(),
+            ])->with('message', 'No seller information found for this user.');
+        }
+    
+        $products = Product::with(['category'])
+        ->where('seller__information_id', $sellerInfo->id)
+        ->paginate(10);
+       
         return Inertia::render('User/Layout/Profile/userProducts', [
             'products' => $products,
-            'Categories' => $Categories,
-
+            'Categories' => Category::all(),
         ]);
     }
 

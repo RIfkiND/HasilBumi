@@ -13,7 +13,7 @@ Route::get('/Pendaftaran/form',[PendaftaranSellerController::class, 'Pendaftaran
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/seller/pendaftaran/proses', [PendaftaranSellerController::class, 'Pendaftaran'])->name('pendaftaran.seller');
-    Route::post('/seller/add/Product',[CreateProductController::class,'store'])->name('proudct.add');
+    Route::post('/seller/add/Product',[CreateProductController::class,'store'])->name('product.add');
     Route::put('/seller/update/{id}',[PageSellerController::class,'update'])->name('seller.edit');
 });
 

@@ -1,111 +1,114 @@
 <script setup>
-import { router, usePage} from "@inertiajs/vue3";
+import { router, usePage, Link } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { Plus } from '@element-plus/icons-vue'
+import { Plus } from "@element-plus/icons-vue";
+import Pagination from "@/Component/Pagination/Pagination.vue";
 
 defineProps({
-  products: Array,
-});
+  dataProducts:Array,
+})
+const pageTo = (url)=>{
+  router.get(url)
+}
 const Categories = usePage().props.Categories;
+
 const editor = ref(ClassicEditor);
 const editorConfig = {
-  height: "450px",
-  toolbar: [
-    "heading",
-    "|",
-    "bold",
-    "italic",
-    "link",
-    "bulletedList",
-    "numberedList",
-    "|",
-    "insertTable",
-    "|",
-    "mediaEmbed",
-    "|",
-    "undo",
-    "redo",
-  ],
-  table: {
-    toolbar: ["tableColumn", "tableRow", "mergeTableCells"],
-  },
-  language: "nl",
+    height: "450px",
+    toolbar: [
+        "heading",
+        "|",
+        "bold",
+        "italic",
+        "link",
+        "bulletedList",
+        "numberedList",
+        "|",
+        "insertTable",
+        "|",
+        "mediaEmbed",
+        "|",
+        "undo",
+        "redo",
+    ],
+    table: {
+        toolbar: ["tableColumn", "tableRow", "mergeTableCells"],
+    },
+    language: "nl",
 };
-const products = ref([]);
 const handleFileChange = (file) => {
-    console.log(file)
-    productImages.value.push(file)
-}
-const productImages = ref([])
+    console.log(file);
+    productImages.value.push(file);
+};
+const productImages = ref([]);
 
 const showAddProductForm = ref(false);
 const dropdownOpen = ref(false);
 
-const id = ref('');
-const name = ref('')
-const price = ref('')
-const stock = ref('')
-const deskripsi = ref('')
-const images = ref([])
-const category_id = ref('')
-const satuan = ref('')
+const id = ref("");
+const name = ref("");
+const price = ref("");
+const stock = ref("");
+const deskripsi = ref("");
+const images = ref([]);
+const category_id = ref("");
+const satuan = ref("");
 
 const submitAddProductForm = async () => {
-  const formData = new FormData();
-    formData.append('title', name.value);
-    formData.append('price', price.value);
-    formData.append('stock', stock .value);
-    formData.append('description', description.value);
-    formData.append('category_id', category_id.value);
-    formData.append('satuan', satuan.value);
+    const formData = new FormData();
+    formData.append("name", name.value);
+    formData.append("price", price.value);
+    formData.append("stock", stock.value);
+    formData.append("deskripsi", deskripsi.value);
+    formData.append("category_id", category_id.value);
+    formData.append("satuan", satuan.value);
     for (const image of productImages.value) {
-        formData.append('url[]', image.raw);
+        formData.append("url[]", image.raw);
     }
 
     try {
-        await router.post(route(''), formData, {
-            onSuccess: page => {
+        await router.post(route("product.add"), formData, {
+            onSuccess: (page) => {
                 Swal.fire({
                     toast: true,
-                    icon: 'success',
-                    position: 'top-end',
+                    icon: "success",
+                    position: "top-end",
                     showConfirmButton: false,
-                    title: page.props.flash.success
-                })
+                    title: page.props.flash.success,
+                });
                 dialogVisible.value = false;
                 resetFormData();
             },
-        })
+        });
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 
-  showAddProductForm.value = false;
+    showAddProductForm.value = false;
 };
 const resetFormData = () => {
-    id.value = '';
-    name.value = '';
-    price.value = '';
-    stock.value = '';
-    deskripsi.value = '';
+    id.value = "";
+    name.value = "";
+    price.value = "";
+    stock.value = "";
+    deskripsi.value = "";
     images.value = [];
 };
 
-
 const prepareEditProduct = (product) => {
-  editedProduct.value = {
-    image: product.image,
-    name: product.name,
-    category: product.category,
-    quantity: product.quantity,
-    price: product.price,
-    stock: product.stock,
-    publish: product.publish,
-  };
+    editedProduct.value = {
+        image: product.image,
+        name: product.name,
+        category: product.category,
+        quantity: product.quantity,
+        price: product.price,
+        stock: product.stock,
+        publish: product.publish,
+    };
 
-  // Menampilkan formulir edit
-  showEditProductForm.value = true;
+    // Menampilkan formulir edit
+    showEditProductForm.value = true;
 };
 
 const deleteProduct = (product, index) => {
@@ -198,7 +201,7 @@ const deleteProduct = (product, index) => {
           >
             <thead class="text-2xs text-textColor capitalize">
               <tr>
-                <th scope="col" class="px-4 py-3 text-center">Image</th>
+                <th scope="col" class="px-4 py-3 truncate">No</th>
                 <th scope="col" class="px-4 py-3 truncate">Product name</th>
                 <th scope="col" class="px-4 py-3">Category</th>
                 <th scope="col" class="px-4 py-3">Stock</th>
@@ -210,57 +213,46 @@ const deleteProduct = (product, index) => {
             </thead>
             <tbody>
               <tr
-                v-for="(product, index) in products.slice(0, 10)"
-                :key="product.id"
+                v-for="(product, index) in dataProducts.data"
+                :key="index"
                 class="border-b"
               >
-                <th
-                  scope="row"
-                  class="px-8 py-3 font-medium text-textColor whitespace-nowrap"
-                >
-                  Image
-                </th>
+              <th
+              scope="row"
+              class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+            >
+          
+              {{ index+1}}
+            </th>
+         
                 <th
                   scope="row"
                   class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
                 >
-                  <!-- {{ product.title }} -->
-                  Fruit Dragon
+              
+                  {{ product.name }}
                 </th>
-                <td class="px-2 py-3 text-center">
-                  {{ products.name }}
+                <td class="px-4 py-3 text-center">
+                  {{ product.category.name }}
                 </td>
 
-                <td class="px-2 py-3 text-center">
-                  {{ products.stock }}
+                <td class="px-4 py-3 text-center">
+                  {{ product.stock }}
                 </td>
-                <td class="px-4 py-3">${{ product.price }}</td>
+                <td class="px-4 py-3">Rp.{{ product.price }}</td>
                 <td class="px-4 py-3">
+                {{ product.satuan }}
+                </td>
+                <td class="px-3 py-3">
                   <span
-                    v-if="product.stock === 0"
-                    class="text-textColor text-xs font-semibold mr-2 px-2.5 py-0.5"
-                  >
-                    inStock
-                  </span>
-                  <span v-else class="text-Red text-xs font-semibold truncate">
-                    Out of Stock
-                  </span>
-                </td>
-                <td class="px-4 py-3">
-                  <button
-                    v-if="product.published === 0"
-                    type="button"
-                    class="px-3 py-2 text-xs font-medium text-center bg-hijau-1 rounded-full text-primaryColor focus:ring-2 focus:outline-none focus:ring-primaryColor"
-                  >
-                    Published
-                  </button>
-                  <button
-                    v-else
-                    type="button"
-                    class="px-3 py-2 text-xs font-medium text-center text-merah-2 bg-merah-1 rounded-full focus:ring-2 focus:outline-none focus:ring-Red"
-                  >
-                    UnPublished
-                  </button>
+                  v-if="product.stock > 0"
+                  class="text-textColor text-xs font-semibold mr-2 px-2.5 py-0.5"
+                >
+                  inStock
+                </span>
+                <span v-else class="text-Red text-xs font-semibold truncate">
+                  Out of Stock
+                </span>
                 </td>
                 <!--Aksi Icon-->
                 <td class="px-4 py-3 flex items-center">
@@ -328,7 +320,7 @@ const deleteProduct = (product, index) => {
                   </div>
                 </td>
               </tr>
-              <tr v-if="products.length === 0">
+              <tr v-if="dataProducts.length === 0">
                 <td colspan="8" class="px-4 py-3 text-center font-bold">
                   There are no products.
                 </td>
@@ -342,332 +334,308 @@ const deleteProduct = (product, index) => {
         >
           <span class="text-sm font-normal text-textColor">
             Showing
-            <span class="font-semibold text-textColor">1-10</span>
+            <span class="font-semibold text-textColor">1-{{ dataProducts.per_page }}</span>
             of
-            <span class="font-semibold text-textColor">1000</span>
+            <span class="font-semibold text-textColor">{{ dataProducts.total }}</span>
           </span>
           <ul class="inline-flex items-stretch -space-x-px">
-            <li>
+           
+            <li v-for="(product ,index) in dataProducts.links" :key="index">
               <a
-                href="#"
-                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-textColor bg-white rounded-l-lg border border-gray-300"
-              >
-                <span class="sr-only">Previous</span>
-                <svg
-                  class="w-5 h-5"
-                  aria-hidden="true"
-                  fill="currentColor"
-                  viewbox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
+                href="#" @click="pageTo(product.url)"
+                :class="{' bg-blue text-dark hover:text-white hover:cursor-text hover:bg-primaryColor' : product.active }"
                 class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
-                >1</a
+                v-html="product.label"></a
               >
             </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
-                >2</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                aria-current="page"
-                class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-textColor bg-primary-50 border border-primary-300"
-                >3</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300"
-                >...</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300"
-                >100</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-textColor bg-white rounded-r-lg border border-gray-300"
-              >
-                <span class="sr-only">Next</span>
-                <svg
-                  class="w-5 h-5"
-                  aria-hidden="true"
-                  fill="currentColor"
-                  viewbox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
-            </li>
+            
           </ul>
         </nav>
       </div>
     </div>
   </section>
 
-  <transition name="modal">
-    <div
-      v-if="showAddProductForm"
-      class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
-    >
-      <div class="bg-white p-8 rounded shadow-lg z-100 w-1/2">
-        <h2 class="text-2xl font-bold mb-4">Add Product</h2>
-        <form @submit.prevent="submitAddProductForm" class="mt-8 grid grid-cols-2 gap-4">
-          <div class="col-span-2">
-            <div class="mb-4">
-              <label for="productImage" class="block text-gray-700">Product Image</label>
-              <!-- Tambahkan input untuk gambar products -->
-              <el-upload v-model:file-list="TokoImage" list-type="picture-card" 
-              :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
-              <el-icon>
-                  <Plus />
-              </el-icon>
-          </el-upload>
+    <transition name="modal">
+        <div
+            v-if="showAddProductForm"
+            class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
+        >
+            <div class="bg-white p-8 rounded shadow-lg z-100 w-1/2">
+                <h2 class="text-2xl font-bold mb-4">Add Product</h2>
+                <form
+                    @submit.prevent="submitAddProductForm"
+                    class="mt-8 grid grid-cols-2 gap-4"
+                >
+                    <div class="col-span-2">
+                        <div class="mb-4">
+                            <label
+                                for="productImage"
+                                class="block text-gray-700"
+                                >Product Image</label
+                            >
+                            <!-- Tambahkan input untuk gambar products -->
+                            <el-upload
+                                v-model:file-list="productImages"
+                                list-type="picture-card"
+                                :on-preview="handlePictureCardPreview"
+                                :on-remove="handleRemove"
+                                :on-change="handleFileChange"
+                            >
+                                <el-icon>
+                                    <Plus />
+                                </el-icon>
+                            </el-upload>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="productName" class="block text-gray-700"
+                            >Product Name</label
+                        >
+                        <input
+                            type="text"
+                            id="productName"
+                            v-model="name"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label for="category" class="block text-gray-700"
+                            >Category</label
+                        >
+                        <select
+                            id="category"
+                            v-model="category_id"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        >
+                            <option disabled value="">Pilih Category</option>
+                            <option
+                                v-for="category in Categories"
+                                :key="category.id"
+                                :value="category.id"
+                            >
+                                {{ category.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="quantity" class="block text-gray-700"
+                            >Stock</label
+                        >
+                        <input
+                            type="number"
+                            id="quantity"
+                            v-model="stock"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label for="price" class="block text-gray-700"
+                            >Price</label
+                        >
+                        <input
+                            type="number"
+                            id="price"
+                            v-model="price"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label for="stock" class="block text-gray-700"
+                            >satuan</label
+                        >
+                        <select
+                            type="number"
+                            v-model="satuan"
+                            id="stock"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        >
+                            <option value="" disabled>Pilih Satuan</option>
+                            <option value="Kg">Kg</option>
+                            <option value="Gr">Gr</option>
+                            <option value="ml">ml</option>
+                            <option value="Ton">Ton</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <div class="mb-4">
+                            <label for="deskripsi" class="block text-gray-700"
+                                >Deskripsi</label
+                            >
+                            <ckeditor
+                                :editor="editor"
+                                v-model="deskripsi"
+                                :config="editorConfig"
+                                class="mt-1 w-full"
+                            ></ckeditor>
+                        </div>
+                    </div>
+                    <div class="col-span-2 justify-self-center">
+                        <div class="flex justify-center">
+                            <button
+                                type="button"
+                                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                                @click="showAddProductForm = false"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="submit"
+                                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
-          <div class="mb-4">
-            <label for="productName" class="block text-gray-700">Product Name</label>
-            <input
-              type="text"
-              id="productName"
-              v-model="productName"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="category" class="block text-gray-700">Category</label>
-            <select
-              id="category"
-              v-model="category_id"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            >
-              <option disabled value="">Pilih Category</option>
-              <option
-                v-for="category in Categories"
-                :key="category.id"
-                :value="category.id"
-              >
-                {{ category.name }}
-              </option>
-            </select>
-          </div>
-          <div class="mb-4">
-            <label for="quantity" class="block text-gray-700">Stock</label>
-            <input
-              type="number"
-              id="quantity"
-              v-model="quantity"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="price" class="block text-gray-700">Price</label>
-            <input
-              type="number"
-              id="price"
-              v-model="price"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="stock" class="block text-gray-700">satuan</label>
-            <select
-              type="number"
-              id="stock"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            >
-              <option value="" disabled>Pilih Satuan</option>
-              <option value="Kg">Kg</option>
-              <option value="Gr">Gr</option>
-              <option value="ml">ml</option>
-              <option value="Ton">Ton</option>
-            </select>
-          </div>
-          <div class="col-span-2">
-            <div class="mb-4">
-              <label for="deskripsi" class="block text-gray-700">Deskripsi</label>
-              <ckeditor
-                :editor="editor"
-                v-model="deskripsi"
-                :config="editorConfig"
-                class="mt-1 w-full"
-              ></ckeditor>
-            </div>
-          </div>
-          <div class="col-span-2 justify-self-center">
-            <div class="flex justify-center">
-              <button
-                type="button"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
-                @click="showAddProductForm = false"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </transition>
-  <!--update-->
-  <transition name="modal">
-    <div
-      v-if="showEditProductForm"
-      class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
-    >
-      <div class="bg-white p-8 rounded shadow-lg z-100 w-1/4">
-        <h2 class="text-2xl font-bold mb-4">Edit Product</h2>
-        <form @submit.prevent="submitEditProductForm" class="mt-8 grid grid-cols-2 gap-4">
-          <div class="col-span-2">
-            <div class="mb-4">
-              <label for="editProductImage" class="block text-gray-700"
-                >Product Image</label
-              >
-              <!-- Tambahkan input untuk gambar products -->
-              <input
-                type="file"
-                id="editProductImage"
-                accept="image/*"
-                class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-                v-on:change="editedImage.image"
-                required
-              />
-            </div>
-          </div>
-          <div class="mb-4">
-            <label for="editProductName" class="block text-gray-700">Product Name</label>
-            <input
-              type="text"
-              id="editProductName"
-              v-model="editedProduct.name"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            />
-          </div>
+        </div>
+    </transition>
+    <!--update-->
+    <transition name="modal">
+        <div
+            v-if="showEditProductForm"
+            class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
+        >
+            <div class="bg-white p-8 rounded shadow-lg z-100 w-1/4">
+                <h2 class="text-2xl font-bold mb-4">Edit Product</h2>
+                <form
+                    @submit.prevent="submitEditProductForm"
+                    class="mt-8 grid grid-cols-2 gap-4"
+                >
+                    <div class="col-span-2">
+                        <div class="mb-4">
+                            <label
+                                for="editProductImage"
+                                class="block text-gray-700"
+                                >Product Image</label
+                            >
+                            <!-- Tambahkan input untuk gambar products -->
+                            <input
+                                type="file"
+                                id="editProductImage"
+                                accept="image/*"
+                                class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                                v-on:change="editedImage.image"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="editProductName" class="block text-gray-700"
+                            >Product Name</label
+                        >
+                        <input
+                            type="text"
+                            id="editProductName"
+                            v-model="editedProduct.name"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
 
-          <div class="mb-4">
-            <label for="editCategory" class="block text-gray-700">Category</label>
-            <input
-              type="text"
-              id="editCategory"
-              v-model="editedProduct.category"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            />
-          </div>
+                    <div class="mb-4">
+                        <label for="editCategory" class="block text-gray-700"
+                            >Category</label
+                        >
+                        <input
+                            type="text"
+                            id="editCategory"
+                            v-model="editedProduct.category"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
 
-          <div class="mb-4">
-            <label for="editQuantity" class="block text-gray-700">Quality</label>
-            <input
-              type="number"
-              id="editQuantity"
-              v-model="editedProduct.quantity"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="editPrice" class="block text-gray-700">Price</label>
-            <input
-              type="number"
-              id="editPrice"
-              v-model="editedProduct.price"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="editStock" class="block text-gray-700">Stock</label>
-            <input
-              type="number"
-              id="editStock"
-              v-model="editedProduct.stock"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="stock" class="block text-gray-700">satuan</label>
-            <select
-              type="number"
-              id="stock"
-              class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-              required
-            >
-              <option value="" disabled>Pilih Satuan</option>
-              <option value="Kg">Kg</option>
-              <option value="Gr">Gr</option>
-              <option value="ml">ml</option>
-              <option value="TOn">Ton</option>
-            </select>
-          </div>
-          <div class="col-span-2">
-            <div class="mb-4">
-              <label for="deskripsi" class="block text-gray-700">Deskripsi</label>
-              <ckeditor
-                :editor="editor"
-                v-model="deskripsi"
-                :config="editorConfig"
-                class="mt-1 w-full"
-              ></ckeditor>
+                    <div class="mb-4">
+                        <label for="editQuantity" class="block text-gray-700"
+                            >Quality</label
+                        >
+                        <input
+                            type="number"
+                            id="editQuantity"
+                            v-model="editedProduct.quantity"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label for="editPrice" class="block text-gray-700"
+                            >Price</label
+                        >
+                        <input
+                            type="number"
+                            id="editPrice"
+                            v-model="editedProduct.price"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label for="editStock" class="block text-gray-700"
+                            >Stock</label
+                        >
+                        <input
+                            type="number"
+                            id="editStock"
+                            v-model="editedProduct.stock"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label for="stock" class="block text-gray-700"
+                            >satuan</label
+                        >
+                        <select
+                            type="number"
+                            id="stock"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        >
+                            <option value="" disabled>Pilih Satuan</option>
+                            <option value="Kg">Kg</option>
+                            <option value="Gr">Gr</option>
+                            <option value="ml">ml</option>
+                            <option value="TOn">Ton</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <div class="mb-4">
+                            <label for="deskripsi" class="block text-gray-700"
+                                >Deskripsi</label
+                            >
+                            <ckeditor
+                                :editor="editor"
+                                v-model="deskripsi"
+                                :config="editorConfig"
+                                class="mt-1 w-full"
+                            ></ckeditor>
+                        </div>
+                    </div>
+                    <div class="col-span-2">
+                        <div class="flex justify-center">
+                            <button
+                                type="button"
+                                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                                @click="showEditProductForm = false"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="submit"
+                                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
-          <div class="col-span-2">
-            <div class="flex justify-center">
-              <button
-                type="button"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
-                @click="showEditProductForm = false"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </transition>
+        </div>
+    </transition>
 </template>
