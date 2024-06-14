@@ -34,7 +34,6 @@ createInertiaApp({
         app.use(CKEditor);
         app.use(ElementPlus);
         app.use(VueSweetaler2)
-        window.Swal =  app.config.globalProperties.$swal
         return app.mount(el);
 
     },

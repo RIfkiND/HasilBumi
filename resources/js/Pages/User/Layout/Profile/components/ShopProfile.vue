@@ -27,7 +27,7 @@
                             <div class="flex justify-center items-center gap-3">
                                 <div v-if="!photUrl" class="avatar placeholder">
                                     <div
-                                        class="bg-neutral text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
+                                        class="bg-slate-200 text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
                                     >
                                         <span class="text-2xl">
                                             {{ initial }}</span

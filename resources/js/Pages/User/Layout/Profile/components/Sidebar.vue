@@ -6,7 +6,7 @@
             <div v-if="!photoUrl" class="flex items-center gap-3">
                 <div class="avatar placeholder">
                     <div
-                        class="bg-neutral text-neutral-content rounded-full w-12"
+                        class="bg-slate-200 text-neutral-content rounded-full w-12"
                     >
                         <span class="text-2xl"> {{ initial }}</span>
                     </div>
@@ -19,7 +19,7 @@
             <div v-else class="flex items-center gap-3">
                 <div class="avatar placeholder">
                     <div
-                        class="bg-neutral text-neutral-content rounded-full w-12"
+                        class=" text-neutral-content rounded-full w-12"
                     >
                         <span class="text-xl">{{ initial }}</span>
                     </div>

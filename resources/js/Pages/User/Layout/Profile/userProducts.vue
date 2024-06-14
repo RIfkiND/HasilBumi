@@ -4,6 +4,9 @@ import Footer from "../Component/Footer.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Products from "./components/Products.vue";
 import Card from "./components/Card.vue";
+defineProps({
+    products:Array,
+})
 </script>
 
 <template>
@@ -16,7 +19,7 @@ import Card from "./components/Card.vue";
                 </div>
                 <div>
                     <Card />
-                    <Products />
+                    <Products :dataProducts="products" />
                 </div>
             </div>
         </div>

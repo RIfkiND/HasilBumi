@@ -1,3 +1,4 @@
+import forms from '@tailwindcss/forms'
 /** @type {import('tailwindcss').Config} */
 
 export default {
@@ -39,5 +40,15 @@ export default {
             poppins: ["Poppins"],
         },
     },
-    plugins: [require("daisyui")],
+    daisyui: {
+        themes: [
+            {
+                mytheme: {
+                    primary: "#40c057",
+                    error: "#F9989F",
+                },
+            },
+        ],
+    },
+    plugins: [require("daisyui"), require("@tailwindcss/forms")],
 };

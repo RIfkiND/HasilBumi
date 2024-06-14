@@ -1,12 +1,16 @@
 <script setup>
-import { router, usePage } from "@inertiajs/vue3";
+import { router, usePage, Link } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Plus } from "@element-plus/icons-vue";
+import Pagination from "@/Component/Pagination/Pagination.vue";
 
 defineProps({
-    products: Array,
-});
+  dataProducts:Array,
+})
+const pageTo = (url)=>{
+  router.get(url)
+}
 const Categories = usePage().props.Categories;
 
 const editor = ref(ClassicEditor);
@@ -33,13 +37,12 @@ const editorConfig = {
     },
     language: "nl",
 };
-// const products = ref([]);
 const handleFileChange = (file) => {
     console.log(file);
     productImages.value.push(file);
 };
 const productImages = ref([]);
-
+const showEditProductForm = ref(false);
 const showAddProductForm = ref(false);
 const dropdownOpen = ref(false);
 
@@ -61,7 +64,7 @@ const submitAddProductForm = async () => {
     formData.append("category_id", category_id.value);
     formData.append("satuan", satuan.value);
     for (const image of productImages.value) {
-        formData.append("productImages[]", image.raw);
+        formData.append("url[]", image.raw);
     }
 
     try {
@@ -141,276 +144,216 @@ const deleteProduct = (product, index) => {
 };
 </script>
 <template>
-    <section class="max-w-full">
-        <!-- end -->
-        <div class="mx-auto">
-            <!-- Start coding here -->
-            <div
-                class="bg-white relative shadow-md sm:rounded-lg overflow-hidden"
-            >
+  <section class="max-w-full">
+    <!-- end -->
+    <div class="mx-auto">
+      <!-- Start coding here -->
+      <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-6"
+        >
+          <div class="w-full md:w-1/2">
+            <form class="flex items-center">
+              <label for="simple-search" class="sr-only">Search</label>
+              <div class="relative w-full">
                 <div
-                    class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-6"
+                  class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none"
                 >
-                    <div class="w-full md:w-1/2">
-                        <form class="flex items-center">
-                            <label for="simple-search" class="sr-only"
-                                >Search</label
-                            >
-                            <div class="relative w-full">
-                                <div
-                                    class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none"
-                                >
-                                    <svg
-                                        aria-hidden="true"
-                                        class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                        fill="currentColor"
-                                        viewbox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                            clip-rule="evenodd"
-                                        />
-                                    </svg>
-                                </div>
-                                <input
-                                    type="text"
-                                    id="simple-search"
-                                    class="bg-white border border-primaryColor text-textColor text-sm rounded-lg focus:border-primaryColor focus:ring focus:ring-primaryColor block w-full pl-10 p-2"
-                                    placeholder="Search"
-                                    required=""
-                                />
-                            </div>
-                        </form>
-                    </div>
-                    <div
-                        class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
-                    >
-                        <button
-                            type="button"
-                            @click.prevent="showAddProductForm = true"
-                            class="text-textColor border-2 border-primaryColor bg-white hover:bg-primaryColor focus:ring-2 focus:ring-primaryColor font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
-                        >
-                            Add product
-                        </button>
-                    </div>
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    fill="currentColor"
+                    viewbox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
                 </div>
-                <div class="overflow-x-auto">
-                    <table
-                        class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
-                    >
-                        <thead class="text-2xs text-textColor capitalize">
-                            <tr>
-                                <th scope="col" class="px-4 py-3 text-center">
-                                    Image
-                                </th>
-                                <th scope="col" class="px-4 py-3 truncate">
-                                    Product name
-                                </th>
-                                <th scope="col" class="px-4 py-3">Category</th>
-                                <th scope="col" class="px-4 py-3">Stock</th>
-                                <th scope="col" class="px-4 py-3">Price</th>
-                                <th scope="col" class="px-4 py-3">Satuan</th>
-                                <th scope="col" class="px-4 py-3">Status</th>
-                                <th scope="col" class="px-4 py-3 text-center">
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                v-for="(product, index) in products"
-                                :key="product.id"
-                                class="border-b"
-                            >
-                                <th
-                                    scope="row"
-                                    class="px-8 py-3 font-medium text-textColor whitespace-nowrap"
-                                >
-                                    Image
-                                </th>
-                                <th
-                                    scope="row"
-                                    class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
-                                >
-                                    Fruit Dragon
-                                </th>
-                                <td class="px-2 py-3 text-center">
-                                    {{ product.name }}
-                                </td>
-                                <td class="px-2 py-3 text-center">
-                                    {{ product.name }}
-                                </td>
-                                <td class="px-2 py-3 text-center">
-                                    {{ product.stock }}
-                                </td>
-                                <td class="px-4 py-3">
-                                    RP. {{ product.price }}
-                                </td>
-                                <td class="px-4 py-3">
-                                    <span
-                                        v-if="product.stock === 0"
-                                        class="text-textColor text-xs font-semibold mr-2 px-2.5 py-0.5"
-                                    >
-                                        inStock
-                                    </span>
-                                    <span
-                                        v-else
-                                        class="text-Red text-xs font-semibold truncate"
-                                    >
-                                        {{ product.stock }}
-                                    </span>
-                                </td>
-                                <!--Aksi Icon-->
-                                <td class="px-4 py-3 flex items-center">
-                                    <div
-                                        class="bg-white text-textColor rounded flex items-center gap-4"
-                                    >
-                                        <a
-                                            href="#"
-                                            @click.prevent="
-                                                showEditProductForm = true
-                                            "
-                                            class="block py-2 px-4 bg-primaryColor text-white rounded-full"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="w-6 h-6 text-blue-400"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                                />
-                                            </svg>
-                                        </a>
-                                        <a
-                                            href="#"
-                                            @click.prevent="
-                                                deleteProduct(product, index)
-                                            "
-                                            class="block py-2 px-4 text-sm bg-Red text-white rounded-full"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="w-6 h-6 text-red-400"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke-width="2"
-                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <nav
-                    class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
-                    aria-label="Table navigation"
-                >
-                    <span class="text-sm font-normal text-textColor">
-                        Showing
-                        <span class="font-semibold text-textColor">1-10</span>
-                        of
-                        <span class="font-semibold text-textColor">1000</span>
-                    </span>
-                    <ul class="inline-flex items-stretch -space-x-px">
-                        <li>
-                            <a
-                                href="#"
-                                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-textColor bg-white rounded-l-lg border border-gray-300"
-                            >
-                                <span class="sr-only">Previous</span>
-                                <svg
-                                    class="w-5 h-5"
-                                    aria-hidden="true"
-                                    fill="currentColor"
-                                    viewbox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"
-                                    />
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
-                                >1</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
-                                >2</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                aria-current="page"
-                                class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-textColor bg-primary-50 border border-primary-300"
-                                >3</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300"
-                                >...</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300"
-                                >100</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-textColor bg-white rounded-r-lg border border-gray-300"
-                            >
-                                <span class="sr-only">Next</span>
-                                <svg
-                                    class="w-5 h-5"
-                                    aria-hidden="true"
-                                    fill="currentColor"
-                                    viewbox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd"
-                                    />
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                <input
+                  type="text"
+                  id="simple-search"
+                  class="bg-white border border-primaryColor text-textColor text-sm rounded-lg focus:border-primaryColor focus:ring focus:ring-primaryColor block w-full pl-10 p-2"
+                  placeholder="Search"
+                  required=""
+                />
+              </div>
+            </form>
+          </div>
+          <div
+            class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
+          >
+            <button
+              type="button"
+              @click.prevent="showAddProductForm = true"
+              class="text-textColor border-2 border-primaryColor bg-white hover:bg-primaryColor focus:ring-2 focus:ring-primaryColor font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
+            >
+              Add product
+            </button>
+          </div>
         </div>
-    </section>
+        <div class="overflow-x-auto">
+          <table
+            class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
+          >
+            <thead class="text-2xs text-textColor capitalize">
+              <tr>
+                <th scope="col" class="px-4 py-3 truncate">No</th>
+                <th scope="col" class="px-4 py-3 truncate">Product name</th>
+                <th scope="col" class="px-4 py-3">Category</th>
+                <th scope="col" class="px-4 py-3">Stock</th>
+                <th scope="col" class="px-4 py-3">Price</th>
+                <th scope="col" class="px-4 py-3">Satuan</th>
+                <th scope="col" class="px-4 py-3">Status</th>
+                <th scope="col" class="px-4 py-3 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="(product, index) in dataProducts.data"
+                :key="index"
+                class="border-b"
+              >
+              <th
+              scope="row"
+              class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+            >
+
+              {{ index+1}}
+            </th>
+
+                <th
+                  scope="row"
+                  class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+                >
+
+                  {{ product.name }}
+                </th>
+                <td class="px-4 py-3 text-center">
+                  {{ product.category.name }}
+                </td>
+
+                <td class="px-4 py-3 text-center">
+                  {{ product.stock }}
+                </td>
+                <td class="px-4 py-3">Rp.{{ product.price }}</td>
+                <td class="px-4 py-3">
+                {{ product.satuan }}
+                </td>
+                <td class="px-3 py-3">
+                  <span
+                  v-if="product.stock > 0"
+                  class="text-textColor text-xs font-semibold mr-2 px-2.5 py-0.5"
+                >
+                  inStock
+                </span>
+                <span v-else class="text-Red text-xs font-semibold truncate">
+                  Out of Stock
+                </span>
+                </td>
+                <!--Aksi Icon-->
+                <td class="px-4 py-3 flex items-center">
+                  <div class="bg-white text-textColor rounded flex items-center gap-4">
+                    <a
+                      href="#"
+                      @click.prevent="showEditProductForm = true"
+                      class="block py-2 px-4 bg-primaryColor text-white rounded-full"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-6 h-6 text-blue-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
+                      2 0 112.828
+                      2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        /></svg
+                    ></a>
+                    <a
+                      href="#"
+                      @click.prevent="deleteProduct(product, index)"
+                      class="block py-2 px-4 text-sm bg-Red text-white rounded-full"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-6 h-6 text-red-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
+                      4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                        /></svg
+                    ></a>
+                    <a
+                      href="#"
+                      @click.prevent="deleteProduct(product, index)"
+                      class="block py-2 px-4 text-sm bg-blue text-white rounded-full"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-6 h-6 text-red-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
+                    4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                        /></svg
+                    ></a>
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="dataProducts.length === 0">
+                <td colspan="8" class="px-4 py-3 text-center font-bold">
+                  There are no products.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <nav
+          class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
+          aria-label="Table navigation"
+        >
+          <span class="text-sm font-normal text-textColor">
+            Showing
+            <span class="font-semibold text-textColor">1-{{ dataProducts.per_page }}</span>
+            of
+            <span class="font-semibold text-textColor">{{ dataProducts.total }}</span>
+          </span>
+          <ul class="inline-flex items-stretch -space-x-px">
+
+            <li v-for="(product ,index) in dataProducts.links" :key="index">
+              <a
+                href="#" @click="pageTo(product.url)"
+                :class="{' bg-blue text-dark hover:text-white hover:cursor-text hover:bg-primaryColor' : product.active }"
+                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
+                v-html="product.label"></a
+              >
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
 
     <transition name="modal">
         <div
@@ -434,7 +377,6 @@ const deleteProduct = (product, index) => {
                             <el-upload
                                 v-model:file-list="productImages"
                                 list-type="picture-card"
-                                multiple
                                 :on-preview="handlePictureCardPreview"
                                 :on-remove="handleRemove"
                                 :on-change="handleFileChange"
@@ -559,88 +501,85 @@ const deleteProduct = (product, index) => {
             v-if="showEditProductForm"
             class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
         >
-            <div class="bg-white p-8 rounded shadow-lg z-100 w-1/4">
+            <div class="bg-white p-8 rounded shadow-lg z-100 w-1/2">
                 <h2 class="text-2xl font-bold mb-4">Edit Product</h2>
                 <form
-                    @submit.prevent="submitEditProductForm"
+                    @submit.prevent=""
                     class="mt-8 grid grid-cols-2 gap-4"
                 >
                     <div class="col-span-2">
                         <div class="mb-4">
                             <label
-                                for="editProductImage"
+                                for="productImage"
                                 class="block text-gray-700"
                                 >Product Image</label
                             >
                             <!-- Tambahkan input untuk gambar products -->
-                            <input
-                                type="file"
-                                id="editProductImage"
-                                accept="image/*"
-                                class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-                                v-on:change="editedImage.image"
-                                required
-                            />
+                            <el-upload
+                                v-model:file-list="productImages"
+                                list-type="picture-card"
+                                :on-preview="handlePictureCardPreview"
+                                :on-remove="handleRemove"
+                                :on-change="handleFileChange"
+                            >
+                                <el-icon>
+                                    <Plus />
+                                </el-icon>
+                            </el-upload>
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label for="editProductName" class="block text-gray-700"
+                        <label for="productName" class="block text-gray-700"
                             >Product Name</label
                         >
                         <input
                             type="text"
-                            id="editProductName"
-                            v-model="editedProduct.name"
+                            id="productName"
+                            v-model="name"
                             class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
                             required
                         />
                     </div>
-
                     <div class="mb-4">
-                        <label for="editCategory" class="block text-gray-700"
+                        <label for="category" class="block text-gray-700"
                             >Category</label
                         >
-                        <input
-                            type="text"
-                            id="editCategory"
-                            v-model="editedProduct.category"
+                        <select
+                            id="category"
+                            v-model="category_id"
                             class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
                             required
-                        />
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="editQuantity" class="block text-gray-700"
-                            >Quality</label
                         >
-                        <input
-                            type="number"
-                            id="editQuantity"
-                            v-model="editedProduct.quantity"
-                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-                            required
-                        />
+                            <option disabled value="">Pilih Category</option>
+                            <option
+                                v-for="category in Categories"
+                                :key="category.id"
+                                :value="category.id"
+                            >
+                                {{ category.name }}
+                            </option>
+                        </select>
                     </div>
                     <div class="mb-4">
-                        <label for="editPrice" class="block text-gray-700"
-                            >Price</label
-                        >
-                        <input
-                            type="number"
-                            id="editPrice"
-                            v-model="editedProduct.price"
-                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
-                            required
-                        />
-                    </div>
-                    <div class="mb-4">
-                        <label for="editStock" class="block text-gray-700"
+                        <label for="quantity" class="block text-gray-700"
                             >Stock</label
                         >
                         <input
                             type="number"
-                            id="editStock"
-                            v-model="editedProduct.stock"
+                            id="quantity"
+                            v-model="stock"
+                            class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
+                            required
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <label for="price" class="block text-gray-700"
+                            >Price</label
+                        >
+                        <input
+                            type="number"
+                            id="price"
+                            v-model="price"
                             class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
                             required
                         />
@@ -651,6 +590,7 @@ const deleteProduct = (product, index) => {
                         >
                         <select
                             type="number"
+                            v-model="satuan"
                             id="stock"
                             class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
                             required
@@ -659,7 +599,7 @@ const deleteProduct = (product, index) => {
                             <option value="Kg">Kg</option>
                             <option value="Gr">Gr</option>
                             <option value="ml">ml</option>
-                            <option value="TOn">Ton</option>
+                            <option value="Ton">Ton</option>
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -675,12 +615,12 @@ const deleteProduct = (product, index) => {
                             ></ckeditor>
                         </div>
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-2 justify-self-center">
                         <div class="flex justify-center">
                             <button
                                 type="button"
                                 class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
-                                @click="showEditProductForm = false"
+                                @click="showAddProductForm = false"
                             >
                                 Cancel
                             </button>

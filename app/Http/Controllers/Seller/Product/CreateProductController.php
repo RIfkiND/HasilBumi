@@ -13,6 +13,11 @@ use Inertia\Inertia;
 
 class CreateProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Islogin');
+    }
+
     public function ProductView()
     {
         $categories = Category::all();
@@ -21,7 +26,7 @@ class CreateProductController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $user = Auth::user();
 
         $validatedData = $request->validate([
@@ -32,13 +37,12 @@ class CreateProductController extends Controller
             'deskripsi' => 'required|string|min:1',
             'satuan' => 'required|string|min:1',
         ]);
-
-        $validatedData['seller__information_id'] = $user->id;
+        $validatedData['seller__information_id']=$user->id;
 
         $newProduct = Product::create($validatedData);
 
-        if ($request->has('productImages')) {
-            foreach ($request->file('productImages') as $image) {
+        if ($request->has('url')) {
+            foreach ($request->file('url') as $image) {
                 $imageName = $validatedData['name'] . '-image-' . time() . rand(1, 1000) . '.' . $image->extension();
                 $image->move(public_path('product_images'), $imageName);
                 ImageProduct::create([
