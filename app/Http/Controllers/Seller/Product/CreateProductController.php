@@ -21,6 +21,7 @@ class CreateProductController extends Controller
 
     public function store(Request $request)
     {
+        
         $user = Auth::user();
 
         $validatedData = $request->validate([
@@ -32,7 +33,6 @@ class CreateProductController extends Controller
             'satuan' => 'required|string|min:1',
         ]);
 
-        $validatedData['user_id'] = $user->id;
         $validatedData['seller__information_id'] = $user->id;
 
         $newProduct = Product::create($validatedData);

@@ -9,12 +9,12 @@ class ImageProduct extends Model
 {
     use HasFactory;
 
-
     protected $fillable=[
-        'url'
+        'url',
+        'product_id'
     ];
-    public function product(){
-        return $this->belongsTo(Product::class);
-    }
 
+    public function product(){
+        return $this->belongsTo(User::class);
+    }
 }

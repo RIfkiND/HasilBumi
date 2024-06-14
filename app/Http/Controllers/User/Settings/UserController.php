@@ -27,7 +27,7 @@ class UserController extends Controller
             ->paginate(10);
         $Categories = Category::get();
 
-        
+
 
         return Inertia::render('User/Layout/Profile/userProducts', [
             'products' => $products,
