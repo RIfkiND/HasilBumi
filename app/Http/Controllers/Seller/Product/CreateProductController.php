@@ -29,9 +29,9 @@ class CreateProductController extends Controller
             'name' => 'required|string|min:2',
             'price' => 'required|integer|min:1',
             'stock' => 'required|integer|min:1',
+            'satuan_id'=> 'required|exists:satuans,id',
             'category_id' => 'required|exists:categories,id',
             'deskripsi' => 'required|string|min:1',
-            'satuan' => 'required|string|min:1',
         ]);
         $validatedData['seller__information_id']=$user->id;
 

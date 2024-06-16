@@ -9,6 +9,7 @@ import route from '../../../../../../vendor/tightenco/ziggy/src/js/index';
 defineProps({
     products:Array,
     search:Object,
+    TotalProducts:Object,
 })
 
 const searching = (key) => {
@@ -25,7 +26,7 @@ const searching = (key) => {
                     <Sidebar />
                 </div>
                 <div>
-                    <Card />
+                    <Card :dataTotal="TotalProducts"/>
                     <Products :dataProducts="products" @search="searching" />
                 </div>
             </div>

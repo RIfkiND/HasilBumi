@@ -33,4 +33,8 @@ class Seller_Information extends Model
     public function product(){
         return $this->hasMany(Product::class);
     }
+    public function totalProducts()
+    {
+        return $this->product()->count();
+    }
 }

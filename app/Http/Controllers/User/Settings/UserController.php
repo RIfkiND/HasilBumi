@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Settings;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\satuan;
 use App\Models\Seller_Information;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,20 +26,25 @@ class UserController extends Controller
         $user = Auth::user();
         $sellerInfo = Seller_Information::where('user_id', $user->id)->first();
 
+        $TotalProduct = $sellerInfo->totalProducts();
         if (!$sellerInfo) {
             return Inertia::render('User/Layout/Profile/UserProducts', [
                 'products' => [],
                 'Categories' => Category::all(),
+                'Satuans'=> satuan::all(),
+                'TotalProducts'=> $TotalProduct,
             ])->with('message', 'No seller information found for this user.');
         }
 
-        $products = Product::with(['category','product_image'])
+        $products = Product::with(['category','product_image' ,'satuan'])
         ->where('seller__information_id', $sellerInfo->id)
         ->paginate(10);
 
         return Inertia::render('User/Layout/Profile/userProducts', [
             'products' => $products,
             'Categories' => Category::all(),
+            'Satuans'=> satuan::all(),
+            'TotalProducts'=> $TotalProduct,
         ]);
     }
 

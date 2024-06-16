@@ -81,7 +81,9 @@
                     >
                         Categories
                     </h3>
-                    <div class="space-y-2">
+                    <div class="space-y-2"  v-for="category in Categories"
+                    :key="category.id"
+                    :value="category.id">
                         <div class="flex items-center">
                             <input
                                 type="checkbox"
@@ -90,138 +92,13 @@
                                 class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
                             />
                             <label for="cat-1" class="text-slate-300 ml-3"
-                                >Meat</label
+                                >{{ category.name }}</label
                             >
                             <div class="ml-auto text-slate-300 text-sm">
                                 &lpar;15&rpar;
                             </div>
                         </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-2"
-                                id="cat-2"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-2" class="text-slate-300 ml-3"
-                                >Vegetable</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;9&rpar;
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-3"
-                                id="cat-3"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-3" class="text-slate-300 ml-3"
-                                >Fruits</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;21&rpar;
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-4"
-                                id="cat-4"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-4" class="text-slate-300 ml-3"
-                                >Forest</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;10&rpar;
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-4"
-                                id="cat-4"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-4" class="text-slate-300 ml-3"
-                                >Industri</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;20&rpar;
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-4"
-                                id="cat-4"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-4" class="text-slate-300 ml-3"
-                                >Grain</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;3&rpar;
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-4"
-                                id="cat-4"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-4" class="text-slate-300 ml-3"
-                                >Ship</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;9&rpar;
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-4"
-                                id="cat-4"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-4" class="text-slate-300 ml-3"
-                                >Processed</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;12&rpar;
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-4"
-                                id="cat-4"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-4" class="text-slate-300 ml-3"
-                                >Spice</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;90&rpar;
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input
-                                type="checkbox"
-                                name="cat-4"
-                                id="cat-4"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-4" class="text-slate-300 ml-3"
-                                >Textile</label
-                            >
-                            <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;100&rpar;
-                            </div>
-                        </div>
+                    
                     </div>
                 </div>
 
@@ -508,109 +385,32 @@
                     <h3 class="text-xl text-dark mb-3 capitalize font-medium">
                         Satuan
                     </h3>
-                    <div class="flex items-center gap-2 md:flex-wrap">
-                        <div class="size-selector">
+                    <div class="flex flex-row flex-wrap items-center gap-2">
+                        <div v-for="satuan in Satuans" :key="satuan.id" :value="satuan.id" class="size-selector">
                             <input
                                 type="radio"
                                 name="size"
-                                id="size-xs"
+                                :id="'size-' + satuan.id"
                                 class="hidden"
+                                :value="satuan.id"
                             />
                             <label
-                                for="size-xs"
+                                :for="'size-' + satuan.id"
                                 class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
-                                >mg
+                            >
+                                {{ satuan.symbol }}
                             </label>
-                        </div>
-                        <div class="size-selector">
-                            <input
-                                type="radio"
-                                name="size"
-                                id="size-sm"
-                                class="hidden"
-                            />
-                            <label
-                                for="size-sm"
-                                class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
-                                >cg</label
-                            >
-                        </div>
-                        <div class="size-selector">
-                            <input
-                                type="radio"
-                                name="size"
-                                id="size-m"
-                                class="hidden"
-                            />
-                            <label
-                                for="size-m"
-                                class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
-                                >dg</label
-                            >
-                        </div>
-                        <div class="size-selector">
-                            <input
-                                type="radio"
-                                name="size"
-                                id="size-xl"
-                                class="hidden"
-                            />
-                            <label
-                                for="size-xl"
-                                class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
-                                >gr</label
-                            >
-                        </div>
-                        <div class="size-selector">
-                            <input
-                                type="radio"
-                                name="size"
-                                id="size-xl"
-                                class="hidden"
-                            />
-                            <label
-                                for="size-xl"
-                                class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
-                                >dag</label
-                            >
-                        </div>
-                        <div class="size-selector">
-                            <input
-                                type="radio"
-                                name="size"
-                                id="size-xl"
-                                class="hidden"
-                            />
-                            <label
-                                for="size-xl"
-                                class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
-                                >hg</label
-                            >
-                        </div>
-                        <div class="size-selector">
-                            <input
-                                type="radio"
-                                name="size"
-                                id="size-xl"
-                                class="hidden"
-                            />
-                            <label
-                                for="size-xl"
-                                class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
-                                >kg</label
-                            >
                         </div>
                     </div>
                     <button
                         type="submit"
                         class="mt-4 w-full py-2 bg-hoverPrimary hover:cursor-pointer hover:bg-teal-dark rounded-md block px-4 text-white font-medium capitalize text-md"
                     >
-                        <i
-                            class="fa-solid fa-magnifying-glass text-white px-1"
-                        ></i>
+                        <i class="fa-solid fa-magnifying-glass text-white px-1"></i>
                         cari sekarang
                     </button>
                 </div>
+                
                 <!-- Satuan End -->
             </div>
         </div>
@@ -783,8 +583,15 @@
 <script setup>
 import Header from "../Component/Header.vue";
 import Footer from "../Component/Footer.vue";
-import { Link } from "@inertiajs/vue3";
-import { ref, computed } from "vue";
+import { Link,usePage } from "@inertiajs/vue3";
+import { ref, computed  } from "vue";
+
+ const props = defineProps ({
+    dataProducts : Object
+})
+
+const Categories = usePage().props.Categories
+const Satuans   = usePage().props.Satuans;
 
 const sliders = ref([
     {
@@ -813,157 +620,16 @@ function nextSlider() {
         sliderIndex.value++;
     } else {
         sliderIndex.value = 0;
-    }
+    }   
 }
 
-const products = ref([
-    {
-        image: product1,
-        title: "Pohon Jati Asli",
-        price: "Rp650.000",
-        oldPrice: "Rp1.500.000",
-    },
-    // Tambahkan data produk lainnya di sini
-    {
-        image: product1,
-        title: "Produk 2",
-        price: "Rp700.000",
-        oldPrice: "Rp1.400.000",
-    },
-    {
-        image: product1,
-        title: "Produk 3",
-        price: "Rp800.000",
-        oldPrice: "Rp1.300.000",
-    },
-    {
-        image: product1,
-        title: "Produk 4",
-        price: "Rp900.000",
-        oldPrice: "Rp1.200.000",
-    },
-    {
-        image: product1,
-        title: "Produk 5",
-        price: "Rp1.000.000",
-        oldPrice: "Rp1.100.000",
-    },
-    {
-        image: product1,
-        title: "Produk 6",
-        price: "Rp1.100.000",
-        oldPrice: "Rp1.000.000",
-    },
-    {
-        image: product1,
-        title: "Produk 7",
-        price: "Rp1.200.000",
-        oldPrice: "Rp900.000",
-    },
-    {
-        image: product1,
-        title: "Produk 8",
-        price: "Rp1.300.000",
-        oldPrice: "Rp800.000",
-    },
-    {
-        image: product1,
-        title: "Produk 9",
-        price: "Rp1.400.000",
-        oldPrice: "Rp700.000",
-    },
-    {
-        image: product1,
-        title: "Produk 10",
-        price: "Rp1.500.000",
-        oldPrice: "Rp650.000",
-    },
-    {
-        image: product1,
-        title: "Produk 11",
-        price: "Rp1.600.000",
-        oldPrice: "Rp600.000",
-    },
-    {
-        image: product1,
-        title: "Produk 12",
-        price: "Rp1.700.000",
-        oldPrice: "Rp550.000",
-    },
-    {
-        image: product1,
-        title: "Produk 13",
-        price: "Rp1.800.000",
-        oldPrice: "Rp500.000",
-    },
-    {
-        image: product1,
-        title: "Produk 14",
-        price: "Rp1.900.000",
-        oldPrice: "Rp450.000",
-    },
-    {
-        image: product1,
-        title: "Produk 15",
-        price: "Rp2.000.000",
-        oldPrice: "Rp400.000",
-    },
-    {
-        image: product1,
-        title: "Produk 16",
-        price: "Rp2.100.000",
-        oldPrice: "Rp350.000",
-    },
-    {
-        image: product1,
-        title: "Produk 13",
-        price: "Rp1.800.000",
-        oldPrice: "Rp500.000",
-    },
-    {
-        image: product1,
-        title: "Produk 14",
-        price: "Rp1.900.000",
-        oldPrice: "Rp450.000",
-    },
-    {
-        image: product1,
-        title: "Produk 15",
-        price: "Rp2.000.000",
-        oldPrice: "Rp400.000",
-    },
-    {
-        image: product1,
-        title: "Produk 16",
-        price: "Rp2.100.000",
-        oldPrice: "Rp350.000",
-    },
-    {
-        image: product1,
-        title: "Produk 13",
-        price: "Rp1.800.000",
-        oldPrice: "Rp500.000",
-    },
-    {
-        image: product1,
-        title: "Produk 14",
-        price: "Rp1.900.000",
-        oldPrice: "Rp450.000",
-    },
-    {
-        image: product1,
-        title: "Produk 15",
-        price: "Rp2.000.000",
-        oldPrice: "Rp400.000",
-    },
-    {
-        image: product1,
-        title: "Produk 16",
-        price: "Rp2.100.000",
-        oldPrice: "Rp350.000",
-    },
-]);
 
+const products = ref(props.dataProducts.map(product => ({
+  image: product.product_image ? product.product_image.url : '', // Adjust this if your product_image structure is different
+  title: product.name,
+  price: product.price,
+  oldPrice: "Rp1.500.000", // Adjust this as needed
+})));
 const visibleCount = ref(12);
 
 const visibleProducts = computed(() => {

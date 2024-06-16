@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\satuan;
 use App\Models\Seller;
 use App\Models\Seller_Information;
 use Illuminate\Database\Migrations\Migration;
@@ -17,12 +18,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Category::class);
+            $table->foreignIdFor(satuan::class);
             $table->foreignIdFor(Seller_Information::class);
             $table->string('name');
             $table->decimal('price',10,2);
             $table->integer('stock');
             $table->text('deskripsi')->nullable();
-            $table->string('satuan');
             $table->timestamps();
         });
     }

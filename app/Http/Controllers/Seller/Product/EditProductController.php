@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use App\Http\Requests\Edit\ProductRequest;
 use Illuminate\Support\Str;
 
 class EditProductController extends Controller
@@ -25,20 +26,19 @@ class EditProductController extends Controller
     public function UpdateProduct(Request $request, $id)
     {
 
-    
+    //  dd($request->all());
         $user = Auth::user();
 
-        $product = Product::where('id', $id)
-            ->where('seller__information_id', $user->id)
-            ->firstOrFail();
+        $product = Product::findOrFail($id);
+
 
         $this->validate($request, [
             'name' => 'required|string|min:2',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
+            'satuan_id' => 'required|exists:satuans,id',
             'category_id' => 'required|exists:categories,id',
             'deskripsi' => 'required|string|min:1',
-             'satuan' => 'required|string|min:1'
         ]);
 
       
@@ -47,7 +47,7 @@ class EditProductController extends Controller
         $product->stock = $request->stock;
         $product->category_id = $request->category_id;
         $product->deskripsi = $request->deskripsi;
-        $product->satuan = $request->satuan;
+        $product->satuan_id = $request->satuan_id;
 
     
         $product->save();

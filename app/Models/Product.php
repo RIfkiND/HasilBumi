@@ -16,17 +16,25 @@ class Product extends Model
         'stock',
         'category_id',
         'deskripsi',
-        'satuan',
+        'satuan_id',
     ];
     
 
     public function product_image(){
        return $this->hasMany(ImageProduct::class);
     }
+    
+    public function satuan (){
+        return $this->belongsTo(Satuan::class);
+    }
 
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    //logika
+
+ 
 
 
 }

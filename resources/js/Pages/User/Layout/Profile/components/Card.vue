@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+defineProps({
+    dataTotal :Object
+})
+
+</script>
 
 <template>
     <div class="mb-4">
@@ -32,7 +37,7 @@
                     </div>
                     <div class="flex-1 pl-1">
                         <div class="text-4xl font-semibold text-primaryColor">
-                            10
+                            {{ dataTotal }}
                         </div>
                         <div class="text-sm text-gray-400 sm:text-base">
                             Published
@@ -97,7 +102,7 @@
                     </div>
                     <div class="flex-1 pl-1">
                         <div class="text-4xl font-medium text-primaryColor">
-                            563
+                            {{ dataTotal }}
                         </div>
                         <div class="text-sm text-gray-400 sm:text-base">
                             Total Products
