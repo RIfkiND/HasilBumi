@@ -4,9 +4,16 @@ import Footer from "../Component/Footer.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Products from "./components/Products.vue";
 import Card from "./components/Card.vue";
+import { router } from "@inertiajs/vue3";
+import route from '../../../../../../vendor/tightenco/ziggy/src/js/index';
 defineProps({
     products:Array,
+    search:Object,
 })
+
+const searching = (key) => {
+    router.get(route('product.search'),{search:key} ,{preserveState: true})
+}
 </script>
 
 <template>
@@ -19,7 +26,7 @@ defineProps({
                 </div>
                 <div>
                     <Card />
-                    <Products :dataProducts="products" />
+                    <Products :dataProducts="products" @search="searching" />
                 </div>
             </div>
         </div>

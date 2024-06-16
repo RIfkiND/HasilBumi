@@ -32,7 +32,7 @@ class UserController extends Controller
             ])->with('message', 'No seller information found for this user.');
         }
 
-        $products = Product::with(['category'])
+        $products = Product::with(['category','product_image'])
         ->where('seller__information_id', $sellerInfo->id)
         ->paginate(10);
 

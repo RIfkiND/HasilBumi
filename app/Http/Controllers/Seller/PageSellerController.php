@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Seller_Information;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
+
 class PageSellerController extends Controller
 {
 
@@ -56,4 +60,25 @@ class PageSellerController extends Controller
 
         return redirect()->route('userProfile')->with('success', 'you have updated succeafully');
     }
+
+    public function searchSellerProduct(Request $request){
+        $user = Auth::user();
+        $query =Product::with(['category', 'image'])
+            ->where('seller__information_id', $user->id);
+    
+        if ($request->has('search') && $request->search != '') {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+    
+        $products = $query->latest()->paginate(10);
+    
+        $categories = Category::all();
+    
+        return Inertia::render('User/Layout/Profile/userProducts', [
+            'products' => $products,
+            'categories' => $categories,
+            'search'=> $request->only('search'),
+        ]);
+        
+}
 }

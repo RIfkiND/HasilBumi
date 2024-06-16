@@ -4,7 +4,7 @@ use App\Http\Controllers\ChatController;
 Route::middleware('auth')->group(function () {
 
     Route::group(['prefix' => 'chat', 'as' => 'chat.'], function() {
-        Route::get('/{receiverId?}', [ChatController::class, 'index'])->name('index');
+        Route::get('/{receiverId?}', [ChatController::class, 'index'])->name('chat.index');
         Route::post('prosess/{receiverId?}', [ChatController::class, 'store'])->name('store');
     });
  });

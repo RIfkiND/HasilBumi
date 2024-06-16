@@ -11,15 +11,16 @@ class Product extends Model
 
     protected $fillable = [
         'seller__information_id',
-        'name' ,
+        'name',
         'price',
         'stock',
-        'category_id' ,
-        'deskripsi' ,
+        'category_id',
+        'deskripsi',
         'satuan',
     ];
+    
 
-    public function image(){
+    public function product_image(){
        return $this->hasMany(ImageProduct::class);
     }
 

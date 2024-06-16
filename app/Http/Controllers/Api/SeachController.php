@@ -26,8 +26,5 @@ class SeachController extends Controller
     ]);
 }
 
-public function searchSellerProduct(Request $request){
-        $search =  $request->search;
-        
-}
+
 }

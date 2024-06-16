@@ -1,16 +1,23 @@
 <script setup>
 import { router, usePage, Link } from "@inertiajs/vue3";
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Plus } from "@element-plus/icons-vue";
 import Pagination from "@/Component/Pagination/Pagination.vue";
 
 defineProps({
-  dataProducts:Array,
-})
-const pageTo = (url)=>{
-  router.get(url)
-}
+    dataProducts: Array,
+});
+
+const search = ref("");
+const emit = defineEmits(["search"]);
+watch(search, (value) => {
+    emit("search", value);
+});
+
+const pageTo = (url) => {
+    router.get(url);
+};
 const Categories = usePage().props.Categories;
 
 const editor = ref(ClassicEditor);
@@ -37,14 +44,27 @@ const editorConfig = {
     },
     language: "nl",
 };
+
+const productImages = ref([]);
+const showEditProductForm = ref(false);
+const showAddProductForm = ref(false);
+
 const handleFileChange = (file) => {
     console.log(file);
     productImages.value.push(file);
 };
-const productImages = ref([]);
-const showEditProductForm = ref(false);
-const showAddProductForm = ref(false);
-const dropdownOpen = ref(false);
+
+const dialogImageUrl = ref("");
+const dialogVisible = ref(false);
+
+const handlePictureCardPreview = (file) => {
+    dialogImageUrl.value = file.url;
+    dialogVisible.value = true;
+};
+
+const handleRemove = (file) => {
+    console.log(file);
+};
 
 const id = ref("");
 const name = ref("");
@@ -63,8 +83,10 @@ const submitAddProductForm = async () => {
     formData.append("deskripsi", deskripsi.value);
     formData.append("category_id", category_id.value);
     formData.append("satuan", satuan.value);
-    for (const image of productImages.value) {
-        formData.append("url[]", image.raw);
+    if (productImages.value.length > 0) {
+        for (const image of productImages.value) {
+            formData.append("url[]", image.raw);
+        }
     }
 
     try {
@@ -75,6 +97,8 @@ const submitAddProductForm = async () => {
                     icon: "success",
                     position: "top-end",
                     showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
                     title: page.props.flash.success,
                 });
                 dialogVisible.value = false;
@@ -96,19 +120,54 @@ const resetFormData = () => {
     images.value = [];
 };
 
-const prepareEditProduct = (product) => {
-    editedProduct.value = {
-        image: product.image,
-        name: product.name,
-        category: product.category,
-        quantity: product.quantity,
-        price: product.price,
-        stock: product.stock,
-        publish: product.publish,
-    };
+const openEditModal = (product, index) => {
+    console.log(product, index);
 
-    // Menampilkan formulir edit
+    id.value = product.id;
+    name.value = product.name;
+    price.value = product.price;
+    stock.value = product.stock;
+    deskripsi.value = product.deskripsi;
+    category_id.value = product.category_id;
+    images.value = product.product_image;
+
     showEditProductForm.value = true;
+    dialogVisible.value = true;
+};
+//update product method
+const updateProduct = async () => {
+    const formData = new FormData();
+    formData.append("name", name.value);
+    formData.append("price", price.value);
+    formData.append("stock", stock.value);
+    formData.append("deskripsi", deskripsi.value);
+    formData.append("category_id", category_id.value);
+   
+    if (productImages.value.length > 0) {
+        for (const image of productImages.value) {
+            formData.append("url[]", image.raw);
+        }
+    }
+
+    try {
+        await router.post('/product/update/' + id.value, formData, {
+            onSuccess: (page) => {
+                resetFormData();
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    position: "top-end",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    title: page.props.flash.success,
+                });
+            },
+        });
+    } catch (err) {
+        console.log(err);
+    }
+    showEditProductForm.value = false;
 };
 
 const deleteProduct = (product, index) => {
@@ -124,7 +183,7 @@ const deleteProduct = (product, index) => {
     }).then((result) => {
         if (result.isConfirmed) {
             try {
-                router.delete("/products/" + product.id, {
+                router.delete(route('product.delete', product.id), {
                     onSuccess: (page) => {
                         this.delete(product, index);
                         Swal.fire({
@@ -132,6 +191,8 @@ const deleteProduct = (product, index) => {
                             icon: "success",
                             position: "top-end",
                             showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
                             title: page.props.flash.success,
                         });
                     },
@@ -142,225 +203,281 @@ const deleteProduct = (product, index) => {
         }
     });
 };
+
+const deleteImage = async (pimage, index) => {
+    try {
+        await router.delete(route('image.delete',+ pimage.id) , {
+            onSuccess: (page) => {
+                images.value.splice(index, 1);
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    position: "top-end",
+                    showConfirmButton: false,
+                    title: page.props.flash.success,
+                });
+            },
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
 </script>
 <template>
-  <section class="max-w-full">
-    <!-- end -->
-    <div class="mx-auto">
-      <!-- Start coding here -->
-      <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
-        <div
-          class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-6"
-        >
-          <div class="w-full md:w-1/2">
-            <form class="flex items-center">
-              <label for="simple-search" class="sr-only">Search</label>
-              <div class="relative w-full">
+    <section class="max-w-full">
+        <!-- end -->
+        <div class="mx-auto">
+            <!-- Start coding here -->
+            <div
+                class="bg-white relative shadow-md sm:rounded-lg overflow-hidden"
+            >
                 <div
-                  class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none"
+                    class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-6"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                    fill="currentColor"
-                    viewbox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
+                    <div class="w-full md:w-1/2">
+                        <div class="flex items-center">
+                            <label for="simple-search" class="sr-only"
+                                >Search</label
+                            >
+                            <div class="relative w-full">
+                                <div
+                                    class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none"
+                                >
+                                    <svg
+                                        aria-hidden="true"
+                                        class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                        fill="currentColor"
+                                        viewbox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                </div>
+                                <input
+                                    v-model="search"
+                                    type="text"
+                                    id="simple-search"
+                                    class="bg-white border border-primaryColor text-textColor text-sm rounded-lg focus:border-primaryColor focus:ring focus:ring-primaryColor block w-full pl-10 p-2"
+                                    placeholder="Search"
+                                    required=""
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
+                    >
+                        <button
+                            type="button"
+                            @click.prevent="showAddProductForm = true"
+                            class="text-textColor border-2 border-primaryColor bg-white hover:bg-primaryColor focus:ring-2 focus:ring-primaryColor font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
+                        >
+                            Add product
+                        </button>
+                    </div>
                 </div>
-                <input
-                  type="text"
-                  id="simple-search"
-                  class="bg-white border border-primaryColor text-textColor text-sm rounded-lg focus:border-primaryColor focus:ring focus:ring-primaryColor block w-full pl-10 p-2"
-                  placeholder="Search"
-                  required=""
-                />
-              </div>
-            </form>
-          </div>
-          <div
-            class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
-          >
-            <button
-              type="button"
-              @click.prevent="showAddProductForm = true"
-              class="text-textColor border-2 border-primaryColor bg-white hover:bg-primaryColor focus:ring-2 focus:ring-primaryColor font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
-            >
-              Add product
-            </button>
-          </div>
-        </div>
-        <div class="overflow-x-auto">
-          <table
-            class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
-          >
-            <thead class="text-2xs text-textColor capitalize">
-              <tr>
-                <th scope="col" class="px-4 py-3 truncate">No</th>
-                <th scope="col" class="px-4 py-3 truncate">Product name</th>
-                <th scope="col" class="px-4 py-3">Category</th>
-                <th scope="col" class="px-4 py-3">Stock</th>
-                <th scope="col" class="px-4 py-3">Price</th>
-                <th scope="col" class="px-4 py-3">Satuan</th>
-                <th scope="col" class="px-4 py-3">Status</th>
-                <th scope="col" class="px-4 py-3 text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="(product, index) in dataProducts.data"
-                :key="index"
-                class="border-b"
-              >
-              <th
-              scope="row"
-              class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
-            >
+                <div class="overflow-x-auto">
+                    <table
+                        class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
+                    >
+                        <thead class="text-2xs text-textColor capitalize">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 truncate">
+                                    No
+                                </th>
+                                <th scope="col" class="px-4 py-3 truncate">
+                                    Product name
+                                </th>
+                                <th scope="col" class="px-4 py-3">Category</th>
+                                <th scope="col" class="px-4 py-3">Stock</th>
+                                <th scope="col" class="px-4 py-3">Price</th>
+                                <th scope="col" class="px-4 py-3">Satuan</th>
+                                <th scope="col" class="px-4 py-3">Status</th>
+                                <th scope="col" class="px-4 py-3 text-center">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="(product, index) in dataProducts.data"
+                                :key="index"
+                                class="border-b"
+                            >
+                                <th
+                                    scope="row"
+                                    class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+                                >
+                                    {{ index + 1 }}
+                                </th>
 
-              {{ index+1}}
-            </th>
+                                <th
+                                    scope="row"
+                                    class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+                                >
+                                    {{ product.name }}
+                                </th>
+                                <td class="px-4 py-3 text-center">
+                                    {{ product.category.name }}
+                                </td>
 
-                <th
-                  scope="row"
-                  class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
-                >
-
-                  {{ product.name }}
-                </th>
-                <td class="px-4 py-3 text-center">
-                  {{ product.category.name }}
-                </td>
-
-                <td class="px-4 py-3 text-center">
-                  {{ product.stock }}
-                </td>
-                <td class="px-4 py-3">Rp.{{ product.price }}</td>
-                <td class="px-4 py-3">
-                {{ product.satuan }}
-                </td>
-                <td class="px-3 py-3">
-                  <span
-                  v-if="product.stock > 0"
-                  class="text-textColor text-xs font-semibold mr-2 px-2.5 py-0.5"
-                >
-                  inStock
-                </span>
-                <span v-else class="text-Red text-xs font-semibold truncate">
-                  Out of Stock
-                </span>
-                </td>
-                <!--Aksi Icon-->
-                <td class="px-4 py-3 flex items-center">
-                  <div class="bg-white text-textColor rounded flex items-center gap-4">
-                    <a
-                      href="#"
-                      @click.prevent="showEditProductForm = true"
-                      class="block py-2 px-4 bg-primaryColor text-white rounded-full"
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-blue-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
+                                <td class="px-4 py-3 text-center">
+                                    {{ product.stock }}
+                                </td>
+                                <td class="px-4 py-3">
+                                    Rp.{{ product.price }}
+                                </td>
+                                <td class="px-4 py-3">
+                                    {{ product.satuan }}
+                                </td>
+                                <td class="px-3 py-3">
+                                    <span
+                                        v-if="product.stock > 0"
+                                        class="text-textColor text-xs font-semibold mr-2 px-2.5 py-0.5"
+                                    >
+                                        inStock
+                                    </span>
+                                    <span
+                                        v-else
+                                        class="text-Red text-xs font-semibold truncate"
+                                    >
+                                        Out of Stock
+                                    </span>
+                                </td>
+                                <!--Aksi Icon-->
+                                <td class="px-4 py-3 flex items-center">
+                                    <div
+                                        :id="`${product.id}`"
+                                        class="bg-white text-textColor rounded flex items-center gap-4"
+                                    >
+                                        <a
+                                            href="#"
+                                            @click.prevent="
+                                                openEditModal(product, index)
+                                            "
+                                            class="block py-2 px-4 bg-primaryColor text-white rounded-full"
+                                            ><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="w-6 h-6 text-blue-400"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
                       2 0 112.828
                       2.828L11.828 15H9v-2.828l8.586-8.586z"
-                        /></svg
-                    ></a>
-                    <a
-                      href="#"
-                      @click.prevent="deleteProduct(product, index)"
-                      class="block py-2 px-4 text-sm bg-Red text-white rounded-full"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-red-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
+                                                /></svg
+                                        ></a>
+                                        <a
+                                            href="#"
+                                            @click.prevent="
+                                                deleteProduct(product, index)
+                                            "
+                                            class="block py-2 px-4 text-sm bg-Red text-white rounded-full"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="w-6 h-6 text-red-400"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
                       4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                        /></svg
-                    ></a>
-                    <a
-                      href="#"
-                      @click.prevent="deleteProduct(product, index)"
-                      class="block py-2 px-4 text-sm bg-blue text-white rounded-full"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-red-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
+                                                /></svg
+                                        ></a>
+                                        <a
+                                            href="#"
+                                            @click.prevent="
+                                                deleteProduct(product, index)
+                                            "
+                                            class="block py-2 px-4 text-sm bg-blue text-white rounded-full"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="w-6 h-6 text-red-400"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
                     4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                        /></svg
-                    ></a>
-                  </div>
-                </td>
-              </tr>
-              <tr v-if="dataProducts.length === 0">
-                <td colspan="8" class="px-4 py-3 text-center font-bold">
-                  There are no products.
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                                                /></svg
+                                        ></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr v-if="product === 0">
+                                <td
+                                    colspan="8"
+                                    class="px-4 py-3 text-center font-bold"
+                                >
+                                    There are no products.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <nav
+                    class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
+                    aria-label="Table navigation"
+                >
+                    <span class="text-sm font-normal text-textColor">
+                        Showing
+                        <span class="font-semibold text-textColor"
+                            >1-{{ dataProducts.per_page }}</span
+                        >
+                        of
+                        <span class="font-semibold text-textColor">{{
+                            dataProducts.total
+                        }}</span>
+                    </span>
+                    <ul class="inline-flex items-stretch -space-x-px">
+                        <li
+                            v-for="(product, index) in dataProducts.links"
+                            :key="index"
+                        >
+                            <a
+                                href="#"
+                                @click="pageTo(product.url)"
+                                :class="{
+                                    ' bg-blue text-dark hover:text-white hover:cursor-text hover:bg-primaryColor':
+                                        product.active,
+                                }"
+                                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
+                                v-html="product.label"
+                            ></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <nav
-          class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
-          aria-label="Table navigation"
-        >
-          <span class="text-sm font-normal text-textColor">
-            Showing
-            <span class="font-semibold text-textColor">1-{{ dataProducts.per_page }}</span>
-            of
-            <span class="font-semibold text-textColor">{{ dataProducts.total }}</span>
-          </span>
-          <ul class="inline-flex items-stretch -space-x-px">
-
-            <li v-for="(product ,index) in dataProducts.links" :key="index">
-              <a
-                href="#" @click="pageTo(product.url)"
-                :class="{' bg-blue text-dark hover:text-white hover:cursor-text hover:bg-primaryColor' : product.active }"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
-                v-html="product.label"></a
-              >
-            </li>
-
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </section>
+    </section>
 
     <transition name="modal">
         <div
             v-if="showAddProductForm"
             class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
         >
-            <div class="bg-white p-8 rounded shadow-lg z-100 w-1/2">
+            <div
+                class="bg-white p-8 rounded shadow-lg z-100 w-1/2 max-h-[80vh] overflow-y-auto"
+            >
                 <h2 class="text-2xl font-bold mb-4">Add Product</h2>
                 <form
                     @submit.prevent="submitAddProductForm"
@@ -501,10 +618,12 @@ const deleteProduct = (product, index) => {
             v-if="showEditProductForm"
             class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
         >
-            <div class="bg-white p-8 rounded shadow-lg z-100 w-1/2">
+            <div
+                class="bg-white p-8 rounded shadow-lg z-100 w-1/2 max-h-[80vh] overflow-y-auto"
+            >
                 <h2 class="text-2xl font-bold mb-4">Edit Product</h2>
                 <form
-                    @submit.prevent=""
+                    @submit.prevent="updateProduct"
                     class="mt-8 grid grid-cols-2 gap-4"
                 >
                     <div class="col-span-2">
@@ -528,6 +647,38 @@ const deleteProduct = (product, index) => {
                             </el-upload>
                         </div>
                     </div>
+                    <div class="col-span-2">
+                        <div class="mb-4">
+                            <label
+                                for="productImage"
+                                class="block text-gray-700"
+                                >List Product Images</label
+                            >
+                            <div class="flex flex-wrap">
+                                <div
+                                    v-for="(pimage, index) in images"
+                                    :key="pimage.id"
+                                    class="relative w-32 h-32 mr-4 mb-4"
+                                >
+                                    <img
+                                        class="w-24 h-20 rounded"
+                                        :src="`/${pimage.url}`"
+                                        alt=""
+                                    />
+                                    <span
+                                        class="absolute top-0 right-8 transform -translate-y-1/2 w-3.5 h-3.5 bg-red-400 border-2 border-red dark:border-gray-800 rounded-full"
+                                    >
+                                        <span
+                                            @click="deleteImage(pimage, index)"
+                                            class="text-red text-xs font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                                            >x</span
+                                        >
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="mb-4">
                         <label for="productName" class="block text-gray-700"
                             >Product Name</label
@@ -595,7 +746,7 @@ const deleteProduct = (product, index) => {
                             class="mt-1 block w-full p-2 bg-white border border-[#333] rounded-md focus:border-primaryColor focus:ring focus:ring-primaryColor"
                             required
                         >
-                            <option value="" disabled>Pilih Satuan</option>
+                            <option value="gr" disabled>Pilih Satuan</option>
                             <option value="Kg">Kg</option>
                             <option value="Gr">Gr</option>
                             <option value="ml">ml</option>
@@ -620,7 +771,7 @@ const deleteProduct = (product, index) => {
                             <button
                                 type="button"
                                 class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
-                                @click="showAddProductForm = false"
+                                @click="showEditProductForm = false"
                             >
                                 Cancel
                             </button>

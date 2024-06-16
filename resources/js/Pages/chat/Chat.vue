@@ -34,10 +34,10 @@
 
 <script setup>
 import { defineProps, ref, watch } from "vue";
-import ChatInput from "~/Components/Chat/ChatInput.vue";
-import ChatMessages from "~/Components/Chat/ChatMessages.vue";
-import ChatSidebar from "~/Components/Chat/ChatSidebar.vue";
-import ChatUserInfoHeader from "~/Components/Chat/ChatUserInfoHeader.vue";
+import ChatInput from "~/components/Chat/ChatInput.vue";
+import ChatMessages from "~/components/Chat/ChatMessages.vue";
+import ChatSidebar from "~/components/Chat/ChatSidebar.vue";
+import ChatUserInfoHeader from "~/components/Chat/ChatUserInfoHeader.vue";
 
 const chatIlustration = "/assets/img/ilustration/ilustration8.png";
 

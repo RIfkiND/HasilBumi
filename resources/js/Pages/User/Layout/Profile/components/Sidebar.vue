@@ -81,8 +81,8 @@
                     </Link>
                 </li>
                 <li>
-                    <a
-                        href="#"
+                    <Link
+                        href="/chat"
                         class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-primaryColor"
                     >
                         <span
@@ -94,10 +94,10 @@
                             class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-hoverPrimary"
                             >5</span
                         >
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <Link
+                    <a
                         class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-primaryColor"
                         @click="Logout"
                     >
@@ -106,7 +106,7 @@
                             ><i class="bx bx-log-out"></i
                         ></span>
                         <span class="text-sm font-medium">Logout</span>
-                    </Link>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -115,6 +115,7 @@
 <script setup>
 import { Link, usePage, router } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
+import route from '../../../../../../../vendor/tightenco/ziggy/src/js/index';
 const page = usePage();
 const initial = computed(() =>
     page.props.auth.user.name.charAt(0).toUpperCase()
