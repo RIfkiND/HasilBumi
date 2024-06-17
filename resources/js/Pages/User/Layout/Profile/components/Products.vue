@@ -3,7 +3,7 @@ import { router, usePage, Link } from "@inertiajs/vue3";
 import { ref, computed, watch } from "vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Plus } from "@element-plus/icons-vue";
-import Pagination from "@/Component/Pagination/Pagination.vue";
+
 
 defineProps({
     dataProducts: Array,

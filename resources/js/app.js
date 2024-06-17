@@ -38,4 +38,4 @@ createInertiaApp({
 
     },
     progress: true,
-});
+}); 

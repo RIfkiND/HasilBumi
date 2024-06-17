@@ -14,55 +14,47 @@ class HomeController extends Controller
 {
     public function Home()
     {
- 
+
 
         return Inertia::render('Home', []);
     }
     public function Whistlist()
     {
 
-        return Inertia::render('User/Layout/Component/Wislisht', [
-
-        ]);
+        return Inertia::render('User/Layout/Component/Wislisht', []);
     }
     public function ShopCart()
     {
 
-        return Inertia::render('User/Layout/Component/shop_card', [
-
-        ]);
+        return Inertia::render('User/Layout/Component/shop_card', []);
     }
 
     public function Shop()
     {
-        $products = Product::with(['first_image' , 'satuan', 'category'])->get();
+        $products = Product::with(['first_image', 'satuan', 'category'])->get();
         $Categories = Category::all();
         $Satuans =  satuan::all();
 
         return Inertia::render('User/Layout/Shop/Shop', [
             'products' => $products,
-            'Categories'=> $Categories,
+            'Categories' => $Categories,
             'Satuans' => $Satuans,
         ]);
     }
-    
-    
+
+
     public function ShowProduct($id)
     {
-      
-    $product = Product::with(['product_image', 'satuan', 'category', 'seller.user'])
-    ->findOrFail($id);
 
-$sellerIsOnline = $product->seller->user->is_online ?? false;
+        $product = Product::with(['product_image', 'satuan', 'category', 'seller.user', 'seller'])
+            ->findOrFail($id);
+
+        $sellerIsOnline = $product->seller->user->is_online ?? false;
 
 
-return Inertia::render('Shop/Product', [
-'products' => $product,
-'sellerIsOnline' => $sellerIsOnline,
-]);
+        return Inertia::render('Shop/Product', [
+            'products' => $product,
+            'sellerIsOnline' => $sellerIsOnline,
+        ]);
     }
-    
-
-
-
 }

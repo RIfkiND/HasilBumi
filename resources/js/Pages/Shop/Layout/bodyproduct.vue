@@ -16,17 +16,17 @@
             <i class="fa-solid fa-chevron-right"></i>
         </span>
         <Link>
-            <span class="text-slate-200 font-medium hover:text-slate-300"
-                >Kategori</span
-            >
+            <span class="text-slate-200 font-medium hover:text-slate-300">{{
+                detailProduct.category.name
+            }}</span>
         </Link>
         <span class="text-sm text-slate-200">
             <i class="fa-solid fa-chevron-right"></i>
         </span>
         <Link>
-            <span class="text-slate-200 font-medium hover:text-slate-300"
-                >Kategori</span
-            >
+            <span class="text-slate-200 font-medium hover:text-slate-300">{{
+                detailProduct.name
+            }}</span>
         </Link>
     </div>
     <!-- ./breadcrumb -->
@@ -40,70 +40,20 @@
                 class="w-full lg:h-[480px] bg-white-50 overflow-hidden rounded-md sm:h-[280px] md:h-[350px]"
             >
                 <img
-                    :src="currentImage"
-                    alt="product"
+                     :src="currentImage"
+                    alt=""
                     class="w-full h-full"
                     id="image-main"
                 />
             </div>
             <div class="grid grid-cols-6 gap-2 mt-3">
-                <div
-                    @mouseenter="changeMainImage(product2)"
+                <div v-for="(image, index) in detailProduct.product_image" :key="index"
+                @mouseenter="changeMainImage(image.url)"
+
                     @mouseleave="resetMainImage"
                 >
                     <img
-                        :src="product2"
-                        alt="product2"
-                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                    />
-                </div>
-                <div
-                    @mouseenter="changeMainImage(product3)"
-                    @mouseleave="resetMainImage"
-                >
-                    <img
-                        :src="product3"
-                        alt="product3"
-                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                    />
-                </div>
-                <div
-                    @mouseenter="changeMainImage(product4)"
-                    @mouseleave="resetMainImage"
-                >
-                    <img
-                        :src="product4"
-                        alt="product4"
-                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                    />
-                </div>
-                <div
-                    @mouseenter="changeMainImage(product5)"
-                    @mouseleave="resetMainImage"
-                >
-                    <img
-                        :src="product5"
-                        alt="product5"
-                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                    />
-                </div>
-                <div
-                    @mouseenter="changeMainImage(product6)"
-                    @mouseleave="resetMainImage"
-                >
-                    <img
-                        :src="product6"
-                        alt="product6"
-                        class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
-                    />
-                </div>
-                <div
-                    @mouseenter="changeMainImage(product7)"
-                    @mouseleave="resetMainImage"
-                >
-                    <img
-                        :src="product7"
-                        alt="product6"
+                         :src="(`/${image.url}`)"
                         class="w-full cursor-pointer rounded-md bg-cover bg-center h-full hover:ring-2 hover:ring-primaryColor"
                     />
                 </div>
@@ -162,7 +112,9 @@
                 </p>
                 <p class="space-x-2">
                     <span class="text-dark font-semibold">Category: </span>
-                    <span class="text-slate-300">{{ detailProduct.category.name }}</span>
+                    <span class="text-slate-300">{{
+                        detailProduct.category.name
+                    }}</span>
                 </p>
                 <p class="space-x-2">
                     <span class="text-dark font-semibold">SKU: </span>
@@ -173,7 +125,6 @@
                 <p class="text-xl text-primaryColor font-semibold">
                     Rp{{ detailProduct.price }}
                 </p>
-
             </div>
 
             <p class="mt-4 text-slate-300">
@@ -189,39 +140,60 @@
                 class="w-full h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"
             />
 
-            <div class="flex items-center m-10">
+            <div class="flex items-center mb-10">
                 <div class="avatar online">
-                  <div class="w-24 rounded-full">
-                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                  </div>
+                    <div class="w-24 rounded-full">
+                        <img
+                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                        />
+                    </div>
                 </div>
-                <div class="space-y-2 ml-4">
-                  <Userstatus :user="status" />
-                  <p class="text-dark font-semibold space-x-2">
-                    <span>Status: </span>
-                    <span class="text-primaryColor" v-if="status">Online</span>
-                    <span class="text-pink" v-else>Offline</span>
-                  </p>
-            
-                    <p class="space-x-2">
-                        <span class="text-dark font-semibold">nama: </span>
-                        <span class="text-slate-300">Jati lokal</span>
+                <div class="space-y-1 ml-4">
+                    <div class="space-x-1">
+                        <span
+                            ><i class="fa-solid fa-star text-primaryColor"></i
+                        ></span>
+                        <span
+                            ><i class="fa-solid fa-star text-primaryColor"></i
+                        ></span>
+                        <span
+                            ><i class="fa-solid fa-star text-primaryColor"></i
+                        ></span>
+                        <span
+                            ><i class="fa-solid fa-star text-primaryColor"></i
+                        ></span>
+                        <span
+                            ><i class="fa-solid fa-star text-primaryColor"></i
+                        ></span>
+                    </div>
+                    <Userstatus :user="status" />
+                    <p class="text-dark font-semibold space-x-2">
+                        <span>Status: </span>
+                        <span class="text-primaryColor" v-if="status"
+                            >Online</span
+                        >
+                        <span class="text-pink" v-else>Offline</span>
                     </p>
+
                     <p class="space-x-2">
-                        <span class="text-dark font-semibold">Category: </span>
-                        <span class="text-slate-300">Perhutanan</span>
+                        <span class="text-dark font-semibold">nama Toko: </span>
+                        <span class="text-slate-300">{{
+                            detailProduct.seller.nama_toko
+                        }}</span>
                     </p>
                     <p class="space-x-2">
                         <span class="text-dark font-semibold">SKU: </span>
                         <span class="text-slate-300">BE45VGRT</span>
                     </p>
                     <Link
-                    class="bg-hoverPrimary w-32 text-white px-8 py-2 mt-3 font-medium rounded-md capitalize flex items-center gap-2 transition no-underline hover:bg-primaryColor"
-                >
-                <i class='bx bxs-message-dots'></i>chat
-                </Link>
+                        :href="route('chat.index', detailProduct.seller.user.id)"
+                        class="bg-hoverPrimary w-32 text-white px-8 py-2 mt-3 font-medium rounded-md capitalize flex items-center gap-2 transition no-underline hover:bg-primaryColor"
+                    >
+                        <i class="bx bxs-message-dots"></i>chat
+                    </Link>
                 </div>
             </div>
+
             <hr
                 class="w-full h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"
             />
@@ -274,7 +246,6 @@
                         >Tambahkan ke keranjang</span
                     >
                 </Link>
-                
             </div>
         </div>
     </div>
@@ -288,9 +259,7 @@
             Product details
         </h3>
         <div class="w-full pt-6">
-            <div v-html="detailProduct.deskripsi" class="text-dark">
-                  
-                </div>
+            <div v-html="detailProduct.deskripsi" class="text-dark"></div>
 
             <!-- component -->
             <div class="flex flex-col font-inter">
@@ -344,12 +313,6 @@
                                         >
                                             satuan
                                         </th>
-                                        <th
-                                            scope="col"
-                                            class="py-2 px-4 font-semibold"
-                                        >
-                                            deskripsi
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -359,12 +322,12 @@
                                         <td
                                             class="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900"
                                         >
-                                            pohon jati
+                                            {{ detailProduct.name }}
                                         </td>
                                         <td
                                             class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
                                         >
-                                            5.000,000
+                                            {{ detailProduct.price }}
                                         </td>
                                         <td
                                             class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
@@ -389,12 +352,7 @@
                                         <td
                                             class="text-sm text-slate-300 font-light px-6 py-4 whitespace-nowrap"
                                         >
-                                            kg
-                                        </td>
-                                        <td
-                                            class="text-sm text-slate-300 font-light px-6 py-4 whitespace-nowrap"
-                                        >
-                                            Kayu yang awet tidak mudah rapuh
+                                            {{ detailProduct.satuan.symbol }}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -535,19 +493,16 @@
 </template>
 
 <script setup>
-import { Link,usePage } from "@inertiajs/vue3";
-import Userstatus from "~/components/UserStatus.vue"
+import { Link, usePage } from "@inertiajs/vue3";
+import Userstatus from "~/components/UserStatus.vue";
 import Comment from "./Comment.vue";
-import { computed } from 'vue';
+import { computed } from "vue";
 defineProps({
     detailProduct: Object,
-    status :Object,
+    status: Object,
 });
 
-
-const page = usePage()
-
-
+const page = usePage();
 </script>
 
 <script>
@@ -570,8 +525,8 @@ export default {
             product11: "",
             product12: "",
             count: 1,
+             currentImage: "",
             mainImage: "",
-            currentImage: "",
             statusProduct: "In Stock",
         };
     },
@@ -580,8 +535,6 @@ export default {
         this.user2 = "/assets/img/users/aji.jpg";
         this.user3 = "/assets/img/users/profil.JPG";
         this.product1 = "/assets/products/pohon1.jpg";
-        this.mainImage = "/assets/products/pohon1.jpg";
-        this.currentImage = "/assets/products/pohon1.jpg";
         this.product2 = "/assets/products/pohon2.jpg";
         this.product3 = "/assets/products/pohon3.jpg";
         this.product4 = "/assets/products/pohon4.jpg";
@@ -593,6 +546,18 @@ export default {
         this.product10 = "/assets/products/product10.jpg";
         this.product11 = "/assets/products/product11.jpg";
         this.product12 = "/assets/products/product12.jpg";
+
+        if (this.detailProduct.product_image.length > 0) {
+        const firstImageUrl = this.detailProduct.product_image[0].url.startsWith('/')
+            ? this.detailProduct.product_image[0].url
+            : `/${this.detailProduct.product_image[0].url}`;
+
+        this.mainImage = firstImageUrl;
+        this.currentImage = this.mainImage;
+
+        console.log('Initial main image:', this.mainImage);
+        console.log('Initial current image:', this.currentImage);
+    }
     },
     methods: {
         increment() {
@@ -626,12 +591,15 @@ export default {
 
         // Di bawah ini adalah kode untuk menampilkan gambar ketika di hover
         changeMainImage(imageSrc) {
-            this.currentImage = imageSrc;
+            this.currentImage = imageSrc.startsWith('/')
+                ? imageSrc
+                : `/${imageSrc}`;
         },
+        // Reset the main image to the original main image
         resetMainImage() {
             this.currentImage = this.mainImage;
         },
-
+    
         popupSuccess() {
             Swal.fire({
                 title: "Sukses",
