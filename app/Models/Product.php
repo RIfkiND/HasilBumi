@@ -20,10 +20,17 @@ class Product extends Model
     ];
     
 
+
+    public function seller(){
+     return $this->belongsTo(Seller_Information::class, 'seller__information_id');
+    }
     public function product_image(){
        return $this->hasMany(ImageProduct::class);
     }
-    
+    public function first_image()
+    {
+        return $this->hasOne(imageProduct::class)->oldestOfMany();
+    }
     public function satuan (){
         return $this->belongsTo(Satuan::class);
     }
@@ -31,6 +38,7 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
 
     //logika
 

@@ -10,7 +10,7 @@ Route::get('/',[HomeController::class,'Home'])->name('Home');
 
 //Shop
 Route::get('/Shop-MainPage',[HomeController::class,'Shop'])->name('Shop.main');
-Route::get('/Show-Product',[HomeController::class,'ShowProduct'])->name('Shop.Product');
+Route::get('/Show-Product/{id}',[HomeController::class,'ShowProduct'])->name('Shop.Product');
 
 //whislist and Cart
 Route::get('/Whislist',[HomeController::class ,'WhistList'])->name('Home.Whistlist')->middleware('auth');

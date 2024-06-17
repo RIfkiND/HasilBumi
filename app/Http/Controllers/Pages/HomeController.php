@@ -35,21 +35,33 @@ class HomeController extends Controller
 
     public function Shop()
     {
-        $products = Product::with(['product_image'])->get();
+        $products = Product::with(['first_image' , 'satuan', 'category'])->get();
         $Categories = Category::all();
         $Satuans =  satuan::all();
 
         return Inertia::render('User/Layout/Shop/Shop', [
-            'dataProducts' => $products,
+            'products' => $products,
             'Categories'=> $Categories,
             'Satuans' => $Satuans,
         ]);
     }
-
-    public function ShowProduct()
+    
+    
+    public function ShowProduct($id)
     {
-        return Inertia::render('Shop/Product');
+      
+    $product = Product::with(['product_image', 'satuan', 'category', 'seller.user'])
+    ->findOrFail($id);
+
+$sellerIsOnline = $product->seller->user->is_online ?? false;
+
+
+return Inertia::render('Shop/Product', [
+'products' => $product,
+'sellerIsOnline' => $sellerIsOnline,
+]);
     }
+    
 
 
 

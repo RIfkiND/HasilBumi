@@ -11,7 +11,7 @@ class Seller_Information extends Model
     use HasFactory;
 
 
-    protected $table = 'Seller_Information';
+    protected $table = 'seller_information';
     protected $guarded = ['id'];
     protected $fillable = [
         'user_id',
