@@ -53,7 +53,7 @@ class PageSellerController extends Controller
         $avatar->storeAs('toko/Avatar/', $avatar->hashName());
             Storage::delete('toko/Avatar/' . $user->photo_toko);
         $user->updateOrCreate([
-            'photo_toko'=>$avatar->hashName(),
+            'photo_toko/'=>$avatar->hashName(),
         ]);
 
     }

@@ -86,14 +86,16 @@
                     :value="category.id">
                         <div class="flex items-center">
                             <input
-                                type="checkbox"
-                                name="cat-1"
-                                id="cat-1"
-                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                            />
-                            <label for="cat-1" class="text-slate-300 ml-3"
-                                >{{ category.name }}</label
-                            >
+                            type="checkbox"
+                            :id="'category-' + category.id"
+                           v-model="selectedCategoriesRef"
+                            :value="category.id"
+
+                            class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
+                          />
+                          <label :for="'category-' + category.id" class="text-slate-300 ml-3">
+                            {{ category.name }}
+                          </label>
                             <div class="ml-auto text-slate-300 text-sm">
                                 &lpar;15&rpar;
                             </div>
@@ -365,6 +367,7 @@
                             type="text"
                             name="min"
                             id="min"
+                            v-model="filterPrices.prices[0]"
                             class="w-full border-2 border-white-50 focus:border-slate-200 rounded px-3 py-1 text-slate-300 shadow-sm bg-white outline-none text-center"
                             placeholder="Rp0"
                         />
@@ -372,11 +375,19 @@
                         <input
                             type="text"
                             name="max"
+                            v-model="filterPrices.prices[1]"
                             id="max"
                             class="w-full border-2 border-white-50 focus:border-slate-200 rounded px-3 py-1 text-slate-300 shadow-sm bg-white outline-none text-center"
                             placeholder="Rp0"
                         />
                     </div>
+                    <button
+                    @click="priceFilter()"
+                    class="mt-4 w-full py-2 bg-hoverPrimary hover:cursor-pointer hover:bg-teal-dark rounded-md block px-4 text-white font-medium capitalize text-md"
+                >
+                    <i class='bx bx-money'></i>
+                    Filter
+                </button>
                 </div>
                 <!-- Price End -->
 
@@ -390,14 +401,18 @@
                             <input
                                 type="radio"
                                 name="size"
-                                :id="'size-' + satuan.id"
-                                class="hidden"
+                               :id="'satuan-' + satuan.id"
+                                    v-model="selectedSatuan"
+                                
+                                  class="sr-only"
                                 :value="satuan.id"
                             />
                             <label
-                                :for="'size-' + satuan.id"
+                            :for="'satuan-' + satuan.id"
+                                
                                 class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
-                            >
+                                @click="selectSatuan(satuan.id)"
+                                >
                                 {{ satuan.symbol }}
                             </label>
                         </div>
@@ -449,15 +464,81 @@
 import Product from "./Components/Product.vue"
 import Header from "../Component/Header.vue";
 import Footer from "../Component/Footer.vue";
-import { Link,usePage } from "@inertiajs/vue3";
-import { ref, computed  } from "vue";
+import { Link,usePage ,router ,useForm} from "@inertiajs/vue3";
+import { ref, computed ,watch } from "vue";
 
-defineProps ({
-    products : Object
-})
+const props = defineProps({
+    products: Array,
+    Categories: Array,
+    selectedCategories: Array,
+    selectedPrices: Object,
+});
 
-const Categories = usePage().props.Categories
-const Satuans   = usePage().props.Satuans;
+const { Satuans, selectedSatuans } = usePage().props;
+
+const selectedCategoriesRef = ref(props.selectedCategories || []);
+
+const selectedSatuan = ref(selectedSatuans.length > 0 ? selectedSatuans[0] : null);
+
+watch(selectedSatuan, (newSatuan) => {
+    updateFilteredProducts();
+});
+
+
+watch(selectedCategoriesRef, (newCategories, oldCategories) => {
+    if (JSON.stringify(newCategories) !== JSON.stringify(oldCategories)) {
+        updateFilteredProducts();
+    }
+});
+
+const filterPrices = useForm({
+    prices: [props.selectedPrices.from, props.selectedPrices.to]
+});
+
+const priceFilter = async () => {
+    await filterPrices.transform((data) => ({
+        ...data,
+        prices: {
+            from: filterPrices.prices[0],
+            to: filterPrices.prices[1]
+        }
+    })).get(route('Shop.main'), {
+        preserveState: true,
+        replace: true
+    });
+};
+
+// const updateFilteredSatuanProducts = async () => {
+//     try {
+//         await router.get(route('Shop.main'), {
+//             satuans: [selectedSatuan.value], 
+//         }, {
+//             preserveState: true,
+//             replace: true,
+//         });
+//     } catch (error) {
+//         console.error("Error updating filtered products:", error);
+//     }
+// };
+
+const updateFilteredProducts = async () => {
+    try {
+        const params = {
+            categories: selectedCategoriesRef.value,
+        };
+
+        if (selectedSatuan.value) {
+            params.satuans = [selectedSatuan.value];
+        }
+
+        await router.get(route('Shop.main'), params, {
+            preserveState: true,
+            replace: true,
+        });
+    } catch (error) {
+        console.error("Error updating filtered products:", error);
+    }
+};
 
 const sliders = ref([
     {

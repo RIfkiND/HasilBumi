@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Builder;
 class Product extends Model
 {
     use HasFactory;
@@ -36,11 +36,26 @@ class Product extends Model
     }
 
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id') ;
     }
 
 
-    //logika
+    //logika filter
+    public function scopeFiltered(Builder $query){
+        return $query
+            ->when(request('categories'), function (Builder $q) {
+                $q->whereIn('category_id', request('categories'));
+            })
+            ->when(request('satuans'), function (Builder $q) {
+                $q->whereIn('satuan_id', request('satuans'));
+            })
+            ->when(request('prices'), function (Builder $q) {
+                $q->whereBetween('price', [
+                    request('prices.from', 0),
+                    request('prices.to', 100000),
+                ]);
+            });
+    }
 
  
 

@@ -29,18 +29,29 @@ class HomeController extends Controller
         return Inertia::render('User/Layout/Component/shop_card', []);
     }
 
-    public function Shop()
-    {
-        $products = Product::with(['first_image', 'satuan', 'category'])->get();
-        $Categories = Category::all();
-        $Satuans =  satuan::all();
+    public function Shop(Request $request)
+{
+    $categoryIds = $request->input('categories', []);
+    $satuanIds = $request->input('satuans', []);
+    $priceRange = $request->input('prices', ['from' => 0, 'to' => 0]);
 
-        return Inertia::render('User/Layout/Shop/Shop', [
-            'products' => $products,
-            'Categories' => $Categories,
-            'Satuans' => $Satuans,
-        ]);
-    }
+    $products = Product::with(['first_image', 'satuan', 'category' ,'seller'])
+        ->filtered()
+        ->get();
+
+    $Categories = Category::all();
+    $Satuans = Satuan::all();
+
+
+    return Inertia::render('User/Layout/Shop/Shop', [
+        'products' => $products,
+        'Categories' => $Categories,
+        'Satuans' => $Satuans,
+        'selectedCategories' => $categoryIds,
+        'selectedSatuans' => $satuanIds,
+        'selectedPrices' => $priceRange,
+    ]);
+}
 
 
     public function ShowProduct($id)
@@ -51,9 +62,13 @@ class HomeController extends Controller
 
         $sellerIsOnline = $product->seller->user->is_online ?? false;
 
-
+        $allProducts = Product::with(['first_image', 'satuan', 'category', 'seller.user', 'seller'])
+        ->where('id', '!=', $id)
+        ->get();
+       
         return Inertia::render('Shop/Product', [
             'products' => $product,
+            'allProducts'=>$allProducts,
             'sellerIsOnline' => $sellerIsOnline,
         ]);
     }

@@ -13,7 +13,7 @@ use Inertia\Inertia;
 
 class CreateProductController extends Controller
 {
-
+    
     public function ProductView()
     {
         $categories = Category::all();

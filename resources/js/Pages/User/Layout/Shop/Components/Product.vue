@@ -14,7 +14,7 @@
           >
               <div class="w-full h-[160px] overflow-hidden">
                   <img
-                      :src="product.image"
+                      :src="`/${product.image}`"
                       :alt="`product ${index + 1}`"
                       class="w-full h-full bg-cover bg-center"
                   />
@@ -119,7 +119,7 @@
                           d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"
                       />
                   </svg>
-                  Bandung
+             {{ product.kota }}
               </div>
           </div>
       </Link>
@@ -142,23 +142,35 @@
 
 
 <script setup>
-import { ref, computed  } from "vue";
+import {  ref, computed, watch  } from "vue";
 import { Link } from '@inertiajs/vue3';
 
 const props = defineProps ({
-    dataProducts : Object
+    dataProducts :  Array
 })
 
+const products = ref([]);
 
-const products = ref(props.dataProducts.map(product => ({
- id: product.id,
- image: product.first_image ? product.first_image.url : '',
-  title: product.name,
-  price: product.price,
-  satuan :product.satuan.symbol,
-  category: product.category.name,
+const updateProducts = () => {
+    products.value = props.dataProducts.map(product => ({
+        id: product.id,
+        image: product.first_image ? product.first_image.url : '',
+        title: product.name,
+        price: product.price,
+        satuan: product.satuan.symbol,
+        category: product.category.name,
+        provinsi: product.seller.provinsi,
+        kota : product.seller.kota
+    }));
+};
 
-})));
+updateProducts();
+
+
+watch(() => props.dataProducts, updateProducts);
+
+
+
 const visibleCount = ref(12);
 
 const visibleProducts = computed(() => {

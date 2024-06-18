@@ -1,6 +1,6 @@
 <template>
     <Header/>
-    <Body :detailProduct="products" :status="sellerIsOnline"/>
+    <Body :detailProduct="products" :status="sellerIsOnline" :relatedProduct="allProducts"/>
     <Footer/>
 </template>
 <script setup>
@@ -9,6 +9,7 @@
     import Footer from '@/User/Layout/Component/Footer.vue'
     defineProps({
         products:Object,
+        allProducts:Array,
         sellerIsOnline:Object,
     })
 

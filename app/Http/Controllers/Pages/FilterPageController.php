@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\satuan;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
@@ -14,19 +15,27 @@ class FilterPageController extends Controller
 {
 
     public function filterByCategory($category)
-    {
-        $category = Category::with('products')->where('name', $category)->first();
-
-        if (!$category) {
-
-            return Redirect::back()->with('error', 'Category not found.');
-        }
-
-        return Inertia::render('Seller/Testing/Filter/FileterResult', [
-            'category' => $category,
-        ]);
+{
+    $category = Category::where('name', $category)->first();
+    
+    if (!$category) {
+        return redirect()->back()->with('error', 'Category not found.');
     }
 
+    $products = Product::with(['first_image', 'satuan', 'category'])
+                    ->where('category_id', $category->id)
+                    ->get();
+
+    $categories = Category::all();
+    $satuans = satuan::all();
+
+    return Inertia::render('User/Layout/Shop/Shop', [
+        'products' => $products,
+        'Categories' => $categories,
+        'satuans' => $satuans,
+       
+    ]);
+}
     // public function filterByStar(){
 
     // }

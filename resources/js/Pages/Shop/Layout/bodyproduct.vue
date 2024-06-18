@@ -375,15 +375,16 @@
         <div
             class="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
         >
-            <div
+            <Link
+                :href="route('Shop.Product', { id: product.id })"
                 class="bg-white shadow rounded-md overflow-hidden"
-                v-for="index in 20"
-                :key="index"
+                v-for="product in visibleProducts"
+                :key="product.id"
             >
                 <div class="relative flex justify-center items-center group">
                     <div class="w-full h-[170px] overflow-hidden">
                         <img
-                            :src="product1"
+                            :src="`/${product.image}`"
                             alt="product 1"
                             class="w-full h-full bg-cover bg-center transition hover:cursor-pointer hover:brightness-50 group-hover:brightness-50"
                         />
@@ -411,28 +412,26 @@
                         <h4
                             class="capitalize font-semibold text-xl mb-1 text-dark transition"
                         >
-                            pohon jati asli | untuk bahan material
+                            {{ product.title }} 
                         </h4>
                     </Link>
                     <div class="capitalize text-[10px] flex gap-2 text-center">
                         <span
                             class="px-1 border-1 text-primaryColor rounded-sm border-primaryColor text-[10px] italic"
-                            >bebas pengembalian</span
+                            >{{product.category}}</span
                         >
                         <span
                             class="px-1 border-1 text-primaryColor rounded-sm border-primaryColor text-[10px] italic"
-                            >cicilan</span
+                            >{{product.satuan}}</span
                         >
                     </div>
                     <div
                         class="flex items-baseline space-x-2 capitalize mb-2 mt-2"
                     >
                         <span class="text-md text-primaryColor font-semibold"
-                            >Rp650.000</span
+                            >Rp{{ product.price }}</span
                         >
-                        <span class="text-sm text-slate-200 line-through"
-                            >rp.1.500,000</span
-                        >
+
                     </div>
                     <div
                         class="flex items-center divide-white-50 space-x-2 divide-x-2"
@@ -483,26 +482,68 @@
                                 d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"
                             />
                         </svg>
-                        Bandung
+                       {{ product.kota }}
                     </div>
                 </div>
-            </div>
+            </Link>
         </div>
     </div>
     <!-- ./related product -->
+    <div class="col-span-3 flex justify-center items-center mt-4">
+        <div class="flex items-center w-full gap-4">
+            <div
+                class="flex-grow border-t border-gray-300 opacity-35"
+            ></div>
+            <button class="btn-outline-shop" @click="loadMoreProducts">
+                Learn More
+            </button>
+            <div
+                class="flex-grow border-t border-gray-300 opacity-35"
+            ></div>
+        </div>
+    </div>
 </template>
 
 <script setup>
 import { Link, usePage } from "@inertiajs/vue3";
 import Userstatus from "~/components/UserStatus.vue";
 import Comment from "./Comment.vue";
-import { computed } from "vue";
-defineProps({
+import { computed,ref } from "vue";
+
+const props = defineProps({
     detailProduct: Object,
     status: Object,
+    relatedProduct: Array,
 });
 
-const page = usePage();
+const products = ref([]);
+
+const relatedProductsinfo = () => {
+    products.value = props.relatedProduct.map(product => ({
+        id: product.id,
+        image: product.first_image ? product.first_image.url : '',
+        title: product.name,
+        price: product.price,
+        satuan: product.satuan.symbol,
+        category: product.category.name,
+        provinsi: product.seller.provinsi,
+        kota: product.seller.kota
+    }));
+};
+
+// Call relatedProductsinfo to initialize products.value
+relatedProductsinfo();
+
+const visibleCount = ref(12);
+
+const visibleProducts = computed(() => {
+    return products.value.slice(0, visibleCount.value);
+});
+
+const loadMoreProducts = () => {
+    visibleCount.value += 4; 
+};
+
 </script>
 
 <script>

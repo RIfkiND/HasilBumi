@@ -62,7 +62,7 @@ class ProfileController extends Controller
         $avatar->storeAs('User/Avatar/', $avatar->hashName());
             Storage::delete('User/Avatar/' . $user->avatar_user);
         $user->updateOrCreate([
-            'avatar_user'=>$avatar->hashName(),
+            'avatar_user/'=>$avatar->hashName(),
         ]);
 
     }

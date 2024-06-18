@@ -269,7 +269,7 @@ h4 {
         <div
             class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-12 mb-16 w-3/4 mx-auto"
         >
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Meat')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Meat" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">meat</h4>
@@ -278,55 +278,55 @@ h4 {
             <!-- hover -->
             <!--  text-textColor hover:bg-primaryColor hover:text-white -->
 
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Vegetable')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Vegetable" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Vegetable</h4>
                 </div>
             </div>
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Fruit')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Fruit" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Fruit</h4>
                 </div>
             </div>
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Forest')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Forest" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Forest</h4>
                 </div>
             </div>
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Grain')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Grain" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Grain</h4>
                 </div>
             </div>
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Industri')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Industri" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Industri</h4>
                 </div>
             </div>
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Ship')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Ship" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Ship</h4>
                 </div>
             </div>
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Processed')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Processed" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Processed</h4>
                 </div>
             </div>
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Spice')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Spice" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Spice</h4>
                 </div>
             </div>
-            <div class="card flex flex-col items-center justify-center">
+            <div class="card flex flex-col items-center justify-center" @click="filterByCategory('Textile')">
                 <div class="rounded-xl p-5 px-8">
                     <img :src="Textile" alt="" class="icons w-16 mb-2" />
                     <h4 class="text-center">Textile</h4>
@@ -341,11 +341,18 @@ h4 {
 
 
 <script setup>
-import{ Link } from'@inertiajs/vue3'
+import{ Link ,router} from'@inertiajs/vue3'
+
+
+
+const filterByCategory = (category) => {
+  router.get(route('filter.category', {category}));
+};
 </script>
 <script>
 export default {
     data() {
+        
         return {
             Meat: "",
             Vegetable: "",
