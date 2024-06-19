@@ -100,7 +100,7 @@
                                 &lpar;15&rpar;
                             </div>
                         </div>
-                    
+
                     </div>
                 </div>
 
@@ -403,13 +403,13 @@
                                 name="size"
                                :id="'satuan-' + satuan.id"
                                     v-model="selectedSatuan"
-                                
+
                                   class="sr-only"
                                 :value="satuan.id"
                             />
                             <label
                             :for="'satuan-' + satuan.id"
-                                
+
                                 class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
                                 @click="selectSatuan(satuan.id)"
                                 >
@@ -425,7 +425,7 @@
                         cari sekarang
                     </button>
                 </div>
-                
+
                 <!-- Satuan End -->
             </div>
         </div>
@@ -450,7 +450,7 @@
             <!-- List Product -->
             <Product :dataProducts="products"/>
             <!-- List Product -->
-            
+
         </div>
 
         <!-- ./products -->
@@ -511,7 +511,7 @@ const priceFilter = async () => {
 // const updateFilteredSatuanProducts = async () => {
 //     try {
 //         await router.get(route('Shop.main'), {
-//             satuans: [selectedSatuan.value], 
+//             satuans: [selectedSatuan.value],
 //         }, {
 //             preserveState: true,
 //             replace: true,
@@ -567,7 +567,7 @@ function nextSlider() {
         sliderIndex.value++;
     } else {
         sliderIndex.value = 0;
-    }   
+    }
 }
 
 

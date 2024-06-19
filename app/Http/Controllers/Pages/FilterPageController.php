@@ -14,33 +14,40 @@ use Illuminate\Support\Facades\Redirect;
 class FilterPageController extends Controller
 {
 
-    public function filterByCategory($category)
-{
-    $category = Category::where('name', $category)->first();
-    
-    if (!$category) {
-        return redirect()->back()->with('error', 'Category not found.');
+    public function filterByCategory(Request $request, $category)
+    {
+        $category = Category::where('name', $category)->first();
+
+        if (!$category) {
+            return redirect()->back()->with('error', 'Category not found.');
+        }
+
+        $products = Product::with(['first_image', 'satuan', 'category','seller'])
+            ->where('category_id', $category->id)
+            ->get();
+        $categoryIds = $request->input('categories', []);
+        $satuanIds = $request->input('satuans', []);
+        $priceRange = $request->input('prices', ['from' => 0, 'to' => 0]);
+
+        $categories = Category::all();
+        $satuans = satuan::all();
+
+        return Inertia::render('User/Layout/Shop/Shop', [
+            'products' => $products,
+            'Categories' => $categories,
+            'satuans' => $satuans,
+            'selectedCategories' => $categoryIds,
+            'selectedSatuans' => $satuanIds,
+            'selectedPrices' => $priceRange,
+
+        ]);
     }
-
-    $products = Product::with(['first_image', 'satuan', 'category'])
-                    ->where('category_id', $category->id)
-                    ->get();
-
-    $categories = Category::all();
-    $satuans = satuan::all();
-
-    return Inertia::render('User/Layout/Shop/Shop', [
-        'products' => $products,
-        'Categories' => $categories,
-        'satuans' => $satuans,
-       
-    ]);
-}
     // public function filterByStar(){
 
     // }
 
-    public function filterByPrice(Request $request){
+    public function filterByPrice(Request $request)
+    {
 
         $minPrice = $request->input('min_price');
         $maxPrice = $request->input('max_price');
@@ -49,30 +56,32 @@ class FilterPageController extends Controller
         $products = Product::whereBetween('price', [$minPrice, $maxPrice])->get();
 
 
-        return Inertia::render('Shop/Shop',[
-            'products'=> $products,
+        return Inertia::render('Shop/Shop', [
+            'products' => $products,
         ]);
     }
 
 
-    public function filterByNew(){
+    public function filterByNew()
+    {
         $products = Product::latest();
 
-        return Inertia::render('Shop/shop',[
-            'terbaru'=>$products,
+        return Inertia::render('Shop/shop', [
+            'terbaru' => $products,
         ]);
-
     }
 
-    Public function filterByOld(){
+    public function filterByOld()
+    {
         $products = Product::oldest();
 
-        return Inertia::render('Shop/shop',[
-            'terlama'=> $products,
+        return Inertia::render('Shop/shop', [
+            'terlama' => $products,
         ]);
     }
 
-    public function filterBySatuan(Request $request){
+    public function filterBySatuan(Request $request)
+    {
 
         $satuan = $request->input('satuan');
 
@@ -80,11 +89,8 @@ class FilterPageController extends Controller
         $products = Product::where('satuan', $satuan)->get();
 
 
-        return Inertia::render('Shop/shop' ,[
+        return Inertia::render('Shop/shop', [
             'products' => $products,
         ]);
     }
-    
-
-
 }

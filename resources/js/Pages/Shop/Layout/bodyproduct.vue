@@ -7,7 +7,7 @@
         <span class="text-sm text-slate-200">
             <i class="fa-solid fa-chevron-right"></i>
         </span>
-        <Link>
+        <Link :href="route('Shop.main')">
             <span class="text-slate-200 font-medium hover:text-slate-300"
                 >Shop</span
             >
@@ -412,7 +412,7 @@
                         <h4
                             class="capitalize font-semibold text-xl mb-1 text-dark transition"
                         >
-                            {{ product.title }} 
+                            {{ product.title }}
                         </h4>
                     </Link>
                     <div class="capitalize text-[10px] flex gap-2 text-center">
@@ -541,7 +541,7 @@ const visibleProducts = computed(() => {
 });
 
 const loadMoreProducts = () => {
-    visibleCount.value += 4; 
+    visibleCount.value += 4;
 };
 
 </script>
@@ -640,7 +640,7 @@ export default {
         resetMainImage() {
             this.currentImage = this.mainImage;
         },
-    
+
         popupSuccess() {
             Swal.fire({
                 title: "Sukses",

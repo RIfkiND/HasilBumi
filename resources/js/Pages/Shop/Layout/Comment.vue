@@ -130,6 +130,15 @@
         </div>
     </section>
 </template>
+
+<script setup>
+import {router,Link,usePage}from "@inertiajs/vue3"
+import {ref,computed} from 'vue'
+
+
+
+
+</script>
 <script>
 export default {
   data() {
@@ -180,7 +189,4 @@ export default {
     this.user3 = "/assets/img/users/profil.JPG";
   },
 };
-</script>
-<script setup>
-    import { Link } from "@inertiajs/vue3";
 </script>
