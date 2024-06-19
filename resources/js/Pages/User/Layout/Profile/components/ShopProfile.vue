@@ -68,12 +68,7 @@
                                 class="bx bx-camera bx-sm text-slate-200 absolute right-2 float-right top-8 z-10 sm:text-xm cursor-pointer"
                             ></i> -->
                         </label>
-                        <el-upload v-model:file-list="tokoImages" list-type="picture-card"
-              :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
-              <el-icon>
-                  <Plus />
-              </el-icon>
-          </el-upload>
+                    
                     </div>
                 </div>
 

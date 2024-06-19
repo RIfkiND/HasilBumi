@@ -50,23 +50,7 @@
                                 Ganti poto
                             </button>
                         </div>
-                        <el-upload
-                            class="mt-5"
-                            :action="uploadUrl"
-                            v-model:file-list="avatar_user"
-                            list-type="picture-card"
-                            accept="image/*"
-                            :on-preview="handlePictureCardPreview"
-                            :on-remove="handleRemove"
-                            method="put"
-                            :on-change="handleFileChange"
-                             :auto-upload="true"
-                        >
-                            <el-icon>
-                                <Plus />
-                            </el-icon>
-                        </el-upload>
-
+                       
                 </div>
 
                 <div class="flex flex-col gap-4">
