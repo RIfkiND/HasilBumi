@@ -346,15 +346,22 @@ a {
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
                 <input
+              
+               
+                 v-model="searchQuery"
+            @keydown.enter="performSearch"
                     type="text"
                     name="search"
                     id="search"
                     class="w-full border border-r-0 border-colorBorder pl-12 py-2 pr-3 rounded-l-md focus:outline-none md:flex bg-white"
                     placeholder="search"
+                    
                 />
                 <button
+                @click="performSearch"
                     class="bg-primaryColor border border-colorBorder text-white px-8 rounded-r-md transition md:flex items-center hover:bg-hoverPrimary"
-                >
+                      
+                    >
                     Search
                 </button>
             </div>
@@ -392,8 +399,9 @@ a {
 </template>
 
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import { Link} from "@inertiajs/vue3";
 import { usePage, router } from "@inertiajs/vue3";
+import { get } from "lodash";
 import { ref, watch } from "vue";
 
 const mobileMenuOpen = ref(false);
@@ -424,24 +432,17 @@ const editProfile = () => {
     // Navigasi ke halaman edit profil
 };
 
+const searchQuery = ref('');
+
+const performSearch = () => {
+
+    emit('search', searchQuery.value.trim());
+};
 const logout = () => {
     router.post(route("auth.logout"));
     location.reload();
 };
 
-const search = ref("");
 
-watch(search, (value) => {
-    router.get(
-        route("Api.Search"),
-        { search: value },
-        {
-            preserveState: true,
-            replace: true, // Perbaikan typo disini, seharusnya true bukan 'tue'
-        }
-    );
-});
 </script>
 
-<!--                                          @click="editProfile"
--->

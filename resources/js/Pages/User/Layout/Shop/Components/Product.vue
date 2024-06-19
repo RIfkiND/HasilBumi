@@ -149,6 +149,8 @@ const props = defineProps ({
     dataProducts :  Array
 })
 
+
+
 const products = ref([]);
 
 const updateProducts = () => {

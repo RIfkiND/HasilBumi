@@ -31,26 +31,36 @@ class HomeController extends Controller
 
     public function Shop(Request $request)
 {
+    
+    $search = $request->input('search');
+  
+
     $categoryIds = $request->input('categories', []);
     $satuanIds = $request->input('satuans', []);
     $priceRange = $request->input('prices', ['from' => 0, 'to' => 0]);
 
-    $products = Product::with(['first_image', 'satuan', 'category' ,'seller'])
-        ->filtered()
-        ->get();
-
-    $Categories = Category::all();
-    $Satuans = Satuan::all();
+    $query = Product::with(['first_image', 'satuan', 'category', 'seller']);
 
 
-    return Inertia::render('User/Layout/Shop/Shop', [
-        'products' => $products,
-        'Categories' => $Categories,
-        'Satuans' => $Satuans,
-        'selectedCategories' => $categoryIds,
-        'selectedSatuans' => $satuanIds,
-        'selectedPrices' => $priceRange,
-    ]);
+    if ($search) {
+        $query->where('name', 'LIKE', "%$search%");
+    }
+
+ 
+            $categories = Category::all();
+            $satuans = Satuan::all();
+            $products = $query->get();
+
+            return Inertia::render('User/Layout/Shop/Shop', [
+                'products' => $products,
+                'categories' => $categories,
+                'satuans' => $satuans,
+                'selectedCategories' => $categoryIds,
+                'selectedSatuans' => $satuanIds,
+                'selectedPrices' => $priceRange,
+                'search' => $search, 
+            ]);
+        
 }
 
 

@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\Pages\FilterPageController;
-
+use App\Http\Controllers\Api\SearchController;
 
 // Route Utama
 Route::get('/',[HomeController::class,'Home'])->name('Home');
@@ -29,3 +29,5 @@ Route::get('/Products/filter/old', [FilterPageController::class, 'filterByOld'])
 
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
+
+Route::get('/product/main/search',[SearchController::class,'SearchProduct'])->name('Shop.search');

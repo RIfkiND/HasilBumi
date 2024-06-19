@@ -1,5 +1,5 @@
 <template>
-    <Header />
+    <Header  @search="handleSearch"/>
     <!-- shop wrapper -->
     <div
         class="container mx-auto w-full py-20 px-5 flex items-center justify-center bg-cyan-800"
@@ -472,7 +472,17 @@ const props = defineProps({
     Categories: Array,
     selectedCategories: Array,
     selectedPrices: Object,
+    search:Object,
 });
+const searchQuery = ref(props.search || '');
+
+const handleSearch = (key) => {
+
+    searchQuery.value = key;
+
+  
+    router.get(route('Shop.search', { search: key }), { preserveState: true });
+};
 
 const { Satuans, selectedSatuans } = usePage().props;
 
