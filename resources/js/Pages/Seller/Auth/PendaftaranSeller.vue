@@ -1,13 +1,18 @@
 <style>
-/*Tambahkan style jika perlu*/
+.footer-top {
+  display: inline-block;
+  width: 100%;
+  height: 220px;
+  top: 0;
+}
 </style>
 
 <template>
     <!-- component -->
-    <div class="bg-teal-dark -z-50 absolute"></div>
     <div
         class="min-h-screen bg-white p-6 flex items-center justify-center font-inter relative z-50"
     >
+    <div class="bg-teal-dark -z-50 absolute footer-top"></div>
         <form @submit.prevent="submit" method="POST">
             <div class="container max-w-screen-lg m-auto py-4">
                 <div
@@ -139,15 +144,15 @@
                                             class="h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none"
                                             aria-label="Default select example"
                                         >
-                                            <option value="Bandung" selected>
+                                            <option value="1" selected>
                                                 Bandung
                                             </option>
-                                            <option value="Bekasi">Bekasi</option>
-                                            <option value="Bogor">Bogor</option>
-                                            <option value="Cianjur">Cianjur</option>
-                                            <option value="Ciamis">Ciamis</option>
-                                            <option value="Cirebon">Cirebon</option>
-                                            <option value="Garut">Garut</option>
+                                            <option value="2">Bekasi</option>
+                                            <option value="3">Bogor</option>
+                                            <option value="4">Cianjur</option>
+                                            <option value="5">Ciamis</option>
+                                            <option value="6">Cirebon</option>
+                                            <option value="7">Garut</option>
                                         </select>
                                     </div>
                                 </div>
@@ -164,30 +169,30 @@
                                             class="h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none"
                                             aria-label="Default select example"
                                         >
-                                            <option value="Nanggroe Aceh Darussalam">
+                                            <option value="1">
                                                 Nanggroe Aceh Darussalam
                                             </option>
-                                            <option value="Sumatera Utara">
+                                            <option value="2">
                                                 Sumatera Utara
                                             </option>
-                                            <option value="Sumatera Selatan">
+                                            <option value="3">
                                                 Sumatera Selatan
                                             </option>
-                                            <option value="Sumatera Barat">
+                                            <option value="4">
                                                 Sumatera Barat
                                             </option>
-                                            <option value="Bengkulu">Bengkulu</option>
-                                            <option value="Riau">Riau</option>
-                                            <option value="Kepulauan Riau">
+                                            <option value="5">Bengkulu</option>
+                                            <option value="6">Riau</option>
+                                            <option value="7">
                                                 Kepulauan Riau
                                             </option>
-                                            <option value="Jawa Barat" selected>
+                                            <option value="8" selected>
                                                 Jawa Barat
                                             </option>
-                                            <option value="Jawa Tengah">
+                                            <option value="9">
                                                 Jawa Tengah
                                             </option>
-                                            <option value="Jawa Timur">
+                                            <option value="9">
                                                 Jawa Timur
                                             </option>
                                         </select>
@@ -280,6 +285,7 @@
             </div>
         </form>
     </div>
+
     <Footer />
 </template>
 
@@ -380,5 +386,6 @@ onMounted(() => {
                 reader.readAsDataURL(file);
             }
         });
+
 });
 </script>

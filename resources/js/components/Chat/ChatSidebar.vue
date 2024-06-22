@@ -17,10 +17,10 @@
           ></i>
         </div>
       </form>
-      <div class="block">
-        <div class="dropdown dropdown-bottom flex justify-center items-center translate-y-5 relative" tabindex="0">
-          <button class="relative m-auto translate-x-8 text-center w-12 h-12 hover:bg-[#4fdf69] rounded-full">
-              <i class='bx bx-dots-vertical-rounded bx-sm mt-1 text-white'></i>
+      <div class="block relative z-50">
+        <div class="dropdown dropdown-bottom flex justify-center items-center translate-y-5" tabindex="0">
+          <button class="relative m-auto translate-x-8 text-center w-10 h-10 hover:bg-[#4fdf69] rounded-full">
+              <i class='bx bx-filter bx-sm mt-1 text-white'></i>
           </button>
           <ul
             class="dropdown-content relative menu p-2 shadow bg-white rounded-lg w-56"

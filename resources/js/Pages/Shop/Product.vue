@@ -1,6 +1,8 @@
 <template>
     <Header/>
-    <Body :detailProduct="products" :status="sellerIsOnline" :relatedProduct="allProducts"/>
+    <div class="px-10">
+        <Body :detailProduct="products" :status="sellerIsOnline" :relatedProduct="allProducts"/>
+    </div>
     <Footer/>
 </template>
 <script setup>

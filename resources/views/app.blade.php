@@ -54,8 +54,6 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   
-    </script>
 
 </head>
 
@@ -66,12 +64,5 @@
     <body>
         @inertia
     </body>
-    {{-- <div class="fixed float-right bottom-[90px] right-7">
-        <div class="w-14 h-14 bg-teal rounded-full relative justify-center items-center flex hover:bg-hoverPrimary">
-            <a class="absolute m-auto" href="https://api.whatsapp.com/send?phone=6281563929896" rel="noreferrer" target="_blank">
-                <i class="bx bxl-whatsapp bx-md text-white"></i>
-            </a>
-        </div>
-    </div> --}}
 </body>
 </html>

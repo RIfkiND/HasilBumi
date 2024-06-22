@@ -6,17 +6,16 @@ import Open from "./components/OpenStore.vue";
 </script>
 
 <template>
-    <Navbar />
-    <section>
-        <div class="container mx-auto mt-12 font-poppins">
-            <div class="flex w-full gap-10">
-                <div class="justify-self-start">
-                    <Sidebar />
-                </div>
-                <Open />
-            </div>
+  <Navbar />
+  <section>
+    <div class="container mx-auto mt-12 font-poppins">
+      <div class="flex w-full gap-10">
+        <div class="justify-self-start ml-10">
+          <Sidebar />
         </div>
-    </section>
-
-    <Footer />
+        <Open />
+      </div>
+    </div>
+  </section>
+  <Footer />
 </template>

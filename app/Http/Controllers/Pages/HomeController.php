@@ -31,9 +31,9 @@ class HomeController extends Controller
 
     public function Shop(Request $request)
 {
-    
+
     $search = $request->input('search');
-  
+
 
     $categoryIds = $request->input('categories', []);
     $satuanIds = $request->input('satuans', []);
@@ -46,7 +46,7 @@ class HomeController extends Controller
         $query->where('name', 'LIKE', "%$search%");
     }
 
- 
+
             $categories = Category::all();
             $satuans = Satuan::all();
             $products = $query->get();
@@ -58,9 +58,9 @@ class HomeController extends Controller
                 'selectedCategories' => $categoryIds,
                 'selectedSatuans' => $satuanIds,
                 'selectedPrices' => $priceRange,
-                'search' => $search, 
+                'search' => $search,
             ]);
-        
+
 }
 
 
@@ -75,7 +75,7 @@ class HomeController extends Controller
         $allProducts = Product::with(['first_image', 'satuan', 'category', 'seller.user', 'seller'])
         ->where('id', '!=', $id)
         ->get();
-       
+
         return Inertia::render('Shop/Product', [
             'products' => $product,
             'allProducts'=>$allProducts,

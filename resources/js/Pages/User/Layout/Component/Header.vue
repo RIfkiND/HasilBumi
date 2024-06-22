@@ -346,8 +346,8 @@ a {
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
                 <input
-              
-               
+
+
                  v-model="searchQuery"
             @keydown.enter="performSearch"
                     type="text"
@@ -355,12 +355,12 @@ a {
                     id="search"
                     class="w-full border border-r-0 border-colorBorder pl-12 py-2 pr-3 rounded-l-md focus:outline-none md:flex bg-white"
                     placeholder="search"
-                    
+
                 />
                 <button
                 @click="performSearch"
                     class="bg-primaryColor border border-colorBorder text-white px-8 rounded-r-md transition md:flex items-center hover:bg-hoverPrimary"
-                      
+
                     >
                     Search
                 </button>

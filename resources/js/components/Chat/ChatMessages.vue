@@ -31,6 +31,12 @@
             <ul class="dropdown-content menu p-2 shadow bg-white rounded-md w-40">
               <li class="py-1 w-full hover:bg-white-50 rounded-md">
                 <Link class="hover:text-slate-300 flex">
+                  <i class="bx bx-share text-primaryColor text-[16px]"></i>
+                  Balas
+                </Link>
+              </li>
+              <li class="py-1 w-full hover:bg-white-50 rounded-md">
+                <Link class="hover:text-slate-300 flex">
                   <i class="bx bxs-flag-alt text-primaryColor text-[16px]"></i>
                   Laporkan
                 </Link>
@@ -53,7 +59,7 @@
                 <li class="py-1 w-full hover:bg-white-50 rounded-md">
                   <Link class="hover:text-slate-300 flex">
                     <i class="bx bx-trash text-hoverPrimary text-[16px]"></i>
-                    Hapus
+                    Hapus chat
                   </Link>
                 </li>
               </ul>

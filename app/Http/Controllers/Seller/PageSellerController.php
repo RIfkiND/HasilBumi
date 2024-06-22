@@ -58,27 +58,27 @@ class PageSellerController extends Controller
 
     }
 
-        return redirect()->route('userProfile')->with('success', 'you have updated succeafully');
+        return redirect()->route('userProfile')->with('Success', 'Data berhasil di tambahkan');
     }
 
     public function searchSellerProduct(Request $request){
         $user = Auth::user();
-        $query =Product::with(['category', 'image'])
+        $query =Product::with(['category', 'product_image'])
             ->where('seller__information_id', $user->id);
-    
+
         if ($request->has('search') && $request->search != '') {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
-    
+
         $products = $query->latest()->paginate(10);
-    
+
         $categories = Category::all();
-    
+
         return Inertia::render('User/Layout/Profile/userProducts', [
             'products' => $products,
             'categories' => $categories,
             'search'=> $request->only('search'),
         ]);
-        
+
 }
 }

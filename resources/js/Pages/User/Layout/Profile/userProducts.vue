@@ -22,7 +22,7 @@ const searching = (key) => {
     <section>
         <div class="container mx-auto mt-12 font-poppins">
             <div class="flex w-full gap-10">
-                <div class="justify-self-start">
+                <div class="justify-self-start ml-10">
                     <Sidebar />
                 </div>
                 <div>

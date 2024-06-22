@@ -12,9 +12,9 @@
           <h3 class="text-lg text-dark font-semibold">
             {{ receiver?.name }}
           </h3>
-          <span class="italic capitalize text-sm font-medium text-slate-300">
-            mengetik...
-          </span>
+            <span class="italic text-sm font-medium text-slate-200 mb-5">
+              Mengetik...
+            </span>
         </div>
       </div>
       <div class="flex items-center justify-center">
@@ -27,12 +27,15 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script setup>
+import { computed } from "vue";
 import { defineProps } from "vue";
 import { Link } from "@inertiajs/vue3";
-defineProps({ receiver: Object });
+defineProps({
+  recentMessages: Array,
+  receiver: Object,
+});
 </script>
-
-<style scoped></style>
