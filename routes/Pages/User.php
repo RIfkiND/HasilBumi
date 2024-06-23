@@ -4,7 +4,7 @@ use App\Http\Controllers\User\Settings\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\User\Settings\UserController;
-
+use App\Http\Controllers\User\Item\WhistlistController;
 // User Profile
 Route::get('/UserProfile', [UserController::class, 'UserProfile'])->name('userProfile')->middleware('auth');
 Route::get('/UserProducts/product', [UserController::class, 'userProductsMain'])->name('userProducts');
@@ -14,4 +14,10 @@ Route::get('/UserOpen', [UserController::class, 'UserOpen'])->name('userStore')-
 //update
 Route::group(['prefix' => 'User'], function(){
     Route::put('/edit/{id}',[ProfileController::class,'update'])->name('user.edit');
+    Route::put('/edit/seller/{id}',[ProfileController::class,'sellerUpdate'])->name('seller.edit');
 });
+
+//user
+Route::get('/Whislist',[WhistlistController::class ,'WhistList'])->name('Home.Whistlist')->middleware('auth');
+Route::post('/wishlist', [ WhistlistController::class, 'store'])->name('wishlist.store');
+Route::delete('/wishlist/{id}', [WhistlistController::class, 'destroy'])->name('wishlist.destroy');

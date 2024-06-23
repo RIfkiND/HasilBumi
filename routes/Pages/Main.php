@@ -13,7 +13,7 @@ Route::get('/Shop-MainPage',[HomeController::class,'Shop'])->name('Shop.main');
 Route::get('/Show-Product/{id}',[HomeController::class,'ShowProduct'])->name('Shop.Product');
 
 //whislist and Cart
-Route::get('/Whislist',[HomeController::class ,'WhistList'])->name('Home.Whistlist')->middleware('auth');
+
 Route::get('/ShopCart',[HomeController::class ,'ShopCart'])->name('Home.ShopCart')->middleware('auth');
 
 // Skeleton -> tampilan cadangan ketika system rendering data dari server
@@ -26,8 +26,7 @@ Route::get('/Products/filter/category/{category}', [FilterPageController::class,
 Route::get('/Products/filter/price', [FilterPageController::class, 'filterByPrice'])->name('filter.price');
 Route::get('/Products/filter/new', [FilterPageController::class, 'filterByNew'])->name('filter.new');
 Route::get('/Products/filter/old', [FilterPageController::class, 'filterByOld'])->name('filter.old');
-
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
-
 Route::get('/product/main/search',[SearchController::class,'SearchProduct'])->name('Shop.search');
+//user

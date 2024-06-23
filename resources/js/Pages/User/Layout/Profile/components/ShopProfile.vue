@@ -25,7 +25,7 @@
                             for="photo"
                         >
                             <div class="flex justify-center items-center gap-3">
-                                <div v-if="!photUrl" class="avatar placeholder">
+                                <div v-if="!tokoUrl" class="avatar placeholder">
                                     <div
                                         class="bg-slate-200 text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
                                     >
@@ -36,25 +36,23 @@
                                 </div>
 
                                 <div v-else class="avatar">
-                                    <span
-                                        class="block w-24 h-24 rounded-full m-auto shadow"
-                                        :style="{
-                                            'background-size': 'cover',
-                                            'background-repeat': 'no-repeat',
-                                            'background-position':
-                                                'center center',
-                                            'background-image': `url(${photoUrl})`,
-                                        }"
-                                    ></span>
-                                </div>
+                                    <div class="w-24 rounded-full">
+      
+                                <img
+                                  class="block w-24 h-24 rounded-full m-auto shadow"
+                                  :src="tokoUrl"
+                                  :alt="$page.props.auth.seller.nama_toko"
+                                />
+                                 </div>
+                              </div>
                             </div>
                         </label>
                         <button
                             type="button"
                             class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2"
-                            @click="selectPhoto"
+                        @click.prevent="showTokoPhoto = true"
                         >
-                            Ganti poto
+                            Ganti Photo 
                         </button>
                     </div>
 
@@ -104,6 +102,11 @@
                     </div>
                     <div class="flex items-center text-sm">
                         <span class="w-[114px]">Alamat Toko</span>
+                        <span class="mr-3">{{
+                            $page.props.auth.seller.provinsi
+                        }} - {{
+                            $page.props.auth.seller.kota 
+                        }}</span>
                         <a
                             href="#"
                             class="text-primaryColor hover:text-hoverPrimary font-semibold"
@@ -190,7 +193,25 @@
         </div>
     </div>
     <div v-else></div>
-
+    <transition name="modal">
+        <div v-if="showTokoPhoto " class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50">
+          <div class="bg-white p-8 rounded shadow-lg z-100 w-1/4">
+            <h2 class="text-2xl font-bold mb-4">Avatar image</h2>
+            <p class="text-md text-textColor opacity-70">Ubah Avatar Sesuai keinginan mu</p>
+            <form @submit.prevent="uploadtoko" class="mt-8">
+              <div class="mb-4">
+                <label for="avatar_user" class="block text-gray-700">Upload Avatar</label>
+                <input type="file" name="avatar_user" id="avatar_user" @change="handleFileChangetoko" class="form-control" />
+                <img v-if="imagePreviewUrl" :src="imagePreviewUrl" alt="Avatar Preview" class="mt-4 w-full h-auto" />
+              </div>
+              <div class="flex justify-center flex-wrap gap-3">
+                <button type="button" class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2" @click="showTokoPhoto  = false">Batal</button>
+                <button type="submit" class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </transition>
     <transition name="modal">
         <div
             v-if="showFormShop"
@@ -303,13 +324,13 @@
                                     class="h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none"
                                     aria-label="Default select example"
                                 >
-                                    <option value="1" selected>Bandung</option>
-                                    <option value="2">Bekasi</option>
-                                    <option value="3">Bogor</option>
-                                    <option value="4">Cianjur</option>
-                                    <option value="5">Ciamis</option>
-                                    <option value="6">Cirebon</option>
-                                    <option value="7">Garut</option>
+                                    <option value="Bandung" selected>Bandung</option>
+                                    <option value="Bekasi">Bekasi</option>
+                                    <option value="Bogor">Bogor</option>
+                                    <option value="Cianjur">Cianjur</option>
+                                    <option value="Ciamis">Ciamis</option>
+                                    <option value="Cirebon">Cirebon</option>
+                                    <option value="Garut">Garut</option>
                                 </select>
                             </div>
                             <div class="mb-4">
@@ -323,16 +344,16 @@
                                     class="h-10 border mt-1 rounded px-2 w-full bg-white focus:ring-2 focus:ring-primaryColor outline-none"
                                     aria-label="Default select example"
                                 >
-                                    <option value="1">
+                                    <option value="Nanggroe Aceh Darussalam">
                                         Nanggroe Aceh Darussalam
                                     </option>
-                                    <option value="2">Sumatera Utara</option>
-                                    <option value="3">Sumatera Selatan</option>
-                                    <option value="4">Sumatera Barat</option>
-                                    <option value="5">Bengkulu</option>
-                                    <option value="6">Riau</option>
-                                    <option value="7">Kepulauan Riau</option>
-                                    <option value="8" selected>
+                                    <option value="Sumatera Utara">Sumatera Utara</option>
+                                    <option value="Sumatera Selatan">Sumatera Selatan</option>
+                                    <option value="Sumatera Barat">Sumatera Barat</option>
+                                    <option value="Bengkulu">Bengkulu</option>
+                                    <option value="Riau">Riau</option>
+                                    <option value="kepulauan Riau<">Kepulauan Riau</option>
+                                    <option value="Jawa Barat" selected>
                                         Jawa Barat
                                     </option>
                                     <option value="9">Jawa Tengah</option>
@@ -375,7 +396,7 @@ const page = usePage();
 const photoInput = ref(null);
 const photoPreview = ref(null);
 const initial = computed(() =>
-    page.props.auth.user.name.charAt(0).toUpperCase()
+    page.props.auth.seller.nama_toko.charAt(0).toUpperCase()
 );
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~Image~~~~~~~~~~~~~~~~~~
 const selectPhoto = () => {
@@ -399,15 +420,47 @@ const handleFileChange = (file) => {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~END Image~~~~~~~~~~~
 const showFormShop = ref(false);
 const showAddressForm = ref(false);
+const showTokoPhoto = ref(false);
 //form-end
 
 //submit
-const userId = page.props.auth.user.id;
-
-const avatar = useForm({
-    avatar_user: null,
+const sellerId = page.props.auth.seller.id;
+const seller = page.props.auth.seller;
+const tokoUrl = computed(() => {
+  return seller.photo_toko ? `/storage/Toko/Avatar/${seller.photo_toko}` : null;
 });
+//submit
 
+
+//upload
+const imagePreviewUrl = ref(null);
+const toko = useForm({
+    photo_toko: null,
+});
+function handleFileChangetoko(event) {
+  toko.photo_toko = event.target.files[0];
+  if ( toko.photo_toko) {
+    imagePreviewUrl.value = URL.createObjectURL( toko.photo_toko);
+  }
+}
+
+function uploadtoko() {
+  const formData = new FormData();
+  formData.append('photo_toko',  toko.photo_toko);
+  formData.append("_method", 'PUT');
+
+  router.post(route('seller.edit', { id: sellerId }), formData, {
+    onSuccess: () => {
+      showAvatar.value = false;
+    },
+    onError: (errors) => {
+      console.error(errors);
+    },
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+}
 const profile = reactive({
     name: null,
     no_hp: null,

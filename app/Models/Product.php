@@ -38,7 +38,7 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class,'category_id') ;
     }
-
+    
 
     //logika filter
     public function scopeFiltered(Builder $query){

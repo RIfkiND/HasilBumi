@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\satuan;
+use App\Models\Whistlist;
 
 class HomeController extends Controller
 {
@@ -17,11 +18,6 @@ class HomeController extends Controller
 
 
         return Inertia::render('Home', []);
-    }
-    public function Whistlist()
-    {
-
-        return Inertia::render('User/Layout/Component/Wislisht', []);
     }
     public function ShopCart()
     {

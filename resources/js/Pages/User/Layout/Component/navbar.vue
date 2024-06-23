@@ -13,7 +13,7 @@
 
             <nav>
                 <ul class="flex gap-6 items-center mb-0">
-                    <li><a href="#" class="navbar-list">Home</a></li>
+                    <li><Link :href="route('Home')" class="navbar-list">Home</Link></li>
                     <li><a href="#" class="navbar-list">Shop</a></li>
                     <li><a href="#" class="navbar-list">About Us</a></li>
                     <li><a href="#" class="navbar-list">Contact Us</a></li>
@@ -155,12 +155,12 @@
             <!-- Isi menu mobile -->
 
             <div class="py-4">
-                <a
+                <Link
                     :href="route('Home')"
                     class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"
                 >
                     Home
-                </a>
+                </Link>
                 <a
                     href="#"
                     class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"

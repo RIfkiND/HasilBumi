@@ -92,7 +92,7 @@ a {
                     <div
                         class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
                     >
-                        8
+                    {{ user.totalWhislist}}
                     </div>
                 </Link>
                 <Link
@@ -402,7 +402,10 @@ a {
 import { Link} from "@inertiajs/vue3";
 import { usePage, router } from "@inertiajs/vue3";
 import { get } from "lodash";
-import { ref, watch } from "vue";
+import { ref, watch , computed  } from "vue";
+const page = usePage()
+
+const user = computed(() => page.props.auth.user)
 
 const mobileMenuOpen = ref(false);
 const toggleMobileMenu = () => {

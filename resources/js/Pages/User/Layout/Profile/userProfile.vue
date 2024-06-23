@@ -29,10 +29,15 @@ import ShopProfile from "./components/ShopProfile.vue";
                 <div class="justify-self-start">
                     <Sidebar />
                 </div>
-                <div class="flex flex-col gap-16">
+                <div  v-if="$page.props.auth.seller" class="flex flex-col gap-16">
                     <Profile />
                     <ShopProfile />
                 </div>
+                <div  v-else class="flex flex-col gap-16">
+                    <Profile />
+                    
+                </div>
+                
             </div>
         </div>
     </section>

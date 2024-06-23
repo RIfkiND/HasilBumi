@@ -68,5 +68,11 @@ class User extends Authenticatable
         return $this->seller()->exists();
     }
 
+    public function totalWhislist(){
+        return $this->whistlist()->count();
+    } public function totalCart(){
+        return $this->cart()->count();
+    }
+
 
 }

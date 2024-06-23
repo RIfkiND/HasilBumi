@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Seller_Information;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,55 @@ class ProfileController extends Controller
                 Storage::disk('public')->delete('User/Avatar/' . $user->avatar_user);
             }
             $user->avatar_user = $filename;
+        }
+
+        // Save the user with the updated data
+        $user->save();
+
+        return redirect()->route('userProfile')->with('success', 'you have updated succeafully');
+    }
+
+    public function sellerUpdate(Request $request ,$id){
+        $user = Seller_Information::findOrFail($id);
+
+   
+        $this->validate($request,[
+            'nama_toko' => 'string|min:5|max:50',
+            'provinsi' => 'string|min:1', 
+            'avatar_user' => 'image|mimes:png,jpg,jpeg|max:2048',
+            'kota' => 'string|min:1|max:255',
+            'no_telp_toko' => 'integer|min:9|max:13',
+            'jenis_kelamin' => 'string|min:1',
+        ]);
+
+        // Update profile fields if provided
+        if ($request->has('nama_toko')) {
+            $user->name = $request->name;
+        }
+
+        if ($request->has('provinsi')) {
+            $user->provinsi = $request->provinsi;
+        }
+
+        if ($request->has('kota')) {
+            $user->kota = $request->kota;
+        }
+
+        if ($request->has('no_telp_toko')) {
+            $user->no_telp_toko = $request->no_telp_toko;
+        }
+
+
+        if ($request->hasFile('photo_toko')) {
+            $avatar = $request->file('photo_toko');
+
+            $filename = $user->id . '_' . $avatar->getClientOriginalName();
+            $avatarPath = $avatar->storeAs('Toko/Avatar', $filename, 'public');
+            
+            if ($user->photo_toko) {
+                Storage::disk('public')->delete('Toko/Avatar/' . $user->photo_toko);
+            }
+            $user->photo_toko = $filename;
         }
 
         // Save the user with the updated data
