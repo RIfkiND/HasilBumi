@@ -13,7 +13,8 @@ class ProfileController extends Controller
 {
     public function update(Request $request, $id)
     {
-        
+    
+            // dd($request->all());
         $user = User::findOrFail($id);
 
    
@@ -28,44 +29,39 @@ class ProfileController extends Controller
 
         // Update profile fields if provided
         if ($request->has('name')) {
-            $user->update([
-                'name'=> $request->name
-            ]);
+            $user->name = $request->name;
         }
 
         if ($request->has('tgl_lahir')) {
-            $user->update([
-                'tgl_lahir'=> $request->tgl_lahir
-            ]);
+            $user->tgl_lahir = $request->tgl_lahir;
         }
 
         if ($request->has('alamat')) {
-            $user->update([
-                'alamat'=> $request->alamat
-            ]);
+            $user->alamat = $request->alamat;
         }
 
         if ($request->has('no_hp')) {
-            $user->update([
-                'no_hp'=> $request->no_hp
-            ]);
+            $user->no_hp = $request->no_hp;
         }
 
         if ($request->has('jenis_kelamin')) {
-            $user->update([
-                'jenis_kelamin'=> $request->jenis_kelamin
-            ]);
+            $user->jenis_kelamin = $request->jenis_kelamin;
         }
 
-    if ($request->hasFile('avatar_user')) {
-        $avatar = $request->file('avatar_user');
-        $avatar->storeAs('User/Avatar/', $avatar->hashName());
-            Storage::delete('User/Avatar/' . $user->avatar_user);
-        $user->updateOrCreate([
-            'avatar_user/'=>$avatar->hashName(),
-        ]);
+        if ($request->hasFile('avatar_user')) {
+            $avatar = $request->file('avatar_user');
 
-    }
+            $filename = $user->id . '_' . $avatar->getClientOriginalName();
+            $avatarPath = $avatar->storeAs('User/Avatar', $filename, 'public');
+            
+            if ($user->avatar_user) {
+                Storage::disk('public')->delete('User/Avatar/' . $user->avatar_user);
+            }
+            $user->avatar_user = $filename;
+        }
+
+        // Save the user with the updated data
+        $user->save();
 
         return redirect()->route('userProfile')->with('success', 'you have updated succeafully');
     }

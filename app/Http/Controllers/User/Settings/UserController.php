@@ -10,6 +10,7 @@ use App\Models\Seller_Information;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 class UserController extends Controller
@@ -17,8 +18,10 @@ class UserController extends Controller
 
     public function userProfile()
     {
-
-        return Inertia::render('User/Layout/Profile/userProfile');
+        $user = Auth::user();
+        return Inertia::render('User/Layout/Profile/userProfile',[
+            'avatarUrl' => $user->avatar_user ? Storage::url($user->avatar_user) : null,
+        ]);
     }
     public function userProductsMain()
     {

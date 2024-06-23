@@ -3,7 +3,7 @@
         <div
             class="flex flex-col p-4 bg-white rounded-r-lg rounded-lg overflow-hidden"
         >
-            <div v-if="!photoUrl" class="flex items-center gap-3">
+            <div v-if="!avatarUrl" class="flex items-center gap-3">
                 <div class="avatar placeholder">
                     <div
                         class="bg-slate-200 text-neutral-content rounded-full w-12"
@@ -16,17 +16,14 @@
                 }}</span>
             </div>
 
-            <div v-else class="flex items-center gap-3">
-                <div class="avatar placeholder">
-                    <div
-                        class=" text-neutral-content rounded-full w-12"
-                    >
-                        <span class="text-xl">{{ initial }}</span>
-                    </div>
+            <div v-else class="flex avatar items-center gap-3">
+                <div class="w-24 rounded-full">
+                    <img
+                        class="block w-24 h-24 rounded-full m-auto shadow"
+                        :src="avatarUrl"
+                        :alt="$page.props.auth.user.name"
+                    />
                 </div>
-                <span class="text-xl capitalize text-indigo-500">{{
-                    $page.props.auth.user.name
-                }}</span>
             </div>
 
             <div class="border-t mt-6 border-slate-200 opacity-50"></div>
@@ -115,12 +112,17 @@
 <script setup>
 import { Link, usePage, router } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
-import route from '../../../../../../../vendor/tightenco/ziggy/src/js/index';
+import route from "../../../../../../../vendor/tightenco/ziggy/src/js/index";
 const page = usePage();
 const initial = computed(() =>
     page.props.auth.user.name.charAt(0).toUpperCase()
 );
 const photoPreview = ref(null);
+
+const user = page.props.auth.user;
+const avatarUrl = computed(() => {
+    return user.avatar_user ? `/storage/User/Avatar/${user.avatar_user}` : null;
+});
 
 const photoUrl = computed(() => {
     return (

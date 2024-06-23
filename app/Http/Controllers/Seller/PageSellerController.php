@@ -63,7 +63,7 @@ class PageSellerController extends Controller
 
     public function searchSellerProduct(Request $request){
         $user = Auth::user();
-        $query =Product::with(['category', 'image'])
+        $query =Product::with(['category', 'product_image','satuan'])
             ->where('seller__information_id', $user->id);
     
         if ($request->has('search') && $request->search != '') {

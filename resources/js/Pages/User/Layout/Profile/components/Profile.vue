@@ -22,28 +22,30 @@
                         class="block text-gray-700 text-sm font-bold mb-2"
                         for="photo"
                     >
-                        <div class="flex justify-center items-center gap-3">
-                            <div v-if="!photUrl" class="avatar placeholder">
-                                <div
-                                    class=" bg-slate-200 text-neutral-content rounded-full w-24 h-24 flex items-center justify-center"
-                                >
-                                    <span class="text-2xl"> {{ initial }}</span>
-                                </div>
-                            </div>
-
-                            <div v-else class="avatar">
-                                <img
-                                    class="block w-24 h-24 rounded-full m-auto shadow"
-                                    :src="`/${$page.props.auth.user.avatar_user[0].image}`"
-                                    :alt="$page.props.auth.user.avatar_user"
-                                />
-                            </div>
+                    <div class="flex justify-center items-center gap-3">
+                        <div v-if="!avatarUrl" class="avatar placeholder">
+                          <div class="bg-slate-200 text-neutral-content rounded-full w-24 h-24 flex items-center justify-center">
+                            <span class="text-2xl">{{ initial }}</span>
+                          </div>
                         </div>
+                    
+                        <div v-else class="avatar">
+                              <div class="w-24 rounded-full">
+
+                          <img
+                            class="block w-24 h-24 rounded-full m-auto shadow"
+                            :src="avatarUrl"
+                            :alt="$page.props.auth.user.name"
+                          />
+                           </div>
+                        </div>
+                      </div>
                     </label>
 
                         <div>
                             <button
-                                type="submit"
+                                type="button"
+                            @click.prevent="showAvatar = true"
                                 class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2"
 
                             >
@@ -198,6 +200,26 @@
         </div>
     </div>
 
+
+    <transition name="modal">
+        <div v-if="showAvatar" class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50">
+          <div class="bg-white p-8 rounded shadow-lg z-100 w-1/4">
+            <h2 class="text-2xl font-bold mb-4">Avatar image</h2>
+            <p class="text-md text-textColor opacity-70">Ubah Avatar Sesuai keinginan mu</p>
+            <form @submit.prevent="upload" class="mt-8">
+              <div class="mb-4">
+                <label for="avatar_user" class="block text-gray-700">Upload Avatar</label>
+                <input type="file" name="avatar_user" id="avatar_user" @change="handleFileChangeAvatar" class="form-control" />
+                <img v-if="imagePreviewUrl" :src="imagePreviewUrl" alt="Avatar Preview" class="mt-4 w-full h-auto" />
+              </div>
+              <div class="flex justify-center flex-wrap gap-3">
+                <button type="button" class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2" @click="showAvatar = false">Batal</button>
+                <button type="submit" class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </transition>
     <transition name="modal">
         <div
             v-if="showForm"
@@ -384,29 +406,17 @@
 <script setup>
 import { ref, watch, computed, reactive } from "vue";
 import { usePage, router, useForm } from "@inertiajs/vue3";
-import { Plus } from "@element-plus/icons-vue";
+import { UploadFilled } from '@element-plus/icons-vue'
 const page = usePage();
 const initial = computed(() =>
     page.props.auth.user.name.charAt(0).toUpperCase()
 );
 const userId = page.props.auth.user.id;
 
-const photoInput = ref(null);
-
-const photoUrl = computed(() => {
-    return (
-        photoPreview.value ||
-        (page.props.auth.user.avatar_user
-            ? page.props.auth.user.avatar_user
-            : null)
-    );
+const user = page.props.auth.user;
+const avatarUrl = computed(() => {
+  return user.avatar_user ? `/storage/User/Avatar/${user.avatar_user}` : null;
 });
-
-const avatar_user = ref("");
-const handleFileChange = (file) => {
-    console.log(file);
-    avatar_user.value.push(file);
-};
 
 const birthDate = ref({
     day: null,
@@ -446,14 +456,51 @@ const years = Array.from(
 //form
 const showGenderForm = ref(false);
 const showForm = ref(false);
-const showDateForm = ref(false);
+
+const ShowPhoneForm = ref(false);
 //form-end
 
 //submit
-//upload
-const uploadUrl = `/seller/update/${userId}`;
-//end
+const showAvatar = ref(false);
 
+//upload
+const imagePreviewUrl = ref(null);
+const form = useForm({
+  avatar_user: null,
+});
+
+function handleFileChangeAvatar(event) {
+  form.avatar_user = event.target.files[0];
+  if (form.avatar_user) {
+    imagePreviewUrl.value = URL.createObjectURL(form.avatar_user);
+  }
+}
+
+function upload() {
+  const formData = new FormData();
+  formData.append('avatar_user', form.avatar_user);
+  formData.append("_method", 'PUT');
+
+  router.post(route('user.edit', { id: userId }), formData, {
+    onSuccess: () => {
+      showAvatar.value = false;
+    },
+    onError: (errors) => {
+      console.error(errors);
+    },
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+}
+
+const profile = reactive({
+    name: null,
+    tgl_lahir:birthform,
+    no_hp:null,
+    jenis_kelamin:null
+});
+//end
 function submit() {
     const updatedProfile = {};
 
@@ -481,6 +528,7 @@ function submit() {
     ) {
         updatedProfile.jenis_kelamin = profile.jenis_kelamin;
     }
+
 
     router.put(route("user.edit", { id: userId }), updatedProfile);
 }

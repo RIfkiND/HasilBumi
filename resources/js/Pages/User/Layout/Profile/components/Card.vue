@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="mb-4">
+    <div class="mb-4 font-inter">
         <div
             class="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 pb-3 gap-4 bg-white"
         >
