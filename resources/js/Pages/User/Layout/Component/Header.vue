@@ -150,26 +150,27 @@ a {
 
                         <!-- Dropdown konten -->
                         <div
-                            class="absolute top-12 text-base bg-white rounded-md shadow-lg z-10"
+                            class="absolute top-12 text-base bg-white rounded-md shadow-lg z-10 p-2"
                             v-if="profileDropdown"
                             @click="profileDropdown = false"
                         >
                             <ul class="px-0" aria-labelledby="user-menu-button">
-                                <li class="py-2 px-4 style-bg">
+                                <li class="py-2 px-4 flex justify-between gap-3 w-full hover:bg-white-50 rounded-md">
                                     <Link
                                         :href="route('userProfile')"
-                                        class="block text-sm truncate mb-1 text-left style-text"
+                                        class="flex text-sm truncate mb-1 text-left font-medium hover:text-slate-300"
                                     >
+                                    <i class='bx bxs-user text-[16px] text-primaryColor mr-3'></i>
                                         Akun Saya
                                     </Link>
                                 </li>
-
-                                <li class="card-hover py-2 px-4 style-bg">
+                                <li class="py-2 px-4 flex justify-between gap-3 w-full hover:bg-white-50 rounded-md">
                                     <Link
                                         href="#"
-                                        class="block text-sm mb-1 text-left style-text"
                                         @click="logout"
+                                        class="flex text-sm truncate mb-1 text-left font-medium hover:text-slate-300"
                                     >
+                                    <i class='bx bx-log-out text-[16px] text-primaryColor mr-3'></i>
                                         Logout
                                     </Link>
                                 </li>
@@ -346,8 +347,8 @@ a {
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
                 <input
-              
-               
+
+
                  v-model="searchQuery"
             @keydown.enter="performSearch"
                     type="text"
@@ -355,12 +356,12 @@ a {
                     id="search"
                     class="w-full border border-r-0 border-colorBorder pl-12 py-2 pr-3 rounded-l-md focus:outline-none md:flex bg-white"
                     placeholder="search"
-                    
+
                 />
                 <button
                 @click="performSearch"
                     class="bg-primaryColor border border-colorBorder text-white px-8 rounded-r-md transition md:flex items-center hover:bg-hoverPrimary"
-                      
+
                     >
                     Search
                 </button>

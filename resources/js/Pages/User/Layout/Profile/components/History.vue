@@ -110,7 +110,7 @@ const deleteProduct = (product, index) => {
             </form>
           </div>
         </div>
-        <div class="overflow-x-auto">
+        <div>
           <table
             class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
           >
@@ -187,7 +187,7 @@ const deleteProduct = (product, index) => {
                     >
                       <button class="relative">
                         <i
-                          class="bx bx-dots-vertical-rounded bx-xs text-slate-200 m-auto"
+                          class="bx bx-dots-vertical-rounded bx-xs text-slate-200 m-auto mt-1"
                         ></i>
                       </button>
                       <ul class="dropdown-content menu shadow bg-white rounded-md w-40">

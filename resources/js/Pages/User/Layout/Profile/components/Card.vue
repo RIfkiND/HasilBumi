@@ -6,13 +6,13 @@ defineProps({
 </script>
 
 <template>
-    <div class="mb-4 font-inter">
+    <div class="mb-4 font-inter w-full">
         <div
-            class="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 pb-3 gap-4 bg-white"
+            class="grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 pb-3 gap-4"
         >
-            <div class="flex flex-col shadow-md px-12 py-4">
-                <div class="flex flex-row items-center justify-between">
-                    <div class="mr-4">
+            <div class="flex flex-col shadow-md px-12 py-4 bg-[#F3CA52] rounded-lg">
+                <div class="flex flex-row items-center justify-center">
+                    <div class="mr-5">
                         <span class="items-center px-2 py-2">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ defineProps({
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 stroke="currentColor"
-                                class="items-center w-8 h-8 m-auto"
+                                class="items-center w-8 h-8 m-auto text-white"
                             >
                                 <path
                                     stroke-linecap="round"
@@ -36,25 +36,24 @@ defineProps({
                         </span>
                     </div>
                     <div class="flex-1 pl-1">
-                        <div class="text-4xl font-semibold text-primaryColor">
+                        <div class="text-4xl font-semibold text-white">
                             {{ dataTotal }}
                         </div>
-                        <div class="text-sm text-gray-400 sm:text-base">
+                        <div class="text-md text-white font-semibold sm:text-base">
                             Published
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="flex flex-col shadow-md px-12 py-4">
-                <div class="flex flex-row items-center justify-between">
-                    <div class="flex mr-4">
+            <div class="flex flex-col shadow-md px-12 py-4 bg-blue rounded-lg">
+                <div class="flex flex-row items-center justify-center">
+                    <div class="mr-5">
                         <span
                             class="items-center px-4 py-4 m-auto bg-red-200 rounded-full hover:bg-red-300"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="items-center w-8 h-8 m-auto text-red-500 hover:text-red-600"
+                                class="items-center w-8 h-8 m-auto text-white"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -69,18 +68,18 @@ defineProps({
                         </span>
                     </div>
                     <div class="flex-1 pl-1">
-                        <div class="text-4xl font-semibold text-primaryColor">
-                            100
+                        <div class="text-4xl font-semibold text-white">
+                            150
                         </div>
-                        <div class="text-sm text-gray-400 sm:text-base">
-                            Total Order
+                        <div class="text-md text-white font-semibold sm:text-base">
+                            Total order
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col shadow-md px-12 py-4">
-                <div class="flex flex-row items-center justify-between">
-                    <div class="flex mr-4">
+            <div class="flex flex-col shadow-md px-12 py-4 bg-dark rounded-lg">
+                <div class="flex flex-row items-center justify-center">
+                    <div class="mr-5">
                         <span
                             class="items-center px-4 py-4 m-auto bg-yellow-200 rounded-full hover:bg-yellow-300"
                         >
@@ -90,7 +89,7 @@ defineProps({
                                 viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 stroke="currentColor"
-                                class="items-center w-8 h-8 m-auto text-red-500 hover:text-red-600"
+                                class="items-center w-8 h-8 m-auto text-white"
                             >
                                 <path
                                     stroke-linecap="round"
@@ -101,10 +100,10 @@ defineProps({
                         </span>
                     </div>
                     <div class="flex-1 pl-1">
-                        <div class="text-4xl font-medium text-primaryColor">
+                        <div class="text-4xl font-semibold text-white">
                             {{ dataTotal }}
                         </div>
-                        <div class="text-sm text-gray-400 sm:text-base">
+                        <div class="text-md text-white font-semibold sm:text-base">
                             Total Products
                         </div>
                     </div>

@@ -268,17 +268,18 @@ const deleteImage = async (pimage, index) => {
             <button
               type="button"
               @click.prevent="showAddProductForm = true"
-              class="text-textColor border-2 border-primaryColor bg-white hover:bg-primaryColor focus:ring-2 focus:ring-primaryColor font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
+              class="bg-hijau-1 hover:ring-2 hover:ring-primaryColor font-medium rounded-lg text-sm px-4 py-2 focus:outline-none text-primaryColor"
             >
-              Add product
+            <i class='bx bx-plus-medical'></i>
+              Tambahkan produk
             </button>
           </div>
         </div>
-        <div class="overflow-x-auto">
+        <div class="p-3 w-full">
           <table
             class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
           >
-            <thead class="text-2xs text-textColor capitalize">
+            <thead class="text-2xs text-textColor capitalize border-b-2 border-white-50 pb-3">
               <tr>
                 <th scope="col" class="px-4 py-3 truncate">No</th>
                 <th scope="col" class="px-4 py-3 truncate">Product name</th>
@@ -294,36 +295,36 @@ const deleteImage = async (pimage, index) => {
               <tr
                 v-for="(product, index) in dataProducts.data"
                 :key="index"
-                class="border-b"
+                class="border-b-2 border-white-50"
               >
-                <th
+                <td
                   scope="row"
-                  class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+                  class="px-4 font-medium text-textColor whitespace-nowrap"
                 >
                   {{ index + 1 }}
-                </th>
+                </td>
 
-                <th
+                <td
                   scope="row"
-                  class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+                  class="px-4 font-medium text-textColor whitespace-nowrap"
                 >
                   {{ product.name }}
-                </th>
-                <td class="px-4 py-3 text-center">
+                </td>
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">
                   {{ product.category.name }}
                 </td>
 
-                <td class="px-4 py-3 text-center">
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">
                   {{ product.stock }}
                 </td>
-                <td class="px-4 py-3">Rp.{{ product.price }}</td>
-                <td class="px-4 py-3">
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">Rp.{{ product.price }}</td>
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">
                   {{ product.satuan.symbol }}
                 </td>
-                <td class="px-3 py-3">
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">
                   <span
                     v-if="product.stock > 0"
-                    class="text-primaryColor text-xs font-semibold mr-2 px-2.5 py-0.5"
+                    class="text-primaryColor text-xs font-semibold whitespace-nowrap"
                   >
                     inStock
                   </span>
@@ -332,71 +333,43 @@ const deleteImage = async (pimage, index) => {
                   </span>
                 </td>
                 <!--Aksi Icon-->
-                <td class="px-4 py-3 flex items-center">
+                <td class="px-4 font-medium text-textColor items-center flex  whitespace-nowrap mx-2">
                   <div
                     :id="`${product.id}`"
                     class="bg-white text-textColor rounded flex items-center gap-4"
                   >
-                    <a
-                      href="#"
-                      @click.prevent="openEditModal(product)"
-                      class="block py-2 px-4 bg-primaryColor text-white rounded-full"
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-blue-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
-                      2 0 112.828
-                      2.828L11.828 15H9v-2.828l8.586-8.586z"
-                        /></svg
-                    ></a>
-                    <a
-                      href="#"
-                      @click.prevent="deleteProduct(product, index)"
-                      class="block py-2 px-4 text-sm bg-Red text-white rounded-full"
+                  <div class="block relative z-50">
+                    <div
+                      class="dropdown dropdown-left w-8 h-8 rounded-full hover:bg-white-50 hover:cursor-pointer flex justify-center items-center"
+                      tabindex="0"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-red-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
-                      4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                        /></svg
-                    ></a>
-                    <a
-                      href="#"
-                      @click.prevent="deleteProduct(product, index)"
-                      class="block py-2 px-4 text-sm bg-bl bg-blue text-white rounded-full"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-red-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          d="M12 9a3.02 3.02 0 0 0-3 3c0 1.642 1.358 3 3 3 1.641 0 3-1.358 3-3 0-1.641-1.359-3-3-3z"
-                        ></path>
-                        <path
-                          d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 12c-5.351 0-7.424-3.846-7.926-5C4.578 10.842 6.652 7 12 7c5.351 0 7.424 3.846 7.926 5-.504 1.158-2.578 5-7.926 5z"
-                        ></path>
-                      </svg>
-                    </a>
+                      <button class="relative">
+                        <i
+                          class="bx bx-dots-vertical-rounded bx-xs text-slate-200 m-auto mt-1"
+                        ></i>
+                      </button>
+                      <ul class="dropdown-content menu shadow bg-white rounded-md w-40">
+                        <li class="py-1 w-full hover:bg-white-50 rounded-md">
+                          <a
+                            @click.prevent="openEditModal(product)"
+                            class="hover:text-slate-300 flex"
+                          >
+                            <i class="bx bx-pencil text-[#F3CA52] text-[16px]"></i>
+                            Edit
+                          </a>
+                        </li>
+                        <li class="py-1 w-full hover:bg-white-50 rounded-md">
+                          <a
+                            @click.prevent="deleteProduct(product, index)"
+                            class="hover:text-slate-300 flex"
+                          >
+                            <i class="bx bx-trash text-Red text-[16px]"></i>
+                            Hapus
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                   </div>
                 </td>
               </tr>
