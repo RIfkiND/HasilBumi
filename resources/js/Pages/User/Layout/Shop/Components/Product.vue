@@ -176,7 +176,6 @@ const resetFormData = () => {
 };
 
 const addToWishlist = async (productId) => {
-    loading.value = true;
     form.product_id = productId;
     
     try {
@@ -200,4 +199,6 @@ const addToWishlist = async (productId) => {
         loading.value = false;
     }
 };
+
+
 </script>

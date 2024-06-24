@@ -69,7 +69,9 @@ class PageSellerController extends Controller
         if ($request->has('search') && $request->search != '') {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
-    
+        $sellerInfo = Seller_Information::where('user_id', $user->id)->first();
+        $TotalProduct = $sellerInfo->totalProducts();
+
         $products = $query->latest()->paginate(10);
     
         $categories = Category::all();
@@ -78,6 +80,7 @@ class PageSellerController extends Controller
             'products' => $products,
             'categories' => $categories,
             'search'=> $request->only('search'),
+            'TotalProducts'=> $TotalProduct,
         ]);
         
 }

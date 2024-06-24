@@ -97,7 +97,7 @@
                             {{ category.name }}
                           </label>
                             <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;15&rpar;
+                                &lpar;{{category.products_count}}&rpar;
                             </div>
                         </div>
 
@@ -418,12 +418,12 @@
                         </div>
                     </div>
                     <button
-                        type="submit"
+                        
                         class="mt-4 w-full py-2 bg-hoverPrimary hover:cursor-pointer hover:bg-teal-dark rounded-md block px-4 text-white font-medium capitalize text-md"
                     >
                         <i class="fa-solid fa-magnifying-glass text-white px-1"></i>
-                        cari sekarang
-                    </button>
+                        Reset
+                </button>
                 </div>
 
                 <!-- Satuan End -->

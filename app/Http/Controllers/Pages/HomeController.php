@@ -19,35 +19,30 @@ class HomeController extends Controller
 
         return Inertia::render('Home', []);
     }
-    public function ShopCart()
-    {
-
-        return Inertia::render('User/Layout/Component/shop_card', []);
-    }
-
+   
     public function Shop(Request $request)
-{
-    $categoryIds = $request->input('categories', []);
-    $satuanIds = $request->input('satuans', []);
-    $priceRange = $request->input('prices', ['from' => 0, 'to' => 0]);
-
-    $products = Product::with(['first_image', 'satuan', 'category' ,'seller'])
-        ->filtered()
-        ->get();
-
-    $Categories = Category::all();
-    $Satuans = Satuan::all();
-
-
-    return Inertia::render('User/Layout/Shop/Shop', [
-        'products' => $products,
-        'Categories' => $Categories,
-        'Satuans' => $Satuans,
-        'selectedCategories' => $categoryIds,
-        'selectedSatuans' => $satuanIds,
-        'selectedPrices' => $priceRange,
-    ]);
-}
+    {
+        $categoryIds = $request->input('categories', []);
+        $satuanIds = $request->input('satuans', []);
+        $priceRange = $request->input('prices', ['from' => 0, 'to' => 0]);
+    
+        $products = Product::with(['first_image', 'satuan', 'category' ,'seller'])
+            ->filtered()
+            ->get();
+    
+        $Categories = Category::withCount('products')->get();
+        $Satuans = Satuan::all();
+    
+    
+        return Inertia::render('User/Layout/Shop/Shop', [
+            'products' => $products,
+            'Categories' => $Categories,
+            'Satuans' => $Satuans,
+            'selectedCategories' => $categoryIds,
+            'selectedSatuans' => $satuanIds,
+            'selectedPrices' => $priceRange,
+        ]);
+    }
 
 
     public function ShowProduct($id)

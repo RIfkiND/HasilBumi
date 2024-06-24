@@ -12,9 +12,7 @@ Route::get('/',[HomeController::class,'Home'])->name('Home');
 Route::get('/Shop-MainPage',[HomeController::class,'Shop'])->name('Shop.main');
 Route::get('/Show-Product/{id}',[HomeController::class,'ShowProduct'])->name('Shop.Product');
 
-//whislist and Cart
 
-Route::get('/ShopCart',[HomeController::class ,'ShopCart'])->name('Home.ShopCart')->middleware('auth');
 
 // Skeleton -> tampilan cadangan ketika system rendering data dari server
 Route::get('/skeleton', [HomeController::class, 'Skeleton']);

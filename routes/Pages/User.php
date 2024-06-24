@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\Item\CartController;
 use App\Http\Controllers\User\Settings\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,7 +18,15 @@ Route::group(['prefix' => 'User'], function(){
     Route::put('/edit/seller/{id}',[ProfileController::class,'sellerUpdate'])->name('seller.edit');
 });
 
-//user
+//user whislist
 Route::get('/Whislist',[WhistlistController::class ,'WhistList'])->name('Home.Whistlist')->middleware('auth');
 Route::post('/wishlist', [ WhistlistController::class, 'store'])->name('wishlist.store');
 Route::delete('/wishlist/{id}', [WhistlistController::class, 'destroy'])->name('wishlist.destroy');
+//user cart 
+Route::get('/ShopCart',[CartController::class ,'view'])->name('Home.ShopCart')->middleware('auth');
+
+Route::prefix('cart')->controller(CartController::class)->group(function () {
+    Route::post('store/{product}','store')->name('cart.store');
+    Route::patch('update/{product}','update')->name('cart.update');
+    Route::delete('delete/{product}','delete')->name('cart.delete');
+});

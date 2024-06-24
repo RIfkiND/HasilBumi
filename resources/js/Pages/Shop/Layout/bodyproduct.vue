@@ -147,13 +147,13 @@
           >
             <i class="fa-solid fa-bag-shopping"></i> Beli sekarang
           </Link>
-          <Link
+          <a
             class="border-1 border-dark text-dark px-8 py-2 font-medium rounded capitalize flex items-center gap-2 hover:bg-dark no-underline group hover:cursor-pointer transition duration-2000"
-            @click="popupSuccess"
+            @click="addToCart(detailProduct)"
           >
             <i class="bx bx-shopping-bag text-primaryColor text-[20px] outline-none"></i>
             <span class="group-hover:text-white outline-none">Tambahkan ke keranjang</span>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
@@ -439,7 +439,7 @@
   </template>
   
   <script setup>
-  import { Link, usePage } from "@inertiajs/vue3";
+  import { Link, usePage ,router} from "@inertiajs/vue3";
   import Userstatus from "~/components/UserStatus.vue";
   import Comment from "./Comment.vue";
   import { computed, ref } from "vue";
@@ -477,6 +477,37 @@
   const loadMoreProducts = () => {
     visibleCount.value += 4;
   };
+  
+const addToCart = async (product) => {
+    console.log(product);
+    try {
+        await router.post(route('cart.store' , product), {
+            onSuccess: (page) => {
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    position: "top-end",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    title: page.props.flash.success,
+                });
+            },
+        });
+    } catch (errors) {
+        Swal.fire({
+            toast: true,
+            icon: "error",
+            position: "top-end",
+            timer: 2000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            title: "Failed to add to cart",
+        });
+        console.error(errors);
+    }
+};
+
   </script>
   
   <script>
