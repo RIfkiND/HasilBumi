@@ -152,6 +152,7 @@
                             <h2 class="text-lg font-semibold mb-4">
                                 Pembelian
                             </h2>
+                            
                             <div class="flex justify-between mb-2">
                                 <span>Total</span>
                                 <span>Rp {{ cartItems.total }}</span>

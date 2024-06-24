@@ -45,7 +45,7 @@
                     <div
                         class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
                     >
-                        8
+                        {{ user.totalCart }}
                     </div>
                 </Link>
                 <div class="flex gap-2" v-if="!$page.props.auth.user">
