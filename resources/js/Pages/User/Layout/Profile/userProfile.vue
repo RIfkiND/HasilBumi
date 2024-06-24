@@ -35,7 +35,7 @@ import ShopProfile from "./components/ShopProfile.vue";
                 </div>
                 <div  v-else class="flex flex-col gap-16">
                     <Profile />
-                    
+
                 </div>
                 
             </div>

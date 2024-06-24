@@ -41,9 +41,9 @@ class HandleInertiaRequests extends Middleware
 
             'auth' => [
                 'user' => $user ? array_merge($user->toArray(), [
-                    'totalWhislist' => $user->totalWhislist(),
-                    'seller' => $user?->seller,
-                ]) : null,
+                    'totalWhislist' => $user->totalWhislist(),  
+                ]):null,
+                'seller' => $user->seller,
             ],
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [

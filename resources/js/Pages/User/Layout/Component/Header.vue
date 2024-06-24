@@ -89,7 +89,7 @@ a {
                         <i class="fa-regular fa-heart icon-style"></i>
                     </div>
                     <div class="text-xs leading-3">Favorite</div>
-                    <div
+                    <div  v-if="$page.props.auth.user"
                         class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
                     >
                     {{ user.totalWhislist}}
@@ -103,7 +103,7 @@ a {
                         <i class="bx bxs-cart text-[29px]"></i>
                     </div>
                     <div class="text-xs leading-3">Keranjang</div>
-                    <div
+                    <div v-if="$page.props.auth.user"
                         class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
                     >
                         8

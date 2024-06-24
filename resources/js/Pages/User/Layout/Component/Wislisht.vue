@@ -1,12 +1,13 @@
 <template>
     <Navbar />
     <body>
+   
         <!-- wrapper -->
-        <div
+        <div 
             class="container grid grid-cols-12 items-start gap-6 pt-4 pb-16 font-inter"
         >
             <!-- wishlist -->
-            <div  v-for="item in Whislist" class="col-span-12 space-y-4"
+            <div v-for="item in Whislist" class="col-span-12 space-y-4"
             :key="item" >
                 <div
                     class="flex items-center justify-between border gap-6 p-4 border-gray-200 rounded"
@@ -78,9 +79,6 @@
                         </a>
                     </div>
                 </div>
-
-        
-      
             </div>
             <!-- ./wishlist -->
         </div>
