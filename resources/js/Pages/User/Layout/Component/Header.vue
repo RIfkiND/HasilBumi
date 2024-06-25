@@ -89,10 +89,11 @@ a {
                         <i class="fa-regular fa-heart icon-style"></i>
                     </div>
                     <div class="text-xs leading-3">Favorite</div>
-                    <div  v-if="$page.props.auth.user"
+                    <div
+                        v-if="$page.props.auth.user"
                         class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
                     >
-                    {{ user.totalWhislist}}
+                        {{ user.totalWhislist }}
                     </div>
                 </Link>
                 <Link
@@ -103,13 +104,17 @@ a {
                         <i class="bx bxs-cart text-[29px]"></i>
                     </div>
                     <div class="text-xs leading-3">Keranjang</div>
-                    <div v-if="$page.props.auth.user"
+                    <div
+                        v-if="$page.props.auth.user"
                         class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-danger text-white text-xs"
                     >
                         {{ user.totalCart }}
                     </div>
                 </Link>
-                <div class="flex gap-3 mx-5 md:flex" v-if="!$page.props.auth.user">
+                <div
+                    class="flex gap-3 mx-5 md:flex"
+                    v-if="!$page.props.auth.user"
+                >
                     <Link :href="route('view.login')" class="btn-header-outline"
                         >Login</Link
                     >
@@ -127,7 +132,10 @@ a {
                     </Link> -->
                 </div>
 
-                <div v-if="$page.props.auth.user" class="flex items-center relative">
+                <div
+                    v-if="$page.props.auth.user"
+                    class="flex items-center relative"
+                >
                     <!-- Profil bulat -->
                     <div
                         class="rounded-full border cursor-pointer shadow-white-lg flex items-center justify-center text-xl font-bold border-primaryColor text-textColor w-10 h-10 mr-6"
@@ -187,7 +195,7 @@ a {
                                 > -->
                     <span
                         class="block text-md truncate text-textColor font-bold"
-                        >{{ $page.props.auth.user.name}}</span
+                        >{{ $page.props.auth.user.name }}</span
                     >
                 </div>
 
@@ -220,96 +228,106 @@ a {
                     v-if="dropdownOpen"
                     class="absolute flex top-full left-0 bg-white shadow-md py-2 z-50"
                 >
-                    <a
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Meat')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Meat</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Vegetable')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Vegetable</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Fruit')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Fruits</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Forest')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Forest</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Grain')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Grain</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Industri')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Industri</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Ship')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Ship</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Processed')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Processed</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Spice')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Spice</span
                         >
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="#"
                         class="flex items-center px-6 py-3 hover:bg-gray-100 transition w-full"
+                        @click="filterByCategory('Textile')"
                     >
                         <span
                             class="ml-6 text-sm text-textColor hover:text-primaryColor"
                             >Textile</span
                         >
-                    </a>
+                    </Link>
                 </div>
             </div>
 
@@ -346,22 +364,18 @@ a {
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
                 <input
-              
-               
-                 v-model="searchQuery"
-            @keydown.enter="performSearch"
+                    v-model="searchQuery"
+                    @keydown.enter="performSearch"
                     type="text"
                     name="search"
                     id="search"
                     class="w-full border border-r-0 border-colorBorder pl-12 py-2 pr-3 rounded-l-md focus:outline-none md:flex bg-white"
                     placeholder="search"
-                    
                 />
                 <button
-                @click="performSearch"
+                    @click="performSearch"
                     class="bg-primaryColor border border-colorBorder text-white px-8 rounded-r-md transition md:flex items-center hover:bg-hoverPrimary"
-                      
-                    >
+                >
                     Search
                 </button>
             </div>
@@ -399,14 +413,16 @@ a {
 </template>
 
 <script setup>
-import { Link} from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
 import { usePage, router } from "@inertiajs/vue3";
 import { get } from "lodash";
-import { ref, watch , computed  } from "vue";
-const page = usePage()
+import { ref, watch, computed } from "vue";
+const page = usePage();
 
-const user = computed(() => page.props.auth.user)
-
+const user = computed(() => page.props.auth.user);
+const filterByCategory = (category) => {
+    router.get(route("filter.category", { category }));
+};
 const mobileMenuOpen = ref(false);
 const toggleMobileMenu = () => {
     mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -435,17 +451,13 @@ const editProfile = () => {
     // Navigasi ke halaman edit profil
 };
 
-const searchQuery = ref('');
+const searchQuery = ref("");
 
 const performSearch = () => {
-
-    emit('search', searchQuery.value.trim());
+    emit("search", searchQuery.value.trim());
 };
 const logout = () => {
     router.post(route("auth.logout"));
     location.reload();
 };
-
-
 </script>
-

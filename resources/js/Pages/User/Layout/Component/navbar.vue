@@ -13,8 +13,16 @@
 
             <nav>
                 <ul class="flex gap-6 items-center mb-0">
-                    <li><Link :href="route('Home')" class="navbar-list">Home</Link></li>
-                    <li><a href="#" class="navbar-list">Shop</a></li>
+                    <li>
+                        <Link :href="route('Home')" class="navbar-list"
+                            >Home</Link
+                        >
+                    </li>
+                    <li>
+                        <Link :href="route('Shop.main')" class="navbar-list"
+                            >Shop</Link
+                        >
+                    </li>
                     <li><a href="#" class="navbar-list">About Us</a></li>
                     <li><a href="#" class="navbar-list">Contact Us</a></li>
                 </ul>
@@ -59,7 +67,10 @@
                     >
                 </div>
 
-                <div v-if="$page.props.auth.user" class="flex items-center relative">
+                <div
+                    v-if="$page.props.auth.user"
+                    class="flex items-center relative"
+                >
                     <!-- Profil bulat -->
                     <div
                         class="rounded-full border cursor-pointer shadow-white-lg flex items-center justify-center text-xl font-bold border-primaryColor text-textColor w-10 h-10 mr-6"
@@ -89,9 +100,8 @@
                             <ul class="px-0" aria-labelledby="user-menu-button">
                                 <li class="py-2 px-4 style-bg">
                                     <Link
-                                        href="#"
+                                        :href="route('userProfile')"
                                         class="block text-sm truncate mb-1 text-left style-text"
-                                        @click="editProfile"
                                     >
                                         Akun Saya
                                     </Link>
@@ -161,12 +171,12 @@
                 >
                     Home
                 </Link>
-                <a
-                    href="#"
+                <Link
+                    :href="route('Shop.main')"
                     class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"
                 >
                     Shop
-                </a>
+                </Link>
                 <a
                     href="#"
                     class="block text-white py-2 px-4 hover:bg-hoverPrimary transition"
@@ -239,11 +249,11 @@ a {
 <script setup>
 import { Link } from "@inertiajs/vue3";
 import { usePage, router } from "@inertiajs/vue3";
-import { ref, watch ,computed} from "vue";
+import { ref, watch, computed } from "vue";
 
-const page = usePage()
+const page = usePage();
 
-const user = computed(() => page.props.auth.user)
+const user = computed(() => page.props.auth.user);
 
 const mobileMenuOpen = ref(false);
 const toggleMobileMenu = () => {

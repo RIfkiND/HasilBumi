@@ -10,12 +10,12 @@
         >
             <div class="relative flex justify-center items-center group">
                 <div class="w-full h-[160px] overflow-hidden">
-                    <Link  :href="route('Shop.Product', { id: product.id })">
-                    <img
-                        :src="`/${product.image}`"
-                        :alt="`product ${index + 1}`"
-                        class="w-full h-full bg-cover bg-center"
-                    />
+                    <Link :href="route('Shop.Product', { id: product.id })">
+                        <img
+                            :src="`/${product.image}`"
+                            :alt="`product ${index + 1}`"
+                            class="w-full h-full bg-cover bg-center"
+                        />
                     </Link>
                 </div>
                 <div class="absolute gap-2 hidden group-hover:flex">
@@ -167,7 +167,7 @@ const loadMoreProducts = () => {
 };
 
 const form = useForm({
-    product_id: null
+    product_id: null,
 });
 const loading = ref(false);
 
@@ -177,7 +177,7 @@ const resetFormData = () => {
 
 const addToWishlist = async (productId) => {
     form.product_id = productId;
-    
+
     try {
         await form.post(route("wishlist.store"), {
             onSuccess: (page) => {
@@ -199,6 +199,4 @@ const addToWishlist = async (productId) => {
         loading.value = false;
     }
 };
-
-
 </script>
