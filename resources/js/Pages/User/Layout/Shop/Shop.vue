@@ -1,5 +1,5 @@
 <template>
-    <Header  @search="handleSearch"/>
+    <Header @search="handleSearch" />
     <!-- shop wrapper -->
     <div
         class="container mx-auto w-full py-20 px-5 flex items-center justify-center bg-cyan-800"
@@ -81,26 +81,30 @@
                     >
                         Categories
                     </h3>
-                    <div class="space-y-2"  v-for="category in Categories"
-                    :key="category.id"
-                    :value="category.id">
+                    <div
+                        class="space-y-2"
+                        v-for="category in Categories"
+                        :key="category.id"
+                        :value="category.id"
+                    >
                         <div class="flex items-center">
                             <input
-                            type="checkbox"
-                            :id="'category-' + category.id"
-                           v-model="selectedCategoriesRef"
-                            :value="category.id"
-
-                            class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
-                          />
-                          <label :for="'category-' + category.id" class="text-slate-300 ml-3">
-                            {{ category.name }}
-                          </label>
+                                type="checkbox"
+                                :id="'category-' + category.id"
+                                v-model="selectedCategoriesRef"
+                                :value="category.id"
+                                class="accent-primaryColor rounded-sm cursor-pointer focus:ring-0"
+                            />
+                            <label
+                                :for="'category-' + category.id"
+                                class="text-slate-300 ml-3"
+                            >
+                                {{ category.name }}
+                            </label>
                             <div class="ml-auto text-slate-300 text-sm">
-                                &lpar;{{category.products_count}}&rpar;
+                                &lpar;{{ category.products_count }}&rpar;
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -382,12 +386,12 @@
                         />
                     </div>
                     <button
-                    @click="priceFilter()"
-                    class="mt-4 w-full py-2 bg-hoverPrimary hover:cursor-pointer hover:bg-teal-dark rounded-md block px-4 text-white font-medium capitalize text-md"
-                >
-                    <i class='bx bx-money'></i>
-                    Filter
-                </button>
+                        @click="priceFilter()"
+                        class="mt-4 w-full py-2 bg-hoverPrimary hover:cursor-pointer hover:bg-teal-dark rounded-md block px-4 text-white font-medium capitalize text-md"
+                    >
+                        <i class="bx bx-money"></i>
+                        Filter
+                    </button>
                 </div>
                 <!-- Price End -->
 
@@ -397,33 +401,37 @@
                         Satuan
                     </h3>
                     <div class="flex flex-row flex-wrap items-center gap-2">
-                        <div v-for="satuan in Satuans" :key="satuan.id" :value="satuan.id" class="size-selector">
+                        <div
+                            v-for="satuan in Satuans"
+                            :key="satuan.id"
+                            :value="satuan.id"
+                            class="size-selector"
+                        >
                             <input
                                 type="radio"
                                 name="size"
-                               :id="'satuan-' + satuan.id"
-                                    v-model="selectedSatuan"
-
-                                  class="sr-only"
+                                :id="'satuan-' + satuan.id"
+                                v-model="selectedSatuan"
+                                class="sr-only"
                                 :value="satuan.id"
                             />
                             <label
-                            :for="'satuan-' + satuan.id"
-
+                                :for="'satuan-' + satuan.id"
                                 class="text-xs border-2 border-white-50 rounded-sm flex items-center justify-center cursor-pointer shadow-sm text-slate-200 capitalize p-1 active:bg-primaryColor active:text-white"
                                 @click="selectSatuan(satuan.id)"
-                                >
+                            >
                                 {{ satuan.symbol }}
                             </label>
                         </div>
                     </div>
                     <button
-                        
                         class="mt-4 w-full py-2 bg-hoverPrimary hover:cursor-pointer hover:bg-teal-dark rounded-md block px-4 text-white font-medium capitalize text-md"
                     >
-                        <i class="fa-solid fa-magnifying-glass text-white px-1"></i>
+                        <i
+                            class="fa-solid fa-magnifying-glass text-white px-1"
+                        ></i>
                         Reset
-                </button>
+                    </button>
                 </div>
 
                 <!-- Satuan End -->
@@ -448,9 +456,8 @@
             <!-- Radio End -->
 
             <!-- List Product -->
-            <Product :dataProducts="products"/>
+            <Product :dataProducts="products" />
             <!-- List Product -->
-
         </div>
 
         <!-- ./products -->
@@ -461,39 +468,38 @@
 </template>
 
 <script setup>
-import Product from "./Components/Product.vue"
+import Product from "./Components/Product.vue";
 import Header from "../Component/Header.vue";
 import Footer from "../Component/Footer.vue";
-import { Link,usePage ,router ,useForm} from "@inertiajs/vue3";
-import { ref, computed ,watch } from "vue";
+import { Link, usePage, router, useForm } from "@inertiajs/vue3";
+import { ref, computed, watch, onMounted } from "vue";
 
 const props = defineProps({
     products: Array,
     Categories: Array,
     selectedCategories: Array,
     selectedPrices: Object,
-    search:Object,
+    search: Object,
 });
-const searchQuery = ref(props.search || '');
+const searchQuery = ref(props.search || "");
 
 const handleSearch = (key) => {
-
     searchQuery.value = key;
 
-  
-    router.get(route('Shop.search', { search: key }), { preserveState: true });
+    router.get(route("Shop.search", { search: key }), { preserveState: true });
 };
 
 const { Satuans, selectedSatuans } = usePage().props;
 
 const selectedCategoriesRef = ref(props.selectedCategories || []);
 
-const selectedSatuan = ref(selectedSatuans.length > 0 ? selectedSatuans[0] : null);
+const selectedSatuan = ref(
+    selectedSatuans.length > 0 ? selectedSatuans[0] : null
+);
 
 watch(selectedSatuan, (newSatuan) => {
     updateFilteredProducts();
 });
-
 
 watch(selectedCategoriesRef, (newCategories, oldCategories) => {
     if (JSON.stringify(newCategories) !== JSON.stringify(oldCategories)) {
@@ -502,20 +508,22 @@ watch(selectedCategoriesRef, (newCategories, oldCategories) => {
 });
 
 const filterPrices = useForm({
-    prices: [props.selectedPrices.from, props.selectedPrices.to]
+    prices: [props.selectedPrices.from, props.selectedPrices.to],
 });
 
 const priceFilter = async () => {
-    await filterPrices.transform((data) => ({
-        ...data,
-        prices: {
-            from: filterPrices.prices[0],
-            to: filterPrices.prices[1]
-        }
-    })).get(route('Shop.main'), {
-        preserveState: true,
-        replace: true
-    });
+    await filterPrices
+        .transform((data) => ({
+            ...data,
+            prices: {
+                from: filterPrices.prices[0],
+                to: filterPrices.prices[1],
+            },
+        }))
+        .get(route("Shop.main"), {
+            preserveState: true,
+            replace: true,
+        });
 };
 
 // const updateFilteredSatuanProducts = async () => {
@@ -541,7 +549,7 @@ const updateFilteredProducts = async () => {
             params.satuans = [selectedSatuan.value];
         }
 
-        await router.get(route('Shop.main'), params, {
+        await router.get(route("Shop.main"), params, {
             preserveState: true,
             replace: true,
         });
@@ -564,23 +572,32 @@ const sliders = ref([
 
 const sliderIndex = ref(0);
 
-function prevSlider() {
-    if (sliderIndex.value) {
+const prevSlider = () => {
+    if (sliderIndex.value > 0) {
         sliderIndex.value--;
     } else {
         sliderIndex.value = sliders.value.length - 1;
     }
-}
+};
 
-function nextSlider() {
+const nextSlider = () => {
     if (sliderIndex.value < sliders.value.length - 1) {
         sliderIndex.value++;
     } else {
         sliderIndex.value = 0;
     }
-}
+};
 
+// Fungsi untuk mengatur autoplay slider
+const startAutoplay = () => {
+    setInterval(() => {
+        nextSlider();
+    }, 5000); // Ganti nilai timeout sesuai kebutuhan
+};
 
+onMounted(() => {
+    startAutoplay();
+});
 
 const product1 = "/assets/products/pohon1.jpg";
 const product2 = "/assets/products/pohon2.jpg";

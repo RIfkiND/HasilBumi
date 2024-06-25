@@ -1,21 +1,23 @@
 <template>
     <Navbar />
     <body>
-   
         <!-- wrapper -->
-        <div 
-            class="container grid grid-cols-12 items-start gap-6 pt-4 pb-16 font-inter"
+        <div
+            class="container max-w-[1200px] grid grid-cols-12 items-start gap-6 pt-4 pb-16 font-inter"
         >
             <!-- wishlist -->
-            <div v-for="item in Whislist" class="col-span-12 space-y-4"
-            :key="item" >
+            <div
+                v-for="item in Whislist"
+                class="col-span-12 space-y-4"
+                :key="item"
+            >
                 <div
                     class="flex items-center justify-between border gap-6 p-4 border-gray-200 rounded"
                 >
                     <div class="w-28">
                         <img
-                        :src="`/${item.product.first_image.url}`"
-                           :alt="`product ${item + 1}`"
+                            :src="`/${item.product.first_image.url}`"
+                            :alt="`product ${item + 1}`"
                             class="w-full"
                         />
                     </div>
@@ -27,23 +29,30 @@
                         </h2>
                         <p class="text-textColor text-sm">
                             Availability:
-                            <span v-if="!item.product == 0" class="text-hoverPrimary font-semibold"
+                            <span
+                                v-if="!item.product == 0"
+                                class="text-hoverPrimary font-semibold"
                                 >In Stock</span
                             >
                             <span v-else class="text-hoverPrimary font-semibold"
-                            >Out ofStock</span
-                        >
+                                >Out ofStock</span
+                            >
                         </p>
                     </div>
-                    <div class="text-lg font-semibold">Rp{{item.product.price}}</div>
-                    <a href="#" class="btn-wislisht">add to cart</a>
+                    <div class="text-lg font-semibold">
+                        Rp{{ item.product.price }}
+                    </div>
+                    <a
+                        @click="addToCart(detailProduct)"
+                        class="btn-wislisht cursor-pointer"
+                        >add to cart</a
+                    >
 
                     <div
                         class="text-gray-600 cursor-pointer hover:text-primary"
                     >
                         <a
-                          @click.prevent="removeFromWishlist(item.id)"
-                       
+                            @click.prevent="removeFromWishlist(item.id)"
                             class="text-primaryColor inline-block"
                             data-bs-toggle="tooltip"
                             data-bs-placement="top"
@@ -91,37 +100,64 @@
 <script setup>
 import Footer from "./Footer.vue";
 import Navbar from "./navbar.vue";
-import { useForm } from '@inertiajs/vue3'
-defineProps ({
-    Whislist:Array
-})
-
+import { useForm } from "@inertiajs/vue3";
+defineProps({
+    Whislist: Array,
+});
 
 const form = useForm({
-  product_id: null,
+    product_id: null,
 });
 
 const removeFromWishlist = async (id) => {
-  
-  try {
-    await form.delete(route('wishlist.destroy', id), {
-      onSuccess: (page) => {
-        Swal.fire({
-          toast: true,
-          icon: "success",
-          position: "top-end",
-          timer: 2000,
-          timerProgressBar: true,
-          showConfirmButton: false,
-          title: page.props.flash.success,
+    try {
+        await form.delete(route("wishlist.destroy", id), {
+            onSuccess: (page) => {
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    position: "top-end",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    title: page.props.flash.success,
+                });
+            },
         });
-      },
-    });
-  } catch (err) {
-    console.log(err);
-  }
+    } catch (err) {
+        console.log(err);
+    }
 };
 
+const addToCart = async (product) => {
+    console.log(product);
+    try {
+        await router.post(route("cart.store", product), {
+            onSuccess: (page) => {
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    position: "top-end",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    title: page.props.flash.success,
+                });
+            },
+        });
+    } catch (errors) {
+        Swal.fire({
+            toast: true,
+            icon: "error",
+            position: "top-end",
+            timer: 2000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            title: "Failed to add to cart",
+        });
+        console.error(errors);
+    }
+};
 </script>
 
 <style></style>

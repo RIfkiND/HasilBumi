@@ -55,7 +55,7 @@
 
                         <li>
                             <a
-                                href="https://github.com/ajigo77"
+                                href="https://github.com"
                                 rel="noreferrer"
                                 target="_blank"
                                 class="text-dark transition hover:opacity-75"
@@ -66,7 +66,7 @@
 
                         <li>
                             <a
-                                href="https://api.whatsapp.com/send?phone=6281563929896"
+                                href="#"
                                 rel="noreferrer"
                                 target="_blank"
                                 class="text-dark transition hover:opacity-75"
@@ -123,7 +123,7 @@
 
                             <li>
                                 <a
-                                    href="#"
+                                    href="#cardCategory"
                                     class="text-textColor transition hover:text-primaryColor"
                                 >
                                     Kategori Produk
@@ -227,11 +227,11 @@
 
                             <li>
                                 <a
-                                    href="mailto:ajistwn301@gmail.com"
+                                    href="#"
                                     class="text-textColor transition hover:text-primaryColor flex items-center gap-1"
                                 >
                                     <i class="bx bx-envelope bx-xm">:</i>
-                                    ajistwn301@gmail.com
+                                    TeamHasilBumi@gmail.com
                                 </a>
                             </li>
                         </ul>
@@ -266,26 +266,6 @@
                                 </option>
                             </datalist>
                         </div>
-                    </div>
-                    <div>
-                        <p class="font-bold text-dark">Dark Mode</p>
-                        <label
-                            for="AcceptConditions"
-                            class="relative h-8 w-14 cursor-pointer rounded-full bg-white-50 transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-dark"
-                        >
-                            <input
-                                type="checkbox"
-                                id="AcceptConditions"
-                                class="peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden"
-                            />
-
-                            <span
-                                class="absolute inset-y-0 start-0 z-10 m-1 inline-flex size-6 items-center justify-center rounded-full bg-white text-slate-200 transition-all peer-checked:start-6 peer-checked:text-green-600"
-                                id="AcceptConditions"
-                            >
-                                <i class="bx bx-moon"></i>
-                            </span>
-                        </label>
                     </div>
                 </div>
             </div>
