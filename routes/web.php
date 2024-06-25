@@ -20,6 +20,7 @@ Route::get('/dashboard', function () {
 
 
 
+require __DIR__.'/Pages/Admin.php';
 
 require __DIR__.'/Pages/Main.php';
 

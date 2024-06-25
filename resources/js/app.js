@@ -1,6 +1,6 @@
 import "./bootstrap"
 import "../css/app.css"
-
+import { createPinia } from 'pinia'
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -14,13 +14,13 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-
+import { useDarkModeStore } from '~/stores/darkMode.js'
 
 const vuetify = createVuetify({
     components,
     directives,
 })
-
+const pinia = createPinia()
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Hasil Bumi';
 
 createInertiaApp({
@@ -31,6 +31,7 @@ createInertiaApp({
         app.use(plugin);
         app.mixin({ methods: { route } });
         app.use(vuetify);
+        app.use(pinia);
         app.use(CKEditor);
         app.use(ElementPlus);
         app.use(VueSweetaler2)
@@ -39,3 +40,11 @@ createInertiaApp({
     },
     progress: true,
 }); 
+const darkModeStore = useDarkModeStore(pinia)
+
+if (
+   (!localStorage['darkMode'] && window.matchMedia('(prefers-color-scheme: dark)').matches) ||
+   localStorage['darkMode'] === '1'
+ ) {
+   darkModeStore.set(true)
+}

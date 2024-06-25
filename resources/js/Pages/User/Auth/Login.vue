@@ -84,9 +84,10 @@
             </button>
           </form>
           <span class="text-center text-xs text-gray-300 mb-3">Or</span>
+          <!-- hover error  -->
           <button
             @click="handleGoogleLogin"
-            class="w-full border border-gray-300 text-md p-2 rounded-lg mb-3 hover:bg-black hover:text-textColor hover:border-colorBorder"
+            class="w-full border border-gray-300 text-md p-2 rounded-lg mb-3  hover:text-textColor hover:border-colorBorder" 
           >
             <img
               src="Assets/img/google.svg"

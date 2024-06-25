@@ -93,7 +93,7 @@
           </button>
         </form>
           <span class="text-center text-xs text-gray-300 mb-3">Or</span>
-            <Link class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-white-50 no-underline text-slate-200 relative hover:border-2 hover:border-slate-200 hover:text-slate-300 mb-3" :href="route('google.login')">
+            <a class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-white-50 no-underline text-slate-200 relative hover:border-2 hover:border-slate-200 hover:text-slate-300 mb-3" :href="route('google.login')">
                 <span class="absolute text-center w-2 h-2 rounded-full mb-3 lg:left-[260px] md:left-[155px] sm:left-[180px] left-[90px]">
                     <svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <path fill="#EA4335 " d="M5.26620003,9.76452941 C6.19878754,6.93863203 8.85444915,4.90909091 12,4.90909091 C13.6909091,4.90909091 15.2181818,5.50909091 16.4181818,6.49090909 L19.9090909,3 C17.7818182,1.14545455 15.0545455,0 12,0 C7.27006974,0 3.1977497,2.69829785 1.23999023,6.65002441 L5.26620003,9.76452941 Z"/>
@@ -103,7 +103,7 @@
                 </svg>
                 </span>
                 <span>Sign in with Google</span>
-            </Link>
+            </a>
           <div class="text-center text-gray-400">
             Already have an account?
             <span><Link :href="route('view.login')" class="text-textColor text-decoration-none hover:text-teal hover:cursor-pointer">Sign in</Link></span>

@@ -1,33 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwind/_base.css';
+@import 'tailwind/_components.css';
+@import 'tailwind/_utilities.css';
+
+/* @import '_checkbox-radio-switch.css';
+@import '_progress.css';
+@import '_scrollbars.css';
+@import '_table.css';
+
+@import 'styles/_basic.css';
+@import 'styles/_white.css'; */
+
 
 .btn-wislisht {
-    @apply px-6 py-2 text-center text-sm text-white bg-primaryColor border border-primaryColor rounded hover:bg-transparent hover:text-primaryColor transition uppercase font-medium;
+    @apply px-6 py-2 text-sm font-medium text-center text-white uppercase transition border rounded bg-primaryColor border-primaryColor hover:bg-transparent hover:text-primaryColor;
 }
 
 .navbar-list {
-    @apply text-base text-textColor no-underline hover:text-primaryColor transition-all hidden md:block md:flex-wrap lg:text-base;
+    @apply hidden text-base no-underline transition-all text-textColor hover:text-primaryColor md:block md:flex-wrap lg:text-base;
 }
 
 .btn-full {
-    @apply text-white px-6 py-2 bg-primaryColor rounded-md transition hover:text-primaryColor hover:bg-white;
+    @apply px-6 py-2 text-white transition rounded-md bg-primaryColor hover:text-primaryColor hover:bg-white;
 }
 
 .btn-no-full {
-    @apply text-primaryColor px-6 py-2 bg-white rounded-full border-2 border-primaryColor transition-all hover:text-white hover:bg-primaryColor;
+    @apply px-6 py-2 transition-all bg-white border-2 rounded-full text-primaryColor border-primaryColor hover:text-white hover:bg-primaryColor;
 }
 
 .btn-outline-shop {
-    @apply text-primaryColor px-12 py-2 rounded-full button-border hover:bg-primaryColor hover:text-white transition;
+    @apply px-12 py-2 transition rounded-full text-primaryColor button-border hover:bg-primaryColor hover:text-white;
 }
 
 .btn-header-outline {
-    @apply text-primaryColor px-6 py-2 rounded-full button-border hover:bg-primaryColor hover:text-white transition;
+    @apply px-6 py-2 transition rounded-full text-primaryColor button-border hover:bg-primaryColor hover:text-white;
 }
 
 .btn-header-full {
-    @apply text-white bg-primaryColor px-6 py-2 rounded-full hover:bg-white hover:text-primaryColor button-border transition;
+    @apply px-6 py-2 text-white transition rounded-full bg-primaryColor hover:bg-white hover:text-primaryColor button-border;
 }
 
 .button-border {
