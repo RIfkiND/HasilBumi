@@ -16,43 +16,43 @@ class CartController extends Controller
     {
         $user = $request->user();
         $cartItems = [];
-    
+
         if ($user) {
             $cartItems = Cart::where('user_id', $user->id)->with(['product.first_image'])->get();
         } else {
             $cartItems = Cart::getCookieCartItems();
-    
+
             if (count($cartItems) > 0) {
                 $cartItems = Cart::getProductsAndCartItems();
                 $products = $cartItems[0]->load('first_image');
                 $cartItems = $cartItems[1];
             }
         }
-    
+
         if (count($cartItems) > 0) {
             $products = $user ? $cartItems->pluck('product') : $products;
             $total = $products->reduce(function ($carry, $product) use ($cartItems) {
                 return $carry + $product->price * ($cartItems[$product->id]['quantity'] ?? 0);
             }, 0);
-    
+
             $response = [
                 'count' => count($cartItems),
                 'total' => $total,
                 'items' => $cartItems,
                 'products' => $products,
             ];
-    
+
             return Inertia::render('User/Layout/Component/shop_card', ['cartItems' => $response]);
         } else {
             return redirect()->back();
         }
     }
-    
+
 
 
     public function store(Request $request, Product $product)
     {
-   
+
         $quantity = $request->post('quantity', 1);
         $user = $request->user();
 
@@ -133,7 +133,7 @@ class CartController extends Controller
             }
             Cart::setCookieCartItems($cartItems);
             if (count($cartItems) <= 0) {
-                return redirect()->route('home')->with('info', 'your cart is empty');
+                return redirect()->back()->with('success', 'your cart is empty');
             } else {
                 return redirect()->back()->with('success', 'item removed successfully');
             }

@@ -226,9 +226,9 @@ const deleteImage = async (pimage, index) => {
     <!-- end -->
     <div class="mx-auto">
       <!-- Start coding here -->
-      <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
+      <div class="relative overflow-hidden bg-white shadow-md sm:rounded-lg">
         <div
-          class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-6"
+          class="flex flex-col items-center justify-between p-6 space-y-3 md:flex-row md:space-y-0 md:space-x-4"
         >
           <div class="w-full md:w-1/2">
             <div class="flex items-center">
@@ -255,7 +255,7 @@ const deleteImage = async (pimage, index) => {
                   v-model="search"
                   type="text"
                   id="simple-search"
-                  class="bg-white border border-primaryColor text-textColor text-sm rounded-lg focus:border-primaryColor focus:ring focus:ring-primaryColor block w-full pl-10 p-2"
+                  class="block w-full p-2 pl-10 text-sm bg-white border rounded-lg border-primaryColor text-textColor focus:border-primaryColor focus:ring focus:ring-primaryColor"
                   placeholder="Search"
                   required=""
                 />
@@ -263,22 +263,23 @@ const deleteImage = async (pimage, index) => {
             </div>
           </div>
           <div
-            class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
+            class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3"
           >
             <button
               type="button"
               @click.prevent="showAddProductForm = true"
-              class="text-textColor border-2 border-primaryColor bg-white hover:bg-primaryColor focus:ring-2 focus:ring-primaryColor font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
+              class="px-4 py-2 text-sm font-medium rounded-lg bg-hijau-1 hover:ring-2 hover:ring-primaryColor focus:outline-none text-primaryColor"
             >
-              Add product
+            <i class='bx bx-plus-medical'></i>
+              Tambahkan produk
             </button>
           </div>
         </div>
-        <div class="overflow-x-auto">
+        <div class="w-full p-3">
           <table
-            class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
+            class="w-full text-sm text-left border-opacity-50 text-textColor border-slate-200"
           >
-            <thead class="text-2xs text-textColor capitalize">
+            <thead class="pb-3 capitalize border-b-2 text-2xs text-textColor border-white-50">
               <tr>
                 <th scope="col" class="px-4 py-3 truncate">No</th>
                 <th scope="col" class="px-4 py-3 truncate">Product name</th>
@@ -294,114 +295,86 @@ const deleteImage = async (pimage, index) => {
               <tr
                 v-for="(product, index) in dataProducts.data"
                 :key="index"
-                class="border-b"
+                class="border-b-2 border-white-50"
               >
-                <th
+                <td
                   scope="row"
-                  class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+                  class="px-4 font-medium text-textColor whitespace-nowrap"
                 >
                   {{ index + 1 }}
-                </th>
+                </td>
 
-                <th
+                <td
                   scope="row"
-                  class="px-4 py-3 font-medium text-textColor whitespace-nowrap"
+                  class="px-4 font-medium text-textColor whitespace-nowrap"
                 >
                   {{ product.name }}
-                </th>
-                <td class="px-4 py-3 text-center">
+                </td>
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">
                   {{ product.category.name }}
                 </td>
 
-                <td class="px-4 py-3 text-center">
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">
                   {{ product.stock }}
                 </td>
-                <td class="px-4 py-3">Rp.{{ product.price }}</td>
-                <td class="px-4 py-3">
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">Rp.{{ product.price }}</td>
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">
                   {{ product.satuan.symbol }}
                 </td>
-                <td class="px-3 py-3">
+                <td class="px-4 font-medium text-textColor whitespace-nowrap">
                   <span
                     v-if="product.stock > 0"
-                    class="text-primaryColor text-xs font-semibold mr-2 px-2.5 py-0.5"
+                    class="text-xs font-semibold text-primaryColor whitespace-nowrap"
                   >
                     inStock
                   </span>
-                  <span v-else class="text-Red text-xs font-semibold truncate">
+                  <span v-else class="text-xs font-semibold truncate text-Red">
                     Out of Stock
                   </span>
                 </td>
                 <!--Aksi Icon-->
-                <td class="px-4 py-3 flex items-center">
+                <td class="flex items-center px-4 mx-2 font-medium text-textColor whitespace-nowrap">
                   <div
                     :id="`${product.id}`"
-                    class="bg-white text-textColor rounded flex items-center gap-4"
+                    class="flex items-center gap-4 bg-white rounded text-textColor"
                   >
-                    <a
-                      href="#"
-                      @click.prevent="openEditModal(product)"
-                      class="block py-2 px-4 bg-primaryColor text-white rounded-full"
-                      ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-blue-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2
-                      2 0 112.828
-                      2.828L11.828 15H9v-2.828l8.586-8.586z"
-                        /></svg
-                    ></a>
-                    <a
-                      href="#"
-                      @click.prevent="deleteProduct(product, index)"
-                      class="block py-2 px-4 text-sm bg-Red text-white rounded-full"
+                  <div class="relative z-50 block">
+                    <div
+                      class="flex items-center justify-center w-8 h-8 rounded-full dropdown dropdown-left hover:bg-white-50 hover:cursor-pointer"
+                      tabindex="0"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-red-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
-                      4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                        /></svg
-                    ></a>
-                    <a
-                      href="#"
-                      @click.prevent="deleteProduct(product, index)"
-                      class="block py-2 px-4 text-sm bg-bl bg-blue text-white rounded-full"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-6 h-6 text-red-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          d="M12 9a3.02 3.02 0 0 0-3 3c0 1.642 1.358 3 3 3 1.641 0 3-1.358 3-3 0-1.641-1.359-3-3-3z"
-                        ></path>
-                        <path
-                          d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 12c-5.351 0-7.424-3.846-7.926-5C4.578 10.842 6.652 7 12 7c5.351 0 7.424 3.846 7.926 5-.504 1.158-2.578 5-7.926 5z"
-                        ></path>
-                      </svg>
-                    </a>
+                      <button class="relative">
+                        <i
+                          class="m-auto mt-1 bx bx-dots-vertical-rounded bx-xs text-slate-200"
+                        ></i>
+                      </button>
+                      <ul class="w-40 bg-white rounded-md shadow dropdown-content menu">
+                        <li class="w-full py-1 rounded-md hover:bg-white-50">
+                          <a
+                            @click.prevent="openEditModal(product)"
+                            class="flex hover:text-slate-300"
+                          >
+                            <i class="bx bx-pencil text-[#F3CA52] text-[16px]"></i>
+                            Edit
+                          </a>
+                        </li>
+                        <li class="w-full py-1 rounded-md hover:bg-white-50">
+                          <a
+                            @click.prevent="deleteProduct(product, index)"
+                            class="flex hover:text-slate-300"
+                          >
+                            <i class="bx bx-trash text-Red text-[16px]"></i>
+                            Hapus
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                   </div>
                 </td>
               </tr>
               <tr v-if="product === 0">
-                <td colspan="8" class="px-4 py-3 text-center font-bold">
+                <td colspan="8" class="px-4 py-3 font-bold text-center">
                   There are no products.
                 </td>
               </tr>
@@ -409,7 +382,7 @@ const deleteImage = async (pimage, index) => {
           </table>
         </div>
         <nav
-          class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
+          class="flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0"
           aria-label="Table navigation"
         >
           <span class="text-sm font-normal text-textColor">
@@ -429,7 +402,7 @@ const deleteImage = async (pimage, index) => {
                   ' bg-blue text-dark hover:text-white hover:cursor-text hover:bg-primaryColor':
                     product.active,
                 }"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
+                class="flex items-center justify-center px-3 py-2 text-sm leading-tight bg-white border border-gray-300 text-textColor"
                 v-html="product.label"
               ></a>
             </li>
@@ -442,16 +415,16 @@ const deleteImage = async (pimage, index) => {
   <transition name="modal">
     <div
       v-if="showAddProductForm"
-      class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 bg-text-grey"
     >
       <div
         class="bg-white p-8 rounded shadow-lg z-100 w-1/2 max-h-[80vh] overflow-y-auto"
       >
-        <h2 class="text-2xl font-bold mb-4">Add Product</h2>
-        <form @submit.prevent="submitAddProductForm" class="mt-8 grid grid-cols-2 gap-4">
+        <h2 class="mb-4 text-2xl font-bold">Add Product</h2>
+        <form @submit.prevent="submitAddProductForm" class="grid grid-cols-2 gap-4 mt-8">
           <div class="col-span-2">
             <div class="mb-4">
-              <label for="productImage" class="block text-gray-700 mb-2">Tambahkan gambar produk</label>
+              <label for="productImage" class="block mb-2 text-gray-700">Tambahkan gambar produk</label>
               <!-- Tambahkan input untuk gambar products -->
               <el-upload
                 v-model:file-list="productImages"
@@ -537,7 +510,7 @@ const deleteImage = async (pimage, index) => {
                 :editor="editor"
                 v-model="deskripsi"
                 :config="editorConfig"
-                class="mt-1 w-full"
+                class="w-full mt-1"
               ></ckeditor>
             </div>
           </div>
@@ -545,14 +518,14 @@ const deleteImage = async (pimage, index) => {
             <div class="flex justify-center">
               <button
                 type="button"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                class="inline-flex items-center px-4 py-2 mr-2 text-xs font-semibold tracking-widest uppercase transition duration-150 ease-in-out bg-white border-2 rounded-md text-primaryColor border-primaryColor"
                 @click="showAddProductForm = false"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                class="inline-flex items-center px-4 py-2 mr-2 text-xs font-semibold tracking-widest uppercase transition duration-150 ease-in-out bg-white border-2 rounded-md text-primaryColor border-primaryColor"
               >
                 Save
               </button>
@@ -566,13 +539,13 @@ const deleteImage = async (pimage, index) => {
   <transition name="modal">
     <div
       v-if="showEditProductForm"
-      class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 bg-text-grey"
     >
       <div
         class="bg-white p-8 rounded shadow-lg z-100 w-1/2 max-h-[80vh] overflow-y-auto"
       >
-        <h2 class="text-2xl font-bold mb-4">Edit Product</h2>
-        <form @submit.prevent="updateProduct" class="mt-8 grid grid-cols-2 gap-4">
+        <h2 class="mb-4 text-2xl font-bold">Edit Product</h2>
+        <form @submit.prevent="updateProduct" class="grid grid-cols-2 gap-4 mt-8">
           <div class="col-span-2">
             <div class="mb-4">
               <label for="productImage" class="block text-gray-700">Product Image</label>
@@ -599,7 +572,7 @@ const deleteImage = async (pimage, index) => {
                 <div
                   v-for="(pimage, index) in images"
                   :key="pimage.id"
-                  class="relative w-32 h-32 mr-4 mb-4"
+                  class="relative w-32 h-32 mb-4 mr-4"
                 >
                   <img class="w-full h-full rounded" :src="`/${pimage.url}`" alt="" />
                   <span
@@ -607,7 +580,7 @@ const deleteImage = async (pimage, index) => {
                   >
                     <span
                       @click="deleteImage(pimage, index)"
-                      class="text-red text-xs font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      class="absolute text-xs font-bold transform -translate-x-1/2 -translate-y-1/2 text-red top-1/2 left-1/2"
                       >x</span
                     >
                   </span>
@@ -686,7 +659,7 @@ const deleteImage = async (pimage, index) => {
                 :editor="editor"
                 v-model="deskripsi"
                 :config="editorConfig"
-                class="mt-1 w-full"
+                class="w-full mt-1"
               ></ckeditor>
             </div>
           </div>
@@ -694,14 +667,14 @@ const deleteImage = async (pimage, index) => {
             <div class="flex justify-center">
               <button
                 type="button"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs capitalize tracking-widest transition ease-in-out duration-150 mr-2"
+                class="inline-flex items-center px-4 py-2 mr-2 text-xs font-semibold tracking-widest capitalize transition duration-150 ease-in-out bg-white border-2 rounded-md text-primaryColor border-primaryColor"
                 @click="showEditProductForm = false"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs capitalize tracking-widest transition ease-in-out duration-150 mr-2"
+                class="inline-flex items-center px-4 py-2 mr-2 text-xs font-semibold tracking-widest capitalize transition duration-150 ease-in-out bg-white border-2 rounded-md text-primaryColor border-primaryColor"
               >
                 Save
               </button>

@@ -12,7 +12,7 @@ use App\Http\Controllers\Seller\Product\EditProductController;
 
 //get
 Route::get('/Pendaftaran/form',[PendaftaranSellerController::class, 'PendaftaranForm'])->name('seller.form');
-
+Route::get('/store/{nama_toko}',[PageSellerController::class, 'VisitStore'])->name('seller.store');
 Route::middleware(['auth'])->group(function () {
     Route::post('/seller/pendaftaran/proses', [PendaftaranSellerController::class, 'Pendaftaran'])->name('pendaftaran.seller');
     Route::put('/seller/update/{id}',[PageSellerController::class,'update'])->name('seller.edit');

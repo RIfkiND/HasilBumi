@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
-
+use Carbon\Carbon;
 class PageSellerController extends Controller
 {
 
@@ -50,10 +50,10 @@ class PageSellerController extends Controller
 
     if ($request->hasFile('photo_toko')) {
         $avatar = $request->file('photo_toko');
-        $avatar->storeAs('toko/Avatar/', $avatar->hashName());
-            Storage::delete('toko/Avatar/' . $user->photo_toko);
+        $avatar->storeAs('Toko/Avatar/', $avatar->hashName());
+            Storage::delete('Toko/Avatar/' . $user->photo_toko);
         $user->updateOrCreate([
-            'photo_toko/'=>$avatar->hashName(),
+            'photo_toko'=>$avatar->hashName(),
         ]);
 
     }
@@ -65,7 +65,7 @@ class PageSellerController extends Controller
         $user = Auth::user();
         $query =Product::with(['category', 'product_image','satuan'])
             ->where('seller__information_id', $user->id);
-    
+
         if ($request->has('search') && $request->search != '') {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
@@ -73,15 +73,28 @@ class PageSellerController extends Controller
         $TotalProduct = $sellerInfo->totalProducts();
 
         $products = $query->latest()->paginate(10);
-    
+
         $categories = Category::all();
-    
+
         return Inertia::render('User/Layout/Profile/userProducts', [
             'products' => $products,
             'categories' => $categories,
             'search'=> $request->only('search'),
             'TotalProducts'=> $TotalProduct,
         ]);
-        
+
+
+}
+public function VisitStore($nama_toko){
+    $store = Seller_Information::with(['product','user'])->where('nama_toko', $nama_toko)->firstOrFail();
+    $totalProducts = $store->totalProducts();
+    $lastActive = Carbon::parse($store->user->last_active)->diffForHumans();
+    $joinedTime = Carbon::parse($store->created_at)->diffForHumans();
+        return Inertia::render("Shop/Layout/VisistShop",[
+            "Stores"=>$store,
+            "totalProducts" => $totalProducts,
+            "joinedTime" => $joinedTime
+
+        ]);
 }
 }

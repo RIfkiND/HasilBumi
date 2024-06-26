@@ -74,9 +74,9 @@ const deleteProduct = (product, index) => {
     <!-- end -->
     <div class="mx-auto">
       <!-- Start coding here -->
-      <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
+      <div class="relative overflow-hidden bg-white shadow-md sm:rounded-lg">
         <div
-          class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-6"
+          class="flex flex-col items-center justify-between p-6 space-y-3 md:flex-row md:space-y-0 md:space-x-4"
         >
           <div class="w-full md:w-1/2">
             <form class="flex items-center">
@@ -102,7 +102,7 @@ const deleteProduct = (product, index) => {
                 <input
                   type="text"
                   id="simple-search"
-                  class="bg-white border border-primaryColor text-textColor text-sm rounded-lg focus:border-primaryColor focus:ring focus:ring-primaryColor block w-full pl-10 p-2"
+                  class="block w-full p-2 pl-10 text-sm bg-white border rounded-lg border-primaryColor text-textColor focus:border-primaryColor focus:ring focus:ring-primaryColor"
                   placeholder="Search"
                   required=""
                 />
@@ -112,9 +112,9 @@ const deleteProduct = (product, index) => {
         </div>
         <div class="overflow-x-auto">
           <table
-            class="w-full text-sm text-left text-textColor border-slate-200 border-opacity-50"
+            class="w-full text-sm text-left border-opacity-50 text-textColor border-slate-200"
           >
-            <thead class="text-2xs text-textColor capitalize">
+            <thead class="capitalize text-2xs text-textColor">
               <tr>
                 <th scope="col" class="px-5 py-3 text-center truncate">Payment Date</th>
                 <th scope="col" class="px-5 py-3 truncate">Payment Code</th>
@@ -139,7 +139,7 @@ const deleteProduct = (product, index) => {
                 </th>
                 <th
                   scope="row"
-                  class="px-14 py-3 font-medium text-textColor whitespace-nowrap"
+                  class="py-3 font-medium px-14 text-textColor whitespace-nowrap"
                 >
                   <!-- {{ product.title }} -->
                   Fruit Dragon
@@ -159,7 +159,7 @@ const deleteProduct = (product, index) => {
                   >
                     inStock
                   </span>
-                  <span v-else class="text-Red text-xs font-semibold truncate">
+                  <span v-else class="text-xs font-semibold truncate text-Red">
                     Out of Stock
                   </span>
                 </td>
@@ -167,43 +167,43 @@ const deleteProduct = (product, index) => {
                   <button
                     v-if="product.published === 0"
                     type="button"
-                    class="px-3 py-2 text-xs font-medium text-center bg-hijau-1 rounded-full text-primaryColor focus:ring-2 focus:outline-none focus:ring-primaryColor"
+                    class="px-3 py-2 text-xs font-medium text-center rounded-full bg-hijau-1 text-primaryColor focus:ring-2 focus:outline-none focus:ring-primaryColor"
                   >
                     Published
                   </button>
                   <button
                     v-else
                     type="button"
-                    class="px-3 py-2 text-xs font-medium text-center text-merah-2 bg-merah-1 rounded-full focus:ring-2 focus:outline-none focus:ring-Red"
+                    class="px-3 py-2 text-xs font-medium text-center rounded-full text-merah-2 bg-merah-1 focus:ring-2 focus:outline-none focus:ring-Red"
                   >
                     Unpublished
                   </button>
                 </td>
-                <td class="px-5 py-3 items-center">
-                  <div class="block relative z-50">
+                <td class="items-center px-5 py-3">
+                  <div class="relative z-50 block">
                     <div
-                      class="dropdown dropdown-left w-8 h-8 rounded-full hover:bg-white-50 hover:cursor-pointer flex justify-center items-center"
+                      class="flex items-center justify-center w-8 h-8 rounded-full dropdown dropdown-left hover:bg-white-50 hover:cursor-pointer"
                       tabindex="0"
                     >
                       <button class="relative">
                         <i
-                          class="bx bx-dots-vertical-rounded bx-xs text-slate-200 m-auto"
+                          class="m-auto bx bx-dots-vertical-rounded bx-xs text-slate-200"
                         ></i>
                       </button>
-                      <ul class="dropdown-content menu shadow bg-white rounded-md w-40">
-                        <li class="py-1 w-full hover:bg-white-50 rounded-md">
+                      <ul class="w-40 bg-white rounded-md shadow dropdown-content menu">
+                        <li class="w-full py-1 rounded-md hover:bg-white-50">
                           <Link
                             @click.prevent="deleteProduct(product, index)"
-                            class="hover:text-slate-300 flex"
+                            class="flex hover:text-slate-300"
                           >
                             <i class="bx bx-trash text-Red text-[16px]"></i>
                             Hapus
                           </Link>
                         </li>
-                        <li class="py-1 w-full hover:bg-white-50 rounded-md">
+                        <li class="w-full py-1 rounded-md hover:bg-white-50">
                           <Link
                             @click.prevent="showEditProductForm = true"
-                            class="hover:text-slate-300 flex"
+                            class="flex hover:text-slate-300"
                           >
                             <i class="bx bx-pencil text-Red text-[16px]"></i>
                             Edit
@@ -218,7 +218,7 @@ const deleteProduct = (product, index) => {
           </table>
         </div>
         <nav
-          class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4 relative"
+          class="relative flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0"
           aria-label="Table navigation"
         >
           <span class="text-sm font-normal text-textColor">
@@ -252,14 +252,14 @@ const deleteProduct = (product, index) => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
+                class="flex items-center justify-center px-3 py-2 text-sm leading-tight bg-white border border-gray-300 text-textColor"
                 >1</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-textColor bg-white border border-gray-300"
+                class="flex items-center justify-center px-3 py-2 text-sm leading-tight bg-white border border-gray-300 text-textColor"
                 >2</a
               >
             </li>
@@ -267,21 +267,21 @@ const deleteProduct = (product, index) => {
               <a
                 href="#"
                 aria-current="page"
-                class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-textColor bg-primary-50 border border-primary-300"
+                class="z-10 flex items-center justify-center px-3 py-2 text-sm leading-tight border text-textColor bg-primary-50 border-primary-300"
                 >3</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300"
+                class="flex items-center justify-center px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300"
                 >...</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300"
+                class="flex items-center justify-center px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300"
                 >100</a
               >
             </li>
@@ -315,13 +315,13 @@ const deleteProduct = (product, index) => {
   <transition name="modal">
     <div
       v-if="showAddProductForm"
-      class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50 font-inter"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 bg-text-grey font-inter"
     >
-      <div class="bg-white p-8 rounded shadow-lg z-100 w-1/3">
-        <h2 class="text-2xl font-bold mb-4">Add Product</h2>
+      <div class="w-1/3 p-8 bg-white rounded shadow-lg z-100">
+        <h2 class="mb-4 text-2xl font-bold">Add Product</h2>
         <form
           @submit.prevent="submitAddProductForm"
-          class="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2"
+          class="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-2"
         >
           <div class="col-span-1 lg:col-span-2">
             <div class="mb-4">
@@ -398,17 +398,17 @@ const deleteProduct = (product, index) => {
             />
           </div>
           <div class="col-span-1 lg:col-span-2 justify-self-center">
-            <div class="flex justify-center flex-wrap lg:flex-wrap gap-3">
+            <div class="flex flex-wrap justify-center gap-3 lg:flex-wrap">
               <button
                 type="button"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                class="inline-flex items-center px-4 py-2 mr-2 text-xs font-semibold tracking-widest uppercase transition duration-150 ease-in-out bg-white border-2 rounded-md text-primaryColor border-primaryColor"
                 @click="showAddProductForm = false"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                class="inline-flex items-center px-4 py-2 mr-2 text-xs font-semibold tracking-widest uppercase transition duration-150 ease-in-out bg-white border-2 rounded-md text-primaryColor border-primaryColor"
               >
                 Save
               </button>
@@ -422,13 +422,13 @@ const deleteProduct = (product, index) => {
   <transition name="modal">
     <div
       v-if="showEditProductForm"
-      class="fixed inset-0 flex items-center justify-center bg-text-grey bg-opacity-50 z-50 font-inter"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 bg-text-grey font-inter"
     >
-      <div class="bg-white p-8 rounded shadow-lg z-100 w-1/3">
-        <h2 class="text-2xl font-bold mb-4">Edit Product</h2>
+      <div class="w-1/3 p-8 bg-white rounded shadow-lg z-100">
+        <h2 class="mb-4 text-2xl font-bold">Edit Product</h2>
         <form
           @submit.prevent="submitEditProductForm"
-          class="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2"
+          class="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-2"
         >
           <div class="col-span-1 lg:col-span-2">
             <div class="mb-4">
@@ -508,17 +508,17 @@ const deleteProduct = (product, index) => {
             />
           </div>
           <div class="col-span-1 lg:col-span-2">
-            <div class="flex justify-center flex-wrap lg:flex-wrap gap-3">
+            <div class="flex flex-wrap justify-center gap-3 lg:flex-wrap">
               <button
                 type="button"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                class="inline-flex items-center px-4 py-2 mr-2 text-xs font-semibold tracking-widest uppercase transition duration-150 ease-in-out bg-white border-2 rounded-md text-primaryColor border-primaryColor"
                 @click="showEditProductForm = false"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                class="inline-flex items-center px-4 py-2 bg-white text-primaryColor border-2 border-primaryColor rounded-md font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 mr-2"
+                class="inline-flex items-center px-4 py-2 mr-2 text-xs font-semibold tracking-widest uppercase transition duration-150 ease-in-out bg-white border-2 rounded-md text-primaryColor border-primaryColor"
               >
                 Save
               </button>

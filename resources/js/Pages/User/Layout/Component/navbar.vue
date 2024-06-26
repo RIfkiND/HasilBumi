@@ -83,9 +83,9 @@
               <ul class="px-0" aria-labelledby="user-menu-button">
                 <li class="px-4 py-2 style-bg">
                   <Link
-                    href="#"
+                    :href="route('userProfile')"
                     class="block mb-1 text-sm text-left truncate style-text"
-                    @click="editProfile"
+                   
                   >
                     Akun Saya
                   </Link>

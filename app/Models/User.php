@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Cashier\Billable;
+use Carbon\Carbon;
 class User extends Authenticatable
 {
     use Billable ,HasApiTokens, HasFactory, Notifiable;
@@ -21,12 +22,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'avatar_user',  
+        'avatar_user',
         'tgl_lahir',
         'jenis_kelamin',
         'no_hp',
         'alamat',
         'is_online',
+        'last_active'
     ];
 
     /**
@@ -75,4 +77,9 @@ class User extends Authenticatable
     }
 
 
+
+    public function updateLastActive()
+    {
+        $this->update(['last_active' => Carbon::now()]);
+    }
 }

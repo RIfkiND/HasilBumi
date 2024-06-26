@@ -24,6 +24,7 @@
                 </div>
               </div>
               <div>
+                <div v-if="cartItems.items.length > 0">
                 <div
                   v-for="item in cartItems.items"
                   :key="item.id"
@@ -80,6 +81,7 @@
                           </transition>
                         </a>
                         <a
+                        @click="deleteItem(item)"
                           class="inline-block cursor-pointer text-primaryColor"
                           data-bs-toggle="tooltip"
                           data-bs-placement="top"
@@ -109,14 +111,14 @@
                         <div>
                           <button
                             @click="decrement(item)"
-                            class="px-3 py-1 border rounded-md mr-2"
+                            class="px-3 py-1 mr-2 border rounded-md"
                           >
                             -
                           </button>
                           <span class="px-3 py-1 border">{{ item.quantity }}</span>
                           <button
                             @click="increment(item)"
-                            class="px-3 py-1 border rounded-md ml-2"
+                            class="px-3 py-1 ml-2 border rounded-md"
                           >
                             +
                           </button>
@@ -125,6 +127,10 @@
                     </div>
                   </div>
                 </div>
+                </div>
+                <div v-else>
+                <p>Keranjang Anda kosong.</p>
+              </div>
                 <!-- More product rows -->
               </div>
             </div>
@@ -188,20 +194,35 @@ const decrement = (item) => {
   }
 };
 
-const updateQuantity = (item) => {
-  router.put(
+const deleteItem = async (item) => {
+ try{
+    await router.delete(route("cart.delete", item.product_id), {
+    preserveScroll: true,
+    onSuccess: (page) => {
+        Swal.fire({
+          toast: true,
+          icon: "success",
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          title: page.props.flash.success,
+        });
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const updateQuantity = async (item) => {
+  await router.put(
     route("cart.update", item.product_id),
     {
       quantity: item.quantity,
     },
     {
       preserveScroll: true,
-      onSuccess: () => {
-        console.log("Quantity updated successfully");
-      },
-      onError: () => {
-        console.log("Failed to update quantity");
-      },
     }
   );
 };

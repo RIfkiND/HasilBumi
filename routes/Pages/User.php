@@ -23,7 +23,7 @@ Route::get('/Whislist',[WhistlistController::class ,'WhistList'])->name('Home.Wh
 Route::post('/wishlist', [ WhistlistController::class, 'store'])->name('wishlist.store');
 Route::delete('/wishlist/{id}', [WhistlistController::class, 'destroy'])->name('wishlist.destroy');
 //user cart
-Route::get('/ShopCart',[CartController::class ,'view'])->name('Home.ShopCart')->middleware('auth');
+Route::get('/ShopCart/User',[CartController::class ,'view'])->name('Home.ShopCart');
 
 Route::prefix('cart')->controller(CartController::class)->group(function () {
     Route::post('store/{product}','store')->name('cart.store');
