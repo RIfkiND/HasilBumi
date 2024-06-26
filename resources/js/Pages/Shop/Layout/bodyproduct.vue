@@ -28,7 +28,7 @@
       </Link>
     </div>
     <!-- ./breadcrumb -->
-  
+
     <!-- product-detail -->
     <div
       class="container grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 font-inter"
@@ -105,14 +105,14 @@
         <div class="flex items-baseline mb-1 space-x-2 font-roboto mt-4">
           <p class="text-xl text-primaryColor font-semibold">Rp{{ detailProduct.price }}</p>
         </div>
-  
+
         <p class="mt-4 text-slate-300">
           Explore keajaiban alam dengan produk kami yang terbuat dari bahan-bahan alami
           pilihan, menghadirkan kebaikan langsung dari tumbuhan ke dalam rutinitas harian
           Anda. Nikmati kelembutan dan keefektifan produk kami yang ramah lingkungan, sambil
           mendukung keberlanjutan alam.
         </p>
-  
+
         <div class="mt-4">
           <h3 class="text-sm text-dark capitalize font-semibold">Quantity</h3>
           <div class="flex">
@@ -140,7 +140,7 @@
             </button>
           </div>
         </div>
-  
+
         <div class="mt-6 flex gap-3 pt-3 pb-5">
           <Link
             class="bg-hoverPrimary text-white px-8 py-2 font-medium rounded-md capitalize flex items-center gap-2 transition no-underline hover:bg-primaryColor"
@@ -158,95 +158,13 @@
       </div>
     </div>
     <!-- ./product-detail -->
-  
+
     <!-- shop -->
-    <div class="flex items-center py-7 border-2 border-white-50 px-32 mb-10 rounded-md">
-      <div class="avatar mr-6">
-        <div class="w-24 rounded-full">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-          />
-        </div>
-      </div>
-      <div class="flex gap-7">
-        <div class="space-y-1 ml-3 border-r-2 pr-10 border-white-50">
-          <div class="flex">
-            <div class="block -space-y-1">
-              <span class="text-dark font-bold text-xl text-left">{{
-                detailProduct.seller.nama_toko
-              }}</span>
-              <div v-if="status">
-                <span class="text-slate-200 text-sm text-left"
-                  >Aktif 15 menit yang lalu</span
-                >
-              </div>
-              <div v-else>
-                <span class="text-primaryColor text-left">Online</span>
-              </div>
-              <div class="flex">
-                <div class="space-x-1">
-                  <span
-                    ><i class="fa-solid fa-star text-[#F3CA52] text-[10px]"></i
-                  ></span>
-                  <span
-                    ><i class="fa-solid fa-star text-[#F3CA52] text-[10px]"></i
-                  ></span>
-                  <span
-                    ><i class="fa-solid fa-star text-[#F3CA52] text-[10px]"></i
-                  ></span>
-                  <span><i class="bx bx-star text-[10px] text-slate-200"></i></span>
-                  <span><i class="bx bx-star text-[10px] text-slate-200"></i></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="flex gap-2">
-            <Link
-              :href="route('chat.index', detailProduct.seller.user.id)"
-              class="bg-hoverPrimary p-2 px-3 text-white mt-3 font-medium rounded-md capitalize flex items-center gap-2 transition no-underline hover:bg-primaryColor text-sm justify-center"
-            >
-              <i class="bx bxs-message-dots mt-[2px]"></i>Chat penjual
-            </Link>
-            <Link
-              :href="route('chat.index', detailProduct.seller.user.id)"
-              class="bg-hijau-1 text-primaryColor p-2 px-3 mt-3 font-medium rounded-md capitalize flex items-center gap-2 transition no-underline text-sm justify-center hover:ring-2 hover:ring-primaryColor hover:text-primaryColor"
-            >
-              <i class="bx bxs-store mt-[2px]"></i>Kunjungi toko
-            </Link>
-          </div>
-        </div>
-        <div class="space-y-5 border-r-2 pr-10 border-white-50">
-          <div class="flex justify-between gap-5 mt-4">
-            <label class="text-slate-200 capitalize">Pengikut</label>
-            <span class="text-primaryColor">5 rb</span>
-          </div>
-          <div class="flex justify-between gap-5">
-            <label class="text-slate-200 capitalize">Bergabung</label>
-            <span class="text-primaryColor">1 tahun yang lalu</span>
-          </div>
-        </div>
-        <div class="space-y-5 border-r-2 pr-10 border-white-50">
-          <div class="flex justify-between gap-5 mt-4">
-            <label class="text-slate-200 capitalize">Presentasi chat dibales</label>
-            <span class="text-primaryColor">99%</span>
-          </div>
-          <div class="flex justify-between gap-5">
-            <label class="text-slate-200 capitalize">Penilaian</label>
-            <span class="text-primaryColor">76 rb</span>
-          </div>
-        </div>
-        <div class="space-y-5">
-          <div class="flex justify-between gap-5 mt-4">
-            <label class="text-slate-200 capitalize">Produk</label>
-            <span class="text-primaryColor">5,2 rb</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <!-- SHOP END -->
-  
+
     <!-- description -->
-    <div class="container pb-16 font-inter">
+    <div class="container pb-16 font-inter mx-3">
       <h3
         class="border-b-2 border-white-50 font-roboto text-dark pb-3 font-semibold text-lg"
       >
@@ -254,7 +172,7 @@
       </h3>
       <div class="w-full pt-6 text-md">
         <div v-html="detailProduct.deskripsi" class="text-dark"></div>
-  
+
         <!-- component -->
         <div class="flex flex-col font-inter py-8">
           <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -320,7 +238,7 @@
       </div>
     </div>
     <!-- ./description -->
-  
+
     <!-- related product -->
     <div class="container pb-16 font-inter">
       <h2 class="text-2xl font-medium text-dark capitalize mb-6">produk lainnya</h2>
@@ -437,21 +355,21 @@
       </div>
     </div>
   </template>
-  
+
   <script setup>
   import { Link, usePage } from "@inertiajs/vue3";
   import Userstatus from "~/components/UserStatus.vue";
   import Comment from "./Comment.vue";
   import { computed, ref } from "vue";
-  
+
   const props = defineProps({
     detailProduct: Object,
     status: Object,
     relatedProduct: Array,
   });
-  
+
   const products = ref([]);
-  
+
   const relatedProductsinfo = () => {
     products.value = props.relatedProduct.map((product) => ({
       id: product.id,
@@ -464,21 +382,21 @@
       kota: product.seller.kota,
     }));
   };
-  
+
   // Call relatedProductsinfo to initialize products.value
   relatedProductsinfo();
-  
+
   const visibleCount = ref(12);
-  
+
   const visibleProducts = computed(() => {
     return products.value.slice(0, visibleCount.value);
   });
-  
+
   const loadMoreProducts = () => {
     visibleCount.value += 4;
   };
   </script>
-  
+
   <script>
   export default {
     data() {
@@ -520,15 +438,15 @@
       this.product10 = "/assets/products/product10.jpg";
       this.product11 = "/assets/products/product11.jpg";
       this.product12 = "/assets/products/product12.jpg";
-  
+
       if (this.detailProduct.product_image.length > 0) {
         const firstImageUrl = this.detailProduct.product_image[0].url.startsWith("/")
           ? this.detailProduct.product_image[0].url
           : `/${this.detailProduct.product_image[0].url}`;
-  
+
         this.mainImage = firstImageUrl;
         this.currentImage = this.mainImage;
-  
+
         console.log("Initial main image:", this.mainImage);
         console.log("Initial current image:", this.currentImage);
       }
@@ -562,7 +480,7 @@
           });
         }
       }, //Code selesai disini untuk membatasi nilai max dan min
-  
+
       // Di bawah ini adalah kode untuk menampilkan gambar ketika di hover
       changeMainImage(imageSrc) {
         this.currentImage = imageSrc.startsWith("/") ? imageSrc : `/${imageSrc}`;
@@ -571,7 +489,7 @@
       resetMainImage() {
         this.currentImage = this.mainImage;
       },
-  
+
       popupSuccess() {
         Swal.fire({
           title: "Sukses",
@@ -583,7 +501,7 @@
           heightAuto: true,
         });
       },
-  
+
       popupFavorite() {
         Swal.fire({
           iconColor: "#3CB72B",

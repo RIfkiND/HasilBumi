@@ -1,6 +1,6 @@
 <template>
     <!-- header atas -->
-    <header class="py-2 shadow-sm bg-white w-full z-50 font-inter">
+    <header class="py-3 shadow-sm bg-white w-full z-50 font-inter">
         <div
             class="container flex items-center justify-between md:gap-4 sm:gap-6"
         >

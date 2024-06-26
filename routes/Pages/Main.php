@@ -31,3 +31,7 @@ Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySat
 Route::get('/Products/filter/satuan', [FilterPageController::class, 'filterBySatuan'])->name('filter.satuan');
 
 Route::get('/product/main/search',[SearchController::class,'SearchProduct'])->name('Shop.search');
+
+Route::get('/visit-shop', function(){
+    return Inertia::render('Shop/Layout/VisitShop');
+});
