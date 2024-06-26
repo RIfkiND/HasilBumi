@@ -11,7 +11,7 @@ use App\Models\Product;
 use App\Models\satuan;
 use App\Models\Seller_Information;
 use App\Models\Whistlist;
-
+use Carbon\Carbon;
 class HomeController extends Controller
 {
     public function Home()
@@ -57,11 +57,12 @@ class HomeController extends Controller
         $allProducts = Product::with(['first_image', 'satuan', 'category', 'seller.user', 'seller'])
         ->where('id', '!=', $id)
         ->get();
-
+        $joinedTime = Carbon::parse($product->seller->created_at)->diffForHumans();
         return Inertia::render('Shop/Product', [
             'products' => $product,
             'allProducts'=>$allProducts,
             'sellerIsOnline' => $sellerIsOnline,
+            'joinedTime' => $joinedTime
         ]);
     }
 

@@ -163,8 +163,10 @@
     <div class="flex items-center px-32 mb-10 border-2 rounded-md py-7 border-white-50">
       <div class="mr-6 avatar">
         <div class="w-24 rounded-full">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+        <img v-if="detailProduct.seller.photo_toko == null"
+        :src="Shop">
+          <img v-else
+           :src="tokoUrl"
           />
         </div>
       </div>
@@ -222,7 +224,7 @@
           </div>
           <div class="flex justify-between gap-5">
             <label class="capitalize text-slate-200">Bergabung</label>
-            <span class="text-primaryColor">1 tahun yang lalu</span>
+            <span class="text-primaryColor">{{ joinedTime }}</span>
           </div>
         </div>
         <div class="pr-10 space-y-5 border-r-2 border-white-50">
@@ -444,12 +446,18 @@
   import Comment from "./Comment.vue";
   import { computed, ref } from "vue";
 
+  const Shop =  "/assets/icon/Profile/icon.jpg";
   const props = defineProps({
     detailProduct: Object,
     status: Object,
     relatedProduct: Array,
+    joinedTime: String,
   });
+  const avatar= props.detailProduct.seller;
 
+  const tokoUrl = computed(() => {
+  return avatar.photo_toko ? `/storage/Toko/Avatar/${avatar.photo_toko}` : null;
+    });
   const products = ref([]);
 
   const relatedProductsinfo = () => {
@@ -507,6 +515,7 @@ const addToCart = async (product) => {
         console.error(errors);
     }
 };
+const icon =  "/assets/icon/Profile/icon.jpg";
 
   </script>
 

@@ -103,15 +103,17 @@
       <div class="grid grid-cols-2 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         <Link
           class="overflow-hidden bg-white rounded-md shadow"
-          v-for="product in featuredProducts"
+          v-for="product in Stores.product"
           :key="product.id"
         >
           <div class="relative flex items-center justify-center group">
             <div class="w-full h-[190px] overflow-hidden bg-cover bg-center">
+                <Link  :href="route('Shop.Product', { id: product.id })">
               <img
-                :src="product.image"
+                :src="`/${product.first_image.url}`" :alt="`Image of ${product.name}`"
                 class="w-full h-full transition bg-center bg-cover hover:cursor-pointer hover:brightness-50 group-hover:brightness-50"
               />
+              </Link>
             </div>
             <div class="absolute hidden gap-2 group-hover:flex">
               <Link
@@ -140,11 +142,11 @@
             <div class="capitalize text-[10px] flex gap-2 text-center">
               <span
                 class="px-1 border-1 text-primaryColor rounded-sm border-primaryColor text-[10px] italic"
-                >{{ product.category }}</span
+                >{{ product.category.name }}</span
               >
               <span
                 class="px-1 border-1 text-primaryColor rounded-sm border-primaryColor text-[10px] italic"
-                >{{ product.satuan }}</span
+                >{{ product.satuan.symbol }}</span
               >
             </div>
             <div class="flex items-baseline mt-2 mb-2 space-x-2 capitalize">

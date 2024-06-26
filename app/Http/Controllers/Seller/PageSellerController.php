@@ -86,14 +86,15 @@ class PageSellerController extends Controller
 
 }
 public function VisitStore($nama_toko){
-    $store = Seller_Information::with(['product','user'])->where('nama_toko', $nama_toko)->firstOrFail();
+    $store = Seller_Information::with(['product.first_image', 'product.category', 'product.satuan', 'user'])->where('nama_toko', $nama_toko)->firstOrFail();
     $totalProducts = $store->totalProducts();
     $lastActive = Carbon::parse($store->user->last_active)->diffForHumans();
     $joinedTime = Carbon::parse($store->created_at)->diffForHumans();
         return Inertia::render("Shop/Layout/VisistShop",[
             "Stores"=>$store,
             "totalProducts" => $totalProducts,
-            "joinedTime" => $joinedTime
+            "joinedTime" => $joinedTime,
+            "lastActive" => $lastActive,
 
         ]);
 }
