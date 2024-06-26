@@ -21,6 +21,7 @@ class AdminLoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect(RouteServiceProvider::Admin_Dashboard)->with('success', 'You have Log in as Admin');;
+        return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD)->with('success', 'You have logged in as Admin');
     }
+
 }

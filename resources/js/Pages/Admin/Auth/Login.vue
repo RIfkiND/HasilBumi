@@ -151,6 +151,6 @@ const form = reactive({
 });
 
 function submit() {
-    router.post("admin.auth", form);
+    router.post(route("admin.auth"), form);
 }
 </script>
