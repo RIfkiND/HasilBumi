@@ -1,6 +1,6 @@
 <template>
     <Header/>
-    <Body :detailProduct="products" :status="sellerIsOnline" :relatedProduct="allProducts" :joinedTime="joinedTime"/>
+    <Body :detailProduct="products" :status="sellerIsOnline" :relatedProduct="allProducts" :joinedTime="joinedTime" :totalProducts="totalProducts"/>
     <Footer/>
 </template>
 <script setup>
@@ -12,6 +12,7 @@
         allProducts:Array,
         sellerIsOnline:Object,
         joinedTime: String,
+        totalProducts:Number,
     })
 
 

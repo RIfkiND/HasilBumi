@@ -24,7 +24,7 @@ class ProductRating extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function rtaing_image(){
-        return $this->hasMany(ProductRatingsImage::class);
+    public function rating_images(){
+        return $this->hasMany(ImageRating::class);
     }
 }

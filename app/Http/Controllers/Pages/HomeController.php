@@ -53,7 +53,7 @@ class HomeController extends Controller
             ->findOrFail($id);
 
         $sellerIsOnline = $product->seller->user->is_online ?? false;
-
+        $totalProducts = $product->seller->totalProducts();
         $allProducts = Product::with(['first_image', 'satuan', 'category', 'seller.user', 'seller'])
         ->where('id', '!=', $id)
         ->get();
@@ -61,6 +61,7 @@ class HomeController extends Controller
         return Inertia::render('Shop/Product', [
             'products' => $product,
             'allProducts'=>$allProducts,
+            'totalProducts' => $totalProducts,
             'sellerIsOnline' => $sellerIsOnline,
             'joinedTime' => $joinedTime
         ]);

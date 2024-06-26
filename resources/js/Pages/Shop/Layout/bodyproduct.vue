@@ -240,7 +240,7 @@
         <div class="space-y-5">
           <div class="flex justify-between gap-5 mt-4">
             <label class="capitalize text-slate-200">Produk</label>
-            <span class="text-primaryColor">5,2 rb</span>
+            <span class="text-primaryColor">{{ totalProducts}}</span>
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <Comment />
+                <Comment :detailProduct="detailProduct"/>
               </div>
             </div>
           </div>
@@ -452,6 +452,7 @@
     status: Object,
     relatedProduct: Array,
     joinedTime: String,
+    totalProducts:Number,
   });
   const avatar= props.detailProduct.seller;
 

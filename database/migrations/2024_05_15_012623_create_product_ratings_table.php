@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->longText('comments')->nullable();
-            $table->string('image')->nullable();
             $table->integer('star_rating')->nullable();
             $table->timestamps();
         });
