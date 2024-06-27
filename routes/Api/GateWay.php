@@ -1,8 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\User\CheckoutController;
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/checkout', [PaymentController::class, 'checkout'])->name('checkout');
-    Route::post('/checkout/process', [PaymentController::class, 'processCheckout'])->name('checkout.process');
-});
+
+Route::prefix('checkout')->controller(CheckoutController::class)->group((function()  {
+    Route::post('order','store')->name('checkout.store');
+    Route::get('success','success')->name('checkout.success');
+    Route::get('cancel','cancel')->name('checkout.cancel');
+}));

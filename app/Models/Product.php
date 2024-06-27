@@ -18,7 +18,7 @@ class Product extends Model
         'deskripsi',
         'satuan_id',
     ];
-    
+
 
 
     public function seller(){
@@ -38,8 +38,14 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class,'category_id') ;
     }
-    
 
+    public function comments()  {
+        return $this->hasMany(ProductRating::class);
+    }
+
+    public function totalUlasan(){
+        return $this->comments()->count();
+    }
     //logika filter
     public function scopeFiltered(Builder $query){
         return $query
@@ -57,7 +63,7 @@ class Product extends Model
             });
     }
 
- 
+
 
 
 }

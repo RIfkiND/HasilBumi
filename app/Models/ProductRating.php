@@ -14,7 +14,7 @@ class ProductRating extends Model
         'user_id',
         'product_id',
         'comments',
-        'star_ratings',
+        'star_rating',
     ];
 
     public function product(){

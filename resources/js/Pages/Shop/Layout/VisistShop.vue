@@ -51,7 +51,7 @@
               </div>
               <div class="flex justify-between gap-5">
                 <label class="capitalize text-slate-300">Penilaian</label>
-                <span class="text-primaryColor">76 rb</span>
+                <span class="text-primaryColor">{{ TotalUlasan }}</span>
               </div>
             </div>
             <div class="space-y-5">
@@ -76,7 +76,7 @@
     </div>
 
     <!-- Kategori Produk -->
-    <div class="px-4 py-4 mx-5 mt-4 bg-white border-2 rounded-md border-white-50">
+    <!-- <div class="px-4 py-4 mx-5 mt-4 bg-white border-2 rounded-md border-white-50">
       <h2 class="mb-4 text-xl font-bold uppercase">Kategori</h2>
       <div class="flex space-x-2">
         <div v-for="category in categories" :key="category.id">
@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Produk Unggulan -->
     <div class="px-4 py-3 mx-4 mt-4">
@@ -123,14 +123,14 @@
               >
                 <i class="fa-solid fa-magnifying-glass"></i>
               </Link>
-              <Link
+              <button
                 href="#"
                 class="flex items-center justify-center w-10 h-10 text-lg text-white transition rounded-full bg-dark opacity-60 hover:opacity-90"
                 title="add to wishlist"
-                @click="popupFavorite"
+               @click.stop="addToWishlist(product.id)"
               >
                 <i class="fa-solid fa-heart"></i>
-              </Link>
+              </button>
             </div>
           </div>
           <div class="px-3 pt-3 pb-3">
@@ -207,7 +207,7 @@
   <Footer />
 </template>
 <script setup>
-import { Link } from "@inertiajs/vue3";
+import { Link, useForm } from "@inertiajs/vue3";
 import {computed ,ref } from "vue"
 import Navbar from "@/User/Layout/Component/navbar.vue";
 import Footer from "@/User/Layout/Component/Footer.vue";
@@ -217,6 +217,7 @@ const props = defineProps ({
     totalProducts:Number,
     lastActive: String,
     joinedTime: String,
+    TotalUlasan:Number,
 });
 
 const avatar = props.Stores;
@@ -224,6 +225,34 @@ const tokoUrl = computed(() => {
   return avatar.photo_toko ? `/storage/Toko/Avatar/${avatar.photo_toko}` : null;
 });
 
+
+const form = useForm({
+    product_id: null
+});
+const addToWishlist = async (productId) => {
+    form.product_id = productId;
+
+    try {
+        await form.post(route("wishlist.store"), {
+            onSuccess: (page) => {
+                resetFormData();
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    position: "top-end",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    title: page.props.flash.success,
+                });
+            },
+        });
+    } catch (err) {
+        console.log(err);
+    } finally {
+        loading.value = false;
+    }
+};
 </script>
 <script>
 export default {
@@ -235,80 +264,6 @@ export default {
         { id: 2, name: "flora", image: "./assets/products/pohon4.jpg" },
         { id: 3, name: "kasur", image: "./assets/products/product3.jpg" },
         { id: 4, name: "kursi", image: "./assets/prodcts/product5.jpg" },
-      ],
-      featuredProducts: [
-        {
-          id: 1,
-          name: "Produk 1",
-          category: "Meat",
-          price: "Rp100.000",
-          image: "./assets/products/pohon1.jpg",
-          satuan: "ton",
-          kota: "bandung",
-        },
-        {
-          id: 2,
-          name: "Produk 2",
-          category: "Meat",
-          price: "Rp200.000",
-          image: "./assets/products/product1.jpg",
-          satuan: "kg",
-          kota: "cikarang",
-        },
-        {
-          id: 3,
-          name: "Produk 3",
-          category: "Meat",
-          price: "Rp300.000",
-          image: "./assets/products/pohon6.jpg",
-          satuan: "ton",
-          kota: "ciamis",
-        },
-        {
-          id: 4,
-          name: "Produk 4",
-          category: "Meat",
-          price: "Rp400.000",
-          image: "./assets/products/product2.jpg",
-          satuan: "kg",
-          kota: "banjar",
-        },
-        {
-          id: 5,
-          name: "Produk 5",
-          category: "Meat",
-          price: "Rp100.000",
-          image: "./assets/products/pohon1.jpg",
-          satuan: "ton",
-          kota: "bandung",
-        },
-        {
-          id: 6,
-          name: "Produk 6",
-          category: "Meat",
-          price: "Rp200.000",
-          image: "./assets/products/product1.jpg",
-          satuan: "kg",
-          kota: "cikarang",
-        },
-        {
-          id: 7,
-          name: "Produk 7",
-          category: "Meat",
-          price: "Rp300.000",
-          image: "./assets/products/pohon6.jpg",
-          satuan: "ton",
-          kota: "ciamis",
-        },
-        {
-          id: 8,
-          name: "Produk 8",
-          category: "Meat",
-          price: "Rp400.000",
-          image: "./assets/products/product2.jpg",
-          satuan: "kg",
-          kota: "banjar",
-        },
       ],
     };
   },

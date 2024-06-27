@@ -49,21 +49,33 @@ class HomeController extends Controller
     public function ShowProduct($id)
     {
 
-        $product = Product::with(['product_image', 'satuan', 'category', 'seller.user', 'seller'])
+        $product = Product::with(['product_image', 'satuan', 'category', 'seller.user', 'seller','comments.user','comments.rating_images'])
             ->findOrFail($id);
 
         $sellerIsOnline = $product->seller->user->is_online ?? false;
         $totalProducts = $product->seller->totalProducts();
+        $totalUlasan = $product->totalUlasan();
         $allProducts = Product::with(['first_image', 'satuan', 'category', 'seller.user', 'seller'])
         ->where('id', '!=', $id)
         ->get();
+        $totalRating = $product->comments->avg('star_rating');
         $joinedTime = Carbon::parse($product->seller->created_at)->diffForHumans();
+        $comments = $product->comments->map(function ($comment) {
+            $comment->formatted_created_at = Carbon::parse($comment->created_at)->format('M j, Y');
+            $comment->rating_images = $comment->rating_images;
+            return $comment;
+        });
+        $totalUlasan = $product->totalUlasan();
         return Inertia::render('Shop/Product', [
             'products' => $product,
+            'TotalUlasan' => $totalUlasan,
+            'TotalRating'=> $totalRating,
             'allProducts'=>$allProducts,
             'totalProducts' => $totalProducts,
             'sellerIsOnline' => $sellerIsOnline,
-            'joinedTime' => $joinedTime
+            'TotalUlasan'=> $totalUlasan,
+            'joinedTime' => $joinedTime,
+            'comments' => $product->comments,
         ]);
     }
 

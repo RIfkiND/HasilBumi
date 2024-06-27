@@ -31,6 +31,6 @@ require __DIR__.'/Pages/User.php';
 require __DIR__.'/Auth/callback.php';
 
 require __DIR__ . '/Api/Chat.php';
-
+require __DIR__ . '/Api/GateWay.php';
 
 

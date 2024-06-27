@@ -14,12 +14,12 @@ class CommentControlller extends Controller
 
     public function store(Request $request){
 
-        dd($request->all());
+        //  dd($request->all());
         $user = Auth::user();
         $validatedData = $request->validate([
             'product_id' => 'required|exists:products,id',
             'comments' => 'required|string|min:1',
-            'star_ratings' => 'required|integer|between:1,5',
+            'star_rating' => 'required|integer|between:1,5',
         ]);
         $validatedData['user_id']=$user->id;
         $ratings = ProductRating::create($validatedData);
@@ -28,7 +28,7 @@ class CommentControlller extends Controller
             $productImages = $request->file('url');
             foreach ($productImages as $image) {
                 $uniqueName = time() . '-' . Str::random(10) . '.' . $image->getClientOriginalExtension();
-                $image->move('product_images', $uniqueName);
+                $image->move('comment', $uniqueName);
                 ImageRating::create([
                     'product_rating_id' => $ratings->id,
                     'url' => 'comment/' . $uniqueName,

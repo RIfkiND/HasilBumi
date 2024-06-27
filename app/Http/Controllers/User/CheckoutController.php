@@ -15,9 +15,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CheckoutController extends Controller
 {
 
-    public function view(){
-        
-    }
+    // public function view(){
+
+    // }
     public function store(Request $request)
     {
         $user = $request->user();
@@ -26,12 +26,11 @@ class CheckoutController extends Controller
 
         $mergedData = [];
 
-        // Loop through the "carts" array and merge with "products" data
         foreach ($carts as $cartItem) {
             foreach ($products as $product) {
                 if ($cartItem["product_id"] == $product["id"]) {
-                    // Merge the cart item with product data
-                    $mergedData[] = array_merge($cartItem, ["title" => $product["title"], 'price' => $product['price']]);
+
+                    $mergedData[] = array_merge($cartItem, ["name" => $product["name"], 'price' => $product['price']]);
                 }
             }
         }
@@ -44,7 +43,7 @@ class CheckoutController extends Controller
                 'price_data' => [
                     'currency' => 'idr',
                     'product_data' => [
-                        'name' => $item['title'],
+                        'name' => $item['name'],
                     ],
                     'unit_amount' => (int)($item['price'] * 100),
                 ],

@@ -143,7 +143,7 @@
                 <span>Total</span>
                 <span>Rp {{ cartItems.total }}</span>
               </div>
-              <button class="w-full px-4 py-2 mt-4 text-white rounded-lg bg-primaryColor">
+              <button class="w-full px-4 py-2 mt-4 text-white rounded-lg bg-primaryColor" @click="checkout">
                 Beli ({{ cartItems.count }})
               </button>
             </div>
@@ -166,6 +166,17 @@ import Swal from "sweetalert2";
 const page = usePage();
 const cartItems = ref(page.props.cartItems);
 const isLiked = ref(false);
+
+function checkout() {
+    router.visit(route('checkout.store'), {
+        method: 'post',
+        data: {
+            carts: cartItems.value.items,
+              products: cartItems.value.products,
+                total: cartItems.value.total,
+        }
+    })
+}
 
 const toggleLike = () => {
   isLiked.value = !isLiked.value;

@@ -11,26 +11,26 @@
                     komentar
                 </h2>
             </div>
-            <form class="relative mb-3"  @submit.prevent="submitAddCommentForm">
-                <input type="hidden" v-model="productId">
+            <form class="relative mb-3" @submit.prevent="submitAddCommentForm">
+                <input type="hidden" v-model="productId" />
                 <div class="rating">
-      <input
-        type="radio"
-        name="rating-4"
-        class="bg-primaryColor mask mask-star-2"
-        v-for="star in 5"
-        :key="star"
-        :value="star"
-        v-model="star_ratings"
-      />
-    </div>
+                    <input
+                        type="radio"
+                        name="rating-4"
+                        class="bg-primaryColor mask mask-star-2"
+                        v-for="star in 5"
+                        :key="star"
+                        :value="star"
+                        v-model="star_ratings"
+                    />
+                </div>
                 <div
                     class="relative px-3 pt-1 pb-4 mb-4 border-2 rounded-lg rounded-t-lg border-white-50"
                 >
                     <div class="flex">
                         <textarea
                             id="comment"
-                             v-model="comments"
+                            v-model="comments"
                             rows="6"
                             class="w-full text-sm bg-white border-0 text-slate-300 focus:ring-0 focus:outline-none"
                             placeholder="Ketik pesan..."
@@ -131,7 +131,15 @@
                                 />
                             </svg>
                         </label>
-                        <input type="file"  ref="fileInput"  accept="image/*" id="image-file" class="hidden" @change="handleFileChange" multiple>
+                        <input
+                            type="file"
+                            ref="fileInput"
+                            accept="image/*"
+                            id="image-file"
+                            class="hidden"
+                            @change="handleFileChange"
+                            multiple
+                        />
                         <span
                             class="hover:cursor-pointer"
                             @click="toggleMicrophone"
@@ -185,7 +193,11 @@
                     Kirim komentar
                 </button>
             </form>
-            <div class="divide-y-2 divide-white-50">
+            <div
+                class="divide-y-2 divide-white-50"
+                v-for="comment in UserComment"
+                :key="comment.id"
+            >
                 <article class="p-6 mt-5 text-base rounded-lg">
                     <footer class="flex items-center justify-between mb-2">
                         <div class="flex items-center">
@@ -194,16 +206,16 @@
                             >
                                 <img
                                     class="mr-2 bg-center bg-cover rounded-full w-7 h-7"
-                                    :src="user1"
+                                    :src="`/storage/User/Avatar/${comment.user.avatar_user}`"
                                     alt="Aji setiyawan"
-                                />Aji setiyawan
+                                />{{ comment.user.name }}
                             </p>
                             <p class="text-sm text-slate-200">
                                 <time
                                     pubdate
                                     datetime="2022-02-08"
                                     title="February 8th, 2022"
-                                    >Feb 8, 2022</time
+                                    >{{ comment.formatted_created_at }}</time
                                 >
                             </p>
                         </div>
@@ -321,15 +333,25 @@
                         </div>
                     </footer>
 
+                    <template v-for="star in 5">
+                        <span>
+                            <i
+                                v-if="star <= comment.star_rating"
+                                class="fa-solid fa-star text-primaryColor"
+                            ></i>
+                            <i
+                                v-else
+                                class="fa-solid fa-star text-gray-400"
+                            ></i>
+                        </span>
+                    </template>
+
                     <p class="text-slate-300">
-                        Aku baru saja mencoba produk baru dari petani lokal di
-                        daerah kita. Rasanya sangat segar dan alami!
+                        {{ comment.comments }}
                     </p>
-                    <div class="avatar">
-                        <div class="w-24 pt-3 unded pt">
-                            <img
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                            />
+                    <div class="avatar" v-for="image in comment.rating_images">
+                        <div class="w-24 pt-3 p-2 unded pt">
+                            <img :src="`/${image.url}`" />
                         </div>
                     </div>
                     <div class="flex items-center mt-3 space-x-4">
@@ -389,64 +411,66 @@ import { router, Link, usePage } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 const props = defineProps({
     detailProduct: Object,
-
-  });
-
-const comments= ref("");
+    UserComment: Array,
+});
+const CommentAvatar = computed(() => {
+    return props.UserComment.user.avatar_user
+        ? `/storage/User/Avatar/${props.UserComment.user.avatar_user}`
+        : null;
+});
+const rating = ref(3);
+const comments = ref("");
 const star_ratings = ref("");
 const images = ref([]);
 const productId = ref(props.detailProduct.id);
 const handleFileUpload = (event) => {
-  const file = event.target.files[0];
-  images.value.push(file);
+    const file = event.target.files[0];
+    images.value.push(file);
 };
 const handleFileChange = (event) => {
-  const fileList = event.target.files;
-  images.value = Array.from(fileList);
+    const fileList = event.target.files;
+    images.value = Array.from(fileList);
 
-  const imagePreviews = [];
-  for (let i = 0; i < fileList.length; i++) {
-    const url = URL.createObjectURL(fileList[i]);
-    imagePreviews.push({ url });
-  }
-  previewImages.value = imagePreviews;
+    const imagePreviews = [];
+    for (let i = 0; i < fileList.length; i++) {
+        const url = URL.createObjectURL(fileList[i]);
+        imagePreviews.push({ url });
+    }
+    previewImages.value = imagePreviews;
 };
-
 
 const submitAddCommentForm = async () => {
-  const formData = new FormData();
-  formData.append('product_id', productId.value);
-  formData.append("comments", comments.value);
-  formData.append("star_ratings", star_ratings.value);
-  for (const image of images.value) {
-    formData.append("url[]", image);
-  }
+    const formData = new FormData();
+    formData.append("product_id", productId.value);
+    formData.append("comments", comments.value);
+    formData.append("star_rating", star_ratings.value);
+    for (const image of images.value) {
+        formData.append("url[]", image);
+    }
 
-  try {
-    await router.post(route("user.comment"), formData, {
-      onSuccess: (page) => {
-        Swal.fire({
-          toast: true,
-          icon: "success",
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 2000,
-          timerProgressBar: true,
-          title: page.props.flash.success,
+    try {
+        await router.post(route("user.comment"), formData, {
+            onSuccess: (page) => {
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    title: page.props.flash.success,
+                });
+                resetFormData();
+            },
         });
-        resetFormData();
-      },
-    });
-  } catch (err) {
-    console.log(err);
-  }
-
+    } catch (err) {
+        console.log(err);
+    }
 };
 const resetFormData = () => {
-
- comments.value = "";
-  star_ratings.value = "";
-  images.value = [];
+    comments.value = "";
+    star_ratings.value = "";
+    images.value = [];
 };
 </script>
 <script>
