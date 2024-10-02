@@ -27,7 +27,6 @@
   <img src="https://img.shields.io/badge/Laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel"/>
   <img src="https://img.shields.io/badge/Vue.js-%234FC08D.svg?style=for-the-badge&logo=vue.js&logoColor=white" alt="Vue.js"/>
   <img src="https://img.shields.io/badge/MySQL-%234479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
-  <img src="https://img.shields.io/badge/MongoDB-%2347A248.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB"/>
   <img src="https://img.shields.io/badge/Stripe-%233E3E3E.svg?style=for-the-badge&logo=stripe&logoColor=white" alt="Stripe"/>
   <img src="https://img.shields.io/badge/Google-%234285F4.svg?style=for-the-badge&logo=google&logoColor=white" alt="Google"/>
 </p>
